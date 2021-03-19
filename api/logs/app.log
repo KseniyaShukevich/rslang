@@ -1,0 +1,206 @@
+{
+  error: MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+      at NativeConnection.Connection.openUri (C:\Users\Kseniya\Desktop\RSS\react-courses\rslang\api\node_modules\mongoose\lib\connection.js:680:11)
+      at C:\Users\Kseniya\Desktop\RSS\react-courses\rslang\api\node_modules\mongoose\lib\index.js:345:10
+      at C:\Users\Kseniya\Desktop\RSS\react-courses\rslang\api\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:5
+      at new Promise (<anonymous>)
+      at promiseOrCallback (C:\Users\Kseniya\Desktop\RSS\react-courses\rslang\api\node_modules\mongoose\lib\helpers\promiseOrCallback.js:30:10)
+      at Mongoose._promiseOrCallback (C:\Users\Kseniya\Desktop\RSS\react-courses\rslang\api\node_modules\mongoose\lib\index.js:1135:10)
+      at Mongoose.connect (C:\Users\Kseniya\Desktop\RSS\react-courses\rslang\api\node_modules\mongoose\lib\index.js:344:20)
+      at Object.<anonymous> (C:\Users\Kseniya\Desktop\RSS\react-courses\rslang\api\src\server.js:12:10)
+      at Module._compile (internal/modules/cjs/loader.js:1063:30)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+      at Module.load (internal/modules/cjs/loader.js:928:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+      at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+      at internal/main/run_main_module.js:17:47,
+  level: 'error',
+  message: 'uncaughtException: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.\n' +
+    'MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.\n' +
+    '    at NativeConnection.Connection.openUri (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\connection.js:680:11)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js:345:10\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at Mongoose._promiseOrCallback (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js:1135:10)\n' +
+    '    at Mongoose.connect (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js:344:20)\n' +
+    '    at Object.<anonymous> (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\src\\server.js:12:10)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:928:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n' +
+    '    at internal/main/run_main_module.js:17:47',
+  stack: 'MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.\n' +
+    '    at NativeConnection.Connection.openUri (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\connection.js:680:11)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js:345:10\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at Mongoose._promiseOrCallback (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js:1135:10)\n' +
+    '    at Mongoose.connect (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js:344:20)\n' +
+    '    at Object.<anonymous> (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\src\\server.js:12:10)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:1063:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)\n' +
+    '    at Module.load (internal/modules/cjs/loader.js:928:32)\n' +
+    '    at Function.Module._load (internal/modules/cjs/loader.js:769:14)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)\n' +
+    '    at internal/main/run_main_module.js:17:47',
+  exception: true,
+  date: 'Fri Mar 19 2021 17:43:05 GMT+0300 (Москва, стандартное время)',
+  process: {
+    pid: 17768,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api',
+    execPath: 'C:\\Program Files\\nodejs\\node.exe',
+    version: 'v14.15.0',
+    argv: [
+      'C:\\Program Files\\nodejs\\node.exe',
+      'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\src\\server.js'
+    ],
+    memoryUsage: {
+      rss: 73064448,
+      heapTotal: 56639488,
+      heapUsed: 37169568,
+      external: 20315612,
+      arrayBuffers: 18770877
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 431423 },
+  trace: [
+    {
+      column: 11,
+      file: 'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\connection.js',
+      function: 'NativeConnection.Connection.openUri',
+      line: 680,
+      method: 'openUri',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js',
+      function: null,
+      line: 345,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js',
+      function: null,
+      line: 31,
+      method: null,
+      native: false
+    },
+    {
+      column: null,
+      file: null,
+      function: 'new Promise',
+      line: null,
+      method: null,
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js',
+      function: 'promiseOrCallback',
+      line: 30,
+      method: null,
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js',
+      function: 'Mongoose._promiseOrCallback',
+      line: 1135,
+      method: '_promiseOrCallback',
+      native: false
+    },
+    {
+      column: 20,
+      file: 'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\index.js',
+      function: 'Mongoose.connect',
+      line: 344,
+      method: 'connect',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\src\\server.js',
+      function: null,
+      line: 12,
+      method: null,
+      native: false
+    },
+    {
+      column: 30,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._compile',
+      line: 1063,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._extensions..js',
+      line: 1092,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module.load',
+      line: 928,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'internal/modules/cjs/loader.js',
+      function: 'Module._load',
+      line: 769,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'internal/modules/run_main.js',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 72,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 47,
+      file: 'internal/main/run_main_module.js',
+      function: null,
+      line: 17,
+      method: null,
+      native: false
+    }
+  ],
+  timestamp: '2021-03-19T14:43:05.377Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-19T14:47:48.603Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-19T14:47:48.751Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-19T14:56:01.305Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-19T14:56:01.344Z'
+}
