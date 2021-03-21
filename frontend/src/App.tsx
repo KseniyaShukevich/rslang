@@ -4,6 +4,9 @@ import { decrement, increment, selectCount } from './features/counter/counterSli
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
 import { Container } from '@material-ui/core'
 
+
+import WordCard from "./components/WordCard";
+
 function App() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
@@ -15,6 +18,16 @@ function App() {
         <Switch>
           <Route path="/tutorial">
             электронный учебник со словарём
+            <WordCard
+                word='detrimental'
+                audio='https://freesound.org/data/previews/401/401736_7744890-lq.mp3'
+                translateWord='вредный'
+                ava='https://avatars.mds.yandex.net/get-zen_doc/175604/pub_5d3edd5d14f98000ad739d66_5d3ede27c49f2900ad0b39f5/scale_1200'
+                transcription='[sˈælvɪdʒ]'
+                exampleWordText='"Regardless of what your partner did to you, there is no reason to blame him.'
+                aboutWordText='"Regardless of what your partner did to you, there is no reason to blame him.'
+                dificult={false}
+            />
           </Route>
           <Route path="/savannah">
             Саванна
