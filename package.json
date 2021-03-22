@@ -23,6 +23,5 @@
     "concurrently": "^5.3.0"
   },
   "homepage": "https://github.com/KseniyaShukevich/rslang#readme",
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-import ReactPlayer from 'react-player'
 
 
-import HeadsetIcon from '@material-ui/icons/Headset';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import {makeStyles} from "@material-ui/core/styles";
 import Avatar from '@material-ui/core/Avatar';
@@ -12,6 +10,7 @@ import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 
 import ModalDeleteWord from './ModalDeleteWord';
 import ModalDescrAboutWord from './ModalDescrAboutWord';
+import ListenPlayer from "./ ListenPlayer";
 
 const rightIndent = '8px'
 
@@ -79,17 +78,21 @@ const useStyles = makeStyles((theme) => ({
 type Props = {
     audio: string,
     word: string,
-    translateWord:string,
-    ava: string,
+    wordTranslate:string,
+    image: string,
     dificult: boolean,
     transcription:string,
-    exampleWordText:string,
-    aboutWordText:string,
+    textExample:string,
+    textMeaning:string,
+    audioMeaning:string,
+    audioExample:string,
+    textMeaningTranslate:string,
+    textExampleTranslate:string,
 
 }
 
 const WordCard: React.FC<Props> = (props: Props) => {
-    const {audio, word, translateWord, ava, dificult} = props;
+    const {audio, word, wordTranslate, image, dificult} = props;
     const classes = useStyles();
 
 
@@ -105,24 +108,19 @@ const WordCard: React.FC<Props> = (props: Props) => {
 
     return (
         <div className={classes.wordCard}>
-            <span className={classes.hidden}><ReactPlayer
-                url={audio}
-                playing={isListens}
-                onEnded={() => setIsListens(false)}
-            />
-            </span>
-
-            <ButtonBase>
-                <HeadsetIcon onClick={listenWord} color={isListens ? 'secondary' : 'primary'}/>
-            </ButtonBase>
+          <ListenPlayer audio={audio}
+                        isAudio={isListens}
+                        setIsAudio={() => setIsListens(false)}
+                        listenAudio={listenWord}
+          />
             <div onClick={() => setIsPortal(true)} className={classes.flexColumn}>
                 <strong className={classes.word}>{word}</strong>
-                <span>{translateWord}</span>
+                <span>{wordTranslate}</span>
             </div>
             <div className={classes.right}>
                 <Avatar
                     className={classes.ava}
-                    src={ava
+                    src={image
                     || ''}
                     alt="word img"
                 />
