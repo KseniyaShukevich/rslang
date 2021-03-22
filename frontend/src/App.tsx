@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, selectCount } from './features/counter/counterSlice'
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
-import { Container } from '@material-ui/core'
+import { Container } from '@material-ui/core';
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 
 import WordCard from "./components/WordCard";
@@ -13,8 +15,9 @@ function App() {
 
   return (
     <Router>
-      Header
-      <Container maxWidth="lg">
+      {/* Header */}
+      <Header />
+      <Container maxWidth="lg" style={{height:'90vh'}}>
         <Switch>
           <Route path="/tutorial">
             электронный учебник со словарём
@@ -64,7 +67,7 @@ function App() {
           </Route>
         </Switch>
       </Container>
-      Footer
+      {/* <Footer /> */}
     </Router>
   );
 }
