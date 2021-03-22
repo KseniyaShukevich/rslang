@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterRouter from '../features/counter/counterSlice'
-import wordsRouter from '../slices/wordsSlice'
+import counterReducer from '../features/counter/counterSlice'
+import wordsReducer from '../slices/wordsSlice'
 // ...
 
 const store = configureStore({
   reducer: {
-    counter: counterRouter,
-    words: wordsRouter,
+    counter: counterReducer,
+    words: wordsReducer,
   }
 })
 
