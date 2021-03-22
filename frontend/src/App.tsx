@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, selectCount } from './features/counter/counterSlice'
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
 import { Container } from '@material-ui/core'
+import { fetchWords, selectWords } from './slices/wordsSlice'
 
 function App() {
   const count = useSelector(selectCount);
+  const words = useSelector(selectWords);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchWords({
+      group: 0,
+      page: 0,
+    }))
+  }, []);
+
+  useEffect(() => {
+    console.log(words);
+  }, [words]);
 
   return (
     <Router>
