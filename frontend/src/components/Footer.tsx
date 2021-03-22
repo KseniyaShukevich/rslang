@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     backgroundColor: theme.palette.primary.main,
     bottom: 0,
     padding: theme.spacing(1.5, 0, 3.5),
+    borderRadius: '8px',
   },
   container: {
     display: "flex",
@@ -95,8 +96,17 @@ const Footer: React.FC = () => {
             href="https://github.com/MarinaYur"
             target="_blank"
             rel="noreferrer"
-          >
+            >
             <Typography>MarinaYur</Typography>
+          </a>
+            <hr/>
+          <a
+            className={classes.author}
+            href="https://github.com/slavalobikov"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Typography>slavalobikov</Typography>
           </a>
         </Box>
         <Box>

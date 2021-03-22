@@ -7,35 +7,28 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useStyles } from '../mui-style';
-// import Spacer from './Spacer';
-// import HomeBtn from './HomeBtn';
-// import LanguageSelect from './LanguageSelect';
 import BurgerMenu from './BurgerMenu';
-// import SearchField from './SearchField';
-// // import Entry from './Entry';
-// import LogOut from './LogOut';
 import { useSelector } from "react-redux";
-// import { AppState, IUser } from '../interfaces';
-// import User from './User';
 
 const Header: React.FC = () => {
-  const classes = useStyles();
-//   const user = useSelector<AppState, IUser | null>(state => state.user);
+    const classes = useStyles();
+    //   const user = useSelector<AppState, IUser | null>(state => state.user);
 
-  return (
-    <AppBar position="static">
-      <Toolbar>
-        <BurgerMenu />
-        <Typography variant="h6">
-        {/* П<span className={classes.titleSpan}>оехали</span> */}
-        </Typography>    
-        <Route exact path="/">
-          {/* <SearchField /> */}
-        </Route>
-        {/* <Spacer />
+    return (
+        <AppBar style={{borderRadius: '8px'}} position="static">
+            <Toolbar  style={{display:'flex', justifyContent:'space-between'}}>
+                <BurgerMenu />
+                <Typography variant="h4">
+                    <span>RSLang</span>
+                    <span>О команде</span>
+                </Typography>
+                <Route exact path="/">
+                    {/* <SearchField /> */}
+                </Route>
+                {/* <Spacer />
         <LanguageSelect />
         <HomeBtn /> */}
-        {/* {
+                {/* {
           user ?
             <>
               <User />
@@ -44,9 +37,13 @@ const Header: React.FC = () => {
             :
             <Entry />
         } */}
-      </Toolbar>
-    </AppBar>
-  )
+                <Typography variant="h6">
+                    <Button color="inherit">Login</Button>
+                    <Button color="inherit">Log Out</Button>
+                </Typography>
+            </Toolbar>
+        </AppBar>
+    )
 }
 
 export default Header;
