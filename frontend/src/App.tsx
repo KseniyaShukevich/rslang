@@ -14,7 +14,7 @@ function App() {
     <Router>
       {/* Header */}
       <Header />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style={{height:'90vh'}}>
         <Switch>
           <Route path="/tutorial">
             электронный учебник со словарём
@@ -54,7 +54,7 @@ function App() {
           </Route>
         </Switch>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
