@@ -4,6 +4,12 @@ import { decrement, increment, selectCount } from './features/counter/counterSli
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
 import { Container } from '@material-ui/core'
 import { fetchWords, selectWords } from './slices/wordsSlice'
+import { Container } from '@material-ui/core';
+import Header from './components/Header'
+import Footer from './components/Footer'
+
+
+import WordCard from "./components/WordCard";
 
 function App() {
   const count = useSelector(selectCount);
@@ -23,11 +29,26 @@ function App() {
 
   return (
     <Router>
-      Header
-      <Container maxWidth="lg">
+      {/* Header */}
+      <Header />
+      <Container maxWidth="lg" style={{height:'90vh'}}>
         <Switch>
           <Route path="/tutorial">
             электронный учебник со словарём
+            <WordCard
+                word='detrimental'
+                audio='https://freesound.org/data/previews/401/401736_7744890-lq.mp3'
+                wordTranslate='вредный'
+                image='https://avatars.mds.yandex.net/get-zen_doc/175604/pub_5d3edd5d14f98000ad739d66_5d3ede27c49f2900ad0b39f5/scale_1200'
+                transcription='[əgríː]'
+                textExample='The students agree they have too much homework'
+                textMeaning='To agree is to have the same opinion or belief as another person'
+                audioMeaning='https://freesound.org/data/previews/401/401736_7744890-lq.mp3'
+                audioExample='https://freesound.org/data/previews/401/401736_7744890-lq.mp3'
+                textMeaningTranslate='Согласиться - значит иметь то же мнение или убеждение, что и другой человек'
+                textExampleTranslate='Студенты согласны, что у них слишком много домашней работы'
+                dificult={false}
+            />
           </Route>
           <Route path="/savannah">
             Саванна
@@ -64,7 +85,7 @@ function App() {
           </Route>
         </Switch>
       </Container>
-      Footer
+      {/* <Footer /> */}
     </Router>
   );
 }
