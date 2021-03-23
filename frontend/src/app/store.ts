@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from '../features/counter/counterSlice'
+import wordsReducer from '../slices/wordsSlice'
 // ...
 
 const store = configureStore({
