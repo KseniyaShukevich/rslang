@@ -4,7 +4,6 @@ import { decrement, increment, selectCount } from './features/counter/counterSli
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
 import { Container } from '@material-ui/core'
 import { fetchWords, selectWords } from './slices/wordsSlice'
-import { Container } from '@material-ui/core';
 import Header from './components/Header'
 import Footer from './components/Footer'
 
