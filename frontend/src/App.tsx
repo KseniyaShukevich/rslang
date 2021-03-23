@@ -4,37 +4,37 @@ import { decrement, increment, selectCount } from './features/counter/counterSli
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
 import { Container } from '@material-ui/core'
 import { fetchWords, selectWords } from './slices/wordsSlice'
-import Header from './components/Header'
-import Footer from './components/Footer'
-
-
+import Home from './components/Home'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
+import MiniGames from './components/MiniGames'
+import Statistics from './components/Statistics'
+import Tutorial from './components/Tutorial'
+import Settings from './components/Settings'
 import WordCard from "./components/WordCard";
 
 function App() {
   const count = useSelector(selectCount);
-  const words = useSelector(selectWords);
-  const dispatch = useDispatch();
+  // const words = useSelector(selectWords);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchWords({
-      group: 0,
-      page: 0,
-    }))
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchWords({
+  //     group: 0,
+  //     page: 0,
+  //   }))
+  // }, []);
 
-  useEffect(() => {
-    console.log(words);
-  }, [words]);
+  // useEffect(() => {
+  //   console.log(words);
+  // }, [words]);
 
   return (
     <Router>
-      {/* Header */}
-      <Header />
-      <Container maxWidth="lg" style={{height:'90vh'}}>
         <Switch>
           <Route path="/tutorial">
-            электронный учебник со словарём
-            <WordCard
+            <Tutorial />
+            {/* <WordCard
                 word='detrimental'
                 audio='https://freesound.org/data/previews/401/401736_7744890-lq.mp3'
                 wordTranslate='вредный'
@@ -47,7 +47,7 @@ function App() {
                 textMeaningTranslate='Согласиться - значит иметь то же мнение или убеждение, что и другой человек'
                 textExampleTranslate='Студенты согласны, что у них слишком много домашней работы'
                 dificult={false}
-            />
+            /> */}
           </Route>
           <Route path="/savannah">
             Саванна
@@ -61,30 +61,25 @@ function App() {
           <Route path="/owngame">
             Своя игра
           </Route>
+          <Route path="/settings">
+            <Settings />
+          </Route>
           <Route path="/statistics">
-            страница статистики
+            <Statistics />
+          </Route>
+          <Route path="/mini-games">
+            <MiniGames />
+          </Route>
+          <Route path="/log-in">
+            <Login />
+          </Route>
+          <Route path="/sign-up">
+            <SignUp />
           </Route>
           <Route path="/">
-            Home
-            {/* <div>
-              <button
-                aria-label="Increment value"
-                onClick={() => dispatch(increment())}
-              >
-                Increment
-              </button>
-              <span>{count}</span>
-              <button
-                aria-label="Decrement value"
-                onClick={() => dispatch(decrement())}
-              >
-                Decrement
-              </button>
-            </div> */}
+            <Home />
           </Route>
         </Switch>
-      </Container>
-      {/* <Footer /> */}
     </Router>
   );
 }
