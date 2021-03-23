@@ -6,7 +6,7 @@ import wordsReducer from '../slices/wordsSlice'
 const store = configureStore({
   reducer: {
     counter: counterReducer,
-    // two: twoSlice.reducer
+    words: wordsReducer,
   }
 })
 
