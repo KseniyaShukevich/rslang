@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
         <BurgerMenu />
         <Typography variant="h6">
         {/* П<span className={classes.titleSpan}>оехали</span> */}
-        </Typography>    
+        </Typography>
         <Route exact path="/">
           {/* <SearchField /> */}
         </Route>
@@ -44,6 +44,7 @@ const Header: React.FC = () => {
             :
             <Entry />
         } */}
+        <Button><Link to="/log-in">Login</Link></Button>
       </Toolbar>
     </AppBar>
   )
