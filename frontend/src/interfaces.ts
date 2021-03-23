@@ -1,3 +1,4 @@
-export interface AppState {
-
+export interface ITextbookDepartment {
+  name: string,
+  color: string,
 }

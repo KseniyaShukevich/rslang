@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, selectCount } from './features/counter/counterSlice'
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
 import { Container } from '@material-ui/core';
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import TextbookPage from './pages/TextbookPage';
 
 
 import WordCard from "./components/WordCard";
+import TextBookPage from './pages/TextbookPage';
 
 function App() {
   const count = useSelector(selectCount);
@@ -17,10 +19,10 @@ function App() {
     <Router>
       {/* Header */}
       <Header />
-      <Container maxWidth="lg" style={{height:'90vh'}}>
+      <Container maxWidth="lg" style={{height:'90vh'}} disableGutters={true}>
         <Switch>
           <Route path="/tutorial">
-            электронный учебник со словарём
+            <TextbookPage />
             <WordCard
                 word='detrimental'
                 audio='https://freesound.org/data/previews/401/401736_7744890-lq.mp3'
