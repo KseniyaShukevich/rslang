@@ -207,11 +207,16 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
+<<<<<<< Updated upstream
   timestamp: '2021-03-21T20:34:11.682Z'
+=======
+  timestamp: '2021-03-21T19:12:07.716Z'
+>>>>>>> Stashed changes
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
+<<<<<<< Updated upstream
   timestamp: '2021-03-21T20:34:11.693Z'
 }
 {
@@ -258,4 +263,7 @@
   message: 'App is running on http://localhost:4000',
   level: 'info',
   timestamp: '2021-03-23T09:38:22.387Z'
+=======
+  timestamp: '2021-03-21T19:12:07.871Z'
+>>>>>>> Stashed changes
 }
