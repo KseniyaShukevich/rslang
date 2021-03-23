@@ -19,8 +19,7 @@ const Header: React.FC = () => {
             <Toolbar  style={{display:'flex', justifyContent:'space-between'}}>
                 <BurgerMenu />
                 <Typography variant="h4">
-                    <span>RSLang</span>
-                    <span>О команде</span>
+                    <span className='classes.'>RSLang</span>
                 </Typography>
                 <Route exact path="/">
                     {/* <SearchField /> */}

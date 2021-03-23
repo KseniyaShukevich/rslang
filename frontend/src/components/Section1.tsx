@@ -1,51 +1,69 @@
-import react from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Avatar, List, ListItem, ListItemAvatar, ListItemText, makeStyles, Typography } from '@material-ui/core';
+import {
+  makeStyles,
+} from "@material-ui/core";
 import { theme } from "../mui-style";
-import React from 'react';
-import { green } from '@material-ui/core/colors';
-import background from "../assets/images_HomePage/1.jpeg";
+import React from "react";
+import vocabulary from "../assets/images_HomePage/vocabulary.jpeg";
+import UserInterface from "../assets/images_HomePage/interface.png";
+import playing from "../assets/images_HomePage/playing.jpeg";
+import statistics from "../assets/images_HomePage/statistics.png";
+import customization from "../assets/images_HomePage/customization.png";
 import img from "../assets/images_HomePage/1.jpeg";
 
 const useStyles = makeStyles({
   contentWrapper: {
-    height: 600,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    'max-width': 1800,
-    margin: '0 auto',
+    "max-width": 1700,
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    alignItems: 'center',
+    margin: "0 auto",
   },
   root: {
-    width: '100%',
-    maxWidth: '36ch',
+    width: "100%",
+    maxWidth: "36ch",
     // backgroundColor: theme.palette.background.paper,
   },
   inline: {
-    display: 'inline',
+    display: "inline",
   },
   avatar: {
-    borderRadius:'50%',
-    width:'100px',
-    height:'100px',
-    backgroundImage: `url(${background})`,
-    'background-size': 'contain',
+    '&:hover': {
+      transform: 'scale(1.1)',
+    },
+    borderRadius: "50%",
+    width: "100px",
+    height: "100px",
+    "background-size": "contain",
   },
   listItem: {
-    display: 'flex',
+    fontSize: "1.4rem",
+    display: "flex",
+    paddingTop: "1rem",
+    // justifyContent: 'space-between',
   },
   title: {
-    'font-size': '2rem',
-    color: 'blue',
-    margin: '0 auto',
-    padding: '3rem 0',
+    "font-size": "2rem",
+    background: "linear-gradient(135deg, #1254bc 20%, #fa0e0e 70%)",
+    "-webkit-background-clip": "text",
+    "-webkit-text-fill-color": "transparent",
+    display: "inline-block",
+    padding: "0.3em 0.6em",
+    border: "3px solid transparent",
+    "border-image": "linear-gradient(135deg, #1254bc 20%, #fa0e0e 70%)",
+    "border-image-slice": 1,
+    margin: "49px auto",
   },
   subTitle: {
-    'font-size': '1.5rem',
+    "font-size": "1.5rem",
     fontWeight: 800,
-  }
-});
+  },
+  listItemP: {
+    color: 'blue',
+    paddingLeft: "2rem",
 
+  },
+});
 
 const Section1: React.FC<any> = () => {
   const classes = useStyles();
@@ -53,36 +71,73 @@ const Section1: React.FC<any> = () => {
   return (
     <>
       <div className={classes.contentWrapper}>
-          <p className={classes.title}>RSLang - простое и интересное приложение для изучения английского языка.</p>
-        <div>
-          <p className={classes.subTitle}>Какие же преимущества и возможности вас ждут от RSLang?</p>
+        <p className={classes.title}>
+          RSLang - простое и интересное приложение для изучения английского
+          языка
+        </p>
+        <div style={{ width: "60%"}}>
+          <p className={classes.subTitle}>
+            Какие же преимущества и возможности вас ждут от RSLang?
+          </p>
           <div>
             <ul>
               <li className={classes.listItem}>
-                <div className={classes.avatar}></div>
-                <p>Изучение 3600 часто употребляемых английских слов быстро и интересно</p>
+                <div
+                  className={classes.avatar}
+                  style={{ backgroundImage: `url(${vocabulary})` }}
+                ></div>
+                <p className={classes.listItemP}>
+                  Изучение 3600 часто употребляемых английских слов с примерами их использования быстро и
+                  интересно
+                </p>
               </li>
               <li className={classes.listItem}>
-                <div className={classes.avatar}></div>
-                <p>Удобный и приятный интерфейс электронного учебника</p>
+                <div
+                  className={classes.avatar}
+                  style={{ backgroundImage: `url(${UserInterface})` }}
+                ></div>
+                <p className={classes.listItemP}>
+                  Удобный и приятный интерфейс электронного учебника
+                </p>
               </li>
               <li className={classes.listItem}>
-                <div className={classes.avatar}></div>
-                <p>Изучение английского языка играя: в приложении 4 интересные мини-игры</p>
+                <div
+                  className={classes.avatar}
+                  style={{ backgroundImage: `url(${playing})` }}
+                ></div>
+                <p className={classes.listItemP}>
+                  Изучение английского языка играя: в приложении 4 интересные
+                  мини-игры
+                </p>
               </li>
               <li className={classes.listItem}>
-                <div className={classes.avatar}></div>
-                <p>Удобно контролировать свои результаты, сохраняющиеся на странице статистики</p>
+                <div
+                  className={classes.avatar}
+                  style={{ backgroundImage: `url(${statistics})` }}
+                ></div>
+                <p className={classes.listItemP}>
+                  Удобно контролировать свои результаты, сохраняющиеся на
+                  странице статистики
+                </p>
+              </li>
+              <li className={classes.listItem}>
+                <div
+                  className={classes.avatar}
+                  style={{ backgroundImage: `url(${customization})` }}
+                ></div>
+                <p className={classes.listItemP}>
+                  Возможность установить индивидуальные настройки
+                </p>
               </li>
             </ul>
           </div>
         </div>
-        <div style={{width: '40%'}}>
-          <img style={{width:'100%'}} src={img}></img>
+        <div style={{ width: "40%"}}>
+          <img style={{ width: "100%", border: '4px solid blue', 'borderRadius': '62%'}} src={img}></img>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Section1;
