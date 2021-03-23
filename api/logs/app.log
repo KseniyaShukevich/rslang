@@ -204,3 +204,88 @@
   level: 'info',
   timestamp: '2021-03-19T14:56:01.344Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-20T08:31:38.063Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-20T08:31:38.108Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-22T17:32:44.971Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-22T17:32:45.003Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-22T20:01:06.034Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-22T20:01:06.072Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-23T13:33:04.697Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-23T13:33:04.731Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-23T13:47:40.551Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-23T13:47:40.587Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-23T13:58:51.533Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-23T13:58:51.565Z'
+}
+{
+  message: 'POST 404 /signin - size req 49 res 56 - 122.451 ms\n',
+  level: 'info',
+  timestamp: '2021-03-23T14:37:01.475Z'
+}
+{
+  message: 'POST 404 /signin - size req 49 res 56 - 49.658 ms\n',
+  level: 'info',
+  timestamp: '2021-03-23T14:38:07.535Z'
+}
+{
+  message: 'POST 404 /signin - size req 49 res 56 - 44.249 ms\n',
+  level: 'info',
+  timestamp: '2021-03-23T14:40:25.979Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res 2 - 76.452 ms\n',
+  level: 'info',
+  timestamp: '2021-03-23T14:41:51.268Z'
+}
+{
+  message: 'GET 200 /words - size req - res 2 - 45.561 ms\n',
+  level: 'info',
+  timestamp: '2021-03-23T14:42:54.271Z'
+}
