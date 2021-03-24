@@ -1,0 +1,54 @@
+{
+  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
+    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
+  level: 'error',
+  timestamp: '2021-03-23T13:00:45.478Z'
+}
+{
+  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
+    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
+  level: 'error',
+  timestamp: '2021-03-23T13:01:13.490Z'
+}
+{
+  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
+    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
+  level: 'error',
+  timestamp: '2021-03-23T13:20:01.496Z'
+}
+{
+  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
+    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
+  level: 'error',
+  timestamp: '2021-03-23T13:20:15.217Z'
+}
+{
+  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
+    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
+  level: 'error',
+  timestamp: '2021-03-23T13:21:03.412Z'
+}
+{
+  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
+    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
+  level: 'error',
+  timestamp: '2021-03-23T13:21:36.957Z'
+}
