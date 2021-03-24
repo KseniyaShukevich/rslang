@@ -1,5 +1,8 @@
 import { Button, createStyles, makeStyles, TextField, Theme } from '@material-ui/core';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { ICreds, IUserResponse, login } from '../services/authorisation.service';
+import { selectUser, userSignedIn } from '../slices/userSlice';
 import PageLayout from './PageLayout'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -20,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     formControlRoot: {
-      height: '4.5rem'
+      height: '4.2rem'
     },
     button: {
       width: '100%',
@@ -30,71 +33,89 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Login: React.FC = () => {
   const classes = useStyles();
-  const [emailValue, setEmailValue] = useState<string>('');
-  const [isError, setIsError] = useState<boolean>(false);
-  const [emailError, setEmailError] = useState<string>('');
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  const [creds, setCreds] = useState<ICreds>({ email: '', password: '' });
+  const [errors, setErrors] = useState<ICreds>({ email: '', password: '' });
 
 
-  const isNickname = () => {
-    if (emailValue.length) return true;
-    return false;
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const email = event.target.value;
+    setCreds({ ...creds, email });
   }
 
-  const requestToBackend = async () => {
-    const response = await fetch("/api/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({ name: emailValue }),
-    });
-
-    return await response;
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const password = event.target.value;
+    setCreds({ ...creds, password });
   }
 
-  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    if (!emailValue.length) {
-      setEmailError('Обязательное поле');
-    } else {
-      const result = await requestToBackend();
-      if (result.status === 200) {
-        const user = await result.json();
-        // dispatch(setUser(user));
-        // setIsOpen(false);
+    if (isFormValid()) {
+      // set loader
+      const response = await login(creds);
+      if (response.status >= 400) {
+        alert(await response.text())
       } else {
-        const message = await result.json();
-        setEmailError('error');
+        const userResponse: IUserResponse = await response.json();
+        dispatch(userSignedIn(userResponse))
       }
     }
   }
 
-  const handleFocus = () => {
-    setEmailError('');
+  useEffect(() => {
+    alert(JSON.stringify(user))
+  }, [user])
+
+  const isFormValid = () => {
+      setErrors({
+        email: creds.email.length ? '' : 'Обязательное поле',
+        password: creds.password.length ? '' : 'Обязательное поле'
+      });
+    return creds.email.length && creds.password.length
   }
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmailValue(event.target.value);
+  const handleFocus = (field: 'email' | 'password') => {
+    switch (field) {
+      case 'email':
+        setErrors({ ...errors, email: ''});
+        break;
+      case 'password':
+        setErrors({ ...errors, password: ''});
+        break;
+    }
   }
 
   return (
     <PageLayout>
       <div className={classes.wrapper}>
-      <form className={classes.root}>
+      <form className={classes.root} noValidate autoComplete="off">
           <TextField className={classes.formControlRoot}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            value={emailValue}
+            onChange={handleEmailChange}
+            onFocus={() => handleFocus('email')}
+            value={creds.email}
             required
             label="Email"
-            error={!!emailError}
-            helperText={emailError}
+            error={!!errors.email}
+            helperText={errors.email}
             variant="outlined"
           />
-          <Button type="button" color="primary" className={classes.button}
+          <TextField className={classes.formControlRoot}
+            onChange={handlePasswordChange}
+            onFocus={() => handleFocus('password')}
+            value={creds.password}
+            required
+            label="Password"
+            error={!!errors.password}
+            helperText={errors.password}
+            variant="outlined"
+          />
+          <Button className={classes.button}
+            type="submit"
+            color="primary"
             variant="contained"
-            onClick={handleClick}
+            onClick={handleSubmit}
           >
             Вход
           </Button>
