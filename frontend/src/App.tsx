@@ -79,9 +79,9 @@ function App() {
             <Route path="/sign-up">
               <SignUp />
             </Route>
-            <Route path="/">
-              <Home />
-            </Route>
+            {/* <Route path="/">
+              <Home /> */}
+            {/* </Route> */}
             <Route path="/">
               <HomePage />
             </Route>
