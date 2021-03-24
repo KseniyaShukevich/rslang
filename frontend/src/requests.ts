@@ -17,6 +17,7 @@ export async function request(url: string, token: string, method: string = 'GET'
     console.warn('Error', response.statusText);
     return null;
   }
+  
 
   const result = await response.json();
   return result;
