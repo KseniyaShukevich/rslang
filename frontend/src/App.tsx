@@ -1,30 +1,23 @@
 import React, { useEffect } from "react";
-import { theme } from './mui-style';
-import { ThemeProvider } from '@material-ui/core';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Container } from "@material-ui/core";
+import { Container, ThemeProvider } from "@material-ui/core";
+
+import { theme } from "./mui-style";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import TextbookPage from "./pages/TextbookPage";
-import { fetchWords, selectWords } from "./slices/wordsSlice";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  decrement,
-  increment,
-  selectCount,
-} from "./features/counter/counterSlice";
-import HomePage from "./pages/HomePage";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-import MiniGames from "./components/MiniGames";
-import Statistics from "./components/Statistics";
+import Login from './components/Login'
+import SignUp from './components/SignUp'
+import MiniGames from './components/MiniGames'
+import Statistics from './components/Statistics'
+import Settings from './components/Settings'
 import Tutorial from "./pages/Tutorial";
-import Settings from "./components/Settings";
-import WordCard from "./components/WordCard";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  // const count = useSelector(selectCount);
+
+  useEffect(() => {
+
+  }, []);
   // const words = useSelector(selectWords);
   // const dispatch = useDispatch();
 
