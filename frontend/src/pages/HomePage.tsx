@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     'max-width': 1920,
     margin: '0 auto',
     background: 'beige',
+    padding: '0 2rem'
   },
 });
 
