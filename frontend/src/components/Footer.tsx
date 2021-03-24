@@ -3,10 +3,12 @@ import { Container, Box, Typography } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
-  footer: {    
+  footer: {
     backgroundColor: theme.palette.primary.main,
     bottom: 0,
     padding: theme.spacing(1.5, 0, 3.5),
+    borderRadius: '8px',
+
   },
   container: {
     display: "flex",
@@ -14,25 +16,24 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     justifyContent: "center",
     alignItems: "center",
     columnGap: theme.spacing(5),
-  },  
+  },
   logo: {
     width: "75px",
-    // height: "75px",
-  },  
+  },
   logoLink: {
     cursor: "pointer",
     display: "block",
     boxSizing: "content-box",
     textAlign: "center",
-  },  
-  creators: {    
+  },
+  creators: {
     display: "flex",
     flexWrap: "wrap",
     columnGap: "10px",
     justifyContent: "center",
-    alignItems: "center", 
-    color: theme.palette.primary.contrastText,   
-  },    
+    alignItems: "center",
+    color: theme.palette.primary.contrastText,
+  },
   author: {
     textDecoration: "none",
     cursor: "pointer",
@@ -70,8 +71,8 @@ const Footer: React.FC = () => {
             rel="noreferrer"
           >
             <Typography>GYegor</Typography>
-          </a>  
-          <hr/>        
+          </a>
+          <hr/>
           <a
             className={classes.author}
             href="https://github.com/KseniyaShukevich"
@@ -95,8 +96,17 @@ const Footer: React.FC = () => {
             href="https://github.com/MarinaYur"
             target="_blank"
             rel="noreferrer"
-          >
+            >
             <Typography>MarinaYur</Typography>
+          </a>
+            <hr/>
+          <a
+            className={classes.author}
+            href="https://github.com/slavalobikov"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Typography>slavalobikov</Typography>
           </a>
         </Box>
         <Box>
