@@ -11,10 +11,15 @@ import MiniGames from './components/MiniGames'
 import Statistics from './components/Statistics'
 import Tutorial from './components/Tutorial'
 import Settings from './components/Settings'
-import WordCard from "./components/WordCard";
+import WordCard from "./components/WordCard"
+import {fetchUserWords} from './requests'
 
 function App() {
   const count = useSelector(selectCount);
+
+  useEffect(() => {
+
+  }, []);
   // const words = useSelector(selectWords);
   // const dispatch = useDispatch();
 
