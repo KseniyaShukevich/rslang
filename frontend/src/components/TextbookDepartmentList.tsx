@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme: Theme) =>
       maxWidth: 500,
       backgroundColor: 'rgba(255,255,255,.7)',
       borderRadius: '10px',
-      margin: theme.spacing(0, 'auto')
+      margin: theme.spacing(0, 'auto', 3),
+      padding: theme.spacing(2, 3),
     },
   }),
 );
@@ -23,7 +24,7 @@ const TextbookDepartmentsList: React.FC = () => {
   return (
     <List className={classes.root} >
       {DEPARTMENTS.map((elem: string, index: number) => {
-        return <TextbookDepartment name={elem} color={DEPARTMENTCOLORS[index]} key={index} />
+        return <TextbookDepartment book={index} name={elem} color={DEPARTMENTCOLORS[index]} key={index} />
       })}
     </List>
   );
