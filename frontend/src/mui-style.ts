@@ -13,32 +13,40 @@ export const theme = createMuiTheme({
       light: '#ffa4a2',
       dark: '#af4448'
     },
-    text: {
-      primary: '#212121',
-      secondary: 'white',
-      disabled: '',
-    }
+    // text: {
+    //   primary: '#212121',
+    //   secondary: 'white',
+    //   disabled: '',
+    // }
   },
   spacing: 10,
 })
 
-export const useStyles = makeStyles((theme: Theme) => createStyles({
+export const mainStyles = makeStyles((theme: Theme) => createStyles({
     root: {
       flexGrow: 1,
     },
-    spacer: {
+    transitionGroup: {
+      position: 'relative',
+      minHeight: '100vh',
+    },
+    page: {
+      position: 'absolute',
+      overflowY: 'auto',
+      // height: '100%',
+      left: 0,
+      right: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      height: '100vh',
+      scrollMarginTop: '5rem'
+    },
+    mainWrapper: {
+      justifyContent: 'center',
+      display: 'flex',
+      width: '100%',
       flex: 1,
-    },
-    title: {
-      marginRight: theme.spacing(2),
-
-      '&:first-letter': {
-        color: theme.palette.secondary.light,
-        fontWeight: 600,
-        'font-size': theme.spacing(3.1),
-      }
-    },
-    titleSpan: {
-      verticalAlign: '7%',
+      alignItems: 'center',
     },
 }));

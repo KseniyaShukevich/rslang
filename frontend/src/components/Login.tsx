@@ -126,31 +126,32 @@ const Login: React.FC = () => {
             className={classes.formControlRoot}
             variant="outlined"
             size="small"
-            type={showPswd ? 'text' : 'password'}
+            type={showPswd ? "text" : "password"}
             value={creds.password}
             required
             label="Password"
             error={!!errors.password}
             helperText={errors.password}
-
             onChange={handlePasswordChange}
             onFocus={() => handleFocus("password")}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
-                  {showPswd ? <Visibility color="primary"/> : <VisibilityOff  color="primary"/>}
-                </IconButton>
-              </InputAdornment>
-                ),
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPswd ? (
+                      <Visibility color="primary" />
+                    ) : (
+                      <VisibilityOff color="primary" />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              ),
             }}
-
-          >
-          </TextField>
+          ></TextField>
           <Button
             className={classes.button}
             type="submit"
@@ -166,7 +167,6 @@ const Login: React.FC = () => {
           <p className={classes.defaultRecord}>
             <strong>test1test!</strong>
           </p>
-
         </form>
       </div>
     </PageLayout>
