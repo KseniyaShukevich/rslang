@@ -2,6 +2,7 @@ import {
         createSlice,
         PayloadAction,
         createAsyncThunk,
+        ActionReducerMapBuilder,
        } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
 
@@ -29,7 +30,7 @@ interface IWord {
 
 export const fetchWords = createAsyncThunk(
   'words/fetchWords.fulfilled',
-  async (obj: IRequest): Promise<IWord> => {
+  async (obj: IRequest): Promise<Array<IWord>> => {
     const response = await fetch(`/words?group=${obj.group}&${obj.page}`, {
       method: "GET",
       headers: {
@@ -42,7 +43,7 @@ export const fetchWords = createAsyncThunk(
 )
 
 interface IWordsState {
-  value: IWord | null
+  value: Array<IWord> | null
 }
 
 const initialState: IWordsState = {

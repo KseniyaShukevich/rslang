@@ -1,40 +1,44 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, selectCount } from './features/counter/counterSlice'
-import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
-import { Container } from '@material-ui/core'
-import { fetchWords, selectWords } from './slices/wordsSlice'
-import Home from './components/Home'
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Container, ThemeProvider } from "@material-ui/core";
+
+import { theme } from "./mui-style";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import MiniGames from './components/MiniGames'
 import Statistics from './components/Statistics'
-import Tutorial from './components/Tutorial'
 import Settings from './components/Settings'
-import WordCard from "./components/WordCard";
+import Tutorial from "./pages/Tutorial";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  const count = useSelector(selectCount);
+
+  useEffect(() => {
+
+  }, []);
   // const words = useSelector(selectWords);
   // const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchWords({
-  //     group: 0,
-  //     page: 0,
-  //   }))
-  // }, []);
+  /*useEffect(() => {
+    dispatch(fetchWords({
+      group: 0,
+      page: 0,
+    }))
+  }, );
 
-  // useEffect(() => {
-  //   console.log(words);
-  // }, [words]);
+  useEffect(() => {
+    console.log(words);
+  }, [words]);*/
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/tutorial">
-          <Tutorial />
-          {/* <WordCard
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route path="/tutorial">
+            <Tutorial />
+            {/* <WordCard
               word='detrimental'
               audio='https://freesound.org/data/previews/401/401736_7744890-lq.mp3'
               wordTranslate='вредный'
@@ -48,39 +52,32 @@ function App() {
               textExampleTranslate='Студенты согласны, что у них слишком много домашней работы'
               dificult={false}
           /> */}
-        </Route>
-        <Route path="/savannah">
-          Саванна
-        </Route>
-        <Route path="/audio"> ??
-          Аудиовызов
-        </Route>
-        <Route path="/sprint">
-          Спринт
-        </Route>
-        <Route path="/owngame">
-          Своя игра
-        </Route>
-        <Route path="/settings">
-          <Settings />
-        </Route>
-        <Route path="/statistics">
-          <Statistics />
-        </Route>
-        <Route path="/mini-games">
-          <MiniGames />
-        </Route>
-        <Route path="/log-in">
-          <Login />
-        </Route>
-        <Route path="/sign-up">
-          <SignUp />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+          </Route>
+          <Route path="/savannah">Саванна</Route>
+          <Route path="/audio"> ?? Аудиовызов</Route>
+          <Route path="/sprint">Спринт</Route>
+          <Route path="/owngame">Своя игра</Route>
+          <Route path="/settings">
+            <Settings />
+          </Route>
+          <Route path="/statistics">
+            <Statistics />
+          </Route>
+          <Route path="/mini-games">
+            <MiniGames />
+          </Route>
+          <Route path="/log-in">
+            <Login />
+          </Route>
+          <Route path="/sign-up">
+            <SignUp />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 
