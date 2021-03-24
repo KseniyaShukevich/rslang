@@ -20,19 +20,15 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     transform: 'rotate(-90deg) '
   },
   menu: {
-    // backgroundColor: fade(theme.palette.primary.light, 0.2),
-
-    background: 'yellow',
-    opacity: 0.5,
-    height: 400,
-    // padding: theme.spacing(3, 0),
+    backgroundColor: theme.palette.primary.light,
+    height: 300,
     width: 320,
     'line-height': 3,
     position: 'absolute',
     display: 'flex',
     'flex-direction': 'column',
     'align-items': 'center',
-    top: 66,
+    top: 64,
     left: 0,
     bottom: 0,
     transition: 'all 400ms ease',
@@ -48,6 +44,10 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   },
   menuListItem: {
     'list-style-type': 'none',
+  },
+  a: {
+    fontSize: 20,
+    textDecoration: 'none',
   }
 })
 );
@@ -78,9 +78,9 @@ const BurgerMenu: React.FC = () => {
         onClick={() => (setIsSideBarOpened(!isSideBarOpened))}
       >
         <ul className={classes.menuList}>
-          <li className={classes.menuListItem}><a href='#'>Электронный учебник</a></li>
-          <li className={classes.menuListItem}><a href='#'>Мини-игры</a></li>
-          <li className={classes.menuListItem}><a href='#'>Статистика</a></li>
+          <li className={classes.menuListItem}><a className={classes.a} href='#'>Электронный учебник</a></li>
+          <li className={classes.menuListItem}><a className={classes.a} href='#'>Мини-игры</a></li>
+          <li className={classes.menuListItem}><a className={classes.a} href='#'>Статистика</a></li>
         </ul>
       </div>
 
