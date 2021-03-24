@@ -35,7 +35,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Header />
         <Container maxWidth="xl" style={{ height: "90vh" }}>
           <Switch>
             <Route path="/tutorial">
@@ -81,7 +80,6 @@ function App() {
               <HomePage />
             </Route>
           </Switch>
-          <Footer />
         </Container>
       </Router>
     </ThemeProvider>
