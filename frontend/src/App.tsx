@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, selectCount } from './features/counter/counterSlice'
 import { BrowserRouter as Router, Route, Switch, } from "react-router-dom"
 import { Container } from '@material-ui/core'
 import { fetchWords, selectWords } from './slices/wordsSlice'
@@ -13,6 +12,16 @@ import Tutorial from './components/Tutorial'
 import Settings from './components/Settings'
 import WordCard from "./components/WordCard"
 import { updateUserStatistics } from './requests'
+import {
+  decrement,
+  increment,
+  selectCount,
+} from "./features/counter/counterSlice";
+import { ThemeProvider } from "@material-ui/core";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { theme } from "./mui-style";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const count = useSelector(selectCount);
@@ -35,11 +44,14 @@ function App() {
   // }, [words]);
 
   return (
-    <Router>
-        <Switch>
-          <Route path="/tutorial">
-            <Tutorial />
-            {/* <WordCard
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Header />
+        <Container maxWidth="xl" style={{ height: "90vh" }}>
+          <Switch>
+            <Route path="/tutorial">
+              <Tutorial />
+              {/* <WordCard
                 word='detrimental'
                 audio='https://freesound.org/data/previews/401/401736_7744890-lq.mp3'
                 wordTranslate='вредный'
@@ -53,39 +65,37 @@ function App() {
                 textExampleTranslate='Студенты согласны, что у них слишком много домашней работы'
                 dificult={false}
             /> */}
-          </Route>
-          <Route path="/savannah">
-            Саванна
-          </Route>
-          <Route path="/audio"> ??
-            Аудиовызов
-          </Route>
-          <Route path="/sprint">
-            Спринт
-          </Route>
-          <Route path="/owngame">
-            Своя игра
-          </Route>
-          <Route path="/settings">
-            <Settings />
-          </Route>
-          <Route path="/statistics">
-            <Statistics />
-          </Route>
-          <Route path="/mini-games">
-            <MiniGames />
-          </Route>
-          <Route path="/log-in">
-            <Login />
-          </Route>
-          <Route path="/sign-up">
-            <SignUp />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-    </Router>
+            </Route>
+            <Route path="/savannah">Саванна</Route>
+            <Route path="/audio"> ?? Аудиовызов</Route>
+            <Route path="/sprint">Спринт</Route>
+            <Route path="/owngame">Своя игра</Route>
+            <Route path="/settings">
+              <Settings />
+            </Route>
+            <Route path="/statistics">
+              <Statistics />
+            </Route>
+            <Route path="/mini-games">
+              <MiniGames />
+            </Route>
+            <Route path="/log-in">
+              <Login />
+            </Route>
+            <Route path="/sign-up">
+              <SignUp />
+            </Route>
+            {/* <Route path="/">
+              <Home /> */}
+            {/* </Route> */}
+            <Route path="/">
+              <HomePage />
+            </Route>
+          </Switch>
+          <Footer />
+        </Container>
+      </Router>
+    </ThemeProvider>
   );
 }
 
