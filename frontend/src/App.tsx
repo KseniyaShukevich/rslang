@@ -15,6 +15,8 @@ import Statistics from './components/Statistics'
 import Settings from './components/Settings'
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
+import { selectWords, fetchWords } from './slices/wordsSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 function App() {
   let location = useLocation();
@@ -26,16 +28,16 @@ function App() {
   // const words = useSelector(selectWords);
   // const dispatch = useDispatch();
 
-  /*useEffect(() => {
-    dispatch(fetchWords({
-      group: 0,
-      page: 0,
-    }))
-  }, );
+  // useEffect(() => {
+  //   dispatch(fetchWords({
+  //     group: 0,
+  //     page: 1,
+  //   }))
+  // }, []);
 
-  useEffect(() => {
-    console.log(words);
-  }, [words]);*/
+  // useEffect(() => {
+  // console.log(words);
+  // }, [words]);
 
   return (
     <ThemeProvider theme={theme}>

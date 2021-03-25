@@ -31,7 +31,7 @@ interface IWord {
 export const fetchWords = createAsyncThunk(
   'words/fetchWords.fulfilled',
   async (obj: IRequest): Promise<Array<IWord>> => {
-    const response = await fetch(`/words?group=${obj.group}&${obj.page}`, {
+    const response = await fetch(`/words?group=${obj.group}&page=${obj.page}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
