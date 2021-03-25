@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
-import Game from './Game'
+import Game from '../components/savannah/Game'
 import {
         Theme,
         createStyles,
@@ -20,9 +20,7 @@ const Savannah: React.FC = () => {
 
 	return (
 		<Box className={classes.box}>
-      Начальная заставка
 			<Game />
-      Результат
 		</Box>
 	);
 }
