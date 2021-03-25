@@ -10,31 +10,8 @@ import developer from "../assets/images_HomePage/developer.jpeg";
 
 const useStyles = makeStyles({
   contentWrapper: {
-    // height: 500,
-    // background: "green",
     padding: theme.spacing(4.5, 0, 6.5),
-    "max-width": 1700,
     margin: "0 auto",
-  },
-  root: {
-    maxWidth: 400,
-    width: 300,
-    "border-radius": 8,
-    transition: "all 0.3s;",
-    "&:hover": {
-      transform: "scale(1.1)",
-      // backgroundColor: lightGreen[100],
-    },
-  },
-  action: {
-    "&:hover": {
-      color: theme.palette.primary.main,
-    },
-  },
-  media: {
-    // height: 180,
-    backgroundSize: "cover",
-    backgroundPosition: "bottom",
   },
   author: {
     fontSize: "1.5rem",

@@ -12,7 +12,7 @@ const Header: React.FC = () => {
   //   const user = useSelector<AppState, IUser | null>(state => state.user);
 
   return (
-    <AppBar style={{borderRadius: '8px', maxWidth: 1860, margin: '0 auto'}} position="static">
+    <AppBar style={{borderRadius: '8px'}} position="static">
       <Toolbar  style={{display:'flex', justifyContent:'space-between'}}>
         <BurgerMenu />
         <Typography variant="h4">
