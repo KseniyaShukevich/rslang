@@ -12,35 +12,26 @@ import img from "../assets/images_HomePage/1.jpeg";
 
 const useStyles = makeStyles({
   contentWrapper: {
-    "max-width": 1700,
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-between",
     alignItems: 'center',
     margin: "0 auto",
   },
-  root: {
-    width: "100%",
-    maxWidth: "36ch",
-    // backgroundColor: theme.palette.background.paper,
-  },
-  inline: {
-    display: "inline",
-  },
   avatar: {
     '&:hover': {
       transform: 'scale(1.1)',
     },
     borderRadius: "50%",
-    width: "100px",
-    height: "100px",
+    width: "70px",
+    height: "70px",
     "background-size": "contain",
   },
   listItem: {
     fontSize: "1.4rem",
-    display: "flex",
-    paddingTop: "1rem",
-    // justifyContent: 'space-between',
+    display: 'grid',
+   'grid-template-columns': '1fr 7fr',
+   alignItems: 'center',
   },
   title: {
     "font-size": "2rem",

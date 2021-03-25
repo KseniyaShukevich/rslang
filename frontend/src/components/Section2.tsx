@@ -7,14 +7,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     paddingTop: 40,
-    "max-width": 1700,
     margin: "0 auto",
     alignItems: 'center',
   },
   iframe: {
     width: "80%",
     height: 600,
-    margin: "0 auto",
   },
   subTitle: {
     "font-size": "1.5rem",
