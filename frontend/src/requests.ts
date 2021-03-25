@@ -17,7 +17,7 @@ export async function request(url: string, token: string, method: string = 'GET'
     console.warn('Error', response.statusText);
     return null;
   }
-  
+
 
   const result = await response.json();
   return result;
@@ -193,4 +193,30 @@ export const updateUserSettings = async (userId: string, body: any, token: strin
 //       isButtons: false
 //     }
 //   }
+// );
+
+export const getAggregatedUserWords = async (mode: string, userId: string, group: number, page: number, token: string) => {
+  let filter: string;
+
+  if (mode === 'hard') {
+    filter = '{"userWord.difficulty": "hard"}';
+  } else if (mode === 'learning') {
+    filter = '{"userWord.optional.mode": "learning"}';
+  } else if (mode === 'deleted') {
+    filter = '{"userWord.optional.mode": "deleted"}';
+  } else {
+    return null;
+  }
+
+  const response = await request(`users/${userId}/aggregatedWords?group=${group}&page=${page}&filter=${filter}`, token);
+  return response;
+}
+// Функция находит слова из указанного раздела на указанной странице
+//Использование:
+// getAggregatedUserWords(
+//   'deleted', Сюда можно передавать одно из трех: hard | learning | deleted
+//   '6058ece36fab9b1ffdc9ae71',
+//   0,
+//   0,
+//   token
 // );
