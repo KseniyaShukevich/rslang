@@ -8,8 +8,6 @@ import {
 
 
 import { mainStyles, theme } from "./mui-style";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import MiniGames from './components/MiniGames'
