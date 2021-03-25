@@ -1,21 +1,22 @@
-import React, { ReactElement } from 'react'
-import Header from './Header'
-import Footer from './Footer'
-import { Container } from '@material-ui/core'
+import React, { ReactElement } from 'react';
+import Header from './Header';
+import Footer from './Footer';
+import { mainStyles } from '../mui-style';
 
 interface IProps {
   children: ReactElement | Array<ReactElement>
 }
 
 const PageLayout: React.FC<IProps> = ({ children }: IProps) => {
+  const classes = mainStyles();
   return (
-    <>
+    <div className={classes.page}>
       <Header />
-        <Container maxWidth="lg">
+        <div className={classes.mainWrapper}>
           {children}
-        </Container>
+        </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
