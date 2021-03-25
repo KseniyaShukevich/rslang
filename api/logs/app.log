@@ -3294,3 +3294,48 @@
   level: 'info',
   timestamp: '2021-03-25T19:34:29.609Z'
 }
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 4922.508 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:13:02.964Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 887.640 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:14:38.089Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 2005.075 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:16:43.176Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 332.825 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:19:42.825Z'
+}
+{
+  message: 'GET 200 /words?group=1&page=0 - size req - res 12723 - 508.294 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:20:13.869Z'
+}
+{
+  message: 'GET 200 /words?group=1&page=1 - size req - res 12542 - 344.593 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:20:18.355Z'
+}
+{
+  message: 'GET 200 /words?group=1&page=2 - size req - res 13559 - 904.214 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:20:23.433Z'
+}
+{
+  message: 'GET 200 /words?group=1&page=3 - size req - res 13129 - 223.227 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:20:27.140Z'
+}
+{
+  message: 'GET 200 /words?group=1&page=4 - size req - res 13107 - 263.194 ms\n',
+  level: 'info',
+  timestamp: '2021-03-25T20:20:29.747Z'
+}

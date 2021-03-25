@@ -18,7 +18,6 @@ import HomePage from "./pages/HomePage";
 import TextbookPage from "./pages/TextbookPage";
 
 function App() {
-
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -33,7 +32,7 @@ function App() {
               Dictionary
             </Route>
             <Route path="/savannah">Саванна</Route>
-            <Route path="/audio"> ?? Аудиовызов</Route>
+            <Route path="/audio">Аудиовызов</Route>
             <Route path="/sprint">Спринт</Route>
             <Route path="/owngame">Своя игра</Route>
             <Route path="/settings">
