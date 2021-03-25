@@ -124,7 +124,7 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
   const classes = useStyles();
 
   const [isListens, setIsListens] = useState<boolean>(false);
-  const [isAudioMeaning, setIsaudioMeaning] = useState<boolean>(false);
+  const [isAudioMeaning, setIsAudioMeaning] = useState<boolean>(false);
   const [isAudioExample, setIsAudioExample] = useState<boolean>(false);
   const [translateMeaning, setTranslateMeaning] = useState<boolean>(false)
   const [translateExample, setTranslateExample] = useState<boolean>(false)
@@ -139,7 +139,7 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
   }
 
   const listenAudioMeaning = () => {
-    setIsaudioMeaning(true)
+    setIsAudioMeaning(true)
   }
 
   const listenAudioExample = () => {
@@ -204,7 +204,7 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
                   : <span className={classes.exampleText}>
                   <ListenPlayer audio={audioExample}
                                 isAudio={isAudioMeaning}
-                                setIsAudio={() => setIsaudioMeaning(false)}
+                                setIsAudio={() => setIsAudioMeaning(false)}
                                 listenAudio={listenAudioMeaning}
                   />
                   <span className={classes.textHover} onClick={() => setTranslateMeaning(prev => !prev)}>
