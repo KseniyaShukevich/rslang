@@ -16,7 +16,7 @@ const Header: React.FC = () => {
       <Toolbar  style={{display:'flex', justifyContent:'space-between'}}>
         <BurgerMenu />
         <Typography variant="h4">
-            <span className='classes.'>RSLang</span>
+            <Link style={{cursor: 'pointer'}} to="/">RSLang</Link>
         </Typography>
 
         <Typography variant="h6">

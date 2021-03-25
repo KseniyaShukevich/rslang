@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { Box, createStyles, fade, IconButton, makeStyles, Theme } from "@material-ui/core";
 import { useDispatch, useSelector } from 'react-redux';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   menuListItem: {
     'list-style-type': 'none',
   },
-  a: {
+  link: {
     fontSize: 20,
     textDecoration: 'none',
   }
@@ -77,9 +77,9 @@ const BurgerMenu: React.FC = () => {
         onClick={() => (setIsSideBarOpened(!isSideBarOpened))}
       >
         <ul className={classes.menuList}>
-          <li className={classes.menuListItem}><a className={classes.a} href='#'>Электронный учебник</a></li>
-          <li className={classes.menuListItem}><a className={classes.a} href='#'>Мини-игры</a></li>
-          <li className={classes.menuListItem}><a className={classes.a} href='#'>Статистика</a></li>
+          <li className={classes.menuListItem}><Link className={classes.link} to="/">Электронный учебник</Link></li>
+          <li className={classes.menuListItem}><Link className={classes.link} to="/mini-games">Мини-игры</Link></li>
+          <li className={classes.menuListItem}><Link className={classes.link} to="/">Статистика</Link></li>
         </ul>
       </div>
 
