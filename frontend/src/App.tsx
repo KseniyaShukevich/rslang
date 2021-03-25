@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 
 
 import WordCard from "./components/WordCard";
+import AudioGame from "./page/AudioGame";
 
 function App() {
   const count = useSelector(selectCount);
@@ -39,8 +40,8 @@ function App() {
           <Route path="/savannah">
             Саванна
           </Route>
-          <Route path="/audio"> ??
-            Аудиовызов
+          <Route path="/audio">
+            <AudioGame />
           </Route>
           <Route path="/sprint">
             Спринт
