@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 import { Container, ThemeProvider } from "@material-ui/core";
+import {
+  TransitionGroup,
+  CSSTransition
+} from "react-transition-group";
 
-import { theme } from "./mui-style";
+
+import { mainStyles, theme } from "./mui-style";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from './components/Login'
@@ -14,6 +19,8 @@ import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
 
 function App() {
+  let location = useLocation();
+  const classes = mainStyles();
 
   useEffect(() => {
 
@@ -34,8 +41,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Switch>
+      <TransitionGroup className={classes.transitionGroup}>
+        <CSSTransition key={location.key} timeout={500} classNames="fade">
+          <Switch location={location}>
           <Route path="/tutorial">
             <Tutorial />
             {/* <WordCard
@@ -76,7 +84,8 @@ function App() {
             <HomePage />
           </Route>
         </Switch>
-      </Router>
+        </CSSTransition>
+      </TransitionGroup>
     </ThemeProvider>
   );
 }
