@@ -1,15 +1,87 @@
 import React, { useEffect } from  'react';
-import PageLayout from "../components/PageLayout";
 import { fetchWords, selectWords } from "../slices/wordsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import WordCard from "../components/WordCard";
+import GameCard from "../components/GameCard";
+import PageLayout from "../components/PageLayout";
+import SubHeader from "../components/SubHeader";
+import { Container, Box, Typography, Divider, List } from "@material-ui/core";
+import { IWord, IGame } from '../interfaces';
+import background from "../assets/images/background_1.jpg";
+import savanna from "../assets/images/background_3.jpg";
+import audioCall from "../assets/images/background_4.jpg";
+import sprint from "../assets/images/background_5.jpg";
+import ownGame from "../assets/images/background_6.jpg";
+import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
+import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
+
+const GAMES: IGame[] = [
+  {
+    name: 'Саванна',
+    image: savanna,
+    description: 'Чем больше слов ты знаешь, тем легче тебе будет общаться. Игра Саванна лучший помощник для развития словарного запаса',
+    href: '/savannah',
+  },
+  {
+    name: 'Аудиовызов',
+    image: audioCall,
+    description: 'Игра Аудиовызов улучшает восприятие разговорной речи на слух',
+    href: '/audio',
+  },
+  {
+    name: 'Спринт',
+    image: sprint,
+    description: 'Чем больше слов ты знаешь, тем легче тебе будет общаться. Игра Саванна лучший помощник для развития словарного запаса',
+    href: '/sprint',
+  },
+  {
+    name: 'Своя игра',
+    image: ownGame,
+    description: 'Какой-то крутой и мотивирующий текст, чтобы немедленно начать играть)))',
+    href: '/owngame',
+  },
+]
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-
+      backgroundImage: `url(${background})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundAttachment: "fixed",
+      padding: theme.spacing(2, 0),
+    },
+    subheaderWrapper: {
+      width: 'calc(80% + 60px)',
+      margin: theme.spacing(0, "auto"),
+    },
+    wrapper: {
+      width: '80%',
+      backgroundColor: "rgba(236,240,241,.73)",
+      borderRadius: "0px 0px 10px 10px",
+      margin: theme.spacing(0, "auto"),
+      padding: theme.spacing(3),
+    },
+    titleWrapper: {
+      display: "flex",
+      columnGap: "20px",
+      padding: theme.spacing(3, 2, 0),
+    },
+    wordList: {
+      backgroundColor: 'rgba(255,255,255,.6)',
+      padding: theme.spacing(1),
+      marginBottom: theme.spacing(3),
+    },
+    gameList: {
+      padding: theme.spacing(1),
+      marginBottom: theme.spacing(3),
+      display: 'flex',
+      flexWrap: 'wrap',
+      rowGap: theme.spacing(2),
+      columnGap: theme.spacing(2),
+      justifyContent: 'center',
     },
   })
 );
@@ -22,13 +94,14 @@ const TextBookPage: React.FC = () => {
 
   useEffect(() => {
     // общая информация о словах
+    console.log(book, page);
     dispatch(
       fetchWords({
         group: Number(book),
         page: Number(page),
       })
     );
-  }, []);
+  }, [book, page]);
 
   useEffect(() => {
     console.log(words);
@@ -36,22 +109,48 @@ const TextBookPage: React.FC = () => {
 
   return (
     <PageLayout>
-      <div>
-      <WordCard
-                word="detrimental"
-                audio="https://freesound.org/data/previews/401/401736_7744890-lq.mp3"
-                wordTranslate="вредный"
-                image="https://avatars.mds.yandex.net/get-zen_doc/175604/pub_5d3edd5d14f98000ad739d66_5d3ede27c49f2900ad0b39f5/scale_1200"
-                transcription="[əgríː]"
-                textExample="The students agree they have too much homework"
-                textMeaning="To agree is to have the same opinion or belief as another person"
-                audioMeaning="https://freesound.org/data/previews/401/401736_7744890-lq.mp3"
-                audioExample="https://freesound.org/data/previews/401/401736_7744890-lq.mp3"
-                textMeaningTranslate="Согласиться - значит иметь то же мнение или убеждение, что и другой человек"
-                textExampleTranslate="Студенты согласны, что у них слишком много домашней работы"
-                dificult={false}
-      />
-      </div>
+      <Container maxWidth="lg" className={classes.root} disableGutters={true}>
+        <Box className={classes.subheaderWrapper}>
+          <SubHeader book={book} page={page} />
+        </Box>
+        <Box className={classes.wrapper}>
+          <Box className={classes.titleWrapper} color="text.primary">
+            <ListAltTwoToneIcon style={{ fontSize: 50 }} />
+            <Typography gutterBottom variant="h3" style={{ fontWeight: 300 }}>
+              Слова
+            </Typography>
+          </Box>
+          <List className={classes.wordList}>
+            {words && words.map((elem: IWord, index: number) => {
+              return (
+                <WordCard
+                  {...elem}
+                  isDifficult={false}
+                  isDeleted={false}
+                  key={index}
+                />
+              )
+            })}
+          </List>
+          <Divider variant="middle" />
+          <Box className={classes.titleWrapper} color="text.primary">
+            <SportsEsportsTwoToneIcon style={{ fontSize: 50 }} />
+            <Typography gutterBottom variant="h3" style={{ fontWeight: 300 }}>
+              Игры
+            </Typography>
+          </Box>
+          <List className={classes.gameList}>
+            {GAMES.map((elem: IGame, index: number) => {
+              return (
+                <GameCard
+                  {...elem}
+                  key={index}
+                />
+              )
+            })}
+          </List>
+        </Box>
+      </Container>
     </PageLayout>
   )
 }

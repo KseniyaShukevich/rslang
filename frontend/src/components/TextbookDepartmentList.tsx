@@ -8,11 +8,10 @@ import TextbookDepartment from './TextbookDepartment';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: '100%',
       maxWidth: 500,
-      backgroundColor: 'rgba(255,255,255,.7)',
+      backgroundColor: 'rgba(255,255,255,.6)',
       borderRadius: '10px',
-      margin: theme.spacing(0, 'auto', 3),
+      margin: theme.spacing(0, 'auto', 4),
       padding: theme.spacing(2, 3),
     },
   }),

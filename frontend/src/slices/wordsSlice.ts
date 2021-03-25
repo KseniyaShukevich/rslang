@@ -3,33 +3,17 @@ import {
         PayloadAction,
         createAsyncThunk,
        } from '@reduxjs/toolkit'
-import { RootState } from '../app/store'
+import { RootState } from '../app/store';
+import { IWord } from '../interfaces';
 
 interface IRequest {
   group: number
   page: number
 }
 
-interface IWord {
-  id: string
-  group: number
-  page: number
-  word: string
-  image: string
-  audio: string
-  audioMeaning: string
-  audioExample: string
-  textMeaning: string
-  textExample: string
-  transcription: string
-  wordTranslate: string
-  textMeaningTranslate: string
-  textExampleTranslate: string
-}
-
 export const fetchWords = createAsyncThunk(
   'words/fetchWords.fulfilled',
-  async (obj: IRequest): Promise<IWord> => {
+  async (obj: IRequest): Promise<Array<IWord>> => {
     const response = await fetch(`/words?group=${obj.group}&${obj.page}`, {
       method: "GET",
       headers: {
@@ -42,7 +26,7 @@ export const fetchWords = createAsyncThunk(
 )
 
 interface IWordsState {
-  value: IWord | null
+  value: Array<IWord> | null
 }
 
 const initialState: IWordsState = {
