@@ -39,6 +39,7 @@ const useStyles = makeStyles({
     "-webkit-background-clip": "text",
     "-webkit-text-fill-color": "transparent",
     display: "inline-block",
+    textAlign: 'center',
     padding: "0.3em 0.6em",
     border: "3px solid transparent",
     "border-image": "linear-gradient(135deg, #1254bc 20%, #fa0e0e 70%)",
