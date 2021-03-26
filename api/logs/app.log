@@ -207,16 +207,11 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< Updated upstream
-  timestamp: '2021-03-21T20:34:11.682Z'
-=======
   timestamp: '2021-03-21T19:12:07.716Z'
->>>>>>> Stashed changes
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< Updated upstream
   timestamp: '2021-03-21T20:34:11.693Z'
 }
 {
@@ -237,18 +232,11 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-23T08:14:26.063Z'
-=======
   timestamp: '2021-03-22T14:27:36.005Z'
->>>>>>> develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-23T08:14:26.507Z'
-=======
   timestamp: '2021-03-22T14:27:36.039Z'
 }
 {
@@ -734,45 +722,26 @@
   message: 'App is running on http://localhost:4000',
   level: 'info',
   timestamp: '2021-03-23T15:34:57.927Z'
->>>>>>> develop
 }
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-23T08:29:57.031Z'
-=======
   timestamp: '2021-03-23T15:35:13.470Z'
->>>>>>> develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-23T08:29:57.059Z'
-=======
   timestamp: '2021-03-23T15:35:13.507Z'
->>>>>>> develop
 }
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-23T09:38:22.150Z'
-=======
   timestamp: '2021-03-23T15:35:25.729Z'
->>>>>>> develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-23T09:38:22.387Z'
-=======
   timestamp: '2021-03-21T19:12:07.871Z'
->>>>>>> Stashed changes
-=======
-  timestamp: '2021-03-23T15:35:25.764Z'
 }
 {
   message: 'GET 200 /words?group=0&0 - size req - res 12413 - 595.759 ms\n',
@@ -843,7 +812,6 @@
   message: 'GET 200 /words?group=0&0 - size req - res 12413 - 1104.971 ms\n',
   level: 'info',
   timestamp: '2021-03-23T16:07:11.518Z'
->>>>>>> develop
 }
 {
   message: 'Successfully connect to DB',
@@ -983,16 +951,11 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-24T17:42:53.693Z'
-=======
   timestamp: '2021-03-23T16:19:12.467Z'
->>>>>>> develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< HEAD
   timestamp: '2021-03-24T17:42:53.881Z'
 }
 {
@@ -1009,8 +972,6 @@
   message: 'GET 304 /words?group=0&0 - size req - res - - 10234.660 ms\n',
   level: 'info',
   timestamp: '2021-03-25T09:09:30.029Z'
-=======
-  timestamp: '2021-03-23T16:19:12.501Z'
 }
 {
   message: 'Successfully connect to DB',
@@ -1730,802 +1691,31 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-25T10:00:42.256Z'
-=======
   timestamp: '2021-03-25T00:52:59.582Z'
->>>>>>> origin/develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-25T10:00:42.262Z'
-=======
   timestamp: '2021-03-25T00:52:59.623Z'
->>>>>>> origin/develop
 }
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-25T10:05:56.615Z'
-=======
   timestamp: '2021-03-25T00:56:42.710Z'
->>>>>>> origin/develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-25T10:05:56.622Z'
-}
-{
-  message: 'Successfully connect to DB',
-  level: 'info',
-  timestamp: '2021-03-25T10:07:18.835Z'
-}
-{
-  message: 'App is running on http://localhost:4000',
-  level: 'info',
-  timestamp: '2021-03-25T10:07:18.842Z'
-}
-{
-  message: 'Successfully connect to DB',
-  level: 'info',
-  timestamp: '2021-03-25T10:07:39.496Z'
-}
-{
-  error: Error: listen EADDRINUSE: address already in use :::4000
-      at Server.setupListenHandle [as _listen2] (net.js:1318:16)
-      at listenInCluster (net.js:1366:12)
-      at Server.listen (net.js:1452:7)
-      at Function.listen (/Users/marina.yur/projects/rslang/api/node_modules/express/lib/application.js:618:24)
-      at NativeConnection.<anonymous> (/Users/marina.yur/projects/rslang/api/src/server.js:25:9)
-      at Object.onceWrapper (events.js:421:28)
-      at NativeConnection.emit (events.js:315:20)
-      at _setClient (/Users/marina.yur/projects/rslang/api/node_modules/mongoose/lib/connection.js:997:8)
-      at /Users/marina.yur/projects/rslang/api/node_modules/mongoose/lib/connection.js:833:7
-      at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/utils.js:697:5
-      at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/mongo_client.js:227:7
-      at connectCallback (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/operations/connect.js:366:5)
-      at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/operations/connect.js:602:5
-      at connectHandler (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/core/sdam/topology.js:298:43)
-      at cb (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/core/sdam/topology.js:682:26)
-      at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/cmap/connection_pool.js:350:13 {
-    code: 'EADDRINUSE',
-    errno: -48,
-    syscall: 'listen',
-    address: '::',
-    port: 4000
-  },
-  level: 'error',
-  message: 'uncaughtException: listen EADDRINUSE: address already in use :::4000\n' +
-    'Error: listen EADDRINUSE: address already in use :::4000\n' +
-    '    at Server.setupListenHandle [as _listen2] (net.js:1318:16)\n' +
-    '    at listenInCluster (net.js:1366:12)\n' +
-    '    at Server.listen (net.js:1452:7)\n' +
-    '    at Function.listen (/Users/marina.yur/projects/rslang/api/node_modules/express/lib/application.js:618:24)\n' +
-    '    at NativeConnection.<anonymous> (/Users/marina.yur/projects/rslang/api/src/server.js:25:9)\n' +
-    '    at Object.onceWrapper (events.js:421:28)\n' +
-    '    at NativeConnection.emit (events.js:315:20)\n' +
-    '    at _setClient (/Users/marina.yur/projects/rslang/api/node_modules/mongoose/lib/connection.js:997:8)\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongoose/lib/connection.js:833:7\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/utils.js:697:5\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/mongo_client.js:227:7\n' +
-    '    at connectCallback (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/operations/connect.js:366:5)\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/operations/connect.js:602:5\n' +
-    '    at connectHandler (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/core/sdam/topology.js:298:43)\n' +
-    '    at cb (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/core/sdam/topology.js:682:26)\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/cmap/connection_pool.js:350:13',
-  stack: 'Error: listen EADDRINUSE: address already in use :::4000\n' +
-    '    at Server.setupListenHandle [as _listen2] (net.js:1318:16)\n' +
-    '    at listenInCluster (net.js:1366:12)\n' +
-    '    at Server.listen (net.js:1452:7)\n' +
-    '    at Function.listen (/Users/marina.yur/projects/rslang/api/node_modules/express/lib/application.js:618:24)\n' +
-    '    at NativeConnection.<anonymous> (/Users/marina.yur/projects/rslang/api/src/server.js:25:9)\n' +
-    '    at Object.onceWrapper (events.js:421:28)\n' +
-    '    at NativeConnection.emit (events.js:315:20)\n' +
-    '    at _setClient (/Users/marina.yur/projects/rslang/api/node_modules/mongoose/lib/connection.js:997:8)\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongoose/lib/connection.js:833:7\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/utils.js:697:5\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/mongo_client.js:227:7\n' +
-    '    at connectCallback (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/operations/connect.js:366:5)\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/operations/connect.js:602:5\n' +
-    '    at connectHandler (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/core/sdam/topology.js:298:43)\n' +
-    '    at cb (/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/core/sdam/topology.js:682:26)\n' +
-    '    at /Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/cmap/connection_pool.js:350:13',
-  exception: true,
-  date: 'Thu Mar 25 2021 13:07:39 GMT+0300 (Moscow Standard Time)',
-  process: {
-    pid: 17198,
-    uid: 502,
-    gid: 20,
-    cwd: '/Users/marina.yur/projects/rslang/api',
-    execPath: '/usr/local/bin/node',
-    version: 'v14.15.4',
-    argv: [
-      '/usr/local/bin/node',
-      '/Users/marina.yur/projects/rslang/api/src/server.js'
-    ],
-    memoryUsage: {
-      rss: 85176320,
-      heapTotal: 60321792,
-      heapUsed: 29617000,
-      external: 19898913,
-      arrayBuffers: 18383558
-    }
-  },
-  os: {
-    loadavg: [ 5.49365234375, 3.978515625, 2.66064453125 ],
-    uptime: 157879
-  },
-  trace: [
-    {
-      column: 16,
-      file: 'net.js',
-      function: 'Server.setupListenHandle [as _listen2]',
-      line: 1318,
-      method: 'setupListenHandle [as _listen2]',
-      native: false
-    },
-    {
-      column: 12,
-      file: 'net.js',
-      function: 'listenInCluster',
-      line: 1366,
-      method: null,
-      native: false
-    },
-    {
-      column: 7,
-      file: 'net.js',
-      function: 'Server.listen',
-      line: 1452,
-      method: 'listen',
-      native: false
-    },
-    {
-      column: 24,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/express/lib/application.js',
-      function: 'Function.listen',
-      line: 618,
-      method: 'listen',
-      native: false
-    },
-    {
-      column: 9,
-      file: '/Users/marina.yur/projects/rslang/api/src/server.js',
-      function: null,
-      line: 25,
-      method: null,
-      native: false
-    },
-    {
-      column: 28,
-      file: 'events.js',
-      function: 'Object.onceWrapper',
-      line: 421,
-      method: 'onceWrapper',
-      native: false
-    },
-    {
-      column: 20,
-      file: 'events.js',
-      function: 'NativeConnection.emit',
-      line: 315,
-      method: 'emit',
-      native: false
-    },
-    {
-      column: 8,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongoose/lib/connection.js',
-      function: '_setClient',
-      line: 997,
-      method: null,
-      native: false
-    },
-    {
-      column: 7,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongoose/lib/connection.js',
-      function: null,
-      line: 833,
-      method: null,
-      native: false
-    },
-    {
-      column: 5,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/utils.js',
-      function: null,
-      line: 697,
-      method: null,
-      native: false
-    },
-    {
-      column: 7,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/mongo_client.js',
-      function: null,
-      line: 227,
-      method: null,
-      native: false
-    },
-    {
-      column: 5,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/operations/connect.js',
-      function: 'connectCallback',
-      line: 366,
-      method: null,
-      native: false
-    },
-    {
-      column: 5,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/operations/connect.js',
-      function: null,
-      line: 602,
-      method: null,
-      native: false
-    },
-    {
-      column: 43,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/core/sdam/topology.js',
-      function: 'connectHandler',
-      line: 298,
-      method: null,
-      native: false
-    },
-    {
-      column: 26,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/core/sdam/topology.js',
-      function: 'cb',
-      line: 682,
-      method: null,
-      native: false
-    },
-    {
-      column: 13,
-      file: '/Users/marina.yur/projects/rslang/api/node_modules/mongodb/lib/cmap/connection_pool.js',
-      function: null,
-      line: 350,
-      method: null,
-      native: false
-    }
-  ],
-  timestamp: '2021-03-25T10:07:39.510Z'
-}
-{
-  message: 'Successfully connect to DB',
-  level: 'info',
-  timestamp: '2021-03-25T10:08:12.324Z'
-}
-{
-  message: 'App is running on http://localhost:4000',
-  level: 'info',
-  timestamp: '2021-03-25T10:08:12.332Z'
-=======
   timestamp: '2021-03-25T00:56:42.749Z'
->>>>>>> origin/develop
->>>>>>> develop
 }
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-25T11:47:16.472Z'
-=======
   timestamp: '2021-03-25T18:44:58.698Z'
->>>>>>> develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-25T11:47:16.582Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 990.211 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:16:41.877Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 263.664 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:21:58.869Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 277.065 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:22:44.692Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 410.782 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:27:49.700Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 271.976 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:27:57.019Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 300.529 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:34:39.588Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 807.007 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:35:03.416Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 254.784 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:38:05.573Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 208.104 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:38:12.504Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 343.064 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:56:38.040Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 2077.878 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T12:59:22.218Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 236.620 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:00:42.776Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 694.871 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:00:57.917Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 237.433 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:04:27.228Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 464.035 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:04:46.848Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 854.618 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:05:10.654Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 362.607 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:05:20.402Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 468.786 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:05:28.743Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 237.619 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:06:27.047Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 476.053 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:08:46.196Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 210.173 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:18:09.720Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 296.914 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:18:57.576Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 218.317 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:19:24.419Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 342.402 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:20:39.784Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 202.622 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:21:22.737Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 201.821 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:33:00.619Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 197.520 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:37:02.727Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 205.707 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:39:49.963Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 576.795 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:42:30.794Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 806.972 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:44:13.951Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 292.166 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:45:34.186Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 251.868 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:46:30.853Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 242.179 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:48:42.549Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 238.055 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:51:48.922Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 495.481 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T13:58:02.483Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 5358.512 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T16:33:44.705Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 1652.242 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T16:48:59.351Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 16136.367 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:07:34.566Z'
-}
-{
-  message: 'GET 200 /words?group=1&5 - size req - res 12723 - 849.966 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:08:36.788Z'
-}
-{
-  message: 'GET 200 /words?group=0&1 - size req - res 12413 - 285.872 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:12:56.684Z'
-}
-{
-  message: 'GET 200 /words?group=0&1 - size req - res 12413 - 283.256 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:13:21.515Z'
-}
-{
-  message: 'GET 200 /words?group=0&1 - size req - res 12413 - 294.034 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:26:59.848Z'
-}
-{
-  message: 'GET 200 /words?group=0&1 - size req - res 12413 - 631.026 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:31:16.943Z'
-}
-{
-  message: 'GET 304 /words?group=0&1 - size req - res - - 2186.033 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:39:42.196Z'
-}
-{
-  message: 'GET 200 /words?group=0&1 - size req - res 12413 - 490.968 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:42:29.024Z'
-}
-{
-  message: 'GET 200 /words?group=1&1 - size req - res 12723 - 488.839 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:42:43.284Z'
-}
-{
-  message: 'GET 200 /words?group=2&5 - size req - res 12960 - 215.277 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:45:45.726Z'
-}
-{
-  message: 'GET 200 /words?group=3&29 - size req - res 15412 - 683.340 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:46:42.276Z'
-}
-{
-  message: 'GET 200 /words?group=4&5 - size req - res 13589 - 287.523 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:47:06.728Z'
-}
-{
-  message: 'GET 200 /words?group=5&12 - size req - res 15029 - 378.587 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:47:21.923Z'
-}
-{
-  message: 'GET 200 /words?group=5&12 - size req - res 15029 - 460.404 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:51:07.457Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 228.109 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:51:30.023Z'
-}
-{
-  message: 'GET 200 /words?group=5&6 - size req - res 15029 - 383.852 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:53:53.129Z'
-}
-{
-  message: 'GET 200 /words?group=4&2 - size req - res 13589 - 201.071 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T17:55:52.882Z'
-}
-{
-  message: 'GET 200 /words?group=4&2 - size req - res 13589 - 920.830 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:08:18.279Z'
-}
-{
-  message: 'GET 200 /words?group=4&2 - size req - res 13589 - 200.298 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:09:15.995Z'
-}
-{
-  message: 'GET 200 /words?group=4&2 - size req - res 13589 - 309.431 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:09:31.560Z'
-}
-{
-  message: 'GET 200 /words?group=4&3 - size req - res 13589 - 247.151 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:09:39.270Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 293.501 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:10:16.352Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 204.886 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:10:20.456Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 248.277 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:10:27.685Z'
-}
-{
-  message: 'GET 200 /words?group=4&2 - size req - res 13589 - 251.765 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:11:21.115Z'
-}
-{
-  message: 'GET 200 /words?group=4&3 - size req - res 13589 - 267.377 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:11:26.241Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 263.049 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:11:28.875Z'
-}
-{
-  message: 'GET 200 /words?group=4&1 - size req - res 13589 - 234.129 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:11:31.372Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 255.494 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:11:49.598Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 251.974 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:11:58.386Z'
-}
-{
-  message: 'GET 200 /words?group=4&28 - size req - res 13589 - 314.491 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:11:59.313Z'
-}
-{
-  message: 'GET 200 /words?group=4&27 - size req - res 13589 - 278.056 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:12:00.528Z'
-}
-{
-  message: 'GET 200 /words?group=4&26 - size req - res 13589 - 221.431 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:12:01.202Z'
-}
-{
-  message: 'GET 200 /words?group=4&25 - size req - res 13589 - 248.882 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:12:02.115Z'
-}
-{
-  message: 'GET 200 /words?group=4&24 - size req - res 13589 - 221.997 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:12:02.759Z'
-}
-{
-  message: 'GET 200 /words?group=4&24 - size req - res 13589 - 396.455 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:21:03.911Z'
-}
-{
-  message: 'GET 200 /words?group=4&24 - size req - res 13589 - 270.709 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:21:11.650Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 311.645 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:21:16.403Z'
-}
-{
-  message: 'GET 200 /words?group=3&29 - size req - res 15412 - 493.966 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:21:51.588Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 352.655 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:22:50.682Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 326.030 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:23:54.801Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 571.634 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:24:14.318Z'
-}
-{
-  message: 'GET 200 /words?group=4&28 - size req - res 13589 - 207.141 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:24:39.803Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 317.711 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:24:44.204Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 272.528 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:24:54.703Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 4524.209 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:25:43.630Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 7145.278 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:28:39.264Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 9555.350 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:28:40.395Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 1009.975 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:28:42.206Z'
-}
-{
-  message: 'GET 200 /words?group=4&28 - size req - res 13589 - 455.844 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:29:30.562Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 487.963 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:29:33.890Z'
-}
-{
-  message: 'GET 200 /words?group=4&28 - size req - res 13589 - 421.987 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:29:52.754Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 245.889 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:29:59.136Z'
-}
-{
-  message: 'GET 200 /words?group=4&30 - size req - res 13589 - 488.529 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:30:01.813Z'
-}
-{
-  message: 'GET 200 /words?group=4&29 - size req - res 13589 - 332.436 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:30:05.103Z'
-}
-{
-  message: 'GET 200 /words?group=4&28 - size req - res 13589 - 457.126 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:30:08.288Z'
-}
-{
-  message: 'GET 200 /words?group=4&27 - size req - res 13589 - 203.060 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:30:33.553Z'
-}
-{
-  message: 'GET 200 /words?group=4&28 - size req - res 13589 - 449.034 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:30:36.806Z'
-}
-{
-  message: 'GET 200 /words?group=4&27 - size req - res 13589 - 200.080 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:30:50.094Z'
-}
-{
-  message: 'GET 200 /words?group=4&26 - size req - res 13589 - 492.116 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:32:21.644Z'
-}
-{
-  message: 'GET 200 /words?group=4&25 - size req - res 13589 - 208.394 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:32:24.200Z'
-}
-{
-  message: 'GET 200 /words?group=4&24 - size req - res 13589 - 382.020 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:37:29.264Z'
-}
-{
-  message: 'GET 200 /words?group=4&23 - size req - res 13589 - 219.179 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:37:34.793Z'
-}
-{
-  message: 'GET 200 /words?group=4&23 - size req - res 13589 - 842.208 ms\n',
-  level: 'info',
-  timestamp: '2021-03-25T18:42:21.816Z'
-=======
   timestamp: '2021-03-25T18:44:58.755Z'
 }
 {
@@ -3282,7 +2472,6 @@
   message: 'GET 200 /words?group=0&page=1 - size req - res 12909 - 168.384 ms\n',
   level: 'info',
   timestamp: '2021-03-25T18:54:21.884Z'
->>>>>>> develop
 }
 {
   message: 'Successfully connect to DB',
