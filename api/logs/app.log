@@ -3494,3 +3494,28 @@
   level: 'info',
   timestamp: '2021-03-26T13:57:38.772Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-26T16:24:36.852Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-26T16:24:36.888Z'
+}
+{
+  message: 'GET 200 /words/5e9f5ee35eb9e72bc21af4a6 - size req - res 611 - 242.089 ms\n',
+  level: 'info',
+  timestamp: '2021-03-26T16:31:20.609Z'
+}
+{
+  message: 'GET 200 /words/5e9f5ee35eb9e72bc21af4a6 - size req - res 611 - 505.120 ms\n',
+  level: 'info',
+  timestamp: '2021-03-26T16:33:17.921Z'
+}
+{
+  message: 'GET 200 /words/5e9f5ee35eb9e72bc21af4a6 - size req - res 611 - 144.598 ms\n',
+  level: 'info',
+  timestamp: '2021-03-26T16:34:25.802Z'
+}
