@@ -4,28 +4,12 @@ import {
         createAsyncThunk,
         ActionReducerMapBuilder,
        } from '@reduxjs/toolkit'
-import { RootState } from '../app/store'
+import { RootState } from '../app/store';
+import { IWord } from '../interfaces';
 
 interface IRequest {
   group: number
   page: number
-}
-
-interface IWord {
-  id: string
-  group: number
-  page: number
-  word: string
-  image: string
-  audio: string
-  audioMeaning: string
-  audioExample: string
-  textMeaning: string
-  textExample: string
-  transcription: string
-  wordTranslate: string
-  textMeaningTranslate: string
-  textExampleTranslate: string
 }
 
 export const fetchWords = createAsyncThunk(

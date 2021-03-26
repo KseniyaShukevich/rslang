@@ -11,6 +11,8 @@ import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import ModalDeleteWord from './ModalDeleteWord';
 import ModalDescrAboutWord from './ModalDescrAboutWord';
 import ListenPlayer from "./ ListenPlayer";
+import { IWordCard } from '../interfaces';
+import { FILESPATH } from '../constants';
 
 const rightIndent = '8px'
 
@@ -18,6 +20,7 @@ const rightIndent = '8px'
 const useStyles = makeStyles((theme) => ({
     wordCard: {
         width: '100%',
+        paddingTop: '4px',
         paddingBottom: '4px',
         borderBottom:'1px solid gray',
         display: 'flex',
@@ -51,55 +54,39 @@ const useStyles = makeStyles((theme) => ({
     word: {
         color: '#2582e7',
     },
-    noDificult: {
+    noDifficult: {
         color: 'green',
         cursor: 'pointer',
-        paddingTop:'8px',
         marginRight:'10px',
 
 
     },
-    Dificult: {
+    Difficult: {
         color: 'red',
         cursor: 'pointer',
         paddingTop:'8px',
-        marginRight:rightIndent,
+        marginRight: rightIndent,
 
     },
     ava: {
-        marginRight:rightIndent,
+        marginRight: rightIndent,
 
     },
     right: {
         display: 'flex',
+        alignItems: 'center',
     }
 }));
 
-type Props = {
-    audio: string,
-    word: string,
-    wordTranslate:string,
-    image: string,
-    dificult: boolean,
-    transcription:string,
-    textExample:string,
-    textMeaning:string,
-    audioMeaning:string,
-    audioExample:string,
-    textMeaningTranslate:string,
-    textExampleTranslate:string,
-
-}
-
-const WordCard: React.FC<Props> = (props: Props) => {
-    const {audio, word, wordTranslate, image, dificult} = props;
+const WordCard: React.FC<IWordCard> = (props) => {
+    const {audio, word, wordTranslate, image, isDifficult: difficult} = props;
     const classes = useStyles();
 
 
     const [isListens, setIsListens] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
     const [isPortal, setIsPortal] = useState<boolean>(false);
-    const [isDificul, setIsDificul] = useState<boolean>(dificult);
+    const [isDifficult, setIsDifficult] = useState(difficult);
 
 
     const listenWord = () => {
@@ -108,7 +95,7 @@ const WordCard: React.FC<Props> = (props: Props) => {
 
     return (
         <div className={classes.wordCard}>
-          <ListenPlayer audio={audio}
+          <ListenPlayer audio={`${FILESPATH}${audio}`}
                         isAudio={isListens}
                         setIsAudio={() => setIsListens(false)}
                         listenAudio={listenWord}
@@ -120,16 +107,16 @@ const WordCard: React.FC<Props> = (props: Props) => {
             <div className={classes.right}>
                 <Avatar
                     className={classes.ava}
-                    src={image
+                    src={`${FILESPATH}${image}`
                     || ''}
                     alt="word img"
                 />
-                {!isDificul &&
-                <SentimentSatisfiedAltIcon onClick={() => setIsDificul(prev => !prev)}
-                                           className={classes.noDificult}/>}
-                {!!isDificul &&
-                <SentimentSatisfiedIcon onClick={() => setIsDificul(prev => !prev)}
-                                        className={classes.Dificult}/>}
+                {!isDifficult &&
+                <SentimentSatisfiedAltIcon onClick={() => setIsDifficult(prev => !prev)}
+                                           className={classes.noDifficult}/>}
+                {!!isDifficult &&
+                <SentimentSatisfiedIcon onClick={() => setIsDifficult(prev => !prev)}
+                                        className={classes.Difficult}/>}
                 <ButtonBase>
                     <DeleteIcon onClick={() => setOpen(true)} className={classes.trash}/>
                 </ButtonBase>
