@@ -11,6 +11,7 @@ import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 import HeadsetIcon from "@material-ui/icons/Headset";
 import ListenPlayer from "./ ListenPlayer";
+import { FILESPATH } from '../constants';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     height: '148px',
     position: 'relative',
     top: '-80px',
+    objectFit: 'cover',
   },
   paper: {
     backgroundColor: '#fafafa',
@@ -94,7 +96,7 @@ type Props = {
   word: string,
   wordTranslate: string,
   image: string,
-  dificult: boolean,
+  isDifficult: boolean,
   transcription: string,
   textExample: string,
   textMeaning: string,
@@ -102,7 +104,6 @@ type Props = {
   audioExample: string,
   textMeaningTranslate: string,
   textExampleTranslate:string,
-
 }
 
 const ModalDescrAboutWord: React.FC<Props> = (props) => {
@@ -163,14 +164,14 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
           <Fade in={open}>
             <div className={classes.paper}>
               <span className={classes.hidden}><ReactPlayer
-                url={audio}
+                url={`${FILESPATH}${audio}`}
                 playing={isListens}
                 onEnded={() => setIsListens(false)}
               />
                             </span>
               <div>
                 <img className={classes.imgWord}
-                     src={image}
+                     src={`${FILESPATH}${image}`}
                      alt="word_img"/></div>
               <div className={classes.center}>
                 <div className={classes.h1}><h2>{word}</h2></div>
@@ -183,7 +184,7 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
               <div>
                 {!translateExample ?
                   <span  className={classes.exampleText}>
-                  <ListenPlayer audio={audioMeaning}
+                  <ListenPlayer audio={`${FILESPATH}${audioMeaning}`}
                                 isAudio={isAudioExample}
                                 setIsAudio={() => setIsAudioExample(false)}
                                 listenAudio={listenAudioExample}
@@ -202,7 +203,7 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
                       {textMeaningTranslate}</span>
                     </span>
                   : <span className={classes.exampleText}>
-                  <ListenPlayer audio={audioExample}
+                  <ListenPlayer audio={`${FILESPATH}${audioExample}`}
                                 isAudio={isAudioMeaning}
                                 setIsAudio={() => setIsAudioMeaning(false)}
                                 listenAudio={listenAudioMeaning}

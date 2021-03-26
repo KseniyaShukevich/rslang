@@ -25,6 +25,7 @@ export async function request(url: string, token: string, method: string = 'GET'
 
 
 // Опции для слова пользователя:
+// difficulty: "easy",
 // optional: {
 //   mode: learning | deleted
 //   miniGames: {

@@ -14,7 +14,7 @@ const PageLayout: React.FC<IProps> = ({ children }: IProps) => {
     <div className={classes.page}>
       <Header />
         <div className={classes.mainWrapper}>
-          <Container maxWidth="lg">
+          <Container maxWidth='lg'>
             {children}
           </Container>
         </div>
