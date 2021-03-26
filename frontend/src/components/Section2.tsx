@@ -13,6 +13,9 @@ const useStyles = makeStyles({
   iframe: {
     width: "80%",
     height: 600,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
   },
   subTitle: {
     "font-size": "1.5rem",
