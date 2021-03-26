@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PageLayout from "../components/PageLayout";
-import { fetchWords, selectWords } from "../slices/wordsSlice";
-import { useSelector, useDispatch } from "react-redux";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Container, Box, Typography, Divider } from "@material-ui/core";
 import background from "../assets/images/background_1.jpg";
@@ -17,9 +15,10 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundPosition: "center",
       backgroundSize: "cover",
       backgroundAttachment: "fixed",
-      padding: theme.spacing(2, 10),
+      padding: theme.spacing(2, 0),
     },
     wrapper: {
+      width: '80%',
       backgroundColor: "rgba(236,240,241,.73)",
       borderRadius: "10px",
       margin: theme.spacing(0, "auto"),
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     titleWrapper: {
       display: "flex",
       columnGap: "20px",
-      padding: theme.spacing(3, 0, 0, 5),
+      padding: theme.spacing(3, 1, 0),
     },
   })
 );
