@@ -2,18 +2,24 @@ import React, {useState} from 'react';
 import cn from 'classnames'
 
 import {makeStyles} from "@material-ui/core/styles";
-import HearingIcon from '@material-ui/icons/Hearing';
 import DoneIcon from '@material-ui/icons/Done';
 
 
 import SoundButton from "./SoundButton";
+import ListenPlayer from "./ ListenPlayer";
 
 let arr = [
-  {id: 0, word: 'Компасы', audio: '', isRightWord: true,},
-  {id: 1, word: 'Применять', audio: '', isRightWord: false,},
-  {id: 2, word: 'Выполнять', audio: '', isRightWord: false,},
-  {id: 3, word: 'Проводить', audio: '', isRightWord: false,},
-  {id: 4, word: 'прихоть', audio: '', isRightWord: false,},
+  { id: 0,
+    wordTranslate: 'Компасы',
+    audio: 'https://freesound.org/data/previews/401/401736_7744890-lq.mp3',
+    isRightWord: true,
+    word:'Compasses',
+    image:'https://avatars.mds.yandex.net/get-zen_doc/175604/pub_5d3edd5d14f98000ad739d66_5d3ede27c49f2900ad0b39f5/scale_1200'
+  },
+  {id: 1, wordTranslate: 'Применять', audio: '', isRightWord: false,},
+  {id: 2, wordTranslate: 'Выполнять', audio: '', isRightWord: false,},
+  {id: 3, wordTranslate: 'Проводить', audio: '', isRightWord: false,},
+  {id: 4, wordTranslate: 'прихоть', audio: '', isRightWord: false,},
 ]
 
 const useStyles = makeStyles((theme) => ({
@@ -21,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
     appearance: 'none',
     fontSize: '24px',
     lineHeight: '1',
+    width:'300px',
     padding: '19px 15px 21px',
     textDecoration: 'none!important',
-    minWidth: '162px',
     border: '1px solid hsla(0,0%,100%,.2)',
     borderRadius: '3px',
     textAlign: 'center',
@@ -37,14 +43,30 @@ const useStyles = makeStyles((theme) => ({
       border: '1px #fafafa solid',
     },
   },
+  AudioCallGame: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    height: '100vh',
+  },
   audioListen: {
     backgroundColor: 'hsla(0,0%,100%,.05)',
+    width: '80%',
     cursor: 'pointer',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
     transition: 'all .15s ease',
+
   },
   options: {
     display: 'flex',
-    flexWrapper: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+
   },
   number: {
     color: 'hsla(0,0%,100%,.25)',
@@ -58,6 +80,14 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'hsla(0,0%,100%, 0.25)',
     },
 
+  },
+  buttonMisic: {
+    marginBottom:'100px',
+  },
+  '@media (max-width:500px)': {
+    buttonMisic: {
+      margin:0,
+    },
   },
   word: {
     color: '#fff',
@@ -82,6 +112,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-block',
   },
   btnNext: {},
+  image: {
+    width:'70px',
+    height:'70px',
+  },
+  flex: {
+    display:'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 }));
 
 type Props = {
@@ -92,8 +131,9 @@ type Props = {
 const AudioCallGameField: React.FC<Props> = ({setProgress, progress}) => {
   const classes = useStyles();
 
-  const [isChoice, setIsChoice] = useState<boolean>(false)
-  const [isWin, setIsWin] = useState<boolean>(false)
+  const [isChoice, setIsChoice] = useState<boolean>(false);
+  const [isWin, setIsWin] = useState<boolean>(false);
+  const [isListen, setIsListen] = useState<boolean>(false)
 
   console.log(arr.filter(el => !!el.isRightWord))
 
@@ -111,15 +151,30 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress}) => {
   }
 
   return (
-    <div>
-      <SoundButton />
+    <div className={classes.AudioCallGame}>
+            <span className={classes.buttonMisic}>
+              {!isChoice && <SoundButton isActive={isListen} setIsActive={setIsListen}
+                             urlAudio={arr.filter(el => !!el.isRightWord)[0].audio}/>
+              }
+              {isChoice && <div>
+                <div><img className={classes.image} src={arr.filter(el => !!el.isRightWord)[0].image} alt="img word"/></div>
+                <div className={classes.flex}>
+                  <ListenPlayer setIsAudio={setIsListen}
+                                   audio={arr.filter(el => !!el.isRightWord)[0].audio}
+                                   isAudio={isListen}
+                                   listenAudio={() => setIsListen(true)}  />
+                                   <b>{arr.filter(el => !!el.isRightWord)[0].word}</b>
+                </div>
+              </div>}
+
+             </span>
+
       <div className={classes.audioListen}>
-        <HearingIcon/>
         <div className={classes.options}>
           {
             arr.map(el => {
               return (
-                <div onClick={() => handleClickOnWord(el)} className={classes.wordWithNumber}>
+                <div key={el.wordTranslate} onClick={() => handleClickOnWord(el)} className={classes.wordWithNumber}>
                   <span className={classes.number}>{el.id + 1}</span>
                   <span className={cn(classes.arrow,
                     {[classes.hidden]: isChoice && el.isRightWord && isWin}
@@ -130,7 +185,7 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress}) => {
                     {[classes.lineThrough]: !el.isRightWord && isChoice},
                     {[classes.win]: isChoice && el.isRightWord && isWin}
                   )}>
-                    {el.word}
+                    {el.wordTranslate}
                   </span>
                 </div>
               )

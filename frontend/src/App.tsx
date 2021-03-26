@@ -17,6 +17,7 @@ import Statistics from './components/Statistics'
 import Settings from './components/Settings'
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
+import AudioGame from "./pages/AudioGame";
 
 function App() {
   let location = useLocation();
@@ -62,7 +63,7 @@ function App() {
           /> */}
           </Route>
           <Route path="/savannah">Саванна</Route>
-          <Route path="/audio"> ?? Аудиовызов</Route>
+          <Route path="/audio"> <AudioGame /></Route>
           <Route path="/sprint">Спринт</Route>
           <Route path="/owngame">Своя игра</Route>
           <Route path="/settings">

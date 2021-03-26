@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 import {makeStyles} from "@material-ui/core/styles";
 
 
 import AudioCallGameField from "../components/AudioCallGameField";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import {selectWords, fetchWords} from "../slices/wordsSlice";
 
 const useStyles = makeStyles((theme) => ({
   audioGame: {
@@ -17,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   flex:{
     display: 'flex',
+    flexDirection:'column',
     justifyContent: 'center',
     alignItems: 'center',
     height:'100vh',
@@ -32,7 +35,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 300,
   },
   audioTextLabel: {
+/*
     maxWidth: '565px',
+*/
     margin: '0 auto 58px',
     fontSize: '18px',
     lineHeight: '24px',
@@ -61,7 +66,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   audioListen: {
-    width: '120px',
     height: '120px',
     borderRadius: '120px',
     backgroundColor: 'hsla(0,0%,100%,.05)',
@@ -80,19 +84,34 @@ const AudioGame = () => {
   const classes = useStyles();
 
   const [isFirstScreen, setIsFirstScreen] = useState<boolean>(true);
-  const [progress, setProgress] = useState<number>(0)
+  const [progress, setProgress] = useState<number>(0);
+
+
+  const words = useSelector(selectWords);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchWords({
+      group:0,
+      page:0,
+    }))
+  }, [])
+
+  useEffect(() => {
+    console.log('words', words)
+  }, [words])
 
   return (
     <div className={classes.audioGame}>
 
 
-      {!isFirstScreen && <div className={classes.progress}>
+{/*      {!isFirstScreen && <div className={classes.progress}>
         <LinearProgress variant="determinate" value={progress}/>
-      </div>}
+      </div>}*/}
 
-      <div className={classes.flex}>
+      <div >
         {isFirstScreen &&
-        <div>
+        <div className={classes.flex}>
           <div className={classes.audioLabel}>АУДИОВЫЗОВ</div>
           <div className={classes.audioTextLabel}>Тренировка улучшает восприятие речи на слух.</div>
           <div onClick={() => setIsFirstScreen(false)} className={classes.btnStart}>НАЧАТЬ</div>
