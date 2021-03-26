@@ -24,48 +24,6 @@ export const getDate = (): string => {
   return `${date} ${month} ${year}`;
 }
 
-const clearGame = (miniGame: any, today: string) => {
-  if (miniGame.date !== today) {
-    miniGame.date = today;
-    miniGame.countLearnedWords = 0;
-    miniGame.correctAnswers = 0;
-    miniGame.wrongAnswers = 0;
-    miniGame.longestCorrectAnswers = 0;
-  }
-}
-
-const clearGeneralStatistics = (
-  generalStatistics: any,
-  today: string
-  ) => {
-  if (generalStatistics.date !== today) {
-    generalStatistics.date = today;
-    generalStatistics.totalWordsLearned = 0;
-    generalStatistics.totalCorrectAnswers = 0;
-    generalStatistics.totalWrongAnswers = 0;
-  }
-}
-
-export const clearTodayStatistics = async (
-  userId: string,
-  token: string,
-) => {
-  const statistics = await getUserStatistics(userId, token);
-  const today = getDate();
-  clearGame(statistics.optional.today.miniGames.savannah, today);
-  clearGame(statistics.optional.today.miniGames.audio, today);
-  clearGame(statistics.optional.today.miniGames.sprint, today);
-  clearGame(statistics.optional.today.miniGames.ownGame, today);
-  clearGeneralStatistics(statistics.optional.today.generalStatistics, today);
-  updateUserStatistics(
-    userId,
-    {
-      optional: statistics.optional
-    },
-    token
-  );
-}
-
 const calcStatisticsForToday = (
   miniGame: MiniGame,
   obj: IStatisticsToday,
@@ -165,6 +123,48 @@ const calcStatisticsForAllTime = (
     obj,
     dateToday,
     countLearnedWords
+  );
+}
+
+const clearGame = (miniGame: any, today: string) => {
+  if (miniGame.date !== today) {
+    miniGame.date = today;
+    miniGame.countLearnedWords = 0;
+    miniGame.correctAnswers = 0;
+    miniGame.wrongAnswers = 0;
+    miniGame.longestCorrectAnswers = 0;
+  }
+}
+
+const clearGeneralStatistics = (
+  generalStatistics: any,
+  today: string
+  ) => {
+  if (generalStatistics.date !== today) {
+    generalStatistics.date = today;
+    generalStatistics.totalWordsLearned = 0;
+    generalStatistics.totalCorrectAnswers = 0;
+    generalStatistics.totalWrongAnswers = 0;
+  }
+}
+
+export const clearTodayStatistics = async (
+  userId: string,
+  token: string,
+) => {
+  const statistics = await getUserStatistics(userId, token);
+  const today = getDate();
+  clearGame(statistics.optional.today.miniGames.savannah, today);
+  clearGame(statistics.optional.today.miniGames.audio, today);
+  clearGame(statistics.optional.today.miniGames.sprint, today);
+  clearGame(statistics.optional.today.miniGames.ownGame, today);
+  clearGeneralStatistics(statistics.optional.today.generalStatistics, today);
+  updateUserStatistics(
+    userId,
+    {
+      optional: statistics.optional
+    },
+    token
   );
 }
 
