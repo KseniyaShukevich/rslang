@@ -54,9 +54,6 @@ function App() {
             <Route exact path="/tutorial/page/:book/:page">
               <TextbookPage />
             </Route>
-            <Route exact path="/tutorial/dictionary">
-              Dictionary
-            </Route>
             <Route path="/savannah">Саванна</Route>
             <Route path="/audio">Аудиовызов</Route>
             <Route path="/sprint">Спринт</Route>
