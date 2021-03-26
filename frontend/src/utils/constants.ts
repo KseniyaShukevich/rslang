@@ -1,3 +1,5 @@
+import { IStatistics } from '../interfaces';
+
 const CLOUD_URL: string = 'https://res.cloudinary.com';
 const CLOUD_NAME: string = 'dshffjhdkjj';
 const INIT_USER_WORD: Object = {
@@ -24,30 +26,34 @@ const INIT_USER_WORD: Object = {
         }
   }
 }
-const INIT_USER_STATISTICS = {
+
+const INIT_USER_STATISTICS: IStatistics = {
   optional: {
       today: {
-        date: 'дата',
         miniGames: {
           savannah: {
+            date: 'дата',
             countLearnedWords: 0,
             correctAnswers: 0,
             wrongAnswers: 0,
             longestCorrectAnswers: 0
           },
           audio: {
+            date: 'дата',
             countLearnedWords: 0,
             correctAnswers: 0,
             wrongAnswers: 0,
             longestCorrectAnswers: 0
           },
           sprint: {
+            date: 'дата',
             countLearnedWords: 0,
             correctAnswers: 0,
             wrongAnswers: 0,
             longestCorrectAnswers: 0
           },
           ownGame: {
+            date: 'дата',
             countLearnedWords: 0,
             correctAnswers: 0,
             wrongAnswers: 0,
@@ -55,6 +61,7 @@ const INIT_USER_STATISTICS = {
           }
         },
         generalStatistics: {
+          date: 'дата',
           totalWordsLearned: 0,
           totalCorrectAnswers: 0,
           totalWrongAnswers: 0
@@ -88,5 +95,5 @@ export {
   CLOUD_NAME,
   INIT_USER_WORD,
   INIT_USER_STATISTICS,
-  INIT_USER_SETTINGS 
+  INIT_USER_SETTINGS
 }
