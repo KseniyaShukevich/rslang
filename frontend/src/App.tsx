@@ -6,7 +6,7 @@ import {
   CSSTransition
 } from "react-transition-group";
 
-
+import { getWord  } from './requests'
 import { theme } from "./mui-style";
 import Login from './components/Login'
 import SignUp from './components/SignUp'

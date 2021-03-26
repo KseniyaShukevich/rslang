@@ -1,4 +1,4 @@
-export async function request(url: string, token: string, method: string = 'GET', data = null) {
+export async function request(url: string, token: string = '', method: string = 'GET', data = null) {
   let headers: any = {};
 
   headers['Content-Type'] = 'application/json';
@@ -79,6 +79,12 @@ export async function request(url: string, token: string, method: string = 'GET'
 //     ]
 //   }
 // }
+
+export const getWord = async (wordId: string) => {
+  const response = await request(`words/${wordId}`);
+  return response;
+}
+
 
 
 export const fetchUserWords = async (userId: string, token: string): Promise<any> => {
