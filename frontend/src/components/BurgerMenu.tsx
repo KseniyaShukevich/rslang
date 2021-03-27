@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     // zIndex: 10
   },
   closedMenu: {
-    transform: 'translateY(-120%)',
+    transform: 'translateY(-130%)',
   },
   menuList: {
     color: 'black',

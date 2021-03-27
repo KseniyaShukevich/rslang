@@ -83,12 +83,21 @@ const useStyles = makeStyles((theme) => ({
 const AudioGame = () => {
   const classes = useStyles();
 
-  const [isFirstScreen, setIsFirstScreen] = useState<boolean>(true);
-  const [progress, setProgress] = useState<number>(0);
+  const [progress, setProgress] = useState<number>(-1);
 
 
+  const size = 4;
+  let subarray = [];
   const words = useSelector(selectWords);
   const dispatch = useDispatch();
+
+  if (!!words) {
+    for (let i = 0; i <Math.ceil(words.length/size); i++){
+      subarray[i] = words.slice((i*size), (i*size) + size);
+    }
+  }
+
+
 
   useEffect(() => {
     dispatch(fetchWords({
@@ -97,26 +106,23 @@ const AudioGame = () => {
     }))
   }, [])
 
-  useEffect(() => {
-    console.log('words', words)
-  }, [words])
+  if (progress === 5) {
+    return <div>qwerty</div>
+  }
 
   return (
     <div className={classes.audioGame}>
 
 
-{/*      {!isFirstScreen && <div className={classes.progress}>
-        <LinearProgress variant="determinate" value={progress}/>
-      </div>}*/}
 
       <div >
-        {isFirstScreen &&
+        {(progress === -1) &&
         <div className={classes.flex}>
           <div className={classes.audioLabel}>АУДИОВЫЗОВ</div>
           <div className={classes.audioTextLabel}>Тренировка улучшает восприятие речи на слух.</div>
-          <div onClick={() => setIsFirstScreen(false)} className={classes.btnStart}>НАЧАТЬ</div>
+          <div onClick={() => setProgress(prev => prev + 1)} className={classes.btnStart}>НАЧАТЬ</div>
         </div>}
-        {!isFirstScreen && <AudioCallGameField progress={progress} setProgress={setProgress}/>}
+        {(progress !== -1) && <AudioCallGameField subarray={subarray} progress={progress} setProgress={setProgress}/>}
       </div>
     </div>
   );

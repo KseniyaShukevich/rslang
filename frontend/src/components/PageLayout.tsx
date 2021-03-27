@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { mainStyles } from '../mui-style';
+import { Container } from "@material-ui/core";
 
 interface IProps {
   children: ReactElement | Array<ReactElement>
@@ -13,7 +14,9 @@ const PageLayout: React.FC<IProps> = ({ children }: IProps) => {
     <div className={classes.page}>
       <Header />
         <div className={classes.mainWrapper}>
-          {children}
+          <Container maxWidth='lg'>
+            {children}
+          </Container>
         </div>
       <Footer />
     </div>
