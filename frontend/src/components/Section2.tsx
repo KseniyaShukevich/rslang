@@ -4,20 +4,23 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles({
   contentWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     paddingTop: 40,
     margin: "0 auto",
-    alignItems: 'center',
+    alignItems: "center",
   },
   iframe: {
     width: "80%",
     height: 600,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
   },
   subTitle: {
     "font-size": "1.5rem",
     fontWeight: 800,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
@@ -27,7 +30,6 @@ const Section2: React.FC<any> = () => {
   return (
     <div className={classes.contentWrapper}>
       <p className={classes.subTitle}>Как работает RSLang?</p>
-      {/* <div className={classes.video}> */}
       <iframe
         className={classes.iframe}
         src="https://www.youtube.com/embed/UylAZQt1-MI"
@@ -36,7 +38,6 @@ const Section2: React.FC<any> = () => {
         allowFullScreen
         title="video"
       />
-      {/* </div> */}
     </div>
   );
 };

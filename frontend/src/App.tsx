@@ -8,6 +8,7 @@ import {
 import { mainStyles, theme } from "./mui-style";
 import { CloudinaryContext } from 'cloudinary-react';
 import CLOUDNAME from './constants/CLOUDNAME';
+import { getWord  } from './requests'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import MiniGames from './components/MiniGames'
@@ -23,19 +24,19 @@ function App() {
   let location = useLocation();
   const classes = mainStyles();
 
-  const words = useSelector(selectWords);
-  const dispatch = useDispatch();
+  // const words = useSelector(selectWords);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchWords({
-      group: 0,
-      page: 0,
-    }))
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchWords({
+  //     group: 0,
+  //     page: 0,
+  //   }))
+  // }, []);
 
-  useEffect(() => {
-    console.log(words);
-  }, [words]);
+  // useEffect(() => {
+  //   console.log(words);
+  // }, [words]);
 
   return (
     <CloudinaryContext cloudName={CLOUDNAME}>
