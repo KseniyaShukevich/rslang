@@ -15,6 +15,7 @@ import WordBtn from '../components/savannah/WordBtn'
 import { Image } from 'cloudinary-react'
 import FullscreenBtn from '../components/savannah/FullscreenBtn'
 import CloseBtn from '../components/savannah/CloseBtn'
+import GameLayout from '../components/GameLayout'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,10 +57,10 @@ const useStyles = makeStyles((theme: Theme) =>
 const Savannah: React.FC = () => {
 	const classes = useStyles();
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
-  const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
-  const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const words: Array<string> = ['word', 'dgfg', 'hfghfddsa', 'ghghvdcsa'];
   const lifes: Array<number> = [0,0,0,1,1];
+
+  const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
 
   document.addEventListener('fullscreenchange', (event) => {
     setIsFullscreen(!!document.fullscreenElement);
@@ -84,48 +85,25 @@ const Savannah: React.FC = () => {
           </Box>
           <CloseBtn />
         </Box>
-
-        {
-          isStartLayout && (
-            <div style={{color: 'white', textAlign: 'center'}}>
-              START LAYOUT
-              <Button color='primary' onClick={() => {setIsStartLayout(false)}}>
-                Начать игру
-              </Button>
-            </div>
-          )
-        }
-
-        {
-          (!isStartLayout && !isEndLayout) && (
-            <>
-              <Container maxWidth='md' className={classes.containerBtn}>
-                {
-                  words.map((word, index) =>
-                    <WordBtn
-                      word={word}
-                      number={index + 1}
-                      key={index}
-                    />
-                  )
-                }
-              </Container>
-              <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
-                Закончилась игра
-              </Button>
-              <Container className={classes.containerGif}>
-                <Image publicId="rslang/33Ho_by5kqq" width="90" />
-              </Container>
-            </>
-          )
-        }
-
-        {
-          isEndLayout && (
-            <div style={{color: 'white', textAlign: 'center'}}>END LAYOUT</div>
-          )
-        }
-
+          <GameLayout isEndLayout={isEndLayout} setIsEndLayout={setIsEndLayout}>
+            <Container maxWidth='md' className={classes.containerBtn}>
+              {
+                words.map((word, index) =>
+                  <WordBtn
+                    word={word}
+                    number={index + 1}
+                    key={index}
+                  />
+                )
+              }
+            </Container>
+            <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
+              Закончилась игра
+            </Button>
+            <Container className={classes.containerGif}>
+              <Image publicId="rslang/33Ho_by5kqq" width="90" />
+            </Container>
+          </GameLayout>
       </Box>
 	);
 }
