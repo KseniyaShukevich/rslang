@@ -13,8 +13,6 @@ const useStyles = makeStyles({
   },
 });
 
-
-
 const HomePage: React.FC<any> = () => {
   const classes = useStyles();
 

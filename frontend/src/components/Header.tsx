@@ -16,9 +16,7 @@ const Header: React.FC = () => {
       <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
         <BurgerMenu />
         <Typography variant="h4">
-          <Link style={{ cursor: "pointer" }} to="/">
-            RSLang
-          </Link>
+            <Link style={{cursor: 'pointer'}} to="/">RSLang</Link>
         </Typography>
 
         <Typography variant="h6">
