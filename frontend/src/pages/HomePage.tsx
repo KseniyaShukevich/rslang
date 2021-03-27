@@ -7,8 +7,6 @@ import PageLayout from '../components/PageLayout';
 
 const useStyles = makeStyles({
   contentWrapper: {
-    // height: 'calc(100hv - 162px)',
-    // height: 1200,
     margin: '0 auto',
     background: 'beige',
     padding: '0 2rem'

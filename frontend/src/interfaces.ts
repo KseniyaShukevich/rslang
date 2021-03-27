@@ -22,7 +22,6 @@ export interface IWord {
   isDifficult: boolean,
   isDeleted: boolean,
 }
-
 export interface IWordCard {
   word: string,
   image: string,
@@ -45,3 +44,63 @@ export interface IGame {
   description: string,
   href: string,
 }
+
+// statistics
+export interface IStatisticsToday {
+  miniGames: {
+    savannah: {
+      date: string,
+      countLearnedWords: number,
+      correctAnswers: number,
+      wrongAnswers: number,
+      longestCorrectAnswers: number
+    },
+    audio: {
+      date: string,
+      countLearnedWords: number,
+      correctAnswers: number,
+      wrongAnswers: number,
+      longestCorrectAnswers: number
+    },
+    sprint: {
+      date: string,
+      countLearnedWords: number,
+      correctAnswers: number,
+      wrongAnswers: number,
+      longestCorrectAnswers: number
+    },
+    ownGame: {
+      date: string,
+      countLearnedWords: number,
+      correctAnswers: number,
+      wrongAnswers: number,
+      longestCorrectAnswers: number
+    }
+  },
+  generalStatistics: {
+    date: string,
+    totalWordsLearned: number,
+    totalCorrectAnswers: number,
+    totalWrongAnswers: number
+  }
+}
+
+export interface IStatisticsOneDay {
+  date: string,
+  countLearnedWords: number
+}
+
+export interface IStatisticsAllTime {
+  forEachDay: Array<IStatisticsOneDay>
+  byDay: Array<IStatisticsOneDay>
+}
+
+export interface IStatistics {
+  optional: {
+    today: IStatisticsToday
+    forAllTime: IStatisticsAllTime
+  }
+}
+
+// for mini games
+export type MiniGame = 'savannah' | 'audio' | 'sprint' | 'ownGame';

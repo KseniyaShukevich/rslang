@@ -41,14 +41,27 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+interface IProps {
+  setIsDictionary: (value: boolean) => void
+}
 
-const DictionarySection: React.FC = () => {
+const DictionarySection: React.FC<IProps> = ({ setIsDictionary }: IProps) => {
   const classes = useStyles();
+
+  const handleClick = () => {
+    setIsDictionary(true);
+  }
 
   return (
     <Card className={classes.root}>
         <CardActions className={classes.overlay}>
-          <Button href="/tutorial/dictionary" size="medium" variant="contained" color="secondary" className={classes.button}>
+          <Button
+            size="medium"
+            variant="contained"
+            color="secondary"
+            className={classes.button}
+            onClick={handleClick}
+          >
             Открыть
           </Button>
         </CardActions>

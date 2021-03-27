@@ -7,6 +7,7 @@ import MenuBookTwoToneIcon from "@material-ui/icons/MenuBookTwoTone";
 import BookTwoToneIcon from '@material-ui/icons/BookTwoTone';
 import TextbookDepartmentsList from "../components/TextbookDepartmentList";
 import DictionarySection from "../components/DictionarySection";
+import Dictionary from './Dictionary';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -36,33 +37,37 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Tutorial: React.FC = () => {
   const classes = useStyles();
-  const [isDictionary, setIsDictionary] = useState<Boolean>(true);
+  const [isDictionary, setIsDictionary] = useState<Boolean>(false);
 
   return (
     <PageLayout>
-      <Container maxWidth="lg" className={classes.root} disableGutters={true}>
-        <Box className={classes.wrapper}>
-          <Box className={classes.titleWrapper} color="text.primary">
-            <MenuBookTwoToneIcon style={{ fontSize: 50 }} />
-            <Typography gutterBottom variant="h3" style={{ fontWeight: 300 }}>
-              Электронный учебник
-            </Typography>
-          </Box>
-          <TextbookDepartmentsList />
-          { isDictionary &&
-            <Box>
-              <Divider variant="middle" />
+      {
+        isDictionary ? (
+          <Dictionary setIsDictionary={setIsDictionary} />
+        ) : (
+          <Container maxWidth="lg" className={classes.root} disableGutters={true}>
+            <Box className={classes.wrapper}>
               <Box className={classes.titleWrapper} color="text.primary">
-                <BookTwoToneIcon style={{ fontSize: 50 }} />
+                <MenuBookTwoToneIcon style={{ fontSize: 50 }} />
                 <Typography gutterBottom variant="h3" style={{ fontWeight: 300 }}>
-                  Словарь
+                  Электронный учебник
                 </Typography>
               </Box>
-              <DictionarySection />
+              <TextbookDepartmentsList />
+                <Box>
+                  <Divider variant="middle" />
+                  <Box className={classes.titleWrapper} color="text.primary">
+                    <BookTwoToneIcon style={{ fontSize: 50 }} />
+                    <Typography gutterBottom variant="h3" style={{ fontWeight: 300 }}>
+                      Словарь
+                    </Typography>
+                  </Box>
+                  <DictionarySection setIsDictionary={setIsDictionary} />
+                </Box>
             </Box>
-          }
-        </Box>
-      </Container>
+          </Container>
+        )
+      }
     </PageLayout>
   );
 }

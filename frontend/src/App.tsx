@@ -6,7 +6,7 @@ import {
   CSSTransition
 } from "react-transition-group";
 
-
+import { getWord  } from './requests'
 import { theme } from "./mui-style";
 import Login from './components/Login'
 import SignUp from './components/SignUp'
@@ -16,8 +16,34 @@ import Settings from './components/Settings'
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
 import TextbookPage from "./pages/TextbookPage";
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUserWords } from './requests'
+import { selectWords, fetchWords } from './slices/wordsSlice'
+import { clearTodayStatistics } from './calcStatistics'
 
 function App() {
+  const words = useSelector(selectWords);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchWords({
+  //     group: 0,
+  //     page: 0,
+  //   }));
+  // }, []);
+
+  // const getWords = async () => {
+  //   const userWords = await fetchUserWords(
+  //     userId, token
+  //   );
+  //   console.log(userWords)
+  // }
+
+  // useEffect(() => {
+  //   getWords();
+  //   console.log('JUST WORDS', words);
+  // }, [words]);
+
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -27,9 +53,6 @@ function App() {
             </Route>
             <Route exact path="/tutorial/page/:book/:page">
               <TextbookPage />
-            </Route>
-            <Route exact path="/tutorial/dictionary">
-              Dictionary
             </Route>
             <Route path="/savannah">Саванна</Route>
             <Route path="/audio">Аудиовызов</Route>

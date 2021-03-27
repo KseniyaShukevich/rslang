@@ -16,6 +16,14 @@ const useStyles = makeStyles((theme) => {
       justifyContent: "space-between",
       alignItems: "center",
       margin: "0 auto",
+      [theme.breakpoints.down("sm")]: {
+        display: "block",
+        width: "100%",
+      },
+      [theme.breakpoints.down("xs")]: {
+        display: "block",
+        width: "100%",
+      },
     },
     avatar: {
       "&:hover": {
@@ -25,12 +33,19 @@ const useStyles = makeStyles((theme) => {
       width: "70px",
       height: "70px",
       "background-size": "contain",
+      [theme.breakpoints.down("xs")]: {
+        display: "none",
+      },
     },
     listItem: {
       fontSize: "1.4rem",
       display: "grid",
       "grid-template-columns": "1fr 7fr",
       alignItems: "center",
+      [theme.breakpoints.down("xs")]: {
+        display: "block",
+        width: "100%",
+      },
     },
     title: {
       "font-size": "2rem",
@@ -44,14 +59,33 @@ const useStyles = makeStyles((theme) => {
       "border-image": "linear-gradient(135deg, #1254bc 20%, #fa0e0e 70%)",
       "border-image-slice": 1,
       margin: "49px auto",
+      [theme.breakpoints.down("xs")]: {
+        margin: "30px 0 15px",
+      },
     },
     subTitle: {
       "font-size": "1.5rem",
       fontWeight: 800,
+      textAlign: "center",
     },
     listItemP: {
       color: "blue",
       paddingLeft: "2rem",
+      [theme.breakpoints.down("xs")]: {
+        padding: 0,
+      },
+    },
+    section1Img: {
+      width: "40%",
+      [theme.breakpoints.down("sm")]: {
+        display: "none",
+      },
+    },
+    capabilities: {
+      width: "60%",
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
+      },
     },
   };
 });
@@ -66,7 +100,7 @@ const Section1: React.FC<any> = () => {
           RSLang - простое и интересное приложение для изучения английского
           языка
         </p>
-        <div style={{ width: "60%" }}>
+        <div className={classes.capabilities}>
           <p className={classes.subTitle}>
             Какие же преимущества и возможности вас ждут от RSLang?
           </p>
@@ -123,7 +157,7 @@ const Section1: React.FC<any> = () => {
             </ul>
           </div>
         </div>
-        <div style={{ width: "40%" }}>
+        <div className={classes.section1Img}>
           <img
             style={{
               width: "100%",
