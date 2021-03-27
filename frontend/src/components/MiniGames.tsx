@@ -1,60 +1,78 @@
-import { Link, makeStyles } from "@material-ui/core";
+import { Link, List, makeStyles } from "@material-ui/core";
 import React from "react";
+import { IGame } from "../interfaces";
+import { theme } from "../mui-style";
+import GameCard from "./GameCard";
 import PageLayout from "./PageLayout";
+import savanna from "../assets/images/background_3.jpg";
+import audioCall from "../assets/images/background_4.jpg";
+import sprint from "../assets/images/background_5.jpg";
+import ownGame from "../assets/images/background_6.jpg";
+
+const GAMES: IGame[] = [
+  {
+    name: "Саванна",
+    image: savanna,
+    description:
+      "Чем больше слов ты знаешь, тем легче тебе будет общаться. Игра Саванна лучший помощник для развития словарного запаса",
+    href: "/savannah",
+  },
+  {
+    name: "Аудиовызов",
+    image: audioCall,
+    description: "Игра Аудиовызов улучшает восприятие разговорной речи на слух",
+    href: "/audio",
+  },
+  {
+    name: "Спринт",
+    image: sprint,
+    description:
+      "Чем больше слов ты знаешь, тем легче тебе будет общаться. Игра Саванна лучший помощник для развития словарного запаса",
+    href: "/sprint",
+  },
+  {
+    name: "Своя игра",
+    image: ownGame,
+    description:
+      "Какой-то крутой и мотивирующий текст, чтобы немедленно начать играть)))",
+    href: "/owngame",
+  },
+];
 
 const useStyles = makeStyles({
-  game: {
-    width: "40%",
-    height: 215,
-    border: "4px solid blue",
-    borderRadius: "62%",
-    marginTop: 20,
-    backgroundImage: "linear-gradient(to bottom, #b17c2e75 20%,#3875fff2 80%)",
-    "background-blend-mode": "overlay",
+
+  miniGamesWrapper: {
+    width:"80%",
+    margin: "0 auto",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
   },
-  games: {
+  gameList: {
+    padding: theme.spacing(1),
+    marginBottom: theme.spacing(3),
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  titleGame: {
-    cursor: "pointer",
-    fontSize: "4em",
-    textAlign: "center",
-    borderRadius: "85%",
-    fontWeight: "bolder",
+    flexWrap: "wrap",
+    rowGap: theme.spacing(2),
+    columnGap: theme.spacing(2),
+    justifyContent: "center",
   },
 });
 
 const MiniGames: React.FC = () => {
-  const smth = 9;
+  // const smth = 9;
   const classes = useStyles();
 
   return (
     <PageLayout>
-      <div className={classes.games}>
-        <div className={classes.game}>
-          <Link style={{ textDecoration: "none" }}>
-            <p className={classes.titleGame}>Саванна</p>
-          </Link>
-        </div>
-        <div className={classes.game}>
-          <Link style={{ textDecoration: "none" }}>
-            <p className={classes.titleGame}>Аудиовызов</p>
-          </Link>
-        </div>
-        <div className={classes.game}>
-          <Link style={{ textDecoration: "none" }}>
-            <p className={classes.titleGame}>Спринт</p>
-          </Link>
-        </div>
-        <div className={classes.game}>
-          <Link style={{ textDecoration: "none" }}>
-            <p className={classes.titleGame}>Своя игра</p>
-          </Link>
-        </div>
+      <div className={classes.miniGamesWrapper}>
+        <List className={classes.gameList}>
+          {GAMES.map((elem: IGame, index: number) => {
+            return <GameCard {...elem} key={index} />;
+          })}
+        </List>
+        <span />
       </div>
-      <span />
     </PageLayout>
   );
 };
