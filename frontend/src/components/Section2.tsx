@@ -4,17 +4,23 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles({
   contentWrapper: {
-    paddingTop: 40,
     display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    "max-width": 1700,
+    flexDirection: "column",
+    paddingTop: 40,
     margin: "0 auto",
+    alignItems: "center",
   },
   iframe: {
     width: "80%",
     height: 600,
-    margin: "0 auto",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+  },
+  subTitle: {
+    "font-size": "1.5rem",
+    fontWeight: 800,
+    textAlign: "center",
   },
 });
 
@@ -23,6 +29,7 @@ const Section2: React.FC<any> = () => {
 
   return (
     <div className={classes.contentWrapper}>
+      <p className={classes.subTitle}>Как работает RSLang?</p>
       <iframe
         className={classes.iframe}
         src="https://www.youtube.com/embed/UylAZQt1-MI"

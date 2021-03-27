@@ -6,9 +6,8 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
   footer: {
     backgroundColor: theme.palette.primary.main,
     bottom: 0,
-    padding: theme.spacing(1.5, 0, 3.5),
+    padding: theme.spacing(1.5, 0, 1.5),
     borderRadius: '8px',
-
   },
   container: {
     display: "flex",
@@ -51,7 +50,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={classes.footer}>
-      <Container maxWidth="lg" className={classes.container}>
+      <Container className={classes.container}>
         <Box>
           <a
             href="https://rs.school/js/"
