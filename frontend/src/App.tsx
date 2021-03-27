@@ -6,10 +6,8 @@ import {
   CSSTransition
 } from "react-transition-group";
 
-import { getWord  } from './requests'
 import { theme } from "./mui-style";
-import Login from './components/Login'
-import SignUp from './components/SignUp'
+
 import MiniGames from './components/MiniGames'
 import Statistics from './components/Statistics'
 import Settings from './components/Settings'
@@ -20,6 +18,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserWords } from './requests'
 import { selectWords, fetchWords } from './slices/wordsSlice'
 import { clearTodayStatistics } from './calcStatistics'
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
 
 function App() {
   const words = useSelector(selectWords);

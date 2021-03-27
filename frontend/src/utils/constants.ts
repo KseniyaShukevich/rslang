@@ -89,11 +89,13 @@ const INIT_USER_SETTINGS = {
   isButtons: true
 }
 }
+const DEFAULT_AVATAR: string = 'rslang/avatar_ltzdkha_kkfty4';
 
 export {
   CLOUD_URL,
   CLOUD_NAME,
   INIT_USER_WORD,
+  DEFAULT_AVATAR,
   INIT_USER_STATISTICS,
   INIT_USER_SETTINGS
 }
