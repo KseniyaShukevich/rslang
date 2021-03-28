@@ -322,396 +322,127 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
-  timestamp: '2021-03-22T15:45:45.660Z'
+  timestamp: '2021-03-25T15:12:10.170Z'
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-  timestamp: '2021-03-22T15:45:45.693Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 370.075 ms\n',
-  level: 'info',
-  timestamp: '2021-03-22T15:46:50.762Z'
+  timestamp: '2021-03-25T15:12:10.202Z'
 }
 {
   message: 'Successfully connect to DB',
   level: 'info',
-  timestamp: '2021-03-22T17:38:23.459Z'
+  timestamp: '2021-03-25T15:18:47.718Z'
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-  timestamp: '2021-03-22T17:38:23.492Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 283.197 ms\n',
-  level: 'info',
-  timestamp: '2021-03-22T17:39:22.196Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 241.758 ms\n',
-  level: 'info',
-  timestamp: '2021-03-22T17:41:55.923Z'
+  timestamp: '2021-03-25T15:18:47.754Z'
 }
 {
   message: 'Successfully connect to DB',
   level: 'info',
-  timestamp: '2021-03-23T10:15:16.343Z'
+  timestamp: '2021-03-25T15:34:24.643Z'
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-  timestamp: '2021-03-23T10:15:16.384Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 248.698 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:17:32.225Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 177.288 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:17:35.694Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 229.769 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:18:26.144Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 193.862 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:18:40.952Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 197.362 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:19:49.853Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 177.222 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:20:01.666Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 175.728 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:21:13.885Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 844.618 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:21:28.592Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 203.179 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:22:10.920Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 161.914 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:23:07.353Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 211.980 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:23:16.903Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 325.262 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:24:41.556Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 164.258 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:27:34.329Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 156.361 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:34:54.473Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 160.140 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:35:59.008Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 168.509 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:44:12.367Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 173.579 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:45:00.902Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 162.490 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:45:11.731Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 166.735 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T10:51:14.243Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 294.534 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T12:42:54.151Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 1469.958 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T12:47:16.460Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 181.678 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T12:48:39.573Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 725.714 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T12:49:24.446Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 296.898 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T12:49:33.599Z'
-}
-{
-  message: 'GET 304 /words?group=0&0 - size req - res - - 190.985 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T12:53:05.309Z'
-}
-{
-  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
-    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
-    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
-  level: 'error',
-  timestamp: '2021-03-23T13:00:45.482Z'
-}
-{
-  message: 'POST 500 /users - size req 81 res 12 - 117.827 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T13:00:45.495Z'
-}
-{
-  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
-    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
-    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
-  level: 'error',
-  timestamp: '2021-03-23T13:01:13.491Z'
-}
-{
-  message: 'POST 500 /users - size req 83 res 12 - 5.406 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T13:01:13.494Z'
-}
-{
-  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
-    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
-    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
-  level: 'error',
-  timestamp: '2021-03-23T13:20:01.497Z'
-}
-{
-  message: 'POST 500 /users - size req 81 res 12 - 6.679 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T13:20:01.499Z'
-}
-{
-  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
-    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
-    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
-  level: 'error',
-  timestamp: '2021-03-23T13:20:15.217Z'
-}
-{
-  message: 'POST 500 /users - size req 86 res 12 - 4.447 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T13:20:15.219Z'
-}
-{
-  message: 'POST 404 /words - size req 86 res 9 - 2.324 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T13:20:45.021Z'
-}
-{
-  message: 'GET 200 /words - size req 86 res 12413 - 1503.146 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T13:20:51.658Z'
-}
-{
-  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
-    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
-    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
-  level: 'error',
-  timestamp: '2021-03-23T13:21:03.413Z'
-}
-{
-  message: 'POST 500 /users - size req 86 res 12 - 5.504 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T13:21:03.415Z'
-}
-{
-  message: 'ValidationError: users validation failed: password: Path `password` is required., email: Path `email` is required.\n' +
-    '    at model.Document.invalidate (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2689:32)\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\document.js:2509:17\n' +
-    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\schematype.js:1259:9\n' +
-    '    at processTicksAndRejections (internal/process/task_queues.js:75:11)',
-  level: 'error',
-  timestamp: '2021-03-23T13:21:36.958Z'
-}
-{
-  message: 'POST 500 /users - size req 86 res 12 - 5.654 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T13:21:36.960Z'
+  timestamp: '2021-03-25T15:34:24.676Z'
 }
 {
   message: 'Successfully connect to DB',
   level: 'info',
-  timestamp: '2021-03-23T15:03:32.124Z'
+  timestamp: '2021-03-25T15:40:18.754Z'
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-  timestamp: '2021-03-23T15:03:32.158Z'
+  timestamp: '2021-03-25T15:40:18.796Z'
 }
 {
-  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res 208 - 204.097 ms\n',
+  message: 'GET - /words?group=0&0 - size req - res - - - ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:03:58.300Z'
+  timestamp: '2021-03-25T16:38:28.051Z'
 }
 {
-  message: 'GET 304 /words?group=0&0 - size req - res - - 182.806 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 206.514 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:07:46.326Z'
+  timestamp: '2021-03-25T16:38:34.715Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 227.121 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 201.197 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:08:50.972Z'
+  timestamp: '2021-03-25T16:38:35.865Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 321.366 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 202.177 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:09:08.826Z'
+  timestamp: '2021-03-25T16:38:36.386Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 225.320 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 205.254 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:09:18.110Z'
+  timestamp: '2021-03-25T16:38:36.781Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 1030.102 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 221.296 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:09:57.480Z'
+  timestamp: '2021-03-25T16:38:37.407Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 199.252 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 315.883 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:10:15.591Z'
+  timestamp: '2021-03-25T16:38:37.817Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 169.740 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 1943.156 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:10:38.152Z'
+  timestamp: '2021-03-25T16:38:40.188Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 189.047 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 459.943 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:12:30.590Z'
+  timestamp: '2021-03-25T16:38:40.716Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 208.661 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 331.961 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:12:35.258Z'
+  timestamp: '2021-03-25T16:38:41.431Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 175.729 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 323.892 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:13:14.138Z'
+  timestamp: '2021-03-25T16:38:41.818Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 182.762 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 350.952 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:13:27.301Z'
+  timestamp: '2021-03-25T16:38:42.537Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 170.054 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 320.854 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:13:43.810Z'
+  timestamp: '2021-03-25T16:38:42.916Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 164.244 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 204.197 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:14:03.706Z'
+  timestamp: '2021-03-25T16:38:43.523Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 562.208 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 172.460 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:14:42.149Z'
+  timestamp: '2021-03-25T16:38:43.760Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 185.468 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 178.588 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:14:48.870Z'
+  timestamp: '2021-03-25T16:38:44.303Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 164.334 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 181.767 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:15:06.984Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 182.406 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T15:15:19.894Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 162.664 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T15:20:20.288Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 199.656 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T15:21:03.237Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 161.016 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T15:21:28.076Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 187.879 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T15:21:35.987Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 200.007 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T15:23:39.020Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 184.677 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T15:26:06.854Z'
+  timestamp: '2021-03-25T16:38:44.575Z'
 }
 {
   message: 'Successfully connect to DB',
@@ -746,192 +477,187 @@
 {
   message: 'GET 200 /words?group=0&0 - size req - res 12413 - 595.759 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:35:26.481Z'
+  timestamp: '2021-03-25T16:38:44.857Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 1481.276 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 157.928 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:35:42.462Z'
+  timestamp: '2021-03-25T16:38:45.132Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 191.594 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 165.015 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:36:36.082Z'
+  timestamp: '2021-03-25T16:38:45.395Z'
 }
 {
-  message: 'Successfully connect to DB',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 160.261 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:36:51.372Z'
+  timestamp: '2021-03-25T16:38:45.666Z'
 }
 {
-  message: 'App is running on http://localhost:4000',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 161.407 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:36:51.407Z'
+  timestamp: '2021-03-25T16:38:46.248Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 379.550 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 181.116 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:38:03.015Z'
+  timestamp: '2021-03-25T16:38:46.533Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 315.489 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 305.142 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:38:26.302Z'
+  timestamp: '2021-03-25T16:38:46.921Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 213.032 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 298.816 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:38:52.874Z'
+  timestamp: '2021-03-25T16:38:47.613Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 1125.175 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 292.748 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:40:00.838Z'
+  timestamp: '2021-03-25T16:38:47.996Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 186.073 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 282.042 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:40:05.019Z'
+  timestamp: '2021-03-25T16:38:48.751Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 459.650 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 181.654 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:41:07.546Z'
+  timestamp: '2021-03-25T16:38:48.984Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 187.724 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 1599.602 ms\n',
   level: 'info',
-  timestamp: '2021-03-23T15:41:53.024Z'
+  timestamp: '2021-03-25T16:38:50.961Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 1690.457 ms\n',
-  level: 'info',
-  timestamp: '2021-03-23T16:06:42.660Z'
-}
-{
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 1104.971 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 169.044 ms\n',
   level: 'info',
   timestamp: '2021-03-23T16:07:11.518Z'
 }
 {
-  message: 'Successfully connect to DB',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 175.961 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:33:03.835Z'
+  timestamp: '2021-03-25T16:38:51.763Z'
 }
 {
-  message: 'App is running on http://localhost:4000',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 176.364 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:33:03.954Z'
+  timestamp: '2021-03-25T16:38:52.029Z'
 }
 {
-  message: 'GET 200 /words?group=1&1 - size req - res 12723 - 2561.860 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 182.510 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:52:01.079Z'
+  timestamp: '2021-03-25T16:38:52.303Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 502.742 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 300.615 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:52:50.642Z'
+  timestamp: '2021-03-25T16:38:52.692Z'
 }
 {
-  message: 'GET 200 /words?group=0&29 - size req - res 12413 - 222.157 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 495.696 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:53:25.458Z'
+  timestamp: '2021-03-25T16:38:53.268Z'
 }
 {
-  message: 'GET 200 /words?group=0&29 - size req - res 12413 - 256.713 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 353.130 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:54:03.947Z'
+  timestamp: '2021-03-25T16:38:53.990Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 320.312 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 298.816 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:54:12.082Z'
+  timestamp: '2021-03-25T16:38:54.575Z'
 }
 {
-  message: 'GET 200 /words?group=0&29 - size req - res 12413 - 206.404 ms\n',
+  message: 'GET 304 /words?group=0&0 - size req - res - - 316.090 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:56:55.611Z'
+  timestamp: '2021-03-25T16:38:55.312Z'
 }
 {
-  message: 'GET 400 /words?group=NaN&NaN - size req - res 72 - 2489.546 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 308.239 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T11:58:50.673Z'
+  timestamp: '2021-03-25T16:38:56.485Z'
 }
 {
-  message: 'GET 400 /words?group=NaN&NaN - size req - res 72 - 73.885 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 316.640 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:00:53.306Z'
+  timestamp: '2021-03-25T16:38:56.954Z'
 }
 {
-  message: 'GET 400 /words?group=NaN&NaN - size req - res 72 - 0.961 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 294.681 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:00:54.693Z'
+  timestamp: '2021-03-25T16:38:57.376Z'
 }
 {
-  message: 'GET 200 /words?group=0&29 - size req - res 12413 - 1416.561 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 168.369 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:04:17.928Z'
+  timestamp: '2021-03-25T16:38:57.617Z'
 }
 {
-  message: 'GET 200 /words?group=0&1 - size req - res 12413 - 308.966 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 177.163 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:05:06.089Z'
+  timestamp: '2021-03-25T16:38:58.374Z'
 }
 {
-  message: 'GET 200 /words?group=2&1 - size req - res 12960 - 317.530 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 681.712 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:05:35.955Z'
+  timestamp: '2021-03-25T16:38:59.183Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 5036.621 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 158.837 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:22:51.161Z'
+  timestamp: '2021-03-25T16:38:59.732Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 470.453 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 301.278 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:23:11.305Z'
+  timestamp: '2021-03-25T16:39:00.111Z'
 }
 {
-  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 251.047 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 1655.040 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:25:36.952Z'
+  timestamp: '2021-03-25T16:39:02.277Z'
 }
 {
-  message: 'GET 200 /words?group=0&7 - size req - res 12413 - 282.929 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 173.704 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:25:42.772Z'
+  timestamp: '2021-03-25T16:39:02.599Z'
 }
 {
-  message: 'GET 200 /words?group=0&6 - size req - res 12413 - 400.033 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 180.988 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:25:51.066Z'
+  timestamp: '2021-03-25T16:39:03.388Z'
 }
 {
-  message: 'GET 200 /words?group=0&2 - size req - res 12413 - 1203.297 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 173.793 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:41:12.697Z'
+  timestamp: '2021-03-25T16:39:03.813Z'
 }
 {
-  message: 'GET 200 /words?group=5&5 - size req - res 15029 - 489.304 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 353.725 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:41:28.465Z'
+  timestamp: '2021-03-25T16:39:06.730Z'
 }
 {
-  message: 'GET 200 /words?group=5&29 - size req - res 15029 - 414.510 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 296.313 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:41:35.354Z'
+  timestamp: '2021-03-25T16:39:07.449Z'
 }
 {
-  message: 'GET 200 /words?group=0&13 - size req - res 12413 - 997.317 ms\n',
+  message: 'GET - /words?group=0&0 - size req - res - - - ms\n',
   level: 'info',
-  timestamp: '2021-03-24T12:43:58.649Z'
+  timestamp: '2021-03-25T16:39:15.245Z'
 }
 {
-  message: 'GET 200 /words?group=0&13 - size req - res 12413 - 8973.572 ms\n',
+  message: 'GET 200 /words?group=0&0 - size req - res 12413 - 304.517 ms\n',
   level: 'info',
-  timestamp: '2021-03-24T16:53:13.314Z'
+  timestamp: '2021-03-25T16:39:21.173Z'
 }
 {
   message: 'GET 200 /words?group=0&0 - size req - res 12413 - 2025.290 ms\n',
@@ -2676,18 +2402,11 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-27T07:44:39.112Z'
-=======
   timestamp: '2021-03-26T13:57:38.764Z'
->>>>>>> origin/develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-<<<<<<< HEAD
-  timestamp: '2021-03-27T07:44:39.119Z'
-=======
   timestamp: '2021-03-26T13:57:38.772Z'
 }
 {
@@ -2749,7 +2468,6 @@
   message: 'GET 200 /words?group=5&page=0 - size req - res 15029 - 325.335 ms\n',
   level: 'info',
   timestamp: '2021-03-26T17:23:05.554Z'
->>>>>>> origin/develop
 }
 {
   message: 'Successfully connect to DB',
@@ -2789,50 +2507,9 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
-  timestamp: '2021-03-28T05:07:06.112Z'
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-  timestamp: '2021-03-28T05:07:06.249Z'
-}
-{
-  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 16956.114 ms\n',
-  level: 'info',
-  timestamp: '2021-03-28T05:25:03.674Z'
-}
-{
-  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 7088.607 ms\n',
-  level: 'info',
-  timestamp: '2021-03-28T05:25:42.162Z'
-}
-{
-  message: 'GET 304 /words?group=0&page=0 - size req - res - - 325.749 ms\n',
-  level: 'info',
-  timestamp: '2021-03-28T05:26:35.429Z'
-}
-{
-  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 687.910 ms\n',
-  level: 'info',
-  timestamp: '2021-03-28T05:32:58.239Z'
-}
-{
-  message: 'GET 304 /words?group=0&page=0 - size req - res - - 978.312 ms\n',
-  level: 'info',
-  timestamp: '2021-03-28T05:33:44.308Z'
-}
-{
-  message: 'GET 304 /words?group=0&page=0 - size req - res - - 2938.248 ms\n',
-  level: 'info',
-  timestamp: '2021-03-28T06:10:39.516Z'
-}
-{
-  message: 'GET 304 /words?group=0&page=0 - size req - res - - 266.605 ms\n',
-  level: 'info',
-  timestamp: '2021-03-28T06:13:25.490Z'
-}
-{
-  message: 'GET 200 /words?group=3&page=0 - size req - res 15412 - 1867.133 ms\n',
-  level: 'info',
-  timestamp: '2021-03-28T07:58:12.560Z'
+
 }
