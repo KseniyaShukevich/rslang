@@ -15,7 +15,7 @@ const GameLayout: React.FC<IProps> = ({
   isStartLayout,
   isEndLayout,
   setIsEndLayout,
-  setIsStartLayout, 
+  setIsStartLayout,
   children
 }: IProps) => {
 
