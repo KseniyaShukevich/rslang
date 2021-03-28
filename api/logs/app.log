@@ -2619,3 +2619,13 @@
   level: 'info',
   timestamp: '2021-03-28T11:49:37.401Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-28T12:01:45.050Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-28T12:01:45.090Z'
+}

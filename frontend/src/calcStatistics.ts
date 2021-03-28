@@ -8,6 +8,8 @@ import {
          IStatisticsAllTime,
          IStatisticsOneDay
         } from './interfaces'
+import { ID_LS } from './constants'
+
 
 const addZero = (value: number): string => {
   if (value < 10) {
@@ -170,7 +172,7 @@ export const clearTodayStatistics = async (
   );
 }
 
-export const addToStatistics = async (
+export const addToDBStatistics = async (
   userId: string,
   token: string,
   miniGame: MiniGame,
@@ -199,4 +201,17 @@ export const addToStatistics = async (
       },
       token
     );
+}
+
+export const addToLSStatistics = (
+  miniGame: MiniGame,
+  countLearnedWords: number,
+  correctAnswers: number,
+  wrongAnswers: number,
+  longestCorrectAnswers: number
+) => {
+  const oldStatistics = localStorage.getItem(`${ID_LS}statistics`);
+  if (oldStatistics) {
+    
+  }
 }

@@ -6,4 +6,4 @@ export const PAGES: string[] = ['Страница 1', 'Страница 2', 'С�
 
 export const FILESPATH = 'https://raw.githubusercontent.com/KseniyaShukevich/rslang-data/master/';
 
-
+export const ID_LS: string = 'fdfldl54s';
