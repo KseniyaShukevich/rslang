@@ -77,8 +77,10 @@ const BurgerMenu: React.FC = () => {
       >
         <ul className={classes.menuList}>
           <li className={classes.menuListItem}><Link className={classes.link} to="/tutorial">Электронный учебник</Link></li>
-          <li className={classes.menuListItem}><Link className={classes.link} to="/ResultOfMiniGame">Мини-игры</Link></li>
+          <li className={classes.menuListItem}><Link className={classes.link} to="/mini-games">Мини-игры</Link></li>
           <li className={classes.menuListItem}><Link className={classes.link} to="/statistics">Статистика</Link></li>
+          <li className={classes.menuListItem}><Link className={classes.link} to="/resultOfMiniGame">Статистика</Link></li>
+
         </ul>
       </div>
 
