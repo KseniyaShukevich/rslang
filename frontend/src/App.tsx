@@ -1,10 +1,11 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
-import { Container, ThemeProvider } from "@material-ui/core";
+import { Route } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core";
 import { CSSTransition } from "react-transition-group";
 
 import { mainStyles, theme } from "./mui-style";
-
+import { CloudinaryContext } from 'cloudinary-react';
+import CLOUDNAME from './constants/CLOUDNAME';
 import MiniGames from './components/MiniGames'
 import Statistics from './components/Statistics'
 import Settings from './components/Settings'
@@ -15,7 +16,10 @@ import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import PageLayout from "./components/PageLayout";
 import Header from "./components/Header";
-
+import OwnGame from "./pages/OwnGame";
+import AudioGame from "./pages/AudioGame";
+import Sprint from "./pages/Sprint";
+import Savannah from "./pages/Savannah";
 
 interface IRoutes {
   path: string;
@@ -36,7 +40,10 @@ const routes: IRoutes[] = [
   { path: "/settings",                   Component: Settings },
   { path: "/statistics",                 Component: Statistics },
   { path: "/mini-games",                 Component: MiniGames },
-  { path: "/mini-games/:game",           Component: Mock },
+  { path: "/savannah",                   Component: Savannah },
+  { path: "/audio",                      Component: AudioGame },
+  { path: "/sprint",                     Component: Sprint },
+  { path: "/owngame",                    Component: OwnGame },
   { path: "/log-in",                     Component: Login },
   { path: "/sign-up",                    Component: SignUp },
   { path: "/",                           Component: HomePage },
@@ -46,6 +53,8 @@ function App() {
   const classes = mainStyles();
 
   return (
+    <CloudinaryContext cloudName={CLOUDNAME}>
+
     <ThemeProvider theme={theme}>
       <div className={classes.page} >
         {<Header />}
@@ -60,9 +69,11 @@ function App() {
             )}
           </Route>
         ))}
-        {/* <Redirect from="*" to="" /> */}
+        {/* <Redirect from="*" to="" /> TODO resolve redirect */}
       </div>
     </ThemeProvider>
+    </CloudinaryContext>
+
   );
 }
 

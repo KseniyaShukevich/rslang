@@ -1,12 +1,10 @@
-import React from 'react';
-
-
+import React, { useState } from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
-
+import { Redirect } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -33,6 +31,13 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '16px',
         textAlign: 'center',
     },
+    h2: {
+        color: '#7e919f',
+        maxWidth: '288px',
+        fontSize: '16px',
+        textAlign: 'center',
+        marginBottom: theme.spacing(1),
+    },
     btn: {
         width:'80%',
         marginTop:'30px',
@@ -41,24 +46,31 @@ const useStyles = makeStyles((theme) => ({
 
 
 type Props = {
-    open: boolean,
-    setOpen: any
+    isOpen: boolean,
+    setIsOpen: (value: boolean) => void
 }
 
 
-const ModalDeleteWord: React.FC<Props> = ({open, setOpen}) => {
+const ModalCloseGame: React.FC<Props> = ({isOpen, setIsOpen}) => {
     const classes = useStyles();
+    const [isCloseGame, setIsCloseGame] = useState<boolean>(false);
 
     const handleClose = () => {
-        setOpen(false);
+      setIsOpen(false);
+    };
+
+    const closeGame = () => {
+      setIsOpen(false);
+      setIsCloseGame(true);
     };
 
     return (
         <div>
+            { isCloseGame && <Redirect to='/mini-games' /> }
             <Modal
 
                 className={classes.modal}
-                open={open}
+                open={isOpen}
                 onClose={handleClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
@@ -66,16 +78,17 @@ const ModalDeleteWord: React.FC<Props> = ({open, setOpen}) => {
                     timeout: 500,
                 }}
             >
-                <Fade in={open}>
+                <Fade in={isOpen}>
                     <div className={classes.paper}>
-                        <div className={classes.h1}>Вы точно хотите удалить эти слова из вашего словаря?</div>
+                        <div className={classes.h1}>Вы точно хотите покинуть игру?</div>
+                        <div className={classes.h2}>Результат игры не будет сохранен.</div>
                         <div>
-                            <Button className={classes.btn} onClick={() => handleClose()} variant="contained" color="primary">
-                                Удалить слова
+                            <Button className={classes.btn} onClick={closeGame} variant="contained" color="primary">
+                                Покинуть
                             </Button>
                         </div>
                         <div>
-                            <Button className={classes.btn} onClick={() => handleClose()} color="primary">
+                            <Button className={classes.btn} onClick={handleClose} color="primary">
                                 отмена
                             </Button>
                         </div>
@@ -86,4 +99,4 @@ const ModalDeleteWord: React.FC<Props> = ({open, setOpen}) => {
     );
 }
 
-export default ModalDeleteWord;
+export default ModalCloseGame;
