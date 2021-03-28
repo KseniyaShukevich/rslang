@@ -79,15 +79,13 @@ const Savannah: React.FC = () => {
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && wordsArray) {
-      generationWords!.current = getWordsForGame(wordsArray, 5);
+      generationWords.current = getWordsForGame(wordsArray, 5);
     }
   }, [wordsArray, isStartLayout, isEndLayout]);
 
   const step = () => {
     if (generationWords.current) {
-      const word = generationWords.current[0];
-      const arrayWords = generationWords.current[1];
-      const func = generationWords.current[2];
+      const [ word, arrayWords, func ] = generationWords.current;
       console.log(word, arrayWords);
       generationWords.current = func();
     } else {
