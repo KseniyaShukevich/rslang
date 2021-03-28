@@ -3,12 +3,13 @@ import "toastr/build/toastr.min.css";
 
 export default (message: string, type = MessageType.Error) => {
   toastr.options = {
-    positionClass: "toast-top-center",
-    hideDuration: 1500,
-    timeOut: 1500
+    positionClass: "toast-top-right",
+    hideDuration: 2000,
+    timeOut: 2000
   };
   toastr.clear();
-  setTimeout(() => toastr[type](message), 200);
+  toastr[type](message)
+  // setTimeout(() => toastr[type](message), 200);
 };
 
 enum MessageType {
