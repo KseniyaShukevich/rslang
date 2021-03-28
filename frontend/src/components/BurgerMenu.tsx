@@ -56,7 +56,6 @@ const BurgerMenu: React.FC = () => {
   // const dispatch = useDispatch();
   const classes = useStyles();
   const [isSideBarOpened, setIsSideBarOpened] = useState(false);
-  console.log('isSideBarOpened', isSideBarOpened)
 
   return (
     <Route>
@@ -80,6 +79,8 @@ const BurgerMenu: React.FC = () => {
           <li className={classes.menuListItem}><Link className={classes.link} to="/tutorial">Электронный учебник</Link></li>
           <li className={classes.menuListItem}><Link className={classes.link} to="/mini-games">Мини-игры</Link></li>
           <li className={classes.menuListItem}><Link className={classes.link} to="/statistics">Статистика</Link></li>
+          <li className={classes.menuListItem}><Link className={classes.link} to="/resultOfMiniGame">Статистика</Link></li>
+
         </ul>
       </div>
 

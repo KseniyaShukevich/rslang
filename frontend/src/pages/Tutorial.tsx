@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PageLayout from "../components/PageLayout";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { Container, Box, Typography, Divider } from "@material-ui/core";
+import { selectUser } from "../slices/userSlice";
+import { useSelector } from "react-redux";
 import background from "../assets/images/background_1.jpg";
 import MenuBookTwoToneIcon from "@material-ui/icons/MenuBookTwoTone";
 import BookTwoToneIcon from '@material-ui/icons/BookTwoTone';
@@ -37,6 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Tutorial: React.FC = () => {
   const classes = useStyles();
+  const user = useSelector(selectUser);
   const [isDictionary, setIsDictionary] = useState<Boolean>(false);
 
   return (
@@ -54,6 +57,7 @@ const Tutorial: React.FC = () => {
                 </Typography>
               </Box>
               <TextbookDepartmentsList />
+              { user &&
                 <Box>
                   <Divider variant="middle" />
                   <Box className={classes.titleWrapper} color="text.primary">
@@ -63,7 +67,7 @@ const Tutorial: React.FC = () => {
                     </Typography>
                   </Box>
                   <DictionarySection setIsDictionary={setIsDictionary} />
-                </Box>
+                </Box>}
             </Box>
           </Container>
         )

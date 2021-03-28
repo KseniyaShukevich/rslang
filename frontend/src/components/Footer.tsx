@@ -7,7 +7,9 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
     backgroundColor: theme.palette.primary.main,
     bottom: 0,
     padding: theme.spacing(1.5, 0, 1.5),
-    borderRadius: '8px',
+    borderTopRightRadius: 4,
+    borderTopLeftRadius: 4,
+
   },
   container: {
     display: "flex",
