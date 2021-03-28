@@ -54,8 +54,8 @@ const GameCard: React.FC<IGame> = (props) => {
   return (
     <Card className={classes.root}>
       <CardActions className={classes.overlay}>
-      <Link to={`/mini-games${href}`}>
-        <Button href={href} size="medium" variant="contained" color="secondary" className={classes.button} endIcon={<SportsEsportsIcon />}>
+      <Link to={href} className={classes.button}>
+        <Button size="medium" variant="contained" color="secondary" endIcon={<SportsEsportsIcon />}>
           Играть
         </Button>
       </Link>

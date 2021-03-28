@@ -1,5 +1,5 @@
-import React from "react";
-import { Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
 import { CSSTransition } from "react-transition-group";
 
@@ -50,28 +50,37 @@ const routes: IRoutes[] = [
 ]
 
 function App() {
+  const [ showHeader, setShowHeader ] = useState(true);
   const classes = mainStyles();
+  const location = useLocation();
+
+  useEffect(() => {
+    const hideHeader = location
+      ? ["/savannah", "/audio", "/sprint", "/owngame"].includes( location.pathname )
+      : false;
+    setShowHeader(!hideHeader)
+  }, [ location ]);
+
 
   return (
     <CloudinaryContext cloudName={CLOUDNAME}>
-
-    <ThemeProvider theme={theme}>
-      <div className={classes.page} >
-        {<Header />}
-        {routes.map(({ path, Component }) => (
-          <Route key={path} exact path={path}>
-            {({ match }) => (
-              <>
-              <CSSTransition in={match != null} timeout={500} classNames="smooth-route" unmountOnExit>
-                <Component />
-              </CSSTransition>
-              </>
-            )}
-          </Route>
-        ))}
-        {/* <Redirect from="*" to="" /> TODO resolve redirect */}
-      </div>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <div className={classes.page} >
+          {showHeader && <Header />}
+          {routes.map(({ path, Component }) => (
+            <Route key={path} exact path={path}>
+              {({ match }) => (
+                <>
+                <CSSTransition in={match != null} timeout={500} classNames="smooth-route" unmountOnExit>
+                  <Component />
+                </CSSTransition>
+                </>
+              )}
+            </Route>
+          ))}
+          {/* <Redirect from="*" to="" /> TODO resolve redirect */}
+        </div>
+      </ThemeProvider>
     </CloudinaryContext>
 
   );
