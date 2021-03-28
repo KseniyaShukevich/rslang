@@ -93,8 +93,6 @@ const TextBookPage: React.FC = () => {
   const classes = useStyles();
 
   useEffect(() => {
-    // общая информация о словах
-    console.log(book, page);
     dispatch(
       fetchWords({
         group: Number(book),

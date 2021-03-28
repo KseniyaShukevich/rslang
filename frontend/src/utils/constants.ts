@@ -7,23 +7,23 @@ const INIT_USER_WORD: Object = {
   optional: {
     mode: "learning",
     miniGames: {
-          savannah: {
-            correctAnswers: 0,
-            wrongAnswers: 0,
-          },
-          audio: {
-            correctAnswers: 0,
-            wrongAnswers: 0,
-          },
-          sprint: {
-            correctAnswers: 0,
-            wrongAnswers: 0,
-          },
-          ownGame: {
-            correctAnswers: 0,
-            wrongAnswers: 0,
-          }
-        }
+      savannah: {
+        correctAnswers: 0,
+        wrongAnswers: 0,
+      },
+      audio: {
+        correctAnswers: 0,
+        wrongAnswers: 0,
+      },
+      sprint: {
+        correctAnswers: 0,
+        wrongAnswers: 0,
+      },
+      ownGame: {
+        correctAnswers: 0,
+        wrongAnswers: 0,
+      }
+    }
   }
 }
 
@@ -89,11 +89,13 @@ const INIT_USER_SETTINGS = {
   isButtons: true
 }
 }
+const DEFAULT_AVATAR: string = 'rslang/avatar_ltzdkha_kkfty4';
 
 export {
   CLOUD_URL,
   CLOUD_NAME,
   INIT_USER_WORD,
+  DEFAULT_AVATAR,
   INIT_USER_STATISTICS,
   INIT_USER_SETTINGS
 }

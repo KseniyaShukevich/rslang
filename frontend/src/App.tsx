@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
-import { Container, ThemeProvider } from "@material-ui/core";
-import {
-  TransitionGroup,
-  CSSTransition
-} from "react-transition-group";
+import React, { useEffect, useState } from "react";
+import { Route, useLocation } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core";
+import { CSSTransition } from "react-transition-group";
 
-import { getWord  } from './requests'
-import { theme } from "./mui-style";
-import Login from './components/Login'
-import SignUp from './components/SignUp'
+import { mainStyles, theme } from "./mui-style";
+import { CloudinaryContext } from 'cloudinary-react';
+import CLOUDNAME from './constants/CLOUDNAME';
 import MiniGames from './components/MiniGames'
 import Statistics from './components/Statistics'
 import Settings from './components/Settings'
@@ -21,65 +17,70 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserWords } from './requests'
 import { selectWords, fetchWords } from './slices/wordsSlice'
 import { clearTodayStatistics } from './calcStatistics'
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
+import PageLayout from "./components/PageLayout";
+import Header from "./components/Header";
+import OwnGame from "./pages/OwnGame";
+import AudioGame from "./pages/AudioGame";
+import Sprint from "./pages/Sprint";
+import Savannah from "./pages/Savannah";
+
+interface IRoutes {
+  path: string;
+  Component: React.FC<{} | any>
+}
+
+const routes: IRoutes[] = [
+  { path: "/tutorial",                   Component: Tutorial },
+  { path: "/tutorial/page/:book/:page",  Component: TextbookPage },
+  { path: "/settings",                   Component: Settings },
+  { path: "/statistics",                 Component: Statistics },
+  { path: "/mini-games",                 Component: MiniGames },
+  { path: "/resultOfMiniGame",           Component: ResultOfMiniGame },
+  { path: "/savannah",                   Component: Savannah },
+  { path: "/audio",                      Component: AudioGame },
+  { path: "/sprint",                     Component: Sprint },
+  { path: "/owngame",                    Component: OwnGame },
+  { path: "/log-in",                     Component: Login },
+  { path: "/sign-up",                    Component: SignUp },
+  { path: "/",                           Component: HomePage },
+]
 
 function App() {
-  const words = useSelector(selectWords);
-  const dispatch = useDispatch();
+  const classes = mainStyles();
+  const location = useLocation();
+  const [ showHeader, setShowHeader ] = useState(true);
 
-  // useEffect(() => {
-  //   dispatch(fetchWords({
-  //     group: 0,
-  //     page: 0,
-  //   }));
-  // }, []);
+  useEffect(() => {
+    const hideHeader = location
+      ? ["/savannah", "/audio", "/sprint", "/owngame"].includes( location.pathname )
+      : false;
+    setShowHeader(!hideHeader)
+  }, [ location ]);
 
-  // const getWords = async () => {
-  //   const userWords = await fetchUserWords(
-  //     userId, token
-  //   );
-  //   console.log(userWords)
-  // }
-
-  // useEffect(() => {
-  //   getWords();
-  //   console.log('JUST WORDS', words);
-  // }, [words]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Switch>
-            <Route exact path="/tutorial">
-              <Tutorial />
+    <CloudinaryContext cloudName={CLOUDNAME}>
+      <ThemeProvider theme={theme}>
+        <div className={classes.page} >
+          {showHeader && <Header />}
+          {routes.map(({ path, Component }) => (
+            <Route key={path} exact path={path}>
+              {({ match }) => (
+                <>
+                <CSSTransition in={match != null} timeout={500} classNames="smooth-route" unmountOnExit>
+                  <Component />
+                </CSSTransition>
+                </>
+              )}
             </Route>
-            <Route exact path="/tutorial/page/:book/:page">
-              <TextbookPage />
-            </Route>
-            <Route path="/savannah">Саванна</Route>
-            <Route path="/audio">Аудиовызов</Route>
-            <Route path="/sprint">Спринт</Route>
-            <Route path="/owngame">Своя игра</Route>
-            <Route path="/settings">
-              <Settings />
-            </Route>
-            <Route path="/statistics">
-              <Statistics />
-            </Route>
-            <Route path="/resultOfMiniGame">
-              <ResultOfMiniGame />
-            </Route>
-            <Route path="/log-in">
-              <Login />
-            </Route>
-            <Route path="/sign-up">
-              <SignUp />
-            </Route>
-            <Route path="/">
-              <HomePage />
-            </Route>
-          </Switch>
-      </Router>
-    </ThemeProvider>
+          ))}
+          {/* <Redirect from="*" to="" /> TODO resolve redirect */}
+        </div>
+      </ThemeProvider>
+    </CloudinaryContext>
+
   );
 }
 

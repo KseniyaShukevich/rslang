@@ -3,9 +3,11 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { ICreds, IUserResponse, login } from '../services/authorisation.service';
-import { selectUser, userSignedIn } from '../slices/userSlice';
-import PageLayout from './PageLayout'
+import { ICreds, IUserResponse, login } from '../../services/authorisation.service';
+import { selectUser, signedUser } from '../../slices/userSlice';
+import PageLayout from '../PageLayout'
+import Footer from '../Footer';
+import notificate from '../../utils/notificator';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       display: 'flex',
       width: '100%',
-      paddingBottom: '7rem'
+      paddingTop: 238 // TODO refactor for adaptive
     },
     root: {
       display: 'flex',
@@ -39,6 +41,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Login: React.FC = () => {
   const classes = useStyles();
+  let [loading, setLoading] = useState(false);
+
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   let history = useHistory();
@@ -62,23 +66,27 @@ const Login: React.FC = () => {
     event.preventDefault();
     if (isFormValid()) {
       // set loader
+      setLoading(true)
+
       const response = await login(creds);
-      if (response.status >= 400) {
-        alert(await response.text())
-      } else {
+      if (response && response.status >= 400) {
+        notificate(await response.text());
+      } else if (response ) {
         const userResponse: IUserResponse = await response.json();
 
-        dispatch(userSignedIn(userResponse));
+        dispatch(signedUser(userResponse));
         history.push('/');
       }
+      setLoading(false)
+
     }
   }
 
   const isFormValid = () => {
-      setErrors({
-        email: creds.email.length ? '' : 'Обязательное поле',
-        password: creds.password.length ? '' : 'Обязательное поле'
-      });
+    setErrors({
+      email: creds.email.length ? '' : 'Обязательное поле',
+      password: creds.password.length ? '' : 'Обязательное поле'
+    });
     return creds.email.length && creds.password.length
   }
 
@@ -102,7 +110,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <PageLayout>
+    <PageLayout pageName={'log-in'} showLoader={loading}>
       <div className={classes.wrapper}>
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
