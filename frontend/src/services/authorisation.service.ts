@@ -13,11 +13,11 @@ const logup = async (user: IUser) => {
     });
     return await response.json();
   } catch(error) {
-    console.log(error); // TODO handle error
+    alert(`Что-то пошло не так', ${error}`); // TODO handle error
   }
 }
 
-const login = async (user: ICreds): Promise<any> => { // TODO replace any
+const login = async (creds: ICreds): Promise<any> => { // TODO replace any
   try {
     const response = await fetch(`/signin`, {
       method: "POST",
@@ -25,7 +25,7 @@ const login = async (user: ICreds): Promise<any> => { // TODO replace any
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(creds),
     });
     return response;
   } catch(error) {
@@ -62,7 +62,7 @@ export interface ICreds {
 }
 
 export interface IUser {
-  imageId: string;
+  imageId?: string;
   name: string;
   email: string;
   password: string;
