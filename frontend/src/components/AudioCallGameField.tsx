@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    height: '100vh',
+    // height: '100%',
   },
   audioListen: {
     backgroundColor: 'hsla(0,0%,100%,.05)',

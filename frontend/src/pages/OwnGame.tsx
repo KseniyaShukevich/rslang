@@ -95,10 +95,10 @@ const OwnGame: React.FC = () => {
   });
 
 	return (
-			<Box className={classes.box} id='savannah'>
+			<Box className={classes.box} id='game'>
         <Box className={classes.topBox}>
           <FullscreenBtn
-            game={'savannah'}
+            game={'game'}
             isFullscreen={isFullscreen}
           />
           <Box className={classes.lifes}>
