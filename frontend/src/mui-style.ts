@@ -71,9 +71,9 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
       '&:after': {
         content: '""', // AAAA!
         backgroundImage: 'url(/static/media/background_2.74c048aa.jpg)',
-        backgroundPosition: 'right 5% bottom -20px',
+        backgroundPosition: 'right -30px bottom 30px',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '50%',
+        backgroundSize: '40%',
         opacity: 0.3,
         top: 0,
         left: 0,
@@ -82,6 +82,10 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
         position: 'absolute',
         zIndex: -1,
       }
+    },
+    mainContainer: {
+      padding: theme.spacing(0, 3),
+      flex: 1
     },
     loaderContainer: {
       position: 'absolute',
@@ -96,7 +100,6 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
       justifyContent: 'center',
       paddingTop: '30vh',
       transition: 'all 500ms',
-
     },
     showLoaderContainer: {
       zIndex: 1000,
