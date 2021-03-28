@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       display: 'flex',
       width: '100%',
-      paddingBottom: '7rem'
     },
     root: {
       display: 'flex',
@@ -75,11 +74,6 @@ const SignUp: React.FC = () => {
   const [imageUrl, setImageUrl] = useState<string>(`url('${CLOUD_URL}/${CLOUD_NAME}/${DEFAULT_AVATAR}')`);
 
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const name = event.target.value;
-    setNewUser({ ...newUser, name });
-  }
-
   function handlePhotoSelection(event: React.ChangeEvent<HTMLInputElement>) {
     if (!event.target.files || !event.target.files[0]) { return; }
 
@@ -104,6 +98,11 @@ const SignUp: React.FC = () => {
     imageContainer?.appendChild(img)
   }
 
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.value;
+    setNewUser({ ...newUser, name });
+  }
+
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const email = event.target.value;
     setNewUser({ ...newUser, email });
@@ -124,25 +123,32 @@ const SignUp: React.FC = () => {
       const imageId: string = imageObj ? await uploadImage(imageObj, formData) : DEFAULT_AVATAR;
 
       const response = await logup({ ...newUser, imageId });
-      if (response.error) {
-        const errorMessage = response.error.errors[0].message;
-        notificate(errorMessage);
-      } else if (response.status >= 400) {
+
+      // if (response && response.error) {
+      //   const errorMessage = response.error.errors[0].message;
+      //   notificate(errorMessage);
+      // } else
+
+      if ( response && response.status === 417) {
         notificate(await response.text())
-      } else {
-        const { email, password } = newUser
-        const response = await login({ email, password });
-        if (response.status >= 400) {
-          notificate(await response.text());
+      } else if ( response ){
+        const signedResponse = await response.json();
+
+        if (signedResponse.error) {
+          const errorMessage = signedResponse.error.errors[0].message;
+          notificate(errorMessage);
         } else {
-          const userResponse: IUserResponse = await response.json();
+          const { email, password } = newUser
+          const loginResponse = await login({ email, password });
 
-          dispatch(signedUser(userResponse));
-          history.push('/');
+          if (loginResponse && loginResponse.status >= 400) {
+            notificate(await loginResponse.text());
+          } else if (loginResponse) {
+            const userResponse: IUserResponse = await loginResponse.json();
+            dispatch(signedUser(userResponse));
+            history.push('/');
+          }
         }
-
-        // dispatch(signedUser(userResponse));
-        // history.push('/');
       }
       setLoading(false)
 

@@ -1,7 +1,6 @@
 import { CLOUD_NAME } from "../utils/constants";
 
-const logup = async (user: IUser) => {
-  // event.preventDefault();
+const signUp = async (user: IUser) => {
   try {
     const response = await fetch(`/users`, {
       method: 'POST',
@@ -11,13 +10,13 @@ const logup = async (user: IUser) => {
       },
       body: JSON.stringify(user),
     });
-    return await response.json();
+    return response;
   } catch(error) {
     alert(`Что-то пошло не так', ${error}`); // TODO handle error
   }
 }
 
-const login = async (creds: ICreds): Promise<any> => { // TODO replace any
+const login = async (creds: ICreds) => {
   try {
     const response = await fetch(`/signin`, {
       method: "POST",
@@ -54,7 +53,7 @@ const uploadImage = async (file: any, formData: FormData) => {
   return imageId;
 }
 
-export { logup, login, uploadImage };
+export { signUp as logup, login, uploadImage };
 
 export interface ICreds {
   email: string;
