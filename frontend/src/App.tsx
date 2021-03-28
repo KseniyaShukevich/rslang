@@ -26,14 +26,6 @@ interface IRoutes {
   Component: React.FC<{} | any>
 }
 
-const Mock: React.FC<{}> = () => {
-  return (
-    <PageLayout>
-      <span>Super-cool Game!</span>
-    </PageLayout>
-  );
-};
-
 const routes: IRoutes[] = [
   { path: "/tutorial",                   Component: Tutorial },
   { path: "/tutorial/page/:book/:page",  Component: TextbookPage },
@@ -50,9 +42,9 @@ const routes: IRoutes[] = [
 ]
 
 function App() {
-  const [ showHeader, setShowHeader ] = useState(true);
   const classes = mainStyles();
   const location = useLocation();
+  const [ showHeader, setShowHeader ] = useState(true);
 
   useEffect(() => {
     const hideHeader = location

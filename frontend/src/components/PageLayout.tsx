@@ -30,18 +30,18 @@ const PageLayout: React.FC<IProps> = ({ children, pageName, showLoader }: IProps
     margin: 0 auto;
   `;
 
-  const showFooter = ![ 'sign-up', 'log-in'].includes(pageName || '')
+  const showBackground = [ 'sign-up', 'log-in'].includes(pageName!)
 
   return (
     <div className={classes.page} data-page-name={pageName}>
       <div className={classes.loaderContainer + ' ' + (loading ? classes.showLoaderContainer : '')}>
         <HashLoader color={theme.palette.primary.main} loading={true} css={override} size={150} />
       </div>
-      <div className={`${showFooter ? classes.mainWrapper: classes.mainWrapperWithBackground} main-wrapper` }>
-        <Container maxWidth="lg">
+      <div className={`${!showBackground ? classes.mainWrapper: classes.mainWrapperWithBackground} main-wrapper` }>
+        <Container maxWidth="lg" className={classes.mainContainer}>
           {children}
         </Container>
-        {showFooter && <Footer />}
+        <Footer />
       </div>
     </div>
   );

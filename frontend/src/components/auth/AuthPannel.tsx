@@ -70,8 +70,8 @@ const LogOutView: React.FC = () => {
 
   return (
     <>
-      <Typography variant="body1" display="inline" color="textPrimary">
-        {user?.name}
+      <Typography variant="body1" display="inline" color="inherit">
+        <strong>{user?.name}</strong>
       </Typography>
       <Box
         className={classes.image}
