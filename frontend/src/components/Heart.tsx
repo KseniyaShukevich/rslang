@@ -13,17 +13,21 @@ const Heart: React.FC<IProps> = ({ lifes }: IProps) => {
   return (
     <>
       {
-        arr.map((el) => {
-          if (el)
-                return <Favorite
-                style={{color: 'white'}}
-                fontSize="small"
-                />
-          return <FavoriteBorder
-          style={{color: 'white'}}
-          fontSize="small"
-          />
-        })
+        arr.map((el, i) =>
+          el ? (
+            <Favorite
+              style={{color: 'white'}}
+              fontSize="small"
+              key={i}
+            />
+          ) : (
+            <FavoriteBorder
+              style={{color: 'white'}}
+              fontSize="small"
+              key={i}
+            />
+          )
+        )
       }
     </>
   );

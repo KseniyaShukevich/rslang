@@ -2698,3 +2698,38 @@
   level: 'info',
   timestamp: '2021-03-28T13:12:14.445Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-28T13:17:18.711Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-28T13:17:18.742Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 243.806 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T13:20:30.714Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 307.306 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T13:20:32.527Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 185.065 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T13:20:42.034Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 463.016 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T15:01:01.182Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 194.809 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T15:18:49.347Z'
+}
