@@ -12,6 +12,11 @@ import Settings from './components/Settings'
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
 import TextbookPage from "./pages/TextbookPage";
+import ResultOfMiniGame from "./components/ResultOfMiniGame";
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUserWords } from './requests'
+import { selectWords, fetchWords } from './slices/wordsSlice'
+import { clearTodayStatistics } from './calcStatistics'
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import PageLayout from "./components/PageLayout";
@@ -32,6 +37,7 @@ const routes: IRoutes[] = [
   { path: "/settings",                   Component: Settings },
   { path: "/statistics",                 Component: Statistics },
   { path: "/mini-games",                 Component: MiniGames },
+  { path: "/resultOfMiniGame",           Component: ResultOfMiniGame },
   { path: "/savannah",                   Component: Savannah },
   { path: "/audio",                      Component: AudioGame },
   { path: "/sprint",                     Component: Sprint },
