@@ -9,7 +9,6 @@ import {
         createStyles,
         makeStyles,
       } from '@material-ui/core/styles'
-import CLOUDURL from '../constants/CLOUDURL'
 import Heart from '../components/Heart'
 import FullscreenBtn from '../components/FullscreenBtn'
 import CloseBtn from '../components/CloseBtn'
@@ -18,6 +17,7 @@ import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
 import AudioCallGameField from "../components/AudioCallGameField";
+import { IWord } from '../interfaces'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -58,12 +58,18 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AudioGame: React.FC = () => {
 	const classes = useStyles();
+
+
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
-  const lifes: number = 3;
+  const [lifes, setLifes]= useState<number>(5);
   const [level, setLevel] = useState<number>(0);
-  const [progress, setProgress] = useState<number>(0);
+  //const [progress, setProgress] = useState<number>(0);
+
+  const [trueWord, setTrueWord] = useState<IWord | null>(null);
+  const [wordArray, setWordArray] = useState<Array<IWord> | null>(null);
+  //const [isEnd, setIsEnd] = useState<boolean>(false);
 
   const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -87,9 +93,11 @@ const AudioGame: React.FC = () => {
     if (generationWords.current) {
       const [ word, arrayWords, func ] = generationWords.current;
       console.log(word, arrayWords);
+      setTrueWord(word)
+      setWordArray(arrayWords)
       generationWords.current = func();
     } else {
-      console.log('END!');
+      setIsEndLayout(true)
     }
   }
 
@@ -118,8 +126,13 @@ const AudioGame: React.FC = () => {
             {/* В котейнере внизу должна быть сама игра */}
             <Container maxWidth='md' className={classes.containerBtn}>
               <div >
-                {(progress !== -1) && <AudioCallGameField level={level} progress={progress} setProgress={setProgress}/>}
-
+                 <AudioCallGameField trueWord={trueWord}
+                                     wordArray={wordArray}
+                                     setLifes={setLifes}
+                                     lifes={lifes}
+                                     step={step}
+                                     level={level}
+                                                          />
                 <div style={{position: 'absolute', bottom: 0}}>
                   <span>Кнопки для понимания, как это работает</span>
                   <Button color='primary' onClick={step}>
