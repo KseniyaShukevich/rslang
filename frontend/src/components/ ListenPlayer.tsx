@@ -22,8 +22,8 @@ type Props = {
 
 
 
-  setIsAudio: () => void
-  listenAudio: () => void
+  setIsAudio: any
+  listenAudio: any
 }
 
 

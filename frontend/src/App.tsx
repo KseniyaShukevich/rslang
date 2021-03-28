@@ -20,6 +20,7 @@ import TextbookPage from "./pages/TextbookPage";
 import Savannah from './pages/Savannah'
 import { selectWords, fetchWords } from './slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import AudioGame from './pages/AudioGame'
 
 function App() {
   return (
@@ -36,7 +37,9 @@ function App() {
               <Route path="/savannah">
                 <Savannah />
               </Route>
-              <Route path="/audio">Аудиовызов</Route>
+              <Route path="/audio">
+                <AudioGame />
+              </Route>
               <Route path="/sprint">Спринт</Route>
               <Route path="/owngame">Своя игра</Route>
               <Route path="/settings">
