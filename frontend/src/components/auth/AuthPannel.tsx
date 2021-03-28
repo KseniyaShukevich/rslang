@@ -46,9 +46,6 @@ const AuthPannel: React.FC = () => {
             <Link to="/log-in">Войти</Link>
           </Button>
         )}
-      <Button color="inherit" onClick={() => notificate('test')}>
-        ааааа
-      </Button>
     </div>
   );
 }

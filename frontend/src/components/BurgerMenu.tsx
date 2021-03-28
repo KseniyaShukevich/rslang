@@ -56,7 +56,6 @@ const BurgerMenu: React.FC = () => {
   // const dispatch = useDispatch();
   const classes = useStyles();
   const [isSideBarOpened, setIsSideBarOpened] = useState(false);
-  console.log('isSideBarOpened', isSideBarOpened)
 
   return (
     <Route>

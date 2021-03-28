@@ -7,23 +7,23 @@ const INIT_USER_WORD: Object = {
   optional: {
     mode: "learning",
     miniGames: {
-          savannah: {
-            correctAnswers: 0,
-            wrongAnswers: 0,
-          },
-          audio: {
-            correctAnswers: 0,
-            wrongAnswers: 0,
-          },
-          sprint: {
-            correctAnswers: 0,
-            wrongAnswers: 0,
-          },
-          ownGame: {
-            correctAnswers: 0,
-            wrongAnswers: 0,
-          }
-        }
+      savannah: {
+        correctAnswers: 0,
+        wrongAnswers: 0,
+      },
+      audio: {
+        correctAnswers: 0,
+        wrongAnswers: 0,
+      },
+      sprint: {
+        correctAnswers: 0,
+        wrongAnswers: 0,
+      },
+      ownGame: {
+        correctAnswers: 0,
+        wrongAnswers: 0,
+      }
+    }
   }
 }
 

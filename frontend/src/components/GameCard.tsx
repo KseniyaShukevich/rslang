@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { IGame } from '../interfaces';
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -52,24 +53,26 @@ const GameCard: React.FC<IGame> = (props) => {
 
   return (
     <Card className={classes.root}>
-        <CardActions className={classes.overlay}>
-          <Button href={href} size="medium" variant="contained" color="secondary" className={classes.button} endIcon={<SportsEsportsIcon />}>
-            Играть
-          </Button>
-        </CardActions>
-        <CardMedia
-          className={classes.media}
-          image={image}
-          title={name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2" color="primary">
-            {name}
-          </Typography>
-          <Typography variant="body2" color="textPrimary" component="p">
-            {description}
-          </Typography>
-        </CardContent>
+      <CardActions className={classes.overlay}>
+      <Link to={`/mini-games${href}`}>
+        <Button href={href} size="medium" variant="contained" color="secondary" className={classes.button} endIcon={<SportsEsportsIcon />}>
+          Играть
+        </Button>
+      </Link>
+      </CardActions>
+      <CardMedia
+        className={classes.media}
+        image={image}
+        title={name}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2" color="primary">
+          {name}
+        </Typography>
+        <Typography variant="body2" color="textPrimary" component="p">
+          {description}
+        </Typography>
+      </CardContent>
     </Card>
   );
 }

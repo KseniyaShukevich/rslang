@@ -1,8 +1,11 @@
-import { Box, Button, createStyles, IconButton, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core';
-import { Redirect, useHistory } from 'react-router-dom';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
 import React, { useEffect, useRef, useState } from 'react'
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Box, Button, createStyles, IconButton, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
+
+
+import notificate from '../../utils/notificator';
 import { ICreds, IUser, IUserResponse, login, logup } from '../../services/authorisation.service';
 import { selectUser, signedUser } from '../../slices/userSlice';
 import PageLayout from '../PageLayout'
@@ -58,35 +61,18 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const SignUp: React.FC = () => {
   const classes = useStyles();
+  let [loading, setLoading] = useState(false);
+
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   let history = useHistory();
   const inputFile = useRef<HTMLInputElement>(null);
-
 
   const [newUser, setNewUser] = useState<IUser>({ name: '', email: '', imageId: '',password: '' });
   const [imageObj, setImageObj] = useState<File | null>(null);
   const [showPswd, setShowPswd] = useState<boolean>(false);
   const [errors, setErrors] = useState<IUser>({ name: '', email: '', password: '' });
   const [imageUrl, setImageUrl] = useState<string>(`url('${CLOUD_URL}/${CLOUD_NAME}/${DEFAULT_AVATAR}')`);
-
-
-
-//   const uploadImage = async (file: any, formData: FormData) => {
-//     let imageId: string ='travelApp/avatar_ltzdkha';
-
-//     if (file) {
-//       const upload_preset: string = 'ujwcmlol';
-//       formData.append("file", file);
-//       formData.append("upload_preset", upload_preset);
-//       const data = await requestToCloudinary(formData);
-//       imageId = data.public_id;
-//     }
-
-//     return imageId;
-// }
-
-
 
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -132,20 +118,34 @@ const SignUp: React.FC = () => {
     event.preventDefault();
     if (isFormValid()) {
       // set loader
+      setLoading(true)
 
       const formData = new FormData();
-
       const imageId: string = imageObj ? await uploadImage(imageObj, formData) : DEFAULT_AVATAR;
 
       const response = await logup({ ...newUser, imageId });
-      if (response.status >= 400) {
-        alert(await response.text())
+      if (response.error) {
+        const errorMessage = response.error.errors[0].message;
+        notificate(errorMessage);
+      } else if (response.status >= 400) {
+        notificate(await response.text())
       } else {
-        const userResponse: IUserResponse = await response.json();
+        const { email, password } = newUser
+        const response = await login({ email, password });
+        if (response.status >= 400) {
+          notificate(await response.text());
+        } else {
+          const userResponse: IUserResponse = await response.json();
+
+          dispatch(signedUser(userResponse));
+          history.push('/');
+        }
 
         // dispatch(signedUser(userResponse));
         // history.push('/');
       }
+      setLoading(false)
+
     }
   }
 
@@ -161,7 +161,7 @@ const SignUp: React.FC = () => {
   const handleFocus = (field: 'name' | 'email' | 'password') => {
     switch (field) {
       case 'name':
-        setErrors({ ...errors, email: ''});
+        setErrors({ ...errors, name: ''});
         break;
       case 'email':
         setErrors({ ...errors, email: ''});
@@ -181,7 +181,7 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <PageLayout>
+    <PageLayout pageName={'sign-up'} showLoader={loading}>
       <div className={classes.wrapper}>
         <form className={classes.root} noValidate autoComplete="off">
           <label className={classes.photoLable}>

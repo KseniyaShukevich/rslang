@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
 import { Container, ThemeProvider } from "@material-ui/core";
-import {
-  TransitionGroup,
-  CSSTransition
-} from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
-import { theme } from "./mui-style";
+import { mainStyles, theme } from "./mui-style";
 
 import MiniGames from './components/MiniGames'
 import Statistics from './components/Statistics'
@@ -14,70 +11,57 @@ import Settings from './components/Settings'
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
 import TextbookPage from "./pages/TextbookPage";
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchUserWords } from './requests'
-import { selectWords, fetchWords } from './slices/wordsSlice'
-import { clearTodayStatistics } from './calcStatistics'
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
+import PageLayout from "./components/PageLayout";
+import Header from "./components/Header";
+
+
+interface IRoutes {
+  path: string;
+  Component: React.FC<{} | any>
+}
+
+const Mock: React.FC<{}> = () => {
+  return (
+    <PageLayout>
+      <span>Super-cool Game!</span>
+    </PageLayout>
+  );
+};
+
+const routes: IRoutes[] = [
+  { path: "/tutorial",                   Component: Tutorial },
+  { path: "/tutorial/page/:book/:page",  Component: TextbookPage },
+  { path: "/settings",                   Component: Settings },
+  { path: "/statistics",                 Component: Statistics },
+  { path: "/mini-games",                 Component: MiniGames },
+  { path: "/mini-games/:game",           Component: Mock },
+  { path: "/log-in",                     Component: Login },
+  { path: "/sign-up",                    Component: SignUp },
+  { path: "/",                           Component: HomePage },
+]
 
 function App() {
-  const words = useSelector(selectWords);
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchWords({
-  //     group: 0,
-  //     page: 0,
-  //   }));
-  // }, []);
-
-  // const getWords = async () => {
-  //   const userWords = await fetchUserWords(
-  //     userId, token
-  //   );
-  //   console.log(userWords)
-  // }
-
-  // useEffect(() => {
-  //   getWords();
-  //   console.log('JUST WORDS', words);
-  // }, [words]);
+  const classes = mainStyles();
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Switch>
-            <Route exact path="/tutorial">
-              <Tutorial />
-            </Route>
-            <Route exact path="/tutorial/page/:book/:page">
-              <TextbookPage />
-            </Route>
-            <Route path="/savannah">Саванна</Route>
-            <Route path="/audio">Аудиовызов</Route>
-            <Route path="/sprint">Спринт</Route>
-            <Route path="/owngame">Своя игра</Route>
-            <Route path="/settings">
-              <Settings />
-            </Route>
-            <Route path="/statistics">
-              <Statistics />
-            </Route>
-            <Route path="/mini-games">
-              <MiniGames />
-            </Route>
-            <Route path="/log-in">
-              <Login />
-            </Route>
-            <Route path="/sign-up">
-              <SignUp />
-            </Route>
-            <Route path="/">
-              <HomePage />
-            </Route>
-          </Switch>
-      </Router>
+      <div className={classes.page} >
+        {<Header />}
+        {routes.map(({ path, Component }) => (
+          <Route key={path} exact path={path}>
+            {({ match }) => (
+              <>
+              <CSSTransition in={match != null} timeout={500} classNames="smooth-route" unmountOnExit>
+                <Component />
+              </CSSTransition>
+              </>
+            )}
+          </Route>
+        ))}
+        <Redirect from="*" to="" />
+      </div>
     </ThemeProvider>
   );
 }
