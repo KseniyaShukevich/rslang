@@ -60,7 +60,7 @@ function App() {
             )}
           </Route>
         ))}
-        <Redirect from="*" to="" />
+        {/* <Redirect from="*" to="" /> */}
       </div>
     </ThemeProvider>
   );
