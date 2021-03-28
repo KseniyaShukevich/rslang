@@ -2,6 +2,7 @@ import React, { useState, ReactElement } from 'react'
 import {
          Button,
         } from '@material-ui/core'
+import StartLayout from './StartLayout'
 
 interface IProps {
   isStartLayout: boolean
@@ -24,12 +25,7 @@ const GameLayout: React.FC<IProps> = ({
       <>
         {
           isStartLayout && (
-            <div style={{color: 'white', textAlign: 'center'}}>
-              START LAYOUT
-              <Button color='primary' onClick={() => {setIsStartLayout(false)}}>
-                Начать игру
-              </Button>
-            </div>
+            <StartLayout setIsStartLayout={setIsStartLayout} />
           )
         }
 

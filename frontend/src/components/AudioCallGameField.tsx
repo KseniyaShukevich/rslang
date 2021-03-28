@@ -12,6 +12,10 @@ import ListenPlayer from "./ ListenPlayer";
 import WinMusic from "./WinMusic";
 import LoseMusic from "./LoseMusic";
 
+import LinearProgress from "@material-ui/core/LinearProgress";
+import {selectWords, fetchWords} from "../slices/wordsSlice";
+import {useDispatch, useSelector} from "react-redux";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    height: '100vh',
+    // height: '100%',
   },
   audioListen: {
     backgroundColor: 'hsla(0,0%,100%,.05)',
@@ -124,10 +128,13 @@ const useStyles = makeStyles((theme) => ({
 type Props = {
   setProgress: any,
   progress: number,
+  level:number,
+/*
   subarray: any,
+*/
 }
 
-const AudioCallGameField: React.FC<Props> = ({setProgress, progress, subarray}) => {
+const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => {
   const classes = useStyles();
 
   const [isChoice, setIsChoice] = useState<boolean>(false);
@@ -137,6 +144,25 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, subarray}) 
   const [isWinMusic, setIsWinMusic] = useState<boolean>(false);
   const [isLoseMusic, setIsLoseMusic] = useState<boolean>(false);
   const [isMusicValue, setIsMusicValue] = useState<boolean>(true);
+
+  const words = useSelector(selectWords);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchWords({
+      group:level,
+      page:0,
+    }))
+  }, [])
+  const size = 4;
+  let subarray = [];
+
+
+  if (!!words) {
+    for (let i = 0; i <Math.ceil(words.length/size); i++){
+      subarray[i] = words.slice((i*size), (i*size) + size);
+    }
+  }
 
 
   let arrWithTrueWord = []
@@ -188,6 +214,10 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, subarray}) 
     } else if (!isChoice && !element.isRightWord) {
       setIsLoseMusic(true)
     }
+  }
+
+  if (!words) {
+    return <div>Loading...</div>
   }
 
   return (

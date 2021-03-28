@@ -1,131 +1,140 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-
-import {makeStyles} from "@material-ui/core/styles";
-
-
+import React, { useState, useEffect, useRef } from 'react'
+import {
+         Box,
+         Container,
+         Button,
+        } from '@material-ui/core'
+import {
+        Theme,
+        createStyles,
+        makeStyles,
+      } from '@material-ui/core/styles'
+import CLOUDURL from '../constants/CLOUDURL'
+import Heart from '../components/Heart'
+import FullscreenBtn from '../components/FullscreenBtn'
+import CloseBtn from '../components/CloseBtn'
+import GameLayout from '../components/GameLayout'
+import { fetchWords, selectWords } from '../slices/wordsSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { getWordsForGame } from '../generationGameWords'
 import AudioCallGameField from "../components/AudioCallGameField";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import {selectWords, fetchWords} from "../slices/wordsSlice";
 
-const useStyles = makeStyles((theme) => ({
-  audioGame: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    height: '100vh',
-    width: '100vw',
-    background: 'linear-gradient(180deg,#7d5db0 0,#b06d9a 72%,#c584a4)',
-  },
-  flex:{
-    display: 'flex',
-    flexDirection:'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height:'100vh',
-  },
-  audioLabel: {
-    fontSize: '40px',
-    lineHeight: 1,
-    marginBottom: '60px',
-    color: '#fff',
-    opacity: '.8',
-    textTransform: 'uppercase',
-    letterSpacing: '13px',
-    fontWeight: 300,
-  },
-  audioTextLabel: {
-/*
-    maxWidth: '565px',
-*/
-    margin: '0 auto 58px',
-    fontSize: '18px',
-    lineHeight: '24px',
-    fontWeight: 300,
-    color: '#fff',
-    opacity: '.8',
-  },
-  btnStart: {
-    appearance: 'none',
-    fontSize: '24px',
-    lineHeight: '1',
-    padding: '19px 15px 21px',
-    textDecoration: 'none!important',
-    minWidth: '162px',
-    border: '1px solid hsla(0,0%,100%,.2)',
-    borderRadius: '3px',
-    textAlign: 'center',
-    color: 'hsla(0,0%,100%,.7)',
-    textTransform: 'uppercase',
-    fontWeight: 300,
-    cursor: 'pointer',
-    transition: 'all .15s ease',
-    '&:hover': {
-      transition: '0.4s',
-      border: '1px #fafafa solid',
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    box: {
+      background: 'linear-gradient(180deg,#7d5db0 0,#b06d9a 72%,#c584a4)',
+      height: 'calc(100vh - 40px)',
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      padding: 20,
     },
-  },
-  audioListen: {
-    height: '120px',
-    borderRadius: '120px',
-    backgroundColor: 'hsla(0,0%,100%,.05)',
-    cursor: 'pointer',
-    transition: 'all .15s ease',
-  },
-  progress: {
-    width: '100vw',
-    position:'fixed',
-    bottom:0,
-  }
+    topBox: {
+      display: 'flex',
+      position: 'absolute',
+      top: 0,
+      right: 0
+    },
+    containerBtn: {
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+    },
+    containerGif: {
+      width: 'fit-content',
+    },
+    lifes: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    button: {
+      transition: '0.5s',
+      "&:hover": {
+         backgroundColor: 'rgba(250,250,250,0.1)'
+      },
+    },
+  })
+);
 
-}));
+const AudioGame: React.FC = () => {
+	const classes = useStyles();
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
+  const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
+  const lifes: number = 3;
+  const [level, setLevel] = useState<number>(0);
+  const [progress, setProgress] = useState<number>(0);
 
-const AudioGame = () => {
-  const classes = useStyles();
-
-  const [progress, setProgress] = useState<number>(-1);
-
-
-  const size = 4;
-  let subarray = [];
-  const words = useSelector(selectWords);
+  const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
 
-  if (!!words) {
-    for (let i = 0; i <Math.ceil(words.length/size); i++){
-      subarray[i] = words.slice((i*size), (i*size) + size);
-    }
-  }
-
-
+  const generationWords = useRef<any>(null);
 
   useEffect(() => {
     dispatch(fetchWords({
-      group:0,
-      page:0,
-    }))
-  }, [])
+      group: 0,
+      page: 0
+    }));
+  }, []);
 
-  if (progress === 5) {
-    return <div>qwerty</div>
+  useEffect(() => {
+    if (!isStartLayout && !isEndLayout && wordsArray) {
+      generationWords.current = getWordsForGame(wordsArray, 5);
+    }
+  }, [wordsArray, isStartLayout, isEndLayout]);
+
+  const step = () => {
+    if (generationWords.current) {
+      const [ word, arrayWords, func ] = generationWords.current;
+      console.log(word, arrayWords);
+      generationWords.current = func();
+    } else {
+      console.log('END!');
+    }
   }
 
-  return (
-    <div className={classes.audioGame}>
+  document.addEventListener('fullscreenchange', (event) => {
+    setIsFullscreen(!!document.fullscreenElement);
+  });
 
+	return (
+			<Box className={classes.box} id='game'>
+        <Box className={classes.topBox}>
+          <FullscreenBtn
+            game={'game'}
+            isFullscreen={isFullscreen}
+          />
+          <Box className={classes.lifes}>
+            <Heart lifes={lifes} />
+          </Box>
+          <CloseBtn />
+        </Box>
+          <GameLayout
+            isStartLayout={isStartLayout}
+            setIsStartLayout={setIsStartLayout}
+            isEndLayout={isEndLayout}
+            setIsEndLayout={setIsEndLayout}
+          >
+            {/* В котейнере внизу должна быть сама игра */}
+            <Container maxWidth='md' className={classes.containerBtn}>
+              <div >
+                {(progress !== -1) && <AudioCallGameField level={level} progress={progress} setProgress={setProgress}/>}
 
+                <div style={{position: 'absolute', bottom: 0}}>
+                  <span>Кнопки для понимания, как это работает</span>
+                  <Button color='primary' onClick={step}>
+                    Ход
+                  </Button>
+                  <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
+                    Закончилась игра
+                  </Button>
+                </div>
+              </div>
+            </Container>
 
-      <div >
-        {(progress === -1) &&
-        <div className={classes.flex}>
-          <div className={classes.audioLabel}>АУДИОВЫЗОВ</div>
-          <div className={classes.audioTextLabel}>Тренировка улучшает восприятие речи на слух.</div>
-          <div onClick={() => setProgress(prev => prev + 1)} className={classes.btnStart}>НАЧАТЬ</div>
-        </div>}
-        {(progress !== -1) && <AudioCallGameField subarray={subarray} progress={progress} setProgress={setProgress}/>}
-      </div>
-    </div>
-  );
-};
+          </GameLayout>
+      </Box>
+	);
+}
 
 export default AudioGame;

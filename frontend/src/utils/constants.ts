@@ -83,10 +83,19 @@ const INIT_USER_STATISTICS: IStatistics = {
       }
     }
 }
+const INIT_USER_SETTINGS = {
+  optional: {
+  isTranslation: true,
+  isButtons: true
+}
+}
+const DEFAULT_AVATAR: string = 'rslang/avatar_ltzdkha_kkfty4';
 
 export {
   CLOUD_URL,
   CLOUD_NAME,
   INIT_USER_WORD,
-  INIT_USER_STATISTICS
+  DEFAULT_AVATAR,
+  INIT_USER_STATISTICS,
+  INIT_USER_SETTINGS
 }
