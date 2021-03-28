@@ -1,12 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, {useState} from 'react';
 
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles, withStyles} from "@material-ui/core/styles";
+
+
+
 
 
 import AudioCallGameField from "../components/AudioCallGameField";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import {selectWords, fetchWords} from "../slices/wordsSlice";
+import ChooseLevel from "../components/ChooseLevel";
+
+
 
 const useStyles = makeStyles((theme) => ({
   audioGame: {
@@ -76,35 +79,36 @@ const useStyles = makeStyles((theme) => ({
     width: '100vw',
     position:'fixed',
     bottom:0,
+  },
+  margin: {
+    margin:theme.spacing(1),
+  },
+  chooseLevel: {
+    margin: '0 auto 58px',
+    fontSize: '18px',
+    lineHeight: '24px',
+    fontWeight: 300,
+    color: '#fff',
+    opacity: '.8',
+    display:'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
   }
 
 }));
 
 const AudioGame = () => {
   const classes = useStyles();
+  const [level, setLevel] = useState<number>(0);
+
 
   const [progress, setProgress] = useState<number>(-1);
 
 
-  const size = 4;
-  let subarray = [];
-  const words = useSelector(selectWords);
-  const dispatch = useDispatch();
-
-  if (!!words) {
-    for (let i = 0; i <Math.ceil(words.length/size); i++){
-      subarray[i] = words.slice((i*size), (i*size) + size);
-    }
-  }
 
 
 
-  useEffect(() => {
-    dispatch(fetchWords({
-      group:0,
-      page:0,
-    }))
-  }, [])
 
   if (progress === 5) {
     return <div>qwerty</div>
@@ -113,16 +117,16 @@ const AudioGame = () => {
   return (
     <div className={classes.audioGame}>
 
-
-
       <div >
         {(progress === -1) &&
         <div className={classes.flex}>
           <div className={classes.audioLabel}>АУДИОВЫЗОВ</div>
           <div className={classes.audioTextLabel}>Тренировка улучшает восприятие речи на слух.</div>
+          <ChooseLevel level={level} setLevel={setLevel} />
+
           <div onClick={() => setProgress(prev => prev + 1)} className={classes.btnStart}>НАЧАТЬ</div>
         </div>}
-        {(progress !== -1) && <AudioCallGameField subarray={subarray} progress={progress} setProgress={setProgress}/>}
+        {(progress !== -1) && <AudioCallGameField level={level} progress={progress} setProgress={setProgress}/>}
       </div>
     </div>
   );
