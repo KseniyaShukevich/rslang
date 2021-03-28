@@ -26,7 +26,7 @@ const save = async user => {
     return await User.create(user);
   } catch (err) {
     if (err.code === MONGO_ENTITY_EXISTS_ERROR_CODE) {
-      throw new ENTITY_EXISTS(`${ENTITY_NAME} with this e-mail exists`);
+      throw new ENTITY_EXISTS('Пользователь с таким E-mail существует');
     } else {
       throw err;
     }

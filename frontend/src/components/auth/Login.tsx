@@ -69,9 +69,9 @@ const Login: React.FC = () => {
       setLoading(true)
 
       const response = await login(creds);
-      if (response.status >= 400) {
+      if (response && response.status >= 400) {
         notificate(await response.text());
-      } else {
+      } else if (response ) {
         const userResponse: IUserResponse = await response.json();
 
         dispatch(signedUser(userResponse));
