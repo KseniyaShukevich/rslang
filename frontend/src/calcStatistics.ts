@@ -43,7 +43,9 @@ const calcStatisticsForToday = (
     obj.miniGames[miniGame].countLearnedWords += countLearnedWords;
     obj.miniGames[miniGame].correctAnswers += correctAnswers;
     obj.miniGames[miniGame].wrongAnswers += wrongAnswers;
-    obj.miniGames[miniGame].longestCorrectAnswers += longestCorrectAnswers;
+    if (obj.miniGames[miniGame].longestCorrectAnswers < longestCorrectAnswers) {
+      obj.miniGames[miniGame].longestCorrectAnswers = longestCorrectAnswers;
+    }
   }
   if (dateToday !== obj.generalStatistics.date) {
     obj.generalStatistics.date = dateToday;
