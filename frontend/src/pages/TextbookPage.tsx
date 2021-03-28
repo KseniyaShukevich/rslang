@@ -1,5 +1,6 @@
 import React, { useEffect } from  'react';
 import { fetchWords, selectWords } from "../slices/wordsSlice";
+import { selectUser } from "../slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
@@ -89,6 +90,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const TextBookPage: React.FC = () => {
   const { book, page } = useParams<Record<string, string>>();
   const words = useSelector(selectWords);
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -119,13 +121,13 @@ const TextBookPage: React.FC = () => {
             </Typography>
           </Box>
           <List className={classes.wordList}>
-            {words && words.map((elem: IWord, index: number) => {
+            {words && words.map((elem: IWord) => {
               return (
                 <WordCard
                   {...elem}
                   isDifficult={false}
                   isDeleted={false}
-                  key={index}
+                  key={elem.id}
                 />
               )
             })}
