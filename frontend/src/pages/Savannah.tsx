@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
          Box,
          Container,
@@ -16,6 +16,9 @@ import { Image } from 'cloudinary-react'
 import FullscreenBtn from '../components/savannah/FullscreenBtn'
 import CloseBtn from '../components/savannah/CloseBtn'
 import GameLayout from '../components/GameLayout'
+import { fetchWords, selectWords } from '../slices/wordsSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { getWordsForGame } from '../generationGameWords'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -57,10 +60,40 @@ const useStyles = makeStyles((theme: Theme) =>
 const Savannah: React.FC = () => {
 	const classes = useStyles();
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
+  const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
   const words: Array<string> = ['word', 'dgfg', 'hfghfddsa', 'ghghvdcsa'];
   const lifes: Array<number> = [0,0,0,1,1];
 
-  const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
+  const wordsArray = useSelector(selectWords);
+  const dispatch = useDispatch();
+
+  const generationWords = useRef<any>(null);
+
+  useEffect(() => {
+    dispatch(fetchWords({
+      group: 0,
+      page: 0
+    }));
+  }, []);
+
+  useEffect(() => {
+    if (!isStartLayout && !isEndLayout && wordsArray) {
+      generationWords!.current = getWordsForGame(wordsArray, 5);
+    }
+  }, [wordsArray, isStartLayout, isEndLayout]);
+
+  const step = () => {
+    if (generationWords.current) {
+      const word = generationWords.current[0];
+      const arrayWords = generationWords.current[1];
+      const func = generationWords.current[2];
+      console.log(word, arrayWords);
+      generationWords.current = func();
+    } else {
+      console.log('END!');
+    }
+  }
 
   document.addEventListener('fullscreenchange', (event) => {
     setIsFullscreen(!!document.fullscreenElement);
@@ -85,7 +118,12 @@ const Savannah: React.FC = () => {
           </Box>
           <CloseBtn />
         </Box>
-          <GameLayout isEndLayout={isEndLayout} setIsEndLayout={setIsEndLayout}>
+          <GameLayout
+            isStartLayout={isStartLayout}
+            setIsStartLayout={setIsStartLayout}
+            isEndLayout={isEndLayout}
+            setIsEndLayout={setIsEndLayout}
+          >
             <Container maxWidth='md' className={classes.containerBtn}>
               {
                 words.map((word, index) =>
@@ -97,6 +135,12 @@ const Savannah: React.FC = () => {
                 )
               }
             </Container>
+            {/* <Button color='primary' onClick={doGame}>
+              Игра
+            </Button> */}
+            <Button color='primary' onClick={step}>
+              Ход
+            </Button>
             <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
               Закончилась игра
             </Button>

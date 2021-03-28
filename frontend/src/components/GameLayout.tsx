@@ -4,13 +4,21 @@ import {
         } from '@material-ui/core'
 
 interface IProps {
+  isStartLayout: boolean
   isEndLayout: boolean
   setIsEndLayout: (value: boolean) => void
+  setIsStartLayout: (value: boolean) => void
   children: ReactElement | Array<ReactElement>
 }
 
-const GameLayout: React.FC<IProps> = ({ isEndLayout, setIsEndLayout, children }: IProps) => {
-  const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
+const GameLayout: React.FC<IProps> = ({
+  isStartLayout,
+  isEndLayout,
+  setIsEndLayout,
+  setIsStartLayout, 
+  children
+}: IProps) => {
+
 
 	return (
       <>

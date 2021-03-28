@@ -3309,3 +3309,58 @@
   level: 'info',
   timestamp: '2021-03-27T14:47:09.245Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-27T16:55:30.408Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-27T16:55:30.443Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-28T10:10:45.073Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-28T10:10:45.107Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 269.413 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T10:27:39.609Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 232.161 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T10:30:59.511Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 1653.121 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T10:33:10.725Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 2612.686 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T10:33:46.570Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 274.091 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T10:34:16.025Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 707.672 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T10:35:03.996Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 309.903 ms\n',
+  level: 'info',
+  timestamp: '2021-03-28T10:35:20.712Z'
+}
