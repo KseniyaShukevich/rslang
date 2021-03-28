@@ -16,6 +16,7 @@ import Settings from './components/Settings'
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
 import TextbookPage from "./pages/TextbookPage";
+import ResultOfMiniGame from "./components/ResultOfMiniGame";
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserWords } from './requests'
 import { selectWords, fetchWords } from './slices/wordsSlice'
@@ -64,8 +65,8 @@ function App() {
             <Route path="/statistics">
               <Statistics />
             </Route>
-            <Route path="/mini-games">
-              <MiniGames />
+            <Route path="/resultOfMiniGame">
+              <ResultOfMiniGame />
             </Route>
             <Route path="/log-in">
               <Login />

@@ -102,5 +102,10 @@ export interface IStatistics {
   }
 }
 
+export interface IWordStat {
+  word: string,
+  translation: string
+}
+
 // for mini games
 export type MiniGame = 'savannah' | 'audio' | 'sprint' | 'ownGame';
