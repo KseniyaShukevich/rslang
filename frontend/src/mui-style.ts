@@ -84,7 +84,7 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
       }
     },
     mainContainer: {
-      padding: theme.spacing(0, 3, 3),
+      padding: theme.spacing(0, 3),
       flex: 1
     },
     loaderContainer: {
@@ -100,7 +100,6 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
       justifyContent: 'center',
       paddingTop: '30vh',
       transition: 'all 500ms',
-
     },
     showLoaderContainer: {
       zIndex: 1000,
