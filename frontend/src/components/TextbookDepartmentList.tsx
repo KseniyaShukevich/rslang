@@ -21,12 +21,17 @@ const TextbookDepartmentsList: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <List className={classes.root} >
-      {DEPARTMENTS.map((elem: string, index: number) => {
-        return <TextbookDepartment book={index} name={elem} color={DEPARTMENTCOLORS[index]} key={index} />
-      })}
+    <List className={classes.root}>
+      {DEPARTMENTS.map((elem: string, index: number) => (
+        <TextbookDepartment
+          key={elem}
+          book={index}
+          name={elem}
+          color={DEPARTMENTCOLORS[index]}
+        />
+      ))}
     </List>
   );
-}
+};
 
 export default TextbookDepartmentsList;

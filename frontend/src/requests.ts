@@ -1,4 +1,4 @@
-export async function request(url: string, token: string, method: string = 'GET', data = null) {
+export async function request(url: string, token: string = '', method: string = 'GET', data = null) {
   let headers: any = {};
 
   headers['Content-Type'] = 'application/json';
@@ -25,6 +25,7 @@ export async function request(url: string, token: string, method: string = 'GET'
 
 
 // Опции для слова пользователя:
+// difficulty: "easy",
 // optional: {
 //   mode: learning | deleted
 //   miniGames: {
@@ -41,9 +42,9 @@ export async function request(url: string, token: string, method: string = 'GET'
 // опции статистики:
 // optional: {
 //   today: {
-//     date: 'sfdf',
 //     miniGames: {
 //       firstGame: {
+//         date: 'sfdf',
 //         countLearnedWords: 0,
 //         correctAnswers: 0,
 //         wrongAnswers: 0,
@@ -55,6 +56,7 @@ export async function request(url: string, token: string, method: string = 'GET'
 //       ...
 //     },
 //     generalStatistics: {
+//       date: 'sfdf',
 //       totalWordsLearned: 0,
 //       totalCorrectAnswers: 0,
 //       totalWrongAnswers: 0
@@ -78,9 +80,15 @@ export async function request(url: string, token: string, method: string = 'GET'
 //   }
 // }
 
+export const getWord = async (wordId: string) => {
+  const response = await request(`words/${wordId}`);
+  return response;
+}
+
+
 
 export const fetchUserWords = async (userId: string, token: string): Promise<any> => {
-  const response = await request(`users/${userId}/words`, token);
+  const response = await request(`/users/${userId}/words`, token);
   return response;
 }
 // Использование:
@@ -94,7 +102,7 @@ export const fetchUserWords = async (userId: string, token: string): Promise<any
 // или слово фигурировало в мини-игре
 // создаем для пользвателя слово:
 export const createUserWord = async (userId: string, wordId: string, body: any, token: string) => {
-  const response = await request(`users/${userId}/words/${wordId}`, token, 'POST', body);
+  const response = await request(`/users/${userId}/words/${wordId}`, token, 'POST', body);
   return response;
 }
 // Использование:
@@ -113,7 +121,7 @@ export const createUserWord = async (userId: string, wordId: string, body: any, 
 
 
 export const updateUserWord = async (userId: string, wordId: string, body: any, token: string) => {
-  const response = await request(`users/${userId}/words/${wordId}`, token, 'PUT', body);
+  const response = await request(`/users/${userId}/words/${wordId}`, token, 'PUT', body);
   return response;
 }
 // Использование
@@ -133,7 +141,7 @@ export const updateUserWord = async (userId: string, wordId: string, body: any, 
 //   );
 
 export const getUserStatistics = async (userId: string, token: string) => {
-  const response = await request(`users/${userId}/statistics`, token);
+  const response = await request(`/users/${userId}/statistics`, token);
   return response;
 }
 // Использование:
@@ -145,7 +153,7 @@ export const getUserStatistics = async (userId: string, token: string) => {
 
 
 export const updateUserStatistics = async (userId: string, body: any, token: string) => {
-  const response = await request(`users/${userId}/statistics`, token, 'PUT', body);
+  const response = await request(`/users/${userId}/statistics`, token, 'PUT', body);
   return response;
 }
 // Испльзование:
@@ -168,7 +176,7 @@ export const updateUserStatistics = async (userId: string, body: any, token: str
 //   isButtons: true
 // }
 export const getUserSettings = async (userId: string, token: string) => {
-  const response = await request(`users/${userId}/settings`, token);
+  const response = await request(`/users/${userId}/settings`, token);
   return response;
 }
 // Использование:
@@ -180,7 +188,7 @@ export const getUserSettings = async (userId: string, token: string) => {
 
 
 export const updateUserSettings = async (userId: string, body: any, token: string) => {
-  const response = await request(`users/${userId}/settings`, token, 'PUT', body);
+  const response = await request(`/users/${userId}/settings`, token, 'PUT', body);
   return response;
 }
 //Использование:
@@ -208,7 +216,7 @@ export const getAggregatedUserWords = async (mode: string, userId: string, group
     return null;
   }
 
-  const response = await request(`users/${userId}/aggregatedWords?group=${group}&page=${page}&filter=${filter}`, token);
+  const response = await request(`/users/${userId}/aggregatedWords?group=${group}&page=${page}&filter=${filter}`, token);
   return response;
 }
 // Функция находит слова из указанного раздела на указанной странице
