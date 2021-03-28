@@ -11,29 +11,30 @@ import {
       } from '@material-ui/core/styles'
 import CLOUDURL from '../constants/CLOUDURL'
 import Heart from '../components/Heart'
+import WordBtn from '../components/WordBtn'
+import { Image } from 'cloudinary-react'
 import FullscreenBtn from '../components/FullscreenBtn'
 import CloseBtn from '../components/CloseBtn'
 import GameLayout from '../components/GameLayout'
 import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
-import AudioCallGameField from "../components/AudioCallGameField";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     box: {
-      background: 'linear-gradient(180deg,#7d5db0 0,#b06d9a 72%,#c584a4)',
+      backgroundImage: `url('${CLOUDURL}/rslang/Illustration02_yokda5')`,
+      backgroundSize: 'cover',
+      backgroundPosition: '0 100%',
       height: 'calc(100vh - 40px)',
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       flexDirection: 'column',
       padding: 20,
     },
     topBox: {
       display: 'flex',
-      position: 'absolute',
-      top: 0,
-      right: 0
+      justifyContent: 'flex-end'
     },
     containerBtn: {
       display: 'flex',
@@ -56,14 +57,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const AudioGame: React.FC = () => {
+const Savannah: React.FC = () => {
 	const classes = useStyles();
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
+  const words: Array<string> = ['word', 'dgfg', 'hfghfddsa', 'ghghvdcsa'];
   const lifes: number = 3;
-  const [level, setLevel] = useState<number>(0);
-  const [progress, setProgress] = useState<number>(0);
 
   const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -98,10 +98,10 @@ const AudioGame: React.FC = () => {
   });
 
 	return (
-			<Box className={classes.box} id='game'>
+			<Box className={classes.box} id='savannah'>
         <Box className={classes.topBox}>
           <FullscreenBtn
-            game={'game'}
+            game={'savannah'}
             isFullscreen={isFullscreen}
           />
           <Box className={classes.lifes}>
@@ -115,26 +115,29 @@ const AudioGame: React.FC = () => {
             isEndLayout={isEndLayout}
             setIsEndLayout={setIsEndLayout}
           >
-            {/* В котейнере внизу должна быть сама игра */}
             <Container maxWidth='md' className={classes.containerBtn}>
-              <div >
-                {(progress !== -1) && <AudioCallGameField level={level} progress={progress} setProgress={setProgress}/>}
-
-                <div style={{position: 'absolute', bottom: 0}}>
-                  <span>Кнопки для понимания, как это работает</span>
-                  <Button color='primary' onClick={step}>
-                    Ход
-                  </Button>
-                  <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
-                    Закончилась игра
-                  </Button>
-                </div>
-              </div>
+              {
+                words.map((word, index) =>
+                  <WordBtn
+                    word={word}
+                    number={index + 1}
+                    key={index}
+                  />
+                )
+              }
             </Container>
-
+            <Button color='primary' onClick={step}>
+              Ход
+            </Button>
+            <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
+              Закончилась игра
+            </Button>
+            <Container className={classes.containerGif}>
+              <Image publicId="rslang/33Ho_by5kqq" width="90" />
+            </Container>
           </GameLayout>
       </Box>
 	);
 }
 
-export default AudioGame;
+export default Savannah;

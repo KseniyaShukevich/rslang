@@ -17,23 +17,22 @@ import GameLayout from '../components/GameLayout'
 import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
-import AudioCallGameField from "../components/AudioCallGameField";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     box: {
-      background: 'linear-gradient(180deg,#7d5db0 0,#b06d9a 72%,#c584a4)',
+      backgroundImage: `url('${CLOUDURL}/rslang/Illustration02_yokda5')`,
+      backgroundSize: 'cover',
+      backgroundPosition: '0 100%',
       height: 'calc(100vh - 40px)',
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       flexDirection: 'column',
       padding: 20,
     },
     topBox: {
       display: 'flex',
-      position: 'absolute',
-      top: 0,
-      right: 0
+      justifyContent: 'flex-end'
     },
     containerBtn: {
       display: 'flex',
@@ -56,14 +55,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const AudioGame: React.FC = () => {
+const Sprint: React.FC = () => {
 	const classes = useStyles();
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
   const lifes: number = 3;
-  const [level, setLevel] = useState<number>(0);
-  const [progress, setProgress] = useState<number>(0);
 
   const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -115,21 +112,16 @@ const AudioGame: React.FC = () => {
             isEndLayout={isEndLayout}
             setIsEndLayout={setIsEndLayout}
           >
-            {/* В котейнере внизу должна быть сама игра */}
-            <Container maxWidth='md' className={classes.containerBtn}>
-              <div >
-                {(progress !== -1) && <AudioCallGameField level={level} progress={progress} setProgress={setProgress}/>}
 
-                <div style={{position: 'absolute', bottom: 0}}>
-                  <span>Кнопки для понимания, как это работает</span>
-                  <Button color='primary' onClick={step}>
-                    Ход
-                  </Button>
-                  <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
-                    Закончилась игра
-                  </Button>
-                </div>
-              </div>
+            <Container maxWidth='md' className={classes.containerBtn} style={{background: 'white', height: '100%'}}>
+              Здесь игра
+              <span>Кнопки для понимания, как это работает</span>
+              <Button color='primary' onClick={step}>
+                Ход
+              </Button>
+              <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
+                Закончилась игра
+              </Button>
             </Container>
 
           </GameLayout>
@@ -137,4 +129,4 @@ const AudioGame: React.FC = () => {
 	);
 }
 
-export default AudioGame;
+export default Sprint;
