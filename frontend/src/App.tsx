@@ -16,6 +16,7 @@ import Settings from './components/Settings'
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
 import TextbookPage from "./pages/TextbookPage";
+import AudioGame from "./pages/AudioGame";
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserWords } from './requests'
 import { selectWords, fetchWords } from './slices/wordsSlice'
@@ -55,7 +56,7 @@ function App() {
               <TextbookPage />
             </Route>
             <Route path="/savannah">Саванна</Route>
-            <Route path="/audio">Аудиовызов</Route>
+            <Route path="/audio"><AudioGame /></Route>
             <Route path="/sprint">Спринт</Route>
             <Route path="/owngame">Своя игра</Route>
             <Route path="/settings">
