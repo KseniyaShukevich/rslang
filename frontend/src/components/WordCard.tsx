@@ -12,7 +12,7 @@ import ModalDeleteWord from './ModalDeleteWord';
 import ModalStatistic from './ModalStatistic';
 import ModalDescrAboutWord from './ModalDescrAboutWord';
 import ListenPlayer from "./ ListenPlayer";
-import { IWordCard } from '../interfaces';
+import { IWordCard, IMiniGamesStat } from '../interfaces';
 import { FILESPATH } from '../constants';
 import { useSelector } from "react-redux";
 import { selectUser } from "../slices/userSlice";
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const WordCard: React.FC<IWordCard> = (props) => {
-    const {audio, word, wordTranslate, image, isDifficult: difficult} = props;
+    const { audio, word, wordTranslate, image, isDifficult: difficult, isDeleted, id, userWordsInfo } = props;
     const classes = useStyles();
     const user = useSelector(selectUser);
 
@@ -89,13 +89,19 @@ const WordCard: React.FC<IWordCard> = (props) => {
     const [isStatisticOpen, setIsStatisticOpen] = useState<boolean>(false);
     const [isPortal, setIsPortal] = useState<boolean>(false);
     const [isDifficult, setIsDifficult] = useState(difficult);
-
+    const [wordStatistic, setWordStatistic] = useState<IMiniGamesStat | null>(null);
 
     const listenWord = () => {
         setIsListens(true)
     }
 
-    return (
+    const handleStatisticClick = (wordId: string) => {
+      const matchedWord = userWordsInfo!.find(elem => elem.wordId === wordId);
+      matchedWord ? setWordStatistic(prev => matchedWord.optional.miniGames) : setWordStatistic(prev => null);
+      setIsStatisticOpen(true);
+    }
+
+    return ( isDeleted ? <></> :
         <div className={classes.wordCard}>
           <Avatar
             className={classes.ava}
@@ -121,18 +127,18 @@ const WordCard: React.FC<IWordCard> = (props) => {
                 <SentimentSatisfiedIcon onClick={() => setIsDifficult(prev => !prev)}
                                         className={classes.Difficult}/>}
                 <ButtonBase>
-                    <TrendingUpIcon onClick={() => setIsStatisticOpen(true)} className={classes.trash}/>
+                    <TrendingUpIcon onClick={() => handleStatisticClick(id)} className={classes.trash}/>
                 </ButtonBase>
                 <ButtonBase>
                     <DeleteIcon onClick={() => setOpen(true)} className={classes.trash}/>
                 </ButtonBase>
                 <ModalDeleteWord open={open} setOpen={setOpen}/>
-                <ModalStatistic isOpen={isStatisticOpen} setIsOpen={setIsStatisticOpen}/>
-                <ModalDescrAboutWord open={isPortal}
+                <ModalStatistic isOpen={isStatisticOpen} setIsOpen={setIsStatisticOpen} wordStatistic={wordStatistic}/>
+            </div>}
+            <ModalDescrAboutWord open={isPortal}
                                      setOpen={setIsPortal}
                                      {...props}
-                />
-            </div>}
+            />
         </div>
     );
 };

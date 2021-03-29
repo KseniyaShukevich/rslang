@@ -1,4 +1,4 @@
-import React, { useEffect } from  'react';
+import React, { useEffect, useState } from  'react';
 import { fetchWords, selectWords } from "../slices/wordsSlice";
 import { selectUser } from "../slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,8 +8,9 @@ import WordCard from "../components/WordCard";
 import GameCard from "../components/GameCard";
 import PageLayout from "../components/PageLayout";
 import SubHeader from "../components/SubHeader";
+import { fetchUserWords } from '../requests';
 import { Container, Box, Typography, Divider, List } from "@material-ui/core";
-import { IWord, IGame } from '../interfaces';
+import { IWord, IGame, IUserWord } from '../interfaces';
 import background from "../assets/images/background_1.jpg";
 import savanna from "../assets/images/background_3.jpg";
 import audioCall from "../assets/images/background_4.jpg";
@@ -91,6 +92,8 @@ const TextBookPage: React.FC = () => {
   const { book, page } = useParams<Record<string, string>>();
   const words = useSelector(selectWords);
   const user = useSelector(selectUser);
+  const [userWordsInfo, setUserWordsInfo] = useState<IUserWord[] | null>(null);
+  const [userWords, setUserWords] = useState<IWord[] | null>(null);
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -105,7 +108,34 @@ const TextBookPage: React.FC = () => {
 
   useEffect(() => {
     console.log(words);
-  }, [words]);
+  }, [words, user])
+
+  useEffect(() => {
+    (async () => {
+      if (user && user.userId && user.token) {
+        const response = await fetchUserWords(user.userId, user.token);
+        console.log(response);
+        setUserWordsInfo(prev => response);
+      }
+    })();
+  }, [user]);
+
+  useEffect(() => {
+    console.log('called collaborate words');
+    if (words && userWordsInfo) {
+      setUserWords(prev => {
+        return words.map((elem: IWord) => {
+          const matchedItem = userWordsInfo!.find((item: IUserWord)  => item.wordId === elem.id);
+          if (matchedItem) {
+            const isDifficult = (matchedItem.difficulty === 'easy') ? false : true;
+            const isDeleted = (matchedItem.optional.mode === 'deleted') ? true : false;
+            return ({...elem, isDifficult, isDeleted });
+          }
+          return elem;
+        });
+      })
+    }
+  }, [words, userWordsInfo])
 
   return (
     <PageLayout>
@@ -121,12 +151,19 @@ const TextBookPage: React.FC = () => {
             </Typography>
           </Box>
           <List className={classes.wordList}>
-            {words && words.map((elem: IWord) => {
+            {user && userWords && userWords.map((elem: IWord) => {
               return (
                 <WordCard
                   {...elem}
-                  isDifficult={false}
-                  isDeleted={false}
+                  key={elem.id}
+                  userWordsInfo={userWordsInfo}
+                />
+              )
+            })}
+            {!user && words && words.map((elem: IWord) => {
+              return (
+                <WordCard
+                  {...elem}
                   key={elem.id}
                 />
               )

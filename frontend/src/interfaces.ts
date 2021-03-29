@@ -23,6 +23,7 @@ export interface IWord {
   isDeleted: boolean,
 }
 export interface IWordCard {
+  id: string,
   word: string,
   image: string,
   audio: string,
@@ -36,6 +37,7 @@ export interface IWordCard {
   textExampleTranslate: string,
   isDifficult: boolean,
   isDeleted: boolean,
+  userWordsInfo?: IUserWord[] | null,
 }
 
 export interface IGame {
@@ -109,3 +111,26 @@ export interface IWordStat {
 
 // for mini games
 export type MiniGame = 'savannah' | 'audio' | 'sprint' | 'ownGame';
+
+interface IOptional {
+  mode: string,
+  miniGames: IMiniGamesStat
+}
+
+export interface IUserWord {
+  difficulty: string,
+  wordId: string,
+  optional: IOptional,
+}
+
+export interface IGameStat {
+  correctAnswers: number,
+  wrongAnswers: number,
+}
+
+export interface IMiniGamesStat {
+  savannah: IGameStat,
+  audio: IGameStat,
+  sprint: IGameStat,
+  ownGame: IGameStat,
+}
