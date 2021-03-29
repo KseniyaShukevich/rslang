@@ -55,6 +55,9 @@ export const settingsSlice = createSlice({
 name: 'settings',
 initialState,
 reducers: {
+  setLStorageSettings: (state, action) => {
+    state.value = action.payload;
+  }
 },
 extraReducers: builder => {
     builder.addCase(fetchUserSettings.fulfilled, (state, action) => {
@@ -65,6 +68,8 @@ extraReducers: builder => {
     })
   }
 })
+
+export const { setLStorageSettings } = settingsSlice.actions
 
 export const selectSettings = (state: RootState) => state.settings.value
 

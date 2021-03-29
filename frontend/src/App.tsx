@@ -22,7 +22,9 @@ import Sprint from "./pages/Sprint";
 import Savannah from "./pages/Savannah";
 import { addInitToLStorage } from './initForUser';
 import { selectUser } from './slices/userSlice';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLStorageSettings, fetchUserSettings } from './slices/settingsSlice';
+import { ID_LOCALE_STORAGE } from './utils/constants';
 
 interface IRoutes {
   path: string;
@@ -50,10 +52,22 @@ function App() {
   const location = useLocation();
   const [ showHeader, setShowHeader ] = useState(true);
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!user) {
       addInitToLStorage();
+      const settings: string | null = localStorage.getItem(`${ID_LOCALE_STORAGE}settings`);
+      if (settings) {
+        dispatch(setLStorageSettings(JSON.parse(settings)));
+      }
+    } else {
+      if (user.userId && user.token) {
+        dispatch(fetchUserSettings({
+          userId: user.userId,
+          token: user.token
+        }));
+      }
     }
   }, [ user ]);
 
