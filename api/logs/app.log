@@ -3080,3 +3080,43 @@
   level: 'info',
   timestamp: '2021-03-28T18:42:52.769Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-29T08:14:14.408Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-29T08:14:14.443Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-29T08:23:37.877Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-29T08:23:37.910Z'
+}
+{
+  message: 'POST 200 /users - size req 108 res 116 - 523.679 ms\n',
+  level: 'info',
+  timestamp: '2021-03-29T09:49:11.965Z'
+}
+{
+  message: 'POST 200 /signin - size req 50 res 557 - 584.572 ms\n',
+  level: 'info',
+  timestamp: '2021-03-29T09:49:12.571Z'
+}
+{
+  message: 'PUT 200 /users/6061a297eac6601a90bda8dd/statistics "6061a297eac6601a90bda8dd" size req 734 res 766 - 170.492 ms\n',
+  level: 'info',
+  timestamp: '2021-03-29T09:49:13.186Z'
+}
+{
+  message: 'PUT 200 /users/6061a297eac6601a90bda8dd/settings "6061a297eac6601a90bda8dd" size req 52 res 84 - 163.805 ms\n',
+  level: 'info',
+  timestamp: '2021-03-29T09:49:13.201Z'
+}
