@@ -6,25 +6,23 @@ import { CSSTransition } from "react-transition-group";
 import { mainStyles, theme } from "./mui-style";
 import { CloudinaryContext } from 'cloudinary-react';
 import CLOUDNAME from './constants/CLOUDNAME';
-import MiniGames from './components/MiniGames'
-import Statistics from './components/Statistics'
-import Settings from './components/Settings'
+import MiniGames from './components/MiniGames';
+import Statistics from './pages/Statistics';
+import Settings from './components/Settings';
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
 import TextbookPage from "./pages/TextbookPage";
 import ResultOfMiniGame from "./components/ResultOfMiniGame";
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchUserWords } from './requests'
-import { selectWords, fetchWords } from './slices/wordsSlice'
-import { clearTodayStatistics } from './calcStatistics'
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
-import PageLayout from "./components/PageLayout";
 import Header from "./components/Header";
 import OwnGame from "./pages/OwnGame";
 import AudioGame from "./pages/AudioGame";
 import Sprint from "./pages/Sprint";
 import Savannah from "./pages/Savannah";
+import { addInitToLStorage } from './initForUser';
+import { selectUser } from './slices/userSlice';
+import { useSelector } from 'react-redux';
 
 interface IRoutes {
   path: string;
@@ -51,6 +49,13 @@ function App() {
   const classes = mainStyles();
   const location = useLocation();
   const [ showHeader, setShowHeader ] = useState(true);
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    if (!user) {
+      addInitToLStorage();
+    }
+  }, [ user ]);
 
   useEffect(() => {
     const hideHeader = location
