@@ -6,20 +6,25 @@ import { CSSTransition } from "react-transition-group";
 import { mainStyles, theme } from "./mui-style";
 import { CloudinaryContext } from 'cloudinary-react';
 import CLOUDNAME from './constants/CLOUDNAME';
-import MiniGames from './components/MiniGames'
-import Statistics from './components/Statistics'
-import Settings from './components/Settings'
+import MiniGames from './components/MiniGames';
+import Statistics from './pages/Statistics';
+import Settings from './components/Settings';
 import Tutorial from "./pages/Tutorial";
 import HomePage from "./pages/HomePage";
 import TextbookPage from "./pages/TextbookPage";
+import ResultOfMiniGame from "./components/ResultOfMiniGame";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
-import PageLayout from "./components/PageLayout";
 import Header from "./components/Header";
 import OwnGame from "./pages/OwnGame";
 import AudioGame from "./pages/AudioGame";
 import Sprint from "./pages/Sprint";
 import Savannah from "./pages/Savannah";
+import { addInitToLStorage } from './initForUser';
+import { selectUser } from './slices/userSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLStorageSettings, fetchUserSettings } from './slices/settingsSlice';
+import { ID_LOCALE_STORAGE } from './utils/constants';
 
 interface IRoutes {
   path: string;
@@ -32,6 +37,7 @@ const routes: IRoutes[] = [
   { path: "/settings",                   Component: Settings },
   { path: "/statistics",                 Component: Statistics },
   { path: "/mini-games",                 Component: MiniGames },
+  { path: "/resultOfMiniGame",           Component: ResultOfMiniGame },
   { path: "/savannah",                   Component: Savannah },
   { path: "/audio",                      Component: AudioGame },
   { path: "/sprint",                     Component: Sprint },
@@ -45,6 +51,25 @@ function App() {
   const classes = mainStyles();
   const location = useLocation();
   const [ showHeader, setShowHeader ] = useState(true);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!user) {
+      addInitToLStorage();
+      const settings: string | null = localStorage.getItem(`${ID_LOCALE_STORAGE}settings`);
+      if (settings) {
+        dispatch(setLStorageSettings(JSON.parse(settings)));
+      }
+    } else {
+      if (user.userId && user.token) {
+        dispatch(fetchUserSettings({
+          userId: user.userId,
+          token: user.token
+        }));
+      }
+    }
+  }, [ user ]);
 
   useEffect(() => {
     const hideHeader = location

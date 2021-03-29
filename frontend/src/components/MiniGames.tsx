@@ -1,5 +1,5 @@
-import { Link, List, makeStyles } from "@material-ui/core";
 import React from "react";
+import { Container, Link, List, makeStyles } from "@material-ui/core";
 import { IGame } from "../interfaces";
 import { theme } from "../mui-style";
 import GameCard from "./GameCard";
@@ -40,9 +40,12 @@ const GAMES: IGame[] = [
 ];
 
 const useStyles = makeStyles({
-
+  container: {
+    background: "beige",
+    height: "100vh",
+  },
   miniGamesWrapper: {
-    width:"80%",
+    width: "80%",
     margin: "0 auto",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
@@ -64,16 +67,18 @@ const MiniGames: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <PageLayout>
-      <div className={classes.miniGamesWrapper}>
-        <List className={classes.gameList}>
-          {GAMES.map((elem: IGame, index: number) => {
-            return <GameCard {...elem} key={index} />;
-          })}
-        </List>
-        <span />
-      </div>
-    </PageLayout>
+    <Container className={classes.container} maxWidth="lg">
+      <PageLayout>
+        <div className={classes.miniGamesWrapper}>
+          <List className={classes.gameList}>
+            {GAMES.map((elem: IGame, index: number) => {
+              return <GameCard {...elem} key={index} />;
+            })}
+          </List>
+          <span />
+        </div>
+      </PageLayout>
+    </Container>
   );
 };
 

@@ -15,6 +15,7 @@ import LoseMusic from "./LoseMusic";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import {selectWords, fetchWords} from "../slices/wordsSlice";
 import {useDispatch, useSelector} from "react-redux";
+import { IWord } from '../interfaces';
 
 
 
@@ -126,15 +127,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  setProgress: any,
-  progress: number,
+
   level:number,
-/*
-  subarray: any,
-*/
+  lifes:number,
+
+  trueWord: IWord | null,
+  wordArray: Array<IWord> | null,
+  step:() => void,
+  setLifes: any
 }
 
-const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => {
+const AudioCallGameField: React.FC<Props> = (
+  { level, trueWord, wordArray, step, setLifes, lifes}) => {
   const classes = useStyles();
 
   const [isChoice, setIsChoice] = useState<boolean>(false);
@@ -145,7 +149,7 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => 
   const [isLoseMusic, setIsLoseMusic] = useState<boolean>(false);
   const [isMusicValue, setIsMusicValue] = useState<boolean>(true);
 
-  const words = useSelector(selectWords);
+/*  const words = useSelector(selectWords);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -153,11 +157,12 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => 
       group:level,
       page:0,
     }))
-  }, [])
-  const size = 4;
-  let subarray = [];
+  }, [])*/
+/*  const size = 4;
+  let subarray = [];*/
 
 
+/*
   if (!!words) {
     for (let i = 0; i <Math.ceil(words.length/size); i++){
       subarray[i] = words.slice((i*size), (i*size) + size);
@@ -166,10 +171,11 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => 
 
 
   let arrWithTrueWord = []
+*/
 
 
 
-  const [random, setRandom] = useState<number>(randomInteger(0, 3));
+/*  const [random, setRandom] = useState<number>(randomInteger(0, 3));
   useEffect(() => {
     setRandom(randomInteger(0, 3))
   },[progress])
@@ -194,31 +200,37 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => 
         isRightWord: funcTrueWord(random, item)
       }
     ))
-  }
+  }*/
 
 
-    console.log('arrWithTrueWord', arrWithTrueWord)
-
-
-
+    //console.log('arrWithTrueWord', arrWithTrueWord)
 
 
 
-  const handleClickOnWord = (element: any) => {
+
+
+
+  const handleClickOnWord = (element: any, trueWord: IWord) => {
     if (!isChoice) {
       setIsChoice(true)
     }
-    if (!isChoice && element.isRightWord) {
+    if (!isChoice && (trueWord.word === element.word)) {
       setIsWin(true)
       setIsWinMusic(true)
-    } else if (!isChoice && !element.isRightWord) {
+    } else if (!isChoice && (trueWord.word !== element.word)) {
       setIsLoseMusic(true)
+      setLifes(lifes - 1)
     }
   }
 
-  if (!words) {
-    return <div>Loading...</div>
+
+  if (!trueWord || !wordArray) {
+    return  <div>Загрузка</div>
   }
+
+
+
+  console.log('trueWord.word', trueWord.word)
 
   return (
     <div className={classes.AudioCallGame}>
@@ -230,17 +242,16 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => 
       <LoseMusic isLoseMusic={isLoseMusic} setIsLoseMusic={setIsLoseMusic} isMusicValue={isMusicValue} />
       <span className={classes.buttonMisic}>
               {!isChoice &&  <SoundButton isActive={isListen} setIsActive={setIsListen}
-                             urlAudio={arrWithTrueWord.filter((el: any) => !!el.isRightWord)[0].audio}/>
+                             urlAudio={trueWord.audio}/>
               }
               {isChoice && <div>
-                <div><img className={classes.image} src={arrWithTrueWord.filter((el: any )=> !!el.isRightWord)[0].image} alt="img word"/></div>
+                <div><img className={classes.image} src={trueWord.image} alt="img word"/></div>
                 <div className={classes.flex}>
                   <ListenPlayer setIsAudio={setIsListen}
-                                   audio={arrWithTrueWord.filter((el: any) => !!el.isRightWord)[0].audio}
+                                   audio={trueWord.audio}
                                    isAudio={isListen}
                                    listenAudio={() => setIsListen(true)}  />
-                                   <b>{arrWithTrueWord.filter((el: any) => !!el.isRightWord)[0].word}</b>
-
+                                   <b>{trueWord.word}</b>
                 </div>
               </div>}
 
@@ -248,19 +259,19 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => 
 
       <div className={classes.audioListen}>
         <div className={classes.options}>
-          {!!arrWithTrueWord &&
-          arrWithTrueWord.map((el: any, item: number) => {
+          {!!wordArray &&
+          wordArray.map((el: any, item: number) => {
               return (
-                <div key={el.wordTranslate} onClick={() => handleClickOnWord(el)} className={classes.wordWithNumber}>
+                <div key={el.wordTranslate} onClick={() => handleClickOnWord(el, trueWord)} className={classes.wordWithNumber}>
                   <span className={classes.number}>{item + 1}</span>
                   <span className={cn(classes.arrow,
-                    {[classes.hidden]: isChoice && el.isRightWord && isWin}
+                    {[classes.hidden]: isChoice && (trueWord.word === el.word) && isWin}
                   )}>
               <DoneIcon/>
             </span>
                   <span className={cn(classes.word,
-                    {[classes.lineThrough]: !el.isRightWord && isChoice},
-                    {[classes.win]: isChoice && el.isRightWord && isWin}
+                    {[classes.lineThrough]: (trueWord.word !== el.word) && isChoice},
+                    {[classes.win]: isChoice && (trueWord.word === el.word) && isWin}
                   )}>
                     {el.wordTranslate}
                   </span>
@@ -269,10 +280,10 @@ const AudioCallGameField: React.FC<Props> = ({setProgress, progress, level}) => 
             })
           }
         </div>
-        {!isChoice && <div onClick={() => {setProgress(progress + 1)}} className={classes.btnStart}>НЕ ЗНАЮ</div>}
+        {!isChoice && <div className={classes.btnStart}>НЕ ЗНАЮ</div>}
         {isChoice && <div onClick={() => {
           setIsChoice(false)
-          setProgress(progress + 1)
+          step()
         }} className={classes.btnStart}>ДАЛЕЕ</div>}
       </div>
     </div>

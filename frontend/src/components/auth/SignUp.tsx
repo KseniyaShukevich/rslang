@@ -11,6 +11,7 @@ import { selectUser, signedUser } from '../../slices/userSlice';
 import PageLayout from '../PageLayout'
 import { CLOUD_NAME, CLOUD_URL, DEFAULT_AVATAR } from '../../utils/constants';
 import uploadImage from '../../utils/uploadImage';
+import { addInitToDB } from '../../initForUser';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -146,6 +147,9 @@ const SignUp: React.FC = () => {
           } else if (loginResponse) {
             const userResponse: IUserResponse = await loginResponse.json();
             dispatch(signedUser(userResponse));
+            if (userResponse.userId && userResponse.token) {
+              addInitToDB(userResponse.userId, userResponse.token);
+            };
             history.push('/');
           }
         }

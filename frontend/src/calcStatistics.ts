@@ -8,6 +8,7 @@ import {
          IStatisticsAllTime,
          IStatisticsOneDay
         } from './interfaces'
+import { ID_LOCALE_STORAGE } from './utils/constants'
 
 const addZero = (value: number): string => {
   if (value < 10) {
@@ -150,27 +151,57 @@ const clearGeneralStatistics = (
   }
 }
 
-export const clearTodayStatistics = async (
-  userId: string,
-  token: string,
+const getStatistics = async (
+  userId: string | null = null,
+  token: string | null = null,
 ) => {
-  const statistics = await getUserStatistics(userId, token);
+  if (userId && token) {
+    return await getUserStatistics(userId, token);
+  } else {
+    const lSStatistics: string | null = localStorage.getItem(`${ID_LOCALE_STORAGE}statistics`);
+    if (lSStatistics) {
+      return JSON.parse(lSStatistics);
+    } else {
+      return null;
+    }
+  }
+}
+
+const updateStatistics = async (
+  userId: string | null,
+  token: string | null,
+  statistics: any
+  ) => {
+    if (userId && token) {
+      updateUserStatistics(
+        userId,
+        {
+          optional: statistics.optional
+        },
+        token
+      );
+    } else {
+      localStorage.setItem(`${ID_LOCALE_STORAGE}statistics`, JSON.stringify(statistics));
+    }
+}
+
+export const clearTodayStatistics = async (
+  userId: string | null = null,
+  token: string | null = null,
+) => {
+  const statistics = await getStatistics(userId, token);
+  if (!statistics) return null;
   const today = getDate();
+
   clearGame(statistics.optional.today.miniGames.savannah, today);
   clearGame(statistics.optional.today.miniGames.audio, today);
   clearGame(statistics.optional.today.miniGames.sprint, today);
   clearGame(statistics.optional.today.miniGames.ownGame, today);
   clearGeneralStatistics(statistics.optional.today.generalStatistics, today);
-  updateUserStatistics(
-    userId,
-    {
-      optional: statistics.optional
-    },
-    token
-  );
+  updateStatistics(userId, token, statistics);
 }
 
-export const addToStatistics = async (
+export const addStatisticsToDB = async (
   userId: string,
   token: string,
   miniGame: MiniGame,
@@ -199,4 +230,25 @@ export const addToStatistics = async (
       },
       token
     );
+}
+
+export const addStatisticsToLStorage = (
+  miniGame: MiniGame,
+  countLearnedWords: number,
+  correctAnswers: number,
+  wrongAnswers: number,
+  longestCorrectAnswers: number
+) => {
+  const lSStatistics = localStorage.getItem(`${ID_LOCALE_STORAGE}statistics`);
+  if (!lSStatistics) return null;
+  const statistics = JSON.parse(lSStatistics);
+  calcStatisticsForToday(
+    miniGame,
+    statistics.optional.today,
+    countLearnedWords,
+    correctAnswers,
+    wrongAnswers,
+    longestCorrectAnswers,
+  );
+  localStorage.setItem(`${ID_LOCALE_STORAGE}statistics`, JSON.stringify(statistics));
 }
