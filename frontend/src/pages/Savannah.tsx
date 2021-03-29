@@ -86,8 +86,9 @@ const Savannah: React.FC = () => {
   const [step, setStep] = useState<number>(0);
   const [top, setTop] = useState<number>(-15);
   const [isStartGame, setIsStartGame] = useState<boolean>(false);
+  const [isCorrWord, setIsCorrWord] = useState<boolean>(false);
   const [arrayWords, setArrayWords] = useState<Array<IWord> | null>(null)
-  const lifes: number = 3;
+  const [lifes, setLifes] = useState<number>(5);
 
   const words = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -96,20 +97,27 @@ const Savannah: React.FC = () => {
   const wordEl = useRef<any>(null);
   const container = useRef<any>(null);
   const rectangle = useRef<any>(null);
-  // const corrBtn = useRef<any>(null);
+  const corrBtn = useRef<number>(-1);
   const idInterval = useRef<any>(null);
+
+  const setNewWords = () => {
+    wordEl.current.style.opacity = 1;
+    const [ word, newArrWords, func ] = generationWords.current;
+    corrBtn.current = newArrWords.indexOf(word);
+    setCurrWord(word);
+    setArrayWords(newArrWords);
+    generationWords.current = func();
+  }
 
   const doStep = () => {
     if (generationWords.current) {
       setTimeout(() => {
-        wordEl.current.style.display = '';
-        rectangle.current.style.display = '';
+        if (wordEl.current) {
+          wordEl.current.style.display = '';
+          rectangle.current.style.display = '';
+        }
       }, 300);
-      wordEl.current.style.opacity = 1;
-      const [ word, newArrWords, func ] = generationWords.current;
-      setCurrWord(word);
-      setArrayWords(newArrWords);
-      generationWords.current = func();
+      setNewWords();
     } else {
       clearInterval(idInterval.current);
       setIsEndLayout(true);
@@ -139,11 +147,22 @@ const Savannah: React.FC = () => {
     wordEl.current.style.transition = '0.3s';
     wordEl.current.style.fontSize = '100px';
     setTimeout(() => {
-      wordEl.current.style.fontSize = '';
-      wordEl.current.style.transition = '';
-      doStep();
+      if (wordEl.current) {
+        wordEl.current.style.fontSize = '';
+        wordEl.current.style.transition = '';
+        doStep();
+      }
     }, 500);
   }
+
+  useEffect(() => {
+    if (lifes === 0) {
+      setTimeout(() => {
+        clearInterval(idInterval.current);
+        setIsEndLayout(true);
+      }, 300);
+    }
+  }, [lifes]);
 
   useEffect(() => {
     if (wordEl.current) {
@@ -172,12 +191,8 @@ const Savannah: React.FC = () => {
       if (idInterval.current) {
         clearInterval(idInterval.current);
       }
-      wordEl.current.style.opacity = 1;
       generationWords.current = getWordsForGame(words, 5);
-      const [ word, newArrWords, func ] = generationWords.current;
-      setCurrWord(word);
-      setArrayWords(newArrWords);
-      generationWords.current = func();
+      setNewWords();
       setStep(100 / words.length);
       startWord();
     }
@@ -218,14 +233,29 @@ const Savannah: React.FC = () => {
             />
             {
               arrayWords ? arrayWords.map((el, index) =>
-                <WordBtn
+                (corrBtn.current === index) ? (
+                  <WordBtn
+                  isCorrWord={isCorrWord}
                   successAnimation={successAnimation}
                   failAnimation={failAnimation}
+                  setLifes={setLifes}
                   corrWord={currWord}
                   word={el}
                   number={index + 1}
                   key={index}
                 />
+                ) : (
+                  <WordBtn
+                  setIsCorrWord={setIsCorrWord}
+                  successAnimation={successAnimation}
+                  failAnimation={failAnimation}
+                  setLifes={setLifes}
+                  corrWord={currWord}
+                  word={el}
+                  number={index + 1}
+                  key={index}
+                />
+                )
               ) : 'Загрузка'
             }
           </Container>

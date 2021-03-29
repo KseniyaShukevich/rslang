@@ -17,6 +17,14 @@ const useStyles = makeStyles((theme: Theme) =>
       transition: 'background 0.2s',
       zIndex: 10,
     },
+    correct: {
+      padding: 10,
+      margin: 20,
+      background: 'rgba(0, 50, 0, 0.5)',
+      color: 'white',
+      transition: 'background 0.2s',
+      zIndex: 10,
+    },
     box: {
       padding: 10,
       margin: 20,
@@ -32,16 +40,22 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IProps {
+  isCorrWord?: boolean,
+  setIsCorrWord?: (value: boolean) => void
   successAnimation: () => void,
   failAnimation: () => void,
+  setLifes: any,
   corrWord: IWord | null,
   word: IWord,
   number: number,
 }
 
 const WordBtn: React.FC<IProps> = ({
+  isCorrWord,
+  setIsCorrWord,
   successAnimation,
   failAnimation,
+  setLifes,
   corrWord,
   word,
   number ,
@@ -54,15 +68,20 @@ const WordBtn: React.FC<IProps> = ({
       successAnimation();
     } else {
       failAnimation();
+      setLifes((prev: number) => prev - 1);
       setIsWrong(true);
-      setTimeout(() => setIsWrong(false), 500);
+      if (setIsCorrWord) setIsCorrWord(true);
+      setTimeout(() => {
+        setIsWrong(false);
+        if (setIsCorrWord) setIsCorrWord(false);
+      }, 500);
     }
   }
 
   return (
     <Typography
       variant='h6'
-      className={isWrong ? classes.wrong : classes.box}
+      className={isCorrWord ? classes.correct : (isWrong ? classes.wrong : classes.box)}
       onClick={handleClick}
     >
       <span style={{fontSize: 14, paddingRight: 7, opacity: 0.7}}>
