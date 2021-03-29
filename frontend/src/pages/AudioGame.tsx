@@ -132,6 +132,7 @@ const AudioGame: React.FC = () => {
                                      lifes={lifes}
                                      step={step}
                                      level={level}
+                                     setIsEndLayout={setIsEndLayout}
                                                           />
                 <div style={{position: 'absolute', bottom: 0}}>
                   <span>Кнопки для понимания, как это работает</span>

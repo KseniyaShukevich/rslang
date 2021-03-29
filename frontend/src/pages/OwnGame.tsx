@@ -17,6 +17,7 @@ import GameLayout from '../components/GameLayout'
 import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
+import OwnGameField from "../components/OwnGameField";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -114,7 +115,7 @@ const OwnGame: React.FC = () => {
           >
 
             <Container maxWidth='md' className={classes.containerBtn} style={{background: 'white', height: '100%'}}>
-              Здесь игра
+              <OwnGameField />
               <span>Кнопки для понимания, как это работает</span>
               <Button color='primary' onClick={step}>
                 Ход
