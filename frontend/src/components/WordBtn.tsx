@@ -40,6 +40,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IProps {
+  keyBtn: any,
+  index: number,
   isCorrWord?: boolean,
   setIsCorrWord?: (value: boolean) => void
   successAnimation: () => void,
@@ -51,6 +53,8 @@ interface IProps {
 }
 
 const WordBtn: React.FC<IProps> = ({
+  keyBtn,
+  index,
   isCorrWord,
   setIsCorrWord,
   successAnimation,
@@ -63,7 +67,7 @@ const WordBtn: React.FC<IProps> = ({
   const classes = useStyles();
   const [isWrong, setIsWrong] = useState<boolean>(false);
 
-  const handleClick = () => {
+  const step = () => {
     if (corrWord && (word.id === corrWord.id)) {
       successAnimation();
     } else {
@@ -77,6 +81,16 @@ const WordBtn: React.FC<IProps> = ({
       }, 500);
     }
   }
+
+  const handleClick = () => {
+    step();
+  }
+
+  useEffect(() => {
+    if (keyBtn.current === index) {
+      step();
+    }
+  }, [keyBtn.current]);
 
   return (
     <Typography

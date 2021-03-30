@@ -131,7 +131,6 @@ const Savannah: React.FC = () => {
   const [bgPosition, setBgPosition] = useState<number>(100);
   const [step, setStep] = useState<number>(0);
   const [top, setTop] = useState<number>(-15);
-  const [isStartGame, setIsStartGame] = useState<boolean>(false);
   const [isCorrWord, setIsCorrWord] = useState<boolean>(false);
   const [arrayWords, setArrayWords] = useState<Array<IWord> | null>(null)
   const [lifes, setLifes] = useState<number>(5);
@@ -150,6 +149,7 @@ const Savannah: React.FC = () => {
   const gif = useRef<any>(null);
   const idInterval = useRef<any>(null);
   const idStartTime = useRef<any>(null);
+  const keyBtn = useRef<any>(-1);
 
   const setNewWords = () => {
     wordEl.current.style.opacity = 1;
@@ -235,6 +235,7 @@ const Savannah: React.FC = () => {
       wordEl.current.style.top = `${top}%`;
     }
     if (top === 70) {
+      setLifes((prev) => prev - 1);
       failAnimation();
     };
   }, [top]);
@@ -255,12 +256,12 @@ const Savannah: React.FC = () => {
   }, [isStartLayout, isEndLayout]);
 
   useEffect(() => {
-    if (startTime === 0) {
+    if (startTime === 0 && words) {
       clearInterval(idStartTime.current);
       setIsStartTime(false);
       startWord();
     }
-  }, [startTime]);
+  }, [startTime, words]);
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && words) {
@@ -273,9 +274,19 @@ const Savannah: React.FC = () => {
     }
   }, [words, isStartLayout, isEndLayout]);
 
-  document.addEventListener('fullscreenchange', (event) => {
-    setIsFullscreen(!!document.fullscreenElement);
-  });
+  const checkKeyDown = (event: KeyboardEvent) => {
+    const key = +event.key;
+    if (key) {
+      keyBtn.current = key - 1;
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('fullscreenchange', (event) => {
+      setIsFullscreen(!!document.fullscreenElement);
+    });
+    document.addEventListener('keydown', checkKeyDown);
+  }, []);
 
 	return (
 			<div ref={container} className={classes.box} id='savannah'>
@@ -322,6 +333,8 @@ const Savannah: React.FC = () => {
                 arrayWords ? arrayWords.map((el, index) =>
                   (corrBtn.current === index) ? (
                     <WordBtn
+                    keyBtn={keyBtn}
+                    index={index}
                     isCorrWord={isCorrWord}
                     successAnimation={successAnimation}
                     failAnimation={failAnimation}
@@ -333,6 +346,8 @@ const Savannah: React.FC = () => {
                   />
                   ) : (
                     <WordBtn
+                    keyBtn={keyBtn}
+                    index={index}
                     setIsCorrWord={setIsCorrWord}
                     successAnimation={successAnimation}
                     failAnimation={failAnimation}
