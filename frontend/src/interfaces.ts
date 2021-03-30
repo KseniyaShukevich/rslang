@@ -38,6 +38,8 @@ export interface IWordCard {
   isDifficult: boolean,
   isDeleted: boolean,
   userWordsInfo?: IUserWord[] | null,
+  handleDeleteWord?: (wordId: string) => Promise<any>,
+  handleChangeWordDifficulty?: (wordId: string) => Promise<any>,
 }
 
 export interface IGame {
