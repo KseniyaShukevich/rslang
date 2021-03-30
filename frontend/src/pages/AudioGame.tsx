@@ -92,7 +92,6 @@ const AudioGame: React.FC = () => {
   const step = () => {
     if (generationWords.current) {
       const [ word, arrayWords, func ] = generationWords.current;
-      console.log(word, arrayWords);
       setTrueWord(word)
       setWordArray(arrayWords)
       generationWords.current = func();

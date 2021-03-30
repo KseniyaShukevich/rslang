@@ -18,22 +18,24 @@ import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
 import OwnGameField from "../components/OwnGameField";
+import AudioCallGameField from "../components/AudioCallGameField";
+import {IWord} from "../interfaces";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     box: {
-      backgroundImage: `url('${CLOUDURL}/rslang/Illustration02_yokda5')`,
-      backgroundSize: 'cover',
-      backgroundPosition: '0 100%',
+      background: 'linear-gradient(81deg, #ddb35f, #7409c7);',
       height: 'calc(100vh - 40px)',
       display: 'flex',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
       flexDirection: 'column',
       padding: 20,
     },
     topBox: {
       display: 'flex',
-      justifyContent: 'flex-end'
+      position: 'absolute',
+      top: 0,
+      right: 0
     },
     containerBtn: {
       display: 'flex',
@@ -50,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) =>
     button: {
       transition: '0.5s',
       "&:hover": {
-         backgroundColor: 'rgba(250,250,250,0.1)'
+        backgroundColor: 'rgba(250,250,250,0.1)'
       },
     },
   })
@@ -61,7 +63,11 @@ const OwnGame: React.FC = () => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
-  const lifes: number = 3;
+
+  const [lifes, setLifes]= useState<number>(5);
+  const [trueWord, setTrueWord] = useState<IWord | null>(null);
+  const [wordArray, setWordArray] = useState<Array<IWord> | null>(null);
+
 
   const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -84,10 +90,11 @@ const OwnGame: React.FC = () => {
   const step = () => {
     if (generationWords.current) {
       const [ word, arrayWords, func ] = generationWords.current;
-      console.log(word, arrayWords);
+      setTrueWord(word)
+      setWordArray(arrayWords)
       generationWords.current = func();
     } else {
-      console.log('END!');
+      setIsEndLayout(true)
     }
   }
 
@@ -114,15 +121,22 @@ const OwnGame: React.FC = () => {
             setIsEndLayout={setIsEndLayout}
           >
 
-            <Container maxWidth='md' className={classes.containerBtn} style={{background: 'white', height: '100%'}}>
-              <OwnGameField />
-              <span>Кнопки для понимания, как это работает</span>
-              <Button color='primary' onClick={step}>
-                Ход
-              </Button>
-              <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
-                Закончилась игра
-              </Button>
+            <Container maxWidth='md' className={classes.containerBtn} >
+              <OwnGameField trueWord={trueWord}
+                            wordArray={wordArray}
+                            setLifes={setLifes}
+                            lifes={lifes}
+                            step={step}
+                            setIsEndLayout={setIsEndLayout} />
+              <div style={{position: 'absolute', bottom: 0}}>
+                <span>Кнопки для понимания, как это работает</span>
+                <Button color='primary' onClick={step}>
+                  Ход
+                </Button>
+                <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
+                  Закончилась игра
+                </Button>
+              </div>
             </Container>
 
           </GameLayout>
