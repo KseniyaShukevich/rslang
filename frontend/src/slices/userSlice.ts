@@ -15,8 +15,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     signedUser: (state, action: PayloadAction<IUserResponse | null>) => {
-      localStorage.setItem('token', JSON.stringify(action.payload? action.payload.token : ''));
-      localStorage.setItem('refreshToken', JSON.stringify(action.payload? action.payload.refreshToken : ''));
+      localStorage.setItem('token', JSON.stringify(action.payload ? action.payload.token : ''));
+      localStorage.setItem('refreshToken', JSON.stringify(action.payload ? action.payload.refreshToken : ''));
+      localStorage.setItem('user', JSON.stringify(action.payload ? action.payload : ''));
       state.value = action.payload
     }
   }

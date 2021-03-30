@@ -21,10 +21,11 @@ import AudioGame from "./pages/AudioGame";
 import Sprint from "./pages/Sprint";
 import Savannah from "./pages/Savannah";
 import { addInitToLStorage } from './initForUser';
-import { selectUser } from './slices/userSlice';
+import { selectUser, signedUser } from './slices/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLStorageSettings, fetchUserSettings } from './slices/settingsSlice';
 import { ID_LOCALE_STORAGE } from './utils/constants';
+import { IUserResponse } from "./services/authorisation.service";
 
 interface IRoutes {
   path: string;
@@ -53,6 +54,11 @@ function App() {
   const [ showHeader, setShowHeader ] = useState(true);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const user: IUserResponse | null = JSON.parse(localStorage.getItem('user') || 'null');
+    dispatch(signedUser(user));
+  }, [])
 
   useEffect(() => {
     if (!user) {
