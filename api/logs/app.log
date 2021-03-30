@@ -3133,11 +3133,16 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
+<<<<<<< HEAD
   timestamp: '2021-03-29T16:26:21.792Z'
+=======
+  timestamp: '2021-03-29T12:22:36.788Z'
+>>>>>>> develop
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
+<<<<<<< HEAD
   timestamp: '2021-03-29T16:26:21.803Z'
 }
 {
@@ -3594,4 +3599,7 @@
   message: 'GET 304 /words?group=0&page=0 - size req - res - - 255.068 ms\n',
   level: 'info',
   timestamp: '2021-03-30T12:23:15.021Z'
+=======
+  timestamp: '2021-03-29T12:22:36.794Z'
+>>>>>>> develop
 }
