@@ -34,9 +34,6 @@ const useStyles = makeStyles((theme: Theme) =>
     dictTitle: {
       display: "flex",
     },
-    tab: {
-      display: "none",
-    },
     list: {
       display: "grid",
       "grid-template-columns": "repeat(3, 1fr)",
@@ -51,15 +48,15 @@ const useStyles = makeStyles((theme: Theme) =>
       overflowY: "auto",
     },
     active: {
-      fontSize: '22px',
+      fontSize: "22px",
       fontWeight: 500,
-      padding: '6px 10px',
+      padding: "6px 10px",
       backgroundColor: "#8dc1e6",
       "& p": {
         margin: "0 auto",
       },
       [theme.breakpoints.down("xs")]: {
-        fontSize: '17px',
+        fontSize: "17px",
       },
     },
     activeTab: {
@@ -69,13 +66,13 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "60vh",
       margin: "0 auto",
       [theme.breakpoints.down("xs")]: {
-        fontSize: '2.5rem',
+        fontSize: "2.5rem",
       },
     },
     listItem: {
-      fontSize: '22px',
+      fontSize: "22px",
       fontWeight: 500,
-      padding: '6px 10px',
+      padding: "6px 10px",
       "& p": {
         margin: "0 auto",
       },
@@ -83,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) =>
         cursor: "pointer",
       },
       [theme.breakpoints.down("xs")]: {
-        fontSize: '17px',
+        fontSize: "17px",
       },
     },
   })
@@ -91,16 +88,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Dictionary: React.FC<IProps> = ({ setIsDictionary }: IProps) => {
   const classes = useStyles();
-  const [target, setTarget] = useState("");
+  const [isChosenTab, setIsChosenTab] = useState([false, false, false]);
 
   const handleClick = () => {
     setIsDictionary(false);
   };
-
-  const activeLink = (e: any) => {
-    setTarget(e.target.innerHTML);
-  };
-  const [isStudiedWords, setIsStadiedWords] = useState(false);
 
   return (
     <>
@@ -116,49 +108,39 @@ const Dictionary: React.FC<IProps> = ({ setIsDictionary }: IProps) => {
               Словарь
             </Typography>
           </Box>
-          <List className={classes.list} onClick={activeLink}>
+          <List className={classes.list}>
             <ListItem
-              className={target == "Изучаемые слова" ? classes.active : classes.listItem}
+              className={isChosenTab[0] ? classes.active : classes.listItem}
+              onClick={() => setIsChosenTab([true, false, false])}
             >
               <p>Изучаемые слова</p>
             </ListItem>
             <ListItem
-              className={target == "Сложные слова" ? classes.active : classes.listItem}
+              className={isChosenTab[1] ? classes.active : classes.listItem}
+              onClick={() => setIsChosenTab([false, true, false])}
             >
               <p>Сложные слова</p>
             </ListItem>
             <ListItem
-              className={target == "Удалённые слова" ? classes.active : classes.listItem}
+              className={isChosenTab[2] ? classes.active : classes.listItem}
+              onClick={() => setIsChosenTab([false, false, true])}
             >
               <p>Удалённые слова</p>
             </ListItem>
           </List>
           <Box className={classes.tabs}>
-            <Box
-              className={
-                target == "Изучаемые слова" ? classes.activeTab : classes.tab
-              }
-            >
-              Здесь нет слов1
-            </Box>
-            <Box
-              className={
-                target == "Сложные слова" ? classes.activeTab : classes.tab
-              }
-            >
-              Здесь нет слов2
-            </Box>
-            <Box
-              className={
-                target == "Удалённые слова" ? classes.activeTab : classes.tab
-              }
-            >
-              Здесь нет слов3
-            </Box>
+            {isChosenTab[0] && (
+              <Box className={classes.activeTab}>Здесь нет слов1</Box>
+            )}
+            {isChosenTab[1] && (
+              <Box className={classes.activeTab}>Здесь нет слов2</Box>
+            )}
+            {isChosenTab[2] && (
+              <Box className={classes.activeTab}>Здесь нет слов3</Box>
+            )}
           </Box>
         </Box>
       </Box>
-
       <Button onClick={handleClick}>Назад</Button>
     </>
   );
