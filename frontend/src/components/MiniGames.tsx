@@ -63,7 +63,6 @@ const useStyles = makeStyles({
 });
 
 const MiniGames: React.FC = () => {
-  // const smth = 9;
   const classes = useStyles();
 
   return (
