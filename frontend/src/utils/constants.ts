@@ -90,6 +90,7 @@ const INIT_USER_SETTINGS = {
 }
 }
 const DEFAULT_AVATAR: string = 'rslang/avatar_ltzdkha_kkfty4';
+const ID_LOCALE_STORAGE: string = '4tr8ffd';
 
 export {
   CLOUD_URL,
@@ -97,5 +98,6 @@ export {
   INIT_USER_WORD,
   DEFAULT_AVATAR,
   INIT_USER_STATISTICS,
-  INIT_USER_SETTINGS
+  INIT_USER_SETTINGS,
+  ID_LOCALE_STORAGE
 }
