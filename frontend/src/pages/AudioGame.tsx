@@ -92,7 +92,6 @@ const AudioGame: React.FC = () => {
   const step = () => {
     if (generationWords.current) {
       const [ word, arrayWords, func ] = generationWords.current;
-      console.log(word, arrayWords);
       setTrueWord(word)
       setWordArray(arrayWords)
       generationWords.current = func();
@@ -132,6 +131,7 @@ const AudioGame: React.FC = () => {
                                      lifes={lifes}
                                      step={step}
                                      level={level}
+                                     setIsEndLayout={setIsEndLayout}
                                                           />
                 <div style={{position: 'absolute', bottom: 0}}>
                   <span>Кнопки для понимания, как это работает</span>

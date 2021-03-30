@@ -81,7 +81,7 @@ export async function request(url: string, token: string = '', method: string = 
 // }
 
 export const getWord = async (wordId: string) => {
-  const response = await request(`words/${wordId}`);
+  const response = await request(`/words/${wordId}`);
   return response;
 }
 
