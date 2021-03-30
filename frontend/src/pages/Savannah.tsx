@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
       fontSize: 50,
       fontWeight: 'lighter',
       transition: 'opacity 7s, top 0.1s',
+      top: '-15%',
     },
     rectangle: {
       width: 4,
@@ -50,6 +51,42 @@ const useStyles = makeStyles((theme: Theme) =>
       position: 'absolute',
       display: 'none',
       transition: '0.3s'
+    },
+    circle: {
+      width: 70,
+      height: 70,
+      borderRadius: '50%',
+      border: 'solid 1px grey',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItem: 'center',
+    },
+    wordTime: {
+      color: 'grey',
+      fontSize: 50,
+    },
+    startGame: {
+      top: 0,
+      left: 0,
+      position: 'absolute',
+      height: '100vh',
+      width: '100vw',
+      zIndex: 20,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      background: 'rgba(0,0,0,0.5)',
+    },
+    startTime: {
+      width: 200,
+      height: 200,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundImage: `url('${CLOUDURL}/rslang/XZ5V_sywvww')`,
+      backgroundSize: 'cover',
+      color: 'white',
+      fontSize: 60,
     },
     topBox: {
       display: 'flex',
@@ -62,6 +99,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     containerGif: {
       width: 'fit-content',
+      display: 'flex',
+      height: 200,
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginTop: '-15vh',
+    },
+    succesGif: {
+      backgroundSize: 'cover',
     },
     lifes: {
       display: 'flex',
@@ -89,6 +135,9 @@ const Savannah: React.FC = () => {
   const [isCorrWord, setIsCorrWord] = useState<boolean>(false);
   const [arrayWords, setArrayWords] = useState<Array<IWord> | null>(null)
   const [lifes, setLifes] = useState<number>(5);
+  const [isStartTime, setIsStartTime] = useState<boolean>(false);
+  const [startTime, setStartTime] = useState<number>(3);
+  const [wordTime, setWordTime] = useState<number>(8);
 
   const words = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -98,7 +147,9 @@ const Savannah: React.FC = () => {
   const container = useRef<any>(null);
   const rectangle = useRef<any>(null);
   const corrBtn = useRef<number>(-1);
+  const gif = useRef<any>(null);
   const idInterval = useRef<any>(null);
+  const idStartTime = useRef<any>(null);
 
   const setNewWords = () => {
     wordEl.current.style.opacity = 1;
@@ -128,7 +179,17 @@ const Savannah: React.FC = () => {
     idInterval.current = setInterval(() => setTop((prev) => prev + 1), 100);
   }
 
+  const addStartTime = () => {
+    idStartTime.current = setInterval(() => setStartTime((prev) => prev - 1), 1000);
+  }
+
   const successAnimation = () => {
+    gif.current.style.backgroundImage = `url('${CLOUDURL}/rslang/XZ5V_sywvww')`;
+    setTimeout(() => {
+      if (gif.current) {
+        gif.current.style.backgroundImage = '';
+      }
+    }, 1000);
     wordEl.current.style.display = 'none';
     rectangle.current.style.display = 'block';
     rectangle.current.style.top = `${top}%`;
@@ -165,6 +226,11 @@ const Savannah: React.FC = () => {
   }, [lifes]);
 
   useEffect(() => {
+    const initPosition = 15;
+    const forSeconds = 10;
+    const time = top + initPosition;
+
+    setWordTime(8 - Math.floor(time / forSeconds));
     if (wordEl.current) {
       wordEl.current.style.top = `${top}%`;
     }
@@ -179,12 +245,22 @@ const Savannah: React.FC = () => {
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout) {
+      setIsStartTime(true);
+      addStartTime();
       dispatch(fetchWords({
         group: 0,
         page: 0
       }));
     }
   }, [isStartLayout, isEndLayout]);
+
+  useEffect(() => {
+    if (startTime === 0) {
+      clearInterval(idStartTime.current);
+      setIsStartTime(false);
+      startWord();
+    }
+  }, [startTime]);
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && words) {
@@ -194,7 +270,6 @@ const Savannah: React.FC = () => {
       generationWords.current = getWordsForGame(words, 5);
       setNewWords();
       setStep(100 / words.length);
-      startWord();
     }
   }, [words, isStartLayout, isEndLayout]);
 
@@ -204,6 +279,17 @@ const Savannah: React.FC = () => {
 
 	return (
 			<div ref={container} className={classes.box} id='savannah'>
+        {
+          isStartTime && (
+            <Box className={classes.startGame}>
+              <Box className={classes.startTime}>
+                <div>
+                  {startTime}
+                </div>
+              </Box>
+            </Box>
+          )
+        }
         <Box className={classes.topBox}>
           <FullscreenBtn
             game={'savannah'}
@@ -232,35 +318,48 @@ const Savannah: React.FC = () => {
               className={classes.rectangle}
             />
             {
-              arrayWords ? arrayWords.map((el, index) =>
-                (corrBtn.current === index) ? (
-                  <WordBtn
-                  isCorrWord={isCorrWord}
-                  successAnimation={successAnimation}
-                  failAnimation={failAnimation}
-                  setLifes={setLifes}
-                  corrWord={currWord}
-                  word={el}
-                  number={index + 1}
-                  key={index}
-                />
-                ) : (
-                  <WordBtn
-                  setIsCorrWord={setIsCorrWord}
-                  successAnimation={successAnimation}
-                  failAnimation={failAnimation}
-                  setLifes={setLifes}
-                  corrWord={currWord}
-                  word={el}
-                  number={index + 1}
-                  key={index}
-                />
-                )
-              ) : 'Загрузка'
+              isStartTime ? '' : (
+                arrayWords ? arrayWords.map((el, index) =>
+                  (corrBtn.current === index) ? (
+                    <WordBtn
+                    isCorrWord={isCorrWord}
+                    successAnimation={successAnimation}
+                    failAnimation={failAnimation}
+                    setLifes={setLifes}
+                    corrWord={currWord}
+                    word={el}
+                    number={index + 1}
+                    key={index}
+                  />
+                  ) : (
+                    <WordBtn
+                    setIsCorrWord={setIsCorrWord}
+                    successAnimation={successAnimation}
+                    failAnimation={failAnimation}
+                    setLifes={setLifes}
+                    corrWord={currWord}
+                    word={el}
+                    number={index + 1}
+                    key={index}
+                  />
+                  )
+                ) : ''
+              )
             }
           </Container>
           <Container className={classes.containerGif}>
-            <Image publicId="rslang/33Ho_by5kqq" width="90" />
+            {
+              !isStartTime && (
+                <Box className={classes.circle}>
+                  <Box className={classes.wordTime}>
+                    {wordTime}
+                  </Box>
+                </Box>
+              )
+            }
+            <div ref={gif} className={classes.succesGif}>
+              <Image publicId="rslang/33Ho_by5kqq" width="90" />
+            </div>
           </Container>
         </GameLayout>
       </div>
