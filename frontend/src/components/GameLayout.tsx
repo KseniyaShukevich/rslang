@@ -1,8 +1,6 @@
-import React, { useState, ReactElement } from 'react'
-import {
-         Button,
-        } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 import StartLayout from './StartLayout'
+import ResultOfMiniGame from './ResultOfMiniGame'
 
 interface IProps {
   isStartLayout: boolean
@@ -39,15 +37,10 @@ const GameLayout: React.FC<IProps> = ({
 
         {
           isEndLayout && (
-            <div style={{color: 'white', textAlign: 'center'}}>
-              END LAYOUT
-              <Button color='primary'>
-                Продолжить тренировку
-              </Button>
-              <Button color='primary'>
-                К списку тренировок
-              </Button>
-            </div>
+            <ResultOfMiniGame
+              setIsEndLayout={setIsEndLayout}
+              setIsStartLayout={setIsEndLayout}
+            />
           )
         }
       </>

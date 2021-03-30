@@ -60,6 +60,8 @@ interface IProps {
 const StartLayout = ({ setIsStartLayout }: IProps) => {
   const classes = useStyles();
   const [level, setLevel] = useState<number>(0);
+  const gameName: string = 'АУДИОВЫЗОВ';
+  const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
 
   const getStartGame = () => {
     setIsStartLayout(false);
@@ -68,8 +70,8 @@ const StartLayout = ({ setIsStartLayout }: IProps) => {
   return (
     <div className={classes.container}>
       <div className={classes.flex}>
-        <div className={classes.audioLabel}>АУДИОВЫЗОВ</div>
-        <div className={classes.audioTextLabel}>Тренировка улучшает восприятие речи на слух.</div>
+        <div className={classes.audioLabel}>{gameName}</div>
+        <div className={classes.audioTextLabel}>{descriptionGame}</div>
         <ChooseLevel level={level} setLevel={setLevel} />
         <div className={classes.btnStart} onClick={getStartGame}>НАЧАТЬ</div>
       </div>

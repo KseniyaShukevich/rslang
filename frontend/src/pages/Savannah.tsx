@@ -124,6 +124,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Savannah: React.FC = () => {
 	const classes = useStyles();
+  const gameName: string = 'САВАННА';
+  const descriptionGame: string = 'Тренировка Саванна развивает словарный запас.';
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);

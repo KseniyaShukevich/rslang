@@ -57,6 +57,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Sprint: React.FC = () => {
 	const classes = useStyles();
+  const gameName: string = 'СПРИНТ';
+  const descriptionGame: string = 'Тренировка Саванна развивает словарный запас.';
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
