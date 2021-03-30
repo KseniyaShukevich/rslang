@@ -3296,3 +3296,78 @@
   level: 'info',
   timestamp: '2021-03-30T15:19:54.988Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-30T15:25:44.791Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-30T15:25:44.831Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 306.296 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T15:32:08.632Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 616.753 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T15:33:37.259Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 451.188 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T15:34:00.183Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 1786.090 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T16:06:22.224Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 288.764 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T16:25:18.980Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 195.930 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T16:27:42.514Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 289.980 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T16:34:18.741Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-03-30T16:46:40.999Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-03-30T16:46:41.036Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 1975.426 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T16:54:52.788Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 247.549 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T16:56:49.252Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 358.053 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T17:00:19.228Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 866.159 ms\n',
+  level: 'info',
+  timestamp: '2021-03-30T17:11:15.034Z'
+}

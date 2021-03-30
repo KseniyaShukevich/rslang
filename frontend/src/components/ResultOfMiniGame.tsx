@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Button,
@@ -15,6 +15,7 @@ import { theme } from "../mui-style";
 import speaker from "../assets/images/speaker.svg";
 import { IWordStat } from "../interfaces";
 import { Link } from 'react-router-dom';
+import { IWord } from '../interfaces';
 
 const wordsWrong: IWordStat[] = [
   {
@@ -129,11 +130,14 @@ const useStyles = makeStyles({
 });
 
 interface IProps {
-  setIsEndLayout: (value: boolean) => void
-  setIsStartLayout: (value: boolean) => void
+  corrWords: Array<IWord>
+  wrongWords: Array<IWord>
 }
 
-const ResultOfMiniGame: React.FC<IProps> = ({ setIsEndLayout, setIsStartLayout }: IProps) => {
+const ResultOfMiniGame: React.FC<IProps> = ({
+  corrWords,
+  wrongWords,
+}: IProps) => {
   const classes = useStyles();
 
   function renderWrongWords(): React.ReactNode {
@@ -165,6 +169,10 @@ const ResultOfMiniGame: React.FC<IProps> = ({ setIsEndLayout, setIsStartLayout }
       );
     });
   }
+
+  useEffect(() => {
+    console.log(corrWords, wrongWords);
+  }, []);
 
   return (
     <>

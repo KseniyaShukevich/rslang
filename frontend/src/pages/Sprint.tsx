@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Sprint: React.FC = () => {
 	const classes = useStyles();
-  const gameName: string = 'СПРИНТ';
+  const nameGame: string = 'СПРИНТ';
   const descriptionGame: string = 'Тренировка Саванна развивает словарный запас.';
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
@@ -66,6 +66,9 @@ const Sprint: React.FC = () => {
 
   const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
+
+  const corrWords = useRef<any>([]);
+  const wrongWords = useRef<any>([]);
 
   const generationWords = useRef<any>(null);
 
@@ -78,7 +81,7 @@ const Sprint: React.FC = () => {
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && wordsArray) {
-      generationWords.current = getWordsForGame(wordsArray, 5);
+      generationWords.current = getWordsForGame(wordsArray, 2);
     }
   }, [wordsArray, isStartLayout, isEndLayout]);
 
@@ -109,6 +112,10 @@ const Sprint: React.FC = () => {
           <CloseBtn />
         </Box>
           <GameLayout
+            corrWords={corrWords.current}
+            wrongWords={wrongWords.current}
+            nameGame={nameGame}
+            descriptionGame={descriptionGame}
             isStartLayout={isStartLayout}
             setIsStartLayout={setIsStartLayout}
             isEndLayout={isEndLayout}

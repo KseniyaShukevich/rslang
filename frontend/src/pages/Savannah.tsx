@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Savannah: React.FC = () => {
 	const classes = useStyles();
-  const gameName: string = 'САВАННА';
+  const nameGame: string = 'САВАННА';
   const descriptionGame: string = 'Тренировка Саванна развивает словарный запас.';
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
@@ -139,6 +139,7 @@ const Savannah: React.FC = () => {
   const [isStartTime, setIsStartTime] = useState<boolean>(false);
   const [startTime, setStartTime] = useState<number>(3);
   const [wordTime, setWordTime] = useState<number>(8);
+  const [isEndGame, setIsEndGame] = useState<boolean>(false);
 
   const words = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -152,6 +153,8 @@ const Savannah: React.FC = () => {
   const idInterval = useRef<any>(null);
   const idStartTime = useRef<any>(null);
   const keyBtn = useRef<any>(-1);
+  const corrWords = useRef<any>([]);
+  const wrongWords = useRef<any>([]);
 
   const setNewWords = () => {
     wordEl.current.style.opacity = 1;
@@ -173,6 +176,7 @@ const Savannah: React.FC = () => {
       setNewWords();
     } else {
       clearInterval(idInterval.current);
+      setIsEndGame(true);
       setIsEndLayout(true);
     }
   }
@@ -186,6 +190,7 @@ const Savannah: React.FC = () => {
   }
 
   const successAnimation = () => {
+    corrWords.current.push(currWord);
     gif.current.style.backgroundImage = `url('${CLOUDURL}/rslang/XZ5V_sywvww')`;
     setTimeout(() => {
       if (gif.current) {
@@ -204,6 +209,7 @@ const Savannah: React.FC = () => {
   }
 
   const failAnimation = () => {
+    wrongWords.current.push(currWord);
     setTop(-15);
     wordEl.current.style.opacity = 0;
     wordEl.current.style.opacity = 0;
@@ -222,10 +228,17 @@ const Savannah: React.FC = () => {
     if (lifes === 0) {
       setTimeout(() => {
         clearInterval(idInterval.current);
+        setIsEndGame(true);
         setIsEndLayout(true);
       }, 300);
     }
   }, [lifes]);
+
+  useEffect(() => {
+    if (isEndGame) {
+      // console.log(corrWords.current, wrongWords.current);
+    }
+  }, [isEndGame]);
 
   useEffect(() => {
     const initPosition = 15;
@@ -314,6 +327,10 @@ const Savannah: React.FC = () => {
           <CloseBtn />
         </Box>
         <GameLayout
+          corrWords={corrWords.current}
+          wrongWords={wrongWords.current}
+          nameGame={nameGame}
+          descriptionGame={descriptionGame}
           isStartLayout={isStartLayout}
           setIsStartLayout={setIsStartLayout}
           isEndLayout={isEndLayout}
@@ -335,29 +352,33 @@ const Savannah: React.FC = () => {
                 arrayWords ? arrayWords.map((el, index) =>
                   (corrBtn.current === index) ? (
                     <WordBtn
-                    keyBtn={keyBtn}
-                    index={index}
-                    isCorrWord={isCorrWord}
-                    successAnimation={successAnimation}
-                    failAnimation={failAnimation}
-                    setLifes={setLifes}
-                    corrWord={currWord}
-                    word={el}
-                    number={index + 1}
-                    key={index}
+                      // corrWords={corrWords}
+                      // wrongWords={wrongWords}
+                      keyBtn={keyBtn}
+                      index={index}
+                      isCorrWord={isCorrWord}
+                      successAnimation={successAnimation}
+                      failAnimation={failAnimation}
+                      setLifes={setLifes}
+                      corrWord={currWord}
+                      word={el}
+                      number={index + 1}
+                      key={index}
                   />
                   ) : (
                     <WordBtn
-                    keyBtn={keyBtn}
-                    index={index}
-                    setIsCorrWord={setIsCorrWord}
-                    successAnimation={successAnimation}
-                    failAnimation={failAnimation}
-                    setLifes={setLifes}
-                    corrWord={currWord}
-                    word={el}
-                    number={index + 1}
-                    key={index}
+                      // corrWords={corrWords}
+                      // wrongWords={wrongWords}
+                      keyBtn={keyBtn}
+                      index={index}
+                      setIsCorrWord={setIsCorrWord}
+                      successAnimation={successAnimation}
+                      failAnimation={failAnimation}
+                      setLifes={setLifes}
+                      corrWord={currWord}
+                      word={el}
+                      number={index + 1}
+                      key={index}
                   />
                   )
                 ) : ''

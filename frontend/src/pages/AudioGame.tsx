@@ -58,7 +58,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AudioGame: React.FC = () => {
 	const classes = useStyles();
-
+  const nameGame: string = 'АУДИОВЫЗОВ';
+  const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
 
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
@@ -75,6 +76,9 @@ const AudioGame: React.FC = () => {
   const dispatch = useDispatch();
 
   const generationWords = useRef<any>(null);
+
+  const corrWords = useRef<any>([]);
+  const wrongWords = useRef<any>([]);
 
   useEffect(() => {
     dispatch(fetchWords({
@@ -117,6 +121,10 @@ const AudioGame: React.FC = () => {
           <CloseBtn />
         </Box>
           <GameLayout
+            corrWords={corrWords.current}
+            wrongWords={wrongWords.current}
+            nameGame={nameGame}
+            descriptionGame={descriptionGame}
             isStartLayout={isStartLayout}
             setIsStartLayout={setIsStartLayout}
             isEndLayout={isEndLayout}
