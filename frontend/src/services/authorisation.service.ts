@@ -73,6 +73,6 @@ export interface IUserResponse {
   name?: string;
   message?: string;
   startDate: string;
-  token?: string;
+  token: string;
   refreshToken?: string;
 }

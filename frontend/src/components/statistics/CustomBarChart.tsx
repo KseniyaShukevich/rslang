@@ -84,7 +84,7 @@ const CustomLineChart: React.FC<IProps> = ({ wordsByDayArr, user }) => {
         width={500}
         height={220}
         data={data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 50 }}
+        margin={{ top: 5, right: 60, left: 20, bottom: 50 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" interval={6} angle={30} dy={20} dx={30} scale="band"/>
