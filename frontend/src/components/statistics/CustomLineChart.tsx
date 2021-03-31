@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: theme.spacing(1)
+      padding: theme.spacing(1),
+      backgroundColor: '#ffffffbb'
     },
     card: {
       margin: theme.spacing(1),

@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundSize: "cover",
       backgroundAttachment: "fixed",
       padding: theme.spacing(2, 0),
+      flex: 1,
     },
     wrapper: {
       width: '80%',
@@ -43,7 +44,7 @@ const Tutorial: React.FC = () => {
   const [isDictionary, setIsDictionary] = useState<Boolean>(false);
 
   return (
-    <PageLayout>
+    <PageLayout pageName={'tutorial'}>
       {
         isDictionary ? (
           <Dictionary setIsDictionary={setIsDictionary} />

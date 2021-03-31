@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(3, 0),
       display: 'flex',
       columnGap: theme.spacing(3),
-      justifyContent: 'space-between'
+      justifyContent: 'space-around'
     },
     media: {
       height: 150,
@@ -74,7 +74,7 @@ const Statistics: React.FC = () => {
   }, []);
 
   return (
-    <PageLayout showLoader={loading}>
+    <PageLayout showLoader={loading} pageName={'statistics'}>
       <div className={classes.wrapper}>
         <GameStatisticCard gameName={'Саванна'}     gameStatistics={statistics.optional.today.miniGames.savannah} />
         <GameStatisticCard gameName={'Аудиовызов'}  gameStatistics={statistics.optional.today.miniGames.audio} />
@@ -82,14 +82,14 @@ const Statistics: React.FC = () => {
         <GameStatisticCard gameName={'Своя игра'}   gameStatistics={statistics.optional.today.miniGames.ownGame} />
         <DailyTotalStatisticsCard    generalStatistics={statistics.optional.today.generalStatistics} />
       </div>
-        <div className={classes.wrapper}>
-          {user && (
-            <>
-              <CustomLineChart user={user} wordsByDayArr={statistics.optional.forAllTime.forEachDay} />
-              <CustomBarChart user={user} wordsByDayArr={statistics.optional.forAllTime.byDay} />
-            </>
-          )}
-        </div>
+      <div className={classes.wrapper}>
+        {user && (
+          <>
+            <CustomLineChart user={user} wordsByDayArr={statistics.optional.forAllTime.forEachDay} />
+            <CustomBarChart user={user} wordsByDayArr={statistics.optional.forAllTime.byDay} />
+          </>
+        )}
+      </div>
     </PageLayout>
   );
 }

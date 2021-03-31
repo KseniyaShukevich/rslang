@@ -14,6 +14,7 @@ import { IGameStatistics } from '../../interfaces';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
+      backgroundColor: '#ffffffbb',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',

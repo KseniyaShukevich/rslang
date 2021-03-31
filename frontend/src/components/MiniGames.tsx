@@ -41,10 +41,11 @@ const GAMES: IGame[] = [
 
 const useStyles = makeStyles({
   container: {
-    background: "beige",
+    // background: "beige",
     height: "100vh",
   },
   miniGamesWrapper: {
+    padding: 30,
     width: "80%",
     margin: "0 auto",
     [theme.breakpoints.down("sm")]: {
@@ -67,7 +68,7 @@ const MiniGames: React.FC = () => {
 
   return (
     <Container className={classes.container} maxWidth="lg">
-      <PageLayout>
+      <PageLayout pageName={'mini-games'} >
         <div className={classes.miniGamesWrapper}>
           <List className={classes.gameList}>
             {GAMES.map((elem: IGame, index: number) => {
