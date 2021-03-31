@@ -23,7 +23,7 @@ const WinMusic:React.FC<Props> = ({isWinMusic, setIsWinMusic,isMusicValue }) => 
     <div className={classes.hidden}>
 
       <ReactPlayer
-        url={'https://mp3melodii.ru/files_site_02/001/standartnyj_signal_sms_iphone.mp3'}
+        url={`${process.env.PUBLIC_URL}/correct.mp3`}
         playing={isWinMusic}
         onEnded={() => setIsWinMusic(false)}
         volume={Number(isMusicValue)}

@@ -22,7 +22,7 @@ const LoseMusic: React.FC<Props> = ({isLoseMusic, setIsLoseMusic, isMusicValue})
   return (
     <div className={classes.hidden}>
       <ReactPlayer
-        url={'https://mp3melodii.ru/files_site_02/001/signal_na_sms_zvuk_otklyucheniya_signalizacii_na_mashine.mp3'}
+        url={`${process.env.PUBLIC_URL}/fail.mp3`}
         volume={Number(isMusicValue)}
         playing={isLoseMusic}
         onEnded={() => setIsLoseMusic(false)}
