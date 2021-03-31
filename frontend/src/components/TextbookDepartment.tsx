@@ -51,13 +51,14 @@ const TextbookDepartment: React.FC<ITextbookDepartment> = (props) => {
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {PAGES.map((elem, index) => (
-          <Link key={elem} to={`/tutorial/page/${book}/${index}`} className={classes.link}>
+          {/* TODO filter pages on request*/}
+          {PAGES.map((page) => (
+          <Link key={page.name} to={`/tutorial/page/${book}/${page.number - 1}`} className={classes.link}>
             <ListItem button className={classes.nested}>
               <ListItemIcon>
                 <MenuBookIcon  style={{ color: `${color}` }} />
               </ListItemIcon>
-              <ListItemText primary={elem} />
+              <ListItemText primary={page.name} />
             </ListItem>
           </Link>
           ))}

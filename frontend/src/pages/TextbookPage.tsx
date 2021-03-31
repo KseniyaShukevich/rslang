@@ -116,12 +116,12 @@ const TextBookPage: React.FC = () => {
     })();
   }, [user]);
 
+  // TODO проверка на пустой список и переход к след странице - возможно с сообщением
   useEffect(() => {
     if (words && userWordsInfo.length !== 0) {
       const res = words.map((elem: IWord) => {
         const matchedItem = userWordsInfo!.find((item: IUserWord)  => item.wordId === elem.id);
         if (matchedItem) {
-          console.log(matchedItem);
           const isDifficult = (matchedItem.difficulty === 'hard') ? true : false;
           const isDeleted = (matchedItem.optional.mode === 'deleted') ? true : false;
           return {...elem, isDifficult, isDeleted };
@@ -129,8 +129,10 @@ const TextBookPage: React.FC = () => {
         return elem;
       })
       setUserWords(res);
+      console.log(res)
     }
   }, [words, userWordsInfo]);
+
 
   const handleDeleteWord = async (wordId: string) => {
     const matchedWord = userWordsInfo!.find(elem => elem.wordId === wordId);
@@ -188,7 +190,7 @@ const TextBookPage: React.FC = () => {
     <PageLayout>
       <Container maxWidth="lg" className={classes.root} disableGutters={true}>
         <Box className={classes.subheaderWrapper}>
-          <SubHeader book={book} page={page} />
+          <SubHeader book={book} page={page} pagesArr={['a','a']} nextPage={!!(user && userWords && userWords.filter(w => !w.isDeleted).length === 0)}/>
         </Box>
         <Box className={classes.wrapper}>
           <Box className={classes.titleWrapper} color="text.primary">
