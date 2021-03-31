@@ -75,6 +75,11 @@ a {
 /* стили для скроллбара */
 ::-webkit-scrollbar {
   width: 1.6rem; /* ширина для вертикального скролла */
+  height: 1.6rem; /* высота для горизонтального скролла */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1565c03a;
 }
 
 ::-webkit-scrollbar-thumb {

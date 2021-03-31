@@ -13,6 +13,7 @@ import { IGameStatistics, IStatisticsOneDay } from '../../interfaces';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import moment from 'moment';
 import { theme } from '../../mui-style';
+import { IUserResponse } from '../../services/authorisation.service';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -52,14 +53,15 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 interface IProps {
-  wordsByDayArr: IStatisticsOneDay[]
+  wordsByDayArr: IStatisticsOneDay[];
+  user: IUserResponse;
 }
 
-const CustomLineChart: React.FC<IProps> = ({ wordsByDayArr }) => {
+const CustomLineChart: React.FC<IProps> = ({ wordsByDayArr, user }) => {
   const classes = useStyles();
 
-  const startDate = moment('2021-03-17');
-  const daysCount = moment().diff(startDate, 'days') + 1
+  const startDate = user!.startDate;
+  const daysCount = moment().diff(moment(startDate, 'DD MM YYYY'), 'days') + 1
 
   const timeLineArr = Array.from({ length: daysCount }).map((_elem, i) => ({
     date: moment().subtract(i, 'days').format('DD MM YYYY'),
@@ -72,7 +74,6 @@ const CustomLineChart: React.FC<IProps> = ({ wordsByDayArr }) => {
       words: dayData ? +dayData.countLearnedWords : +0
     })
   })
-  console.log(data);
 
   return (
     <Paper elevation={3} className={classes.paper}>
@@ -81,7 +82,7 @@ const CustomLineChart: React.FC<IProps> = ({ wordsByDayArr }) => {
     </Typography>
       <BarChart
         width={500}
-        height={200}
+        height={220}
         data={data}
         margin={{ top: 5, right: 30, left: 20, bottom: 50 }}
       >

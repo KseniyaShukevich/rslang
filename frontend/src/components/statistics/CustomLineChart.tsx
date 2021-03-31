@@ -1,19 +1,13 @@
 import React from 'react';
 
-import {Card, Paper} from '@material-ui/core';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import { Paper} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
-import { Link } from 'react-router-dom';
-import { IGameStatistics, IStatisticsOneDay } from '../../interfaces';
+import { IStatisticsOneDay } from '../../interfaces';
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import moment from 'moment';
-import { isTypeElement } from 'typescript';
 import { theme } from '../../mui-style';
+import { IUserResponse } from '../../services/authorisation.service';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,14 +47,14 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 interface IProps {
-  wordsByDayArr: IStatisticsOneDay[]
+  wordsByDayArr: IStatisticsOneDay[];
+  user: IUserResponse;
 }
 
-const CustomLineChart: React.FC<IProps> = ({ wordsByDayArr }) => {
+const CustomLineChart: React.FC<IProps> = ({ wordsByDayArr, user }) => {
   const classes = useStyles();
-
-  const startDate = moment('2021-03-17');
-  const daysCount = moment().diff(startDate, 'days') + 1
+  const startDate = user!.startDate;
+  const daysCount = moment().diff(moment(startDate, 'DD MM YYYY'), 'days') + 1
 
   const timeLineArr = Array.from({ length: daysCount }).map((_elem, i) => ({
     date: moment().subtract(i, 'days').format('DD MM YYYY'),

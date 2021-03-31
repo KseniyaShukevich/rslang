@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser, signedUser } from '../../slices/userSlice';
 import { Box, createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import { CLOUD_NAME, CLOUD_URL } from '../../utils/constants';
-import notificate from '../../utils/notificator';
+import notificate, { MessageType } from '../../utils/notificator';
+import { success } from 'toastr';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -64,7 +65,7 @@ const LogOutView: React.FC = () => {
 
   const onLogOut = () => {
     dispatch(signedUser(null));
-    notificate('Вы вышли из системы')
+    notificate('Вы вышли из системы', MessageType.Success)
     history.push('/')
   }
 

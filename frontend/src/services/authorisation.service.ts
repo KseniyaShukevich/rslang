@@ -42,9 +42,9 @@ const requestToCloudinary = async (formData: FormData): Promise<any> => {
 }
 
 const uploadImage = async (file: any, formData: FormData) => {
-  let imageId: string ='rslang/avatar_ltzdkha'; // TODO ask if default?  consider try
+  let imageId = '';
   if (file) {
-    const upload_preset: string = 'ujwcmlol'; // TODO ask what is it
+    const upload_preset: string = 'ujwcmlol';
     formData.append("file", file);
     formData.append("upload_preset", upload_preset);
     const data = await requestToCloudinary(formData);
@@ -72,6 +72,7 @@ export interface IUserResponse {
   imageId?: string;
   name?: string;
   message?: string;
+  startDate: string;
   token?: string;
   refreshToken?: string;
 }

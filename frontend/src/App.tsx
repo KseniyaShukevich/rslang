@@ -26,6 +26,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setLStorageSettings, fetchUserSettings } from './slices/settingsSlice';
 import { ID_LOCALE_STORAGE } from './utils/constants';
 import { IUserResponse } from "./services/authorisation.service";
+import notificate from './utils/notificator';
 
 interface IRoutes {
   path: string;
@@ -51,7 +52,7 @@ const routes: IRoutes[] = [
 function App() {
   const classes = mainStyles();
   const location = useLocation();
-  const [ showHeader, setShowHeader ] = useState(true);
+  const [ showHeader, setShowHeader ] = useState(false);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
@@ -59,6 +60,42 @@ function App() {
     const user: IUserResponse | null = JSON.parse(localStorage.getItem('user') || 'null');
     dispatch(signedUser(user));
   }, [])
+
+
+  const updateToken = async (user: IUserResponse) => {
+    try {
+      const response = await fetch(`/users/${user.userId}/tokens`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${user.refreshToken}`,
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }});
+
+      if (!response.ok) {
+        notificate('Ошибка: ' + response.statusText);
+        console.warn('Error', response.statusText);
+        dispatch(signedUser(null));
+      } else {
+        const updatedTokens = await response.json()
+        dispatch(signedUser({ ...user, ...updatedTokens }))
+      }
+
+    } catch (err) {
+      notificate('Что-то пошло не так: ' + err);
+      dispatch(signedUser(user));
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (user) {
+        updateToken(user)
+      }
+    }, 120000);
+
+    return () => clearInterval(interval);
+  }, [ user ]);
 
   useEffect(() => {
     if (!user) {

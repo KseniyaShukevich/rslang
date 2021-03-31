@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 const bcrypt = require('bcrypt');
 const { addMethods } = require('../../utils/toResponse');
 const Schema = mongoose.Schema;
@@ -20,6 +21,10 @@ const User = new Schema(
       required: true,
       trim: true,
       minlength: 8
+    },
+    startDate: {
+      type: String,
+      default: moment().format('DD MM YYYY')
     }
   },
   { collection: 'users' }

@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import {
-  Box,
-  Container,
-  Button,
-  Card,
   makeStyles,
   Theme,
   createStyles,
@@ -12,18 +7,14 @@ import {
 
 
 import PageLayout from '../components/PageLayout'
-import { selectUser } from '../slices/userSlice'
 import { clearTodayStatistics } from '../calcStatistics'
-import notificate from '../utils/notificator';
 import { getUserStatistics } from '../requests'
 import { ID_LOCALE_STORAGE, INIT_USER_STATISTICS } from '../utils/constants'
-import Savannah from './Savannah'
 import GameStatisticCard from '../components/statistics/GameStatisticCard'
-import { IGame } from '../interfaces'
-import GameCard from '../components/GameCard'
 import CustomLineChart from '../components/statistics/CustomLineChart'
 import CustomBarChart from '../components/statistics/CustomBarChart'
 import DailyTotalStatisticsCard from '../components/statistics/DailyTotalStatisticsCard'
+import { IUserResponse } from '../services/authorisation.service'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -56,9 +47,10 @@ const useStyles = makeStyles((theme: Theme) =>
 const Statistics: React.FC = () => {
   const classes = useStyles();
 
-  const user = useSelector(selectUser);
+  const user: IUserResponse | null = JSON.parse(localStorage.getItem('user') || 'null');
+
   const [ statistics, setStatistics ] = useState(INIT_USER_STATISTICS);
-  let [loading, setLoading] = useState(false);
+  let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (user) {
@@ -67,32 +59,37 @@ const Statistics: React.FC = () => {
       const getStatisticks = async ( ) => {
         const response = await getUserStatistics(user.userId!, user.token!);
 
-        console.log(response);
-        setStatistics(response)
+        setStatistics(response);
         setLoading(false)
+
       }
       getStatisticks();
 
     } else {
       clearTodayStatistics();
       const LSStatistics = JSON.parse(localStorage.getItem(`${ID_LOCALE_STORAGE}statistics`) || 'null');
-      setStatistics(LSStatistics)
+      setStatistics(LSStatistics);
+      setLoading(false)
     }
   }, []);
 
   return (
-    <PageLayout>
+    <PageLayout showLoader={loading}>
       <div className={classes.wrapper}>
-        <GameStatisticCard gameName={'Саванна'} gameStatistics={statistics.optional.today.miniGames.savannah} />
+        <GameStatisticCard gameName={'Саванна'}     gameStatistics={statistics.optional.today.miniGames.savannah} />
         <GameStatisticCard gameName={'Аудиовызов'}  gameStatistics={statistics.optional.today.miniGames.audio} />
         <GameStatisticCard gameName={'Спринт'}      gameStatistics={statistics.optional.today.miniGames.sprint} />
         <GameStatisticCard gameName={'Своя игра'}   gameStatistics={statistics.optional.today.miniGames.ownGame} />
         <DailyTotalStatisticsCard    generalStatistics={statistics.optional.today.generalStatistics} />
       </div>
-      <div className={classes.wrapper}>
-        <CustomLineChart wordsByDayArr={statistics.optional.forAllTime.forEachDay}/>
-        <CustomBarChart wordsByDayArr={statistics.optional.forAllTime.byDay}/>
-      </div>
+        <div className={classes.wrapper}>
+          {user && (
+            <>
+              <CustomLineChart user={user} wordsByDayArr={statistics.optional.forAllTime.forEachDay} />
+              <CustomBarChart user={user} wordsByDayArr={statistics.optional.forAllTime.byDay} />
+            </>
+          )}
+        </div>
     </PageLayout>
   );
 }
