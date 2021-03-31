@@ -42,14 +42,21 @@ const useStyles = makeStyles((theme) => ({
 
 type Props = {
     open: boolean,
-    setOpen: any
+    setOpen: any,
+    wordId: string,
+    handleDeleteWord: ((wordId: string) => Promise<any>) | undefined
 }
 
 
-const ModalDeleteWord: React.FC<Props> = ({open, setOpen}) => {
+const ModalDeleteWord: React.FC<Props> = ({open, setOpen, wordId, handleDeleteWord}) => {
     const classes = useStyles();
 
     const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleDelete = async (wordId: string) => {
+        await handleDeleteWord!(wordId);
         setOpen(false);
     };
 
@@ -70,13 +77,13 @@ const ModalDeleteWord: React.FC<Props> = ({open, setOpen}) => {
                     <div className={classes.paper}>
                         <div className={classes.h1}>Вы точно хотите удалить эти слова из вашего словаря?</div>
                         <div>
-                            <Button className={classes.btn} onClick={() => handleClose()} variant="contained" color="primary">
-                                Удалить слова
+                            <Button className={classes.btn} onClick={() => handleDelete(wordId)} variant="contained" color="primary">
+                                Удалить слово
                             </Button>
                         </div>
                         <div>
                             <Button className={classes.btn} onClick={() => handleClose()} color="primary">
-                                отмена
+                                Отмена
                             </Button>
                         </div>
                     </div>

@@ -1,12 +1,9 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import Header from './Header';
 import Footer from './Footer';
 import { mainStyles, theme } from '../mui-style';
 import { Container} from "@material-ui/core";
 import { css } from "@emotion/core";
 import HashLoader from "react-spinners/HashLoader";
-import { ClassNames } from '@emotion/react';
-
 
 interface IProps {
   children: ReactElement | Array<ReactElement>;
@@ -38,7 +35,7 @@ const PageLayout: React.FC<IProps> = ({ children, pageName, showLoader }: IProps
         <HashLoader color={theme.palette.primary.main} loading={true} css={override} size={150} />
       </div>
       <div className={`${!showBackground ? classes.mainWrapper: classes.mainWrapperWithBackground} main-wrapper` }>
-        <Container maxWidth="lg" className={classes.mainContainer}>
+        <Container disableGutters={true} maxWidth="lg" className={classes.mainContainer}>
           {children}
         </Container>
         <Footer />

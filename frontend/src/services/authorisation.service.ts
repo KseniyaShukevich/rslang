@@ -68,7 +68,7 @@ export interface IUser {
 }
 
 export interface IUserResponse {
-  userId?: string;
+  userId: string;
   imageId?: string;
   name?: string;
   message?: string;
