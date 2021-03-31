@@ -8,7 +8,7 @@ import MusicOffIcon from '@material-ui/icons/MusicOff';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
 import SoundButton from "./SoundButton";
-import ListenPlayer from "./ ListenPlayer";
+import ListenPlayer from "./ListenPlayer";
 import WinMusic from "./WinMusic";
 import LoseMusic from "./LoseMusic";
 import { IWord } from '../interfaces';

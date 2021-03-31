@@ -16,8 +16,9 @@ import GameLayout from '../components/GameLayout'
 import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
-import AudioCallGameField from "../components/AudioCallGameField";
+import AudioCallGameField from "../components/AudioCallGameField"
 import { IWord } from '../interfaces'
+import ControlSounds from '../components/ControlSounds'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,10 +31,16 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: 20,
     },
     topBox: {
+      width: 'calc(100vw - 40px)',
       display: 'flex',
+      justifyContent: 'space-between',
       position: 'absolute',
+      padding: 20,
       top: 0,
       right: 0
+    },
+    containerBtns: {
+      display: 'flex',
     },
     containerBtn: {
       display: 'flex',
@@ -60,6 +67,7 @@ const AudioGame: React.FC = () => {
 	const classes = useStyles();
   const nameGame: string = 'АУДИОВЫЗОВ';
   const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
+  const [isAudio, setIsAudio] = useState<boolean>(true);
 
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
@@ -111,14 +119,20 @@ const AudioGame: React.FC = () => {
 	return (
 			<Box className={classes.box} id='game'>
         <Box className={classes.topBox}>
-          <FullscreenBtn
-            game={'game'}
-            isFullscreen={isFullscreen}
+          <ControlSounds
+            isAudio={isAudio}
+            setIsAudio={setIsAudio}
           />
-          <Box className={classes.lifes}>
-            <Heart lifes={lifes} />
+          <Box className={classes.containerBtns}>
+            <FullscreenBtn
+              game={'game'}
+              isFullscreen={isFullscreen}
+            />
+            <Box className={classes.lifes}>
+              <Heart lifes={lifes} />
+            </Box>
+            <CloseBtn />
           </Box>
-          <CloseBtn />
         </Box>
           <GameLayout
             corrWords={corrWords.current}

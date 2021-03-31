@@ -8,7 +8,7 @@ import MusicNoteIcon from "@material-ui/icons/MusicNote";
 import MusicOffIcon from "@material-ui/icons/MusicOff";
 import WinMusic from "./WinMusic";
 import LoseMusic from "./LoseMusic";
-import ListenPlayer from "./ ListenPlayer";
+import ListenPlayer from "./ListenPlayer";
 import PageviewIcon from "@material-ui/icons/Pageview";
 
 const useStyles = makeStyles((theme) => ({

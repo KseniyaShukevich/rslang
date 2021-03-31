@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import {
          Box,
          Container,
-         Button,
         } from '@material-ui/core'
 import {
         Theme,
@@ -20,6 +19,15 @@ import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
 import { IWord } from '../interfaces'
+import { selectUser } from "../slices/userSlice"
+import {
+        addStatisticsToDB,
+        addStatisticsToLStorage
+      } from '../calcStatistics'
+import ControlSounds from '../components/ControlSounds'
+import WinMusic from '../components/WinMusic'
+import LoseMusic from '../components/LoseMusic'
+import StartMusic from '../components/StartMusic'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -33,6 +41,9 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'space-between',
       flexDirection: 'column',
       padding: 20,
+    },
+    containerBtns: {
+      display: 'flex',
     },
     word: {
       opacity: 0,
@@ -90,7 +101,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     topBox: {
       display: 'flex',
-      justifyContent: 'flex-end'
+      justifyContent: 'space-between'
     },
     containerBtn: {
       display: 'flex',
@@ -138,8 +149,12 @@ const Savannah: React.FC = () => {
   const [lifes, setLifes] = useState<number>(5);
   const [isStartTime, setIsStartTime] = useState<boolean>(false);
   const [startTime, setStartTime] = useState<number>(3);
-  const [wordTime, setWordTime] = useState<number>(8);
+  const [wordTime, setWordTime] = useState<number>(9);
   const [isEndGame, setIsEndGame] = useState<boolean>(false);
+  const [isAudio, setIsAudio] = useState<boolean>(true);
+  const [isWinMusic, setIsWinMusic] = useState<boolean>(false);
+  const [isLoseMusic, setIsLoseMusic] = useState<boolean>(false);
+  const [isStartMusic, setIsStartMusic] = useState<boolean>(false);
 
   const words = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -150,11 +165,15 @@ const Savannah: React.FC = () => {
   const rectangle = useRef<any>(null);
   const corrBtn = useRef<number>(-1);
   const gif = useRef<any>(null);
-  const idInterval = useRef<any>(null);
+  const idInterval = useRef<any>([]);
   const idStartTime = useRef<any>(null);
   const keyBtn = useRef<any>(-1);
   const corrWords = useRef<any>([]);
   const wrongWords = useRef<any>([]);
+  const currLongestCorr = useRef<any>(0);
+  const newLongestCorr = useRef<any>(0);
+
+  const user = useSelector(selectUser);
 
   const setNewWords = () => {
     wordEl.current.style.opacity = 1;
@@ -175,21 +194,25 @@ const Savannah: React.FC = () => {
       }, 300);
       setNewWords();
     } else {
-      clearInterval(idInterval.current);
+      clearInterval(idInterval.current[0]);
       setIsEndGame(true);
       setIsEndLayout(true);
     }
   }
 
   const startWord = () => {
-    idInterval.current = setInterval(() => setTop((prev) => prev + 1), 100);
+    const id = setInterval(() => setTop((prev) => prev + 1), 100);
+    idInterval.current.push(id);
   }
 
   const addStartTime = () => {
+    setIsStartMusic(true);
     idStartTime.current = setInterval(() => setStartTime((prev) => prev - 1), 1000);
   }
 
   const successAnimation = () => {
+    setIsWinMusic(true);
+    newLongestCorr.current += 1;
     corrWords.current.push(currWord);
     gif.current.style.backgroundImage = `url('${CLOUDURL}/rslang/XZ5V_sywvww')`;
     setTimeout(() => {
@@ -201,7 +224,11 @@ const Savannah: React.FC = () => {
     rectangle.current.style.display = 'block';
     rectangle.current.style.top = `${top}%`;
     if (rectangle.current) {
-      setTimeout(() => rectangle.current.style.top = '90%', 0);
+      setTimeout(() => {
+        if (rectangle.current) {
+          rectangle.current.style.top = '90%'
+        }
+      }, 0);
     }
     setTop(-15);
     setBgPosition((prev: number) => prev - step);
@@ -209,12 +236,19 @@ const Savannah: React.FC = () => {
   }
 
   const failAnimation = () => {
+    setIsLoseMusic(true);
+    if (currLongestCorr.current < newLongestCorr.current) {
+      currLongestCorr.current = newLongestCorr.current;
+      newLongestCorr.current = 0;
+    }
     wrongWords.current.push(currWord);
     setTop(-15);
-    wordEl.current.style.opacity = 0;
-    wordEl.current.style.opacity = 0;
-    wordEl.current.style.transition = '0.3s';
-    wordEl.current.style.fontSize = '100px';
+    if (wordEl.current) {
+      wordEl.current.style.opacity = 0;
+      wordEl.current.style.opacity = 0;
+      wordEl.current.style.transition = '0.3s';
+      wordEl.current.style.fontSize = '100px';
+    }
     setTimeout(() => {
       if (wordEl.current) {
         wordEl.current.style.fontSize = '';
@@ -227,7 +261,7 @@ const Savannah: React.FC = () => {
   useEffect(() => {
     if (lifes === 0) {
       setTimeout(() => {
-        clearInterval(idInterval.current);
+        clearInterval(idInterval.current[0]);
         setIsEndGame(true);
         setIsEndLayout(true);
       }, 300);
@@ -236,7 +270,29 @@ const Savannah: React.FC = () => {
 
   useEffect(() => {
     if (isEndGame) {
-      // console.log(corrWords.current, wrongWords.current);
+      if (currLongestCorr.current < newLongestCorr.current) {
+        currLongestCorr.current = newLongestCorr.current;
+        newLongestCorr.current = 0;
+      }
+      if (user) {
+        addStatisticsToDB(
+          user.userId,
+          user.token,
+          'savannah',
+          corrWords.current.length,
+          corrWords.current.length,
+          wrongWords.current.length,
+          currLongestCorr.current
+        );
+      } else {
+        addStatisticsToLStorage(
+          'savannah',
+          corrWords.current.length,
+          corrWords.current.length,
+          wrongWords.current.length,
+          currLongestCorr.current
+        );
+      }
     }
   }, [isEndGame]);
 
@@ -245,7 +301,7 @@ const Savannah: React.FC = () => {
     const forSeconds = 10;
     const time = top + initPosition;
 
-    setWordTime(8 - Math.floor(time / forSeconds));
+    setWordTime(9 - Math.floor(time / forSeconds));
     if (wordEl.current) {
       wordEl.current.style.top = `${top}%`;
     }
@@ -271,7 +327,7 @@ const Savannah: React.FC = () => {
   }, [isStartLayout, isEndLayout]);
 
   useEffect(() => {
-    if (startTime === 0 && words) {
+    if ((startTime <= 0) && words) {
       clearInterval(idStartTime.current);
       setIsStartTime(false);
       startWord();
@@ -280,8 +336,9 @@ const Savannah: React.FC = () => {
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && words) {
-      if (idInterval.current) {
-        clearInterval(idInterval.current);
+      if (idInterval.current.length > 1) {
+        clearInterval(idInterval.current[0]);
+        idInterval.current.shift();
       }
       generationWords.current = getWordsForGame(words, 5);
       setNewWords();
@@ -317,14 +374,35 @@ const Savannah: React.FC = () => {
           )
         }
         <Box className={classes.topBox}>
-          <FullscreenBtn
-            game={'savannah'}
-            isFullscreen={isFullscreen}
+          <StartMusic
+            isStartMusic={isStartMusic}
+            setIsStartMusic={setIsStartMusic}
+            isMusicValue={isAudio}
           />
-          <Box className={classes.lifes}>
-            <Heart lifes={lifes} />
+          <WinMusic
+            isWinMusic={isWinMusic}
+            setIsWinMusic={setIsWinMusic}
+            isMusicValue={isAudio}
+          />
+          <LoseMusic
+            isLoseMusic={isLoseMusic}
+            setIsLoseMusic={setIsLoseMusic}
+            isMusicValue={isAudio}
+          />
+          <ControlSounds
+            isAudio={isAudio}
+            setIsAudio={setIsAudio}
+          />
+          <Box className={classes.containerBtns}>
+            <FullscreenBtn
+              game={'savannah'}
+              isFullscreen={isFullscreen}
+            />
+            <Box className={classes.lifes}>
+              <Heart lifes={lifes} />
+            </Box>
+            <CloseBtn />
           </Box>
-          <CloseBtn />
         </Box>
         <GameLayout
           corrWords={corrWords.current}
@@ -341,7 +419,7 @@ const Savannah: React.FC = () => {
               ref={wordEl}
               className={classes.word}
             >
-              {currWord ? currWord.wordTranslate : ''}
+              {currWord ? currWord.word : ''}
             </div>
             <div
               ref={rectangle}
@@ -352,8 +430,6 @@ const Savannah: React.FC = () => {
                 arrayWords ? arrayWords.map((el, index) =>
                   (corrBtn.current === index) ? (
                     <WordBtn
-                      // corrWords={corrWords}
-                      // wrongWords={wrongWords}
                       keyBtn={keyBtn}
                       index={index}
                       isCorrWord={isCorrWord}
@@ -367,8 +443,6 @@ const Savannah: React.FC = () => {
                   />
                   ) : (
                     <WordBtn
-                      // corrWords={corrWords}
-                      // wrongWords={wrongWords}
                       keyBtn={keyBtn}
                       index={index}
                       setIsCorrWord={setIsCorrWord}

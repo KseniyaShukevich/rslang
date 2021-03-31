@@ -10,7 +10,7 @@ import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import ModalDeleteWord from "./ModalDeleteWord";
 import ModalStatistic from "./ModalStatistic";
 import ModalDescrAboutWord from "./ModalDescrAboutWord";
-import ListenPlayer from "./ ListenPlayer";
+import ListenPlayer from "./ListenPlayer";
 import { IWordCard, IMiniGamesStat } from "../interfaces";
 import { FILESPATH } from "../constants";
 import { useSelector } from "react-redux";
