@@ -18,6 +18,7 @@ import sprint from "../assets/images/background_5.jpg";
 import ownGame from "../assets/images/background_6.jpg";
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
+import { ID_LOCALE_STORAGE, INIT_USER_WORD } from '../utils/constants';
 
 const GAMES: IGame[] = [
   {
@@ -107,14 +108,9 @@ const TextBookPage: React.FC = () => {
   }, [book, page]);
 
   useEffect(() => {
-    console.log(words);
-  }, [words, user])
-
-  useEffect(() => {
     (async () => {
       if (user && user.userId && user.token) {
         const response = await fetchUserWords(user.userId, user.token);
-        console.log(response);
         setUserWordsInfo(prev => response);
       }
     })();
@@ -122,110 +118,58 @@ const TextBookPage: React.FC = () => {
 
   useEffect(() => {
     if (words && userWordsInfo.length !== 0) {
-      console.log(userWordsInfo);
-      setUserWords(prev => {
-        return words.map((elem: IWord) => {
-          const matchedItem = userWordsInfo!.find((item: IUserWord)  => item.wordId === elem.id);
-          if (matchedItem) {
-            const isDifficult = (matchedItem.difficulty === 'hard') ? true : false;
-            const isDeleted = (matchedItem.optional.mode === 'deleted') ? true : false;
-            return ({...elem, isDifficult, isDeleted });
-          }
-          return elem;
-        });
+      const res = words.map((elem: IWord) => {
+        const matchedItem = userWordsInfo!.find((item: IUserWord)  => item.wordId === elem.id);
+        if (matchedItem) {
+          console.log(matchedItem);
+          const isDifficult = (matchedItem.difficulty === 'hard') ? true : false;
+          const isDeleted = (matchedItem.optional.mode === 'deleted') ? true : false;
+          return {...elem, isDifficult, isDeleted };
+        }
+        return elem;
       })
+      setUserWords(res);
     }
   }, [words, userWordsInfo]);
 
   const handleDeleteWord = async (wordId: string) => {
     const matchedWord = userWordsInfo!.find(elem => elem.wordId === wordId);
+    const newWord = Object.assign(INIT_USER_WORD);
     if (!matchedWord) {
-      const newWord = {
-        id: user!.userId,
-        difficulty: 'easy',
-        optional: {
-          mode: 'deleted',
-          miniGames: {
-            savannah: {
-              correctAnswers: 0,
-              wrongAnswers: 0,
-            },
-            audio: {
-              correctAnswers: 0,
-              wrongAnswers: 0,
-            },
-            sprint: {
-              correctAnswers: 0,
-              wrongAnswers: 0,
-            },
-            ownGame: {
-              correctAnswers: 0,
-              wrongAnswers: 0,
-            }
-          }
-        },
-        wordId: wordId
-      }
-      setUserWordsInfo(prev => [...prev, newWord]);
-      const body = {
-        difficulty: 'easy',
-        optional: {
-          mode: 'deleted'
+      newWord.optional.mode = 'deleted';
+      setUserWordsInfo(prev => [...prev,
+        {
+          ...newWord,
+          wordId,
+          userId: user!.userId
         }
-      };
-      await createUserWord(user!.userId, wordId, body, user!.token);
+      ]);
+      await createUserWord(user!.userId, wordId, newWord, user!.token);
     } else if (matchedWord && matchedWord.optional.mode === 'learning') {
       setUserWordsInfo(prev => {
         matchedWord.optional.mode = 'deleted';
         return [...prev];
       });
-      const updatedPart = {
-        optional: {
-          mode: 'deleted'
-        }
-      }
-      await updateUserWord(user!.userId, wordId, updatedPart, user!.token);
+      matchedWord.optional.mode = 'deleted';
+      await updateUserWord(user!.userId, wordId, {
+        optional: matchedWord.optional
+      }, user!.token);
     }
   };
 
   const handleChangeWordDifficulty = async (wordId: string) => {
     const matchedWord = userWordsInfo!.find(elem => elem.wordId === wordId);
+    const newWord = Object.assign(INIT_USER_WORD);
     if (!matchedWord) {
-      const newWord = {
-        id: user!.userId,
-        difficulty: 'hard',
-        optional: {
-          mode: 'learning',
-          miniGames: {
-            savannah: {
-              correctAnswers: 0,
-              wrongAnswers: 0,
-            },
-            audio: {
-              correctAnswers: 0,
-              wrongAnswers: 0,
-            },
-            sprint: {
-              correctAnswers: 0,
-              wrongAnswers: 0,
-            },
-            ownGame: {
-              correctAnswers: 0,
-              wrongAnswers: 0,
-            }
-          }
-        },
-        wordId: wordId
-      }
-      setUserWordsInfo(prev => [...prev, newWord]);
-      const body = {
-        difficulty: 'hard',
-        optional: {
-          mode: 'learning'
+      newWord.difficulty = 'hard';
+      setUserWordsInfo(prev => [...prev,
+        {
+          ...newWord,
+          wordId,
+          userId: user!.userId
         }
-      };
-      await createUserWord(user!.userId, wordId, body, user!.token);
-
+      ]);
+      await createUserWord(user!.userId, wordId, newWord, user!.token);
     } else if (matchedWord) {
       const newDifficulty = (matchedWord.difficulty === 'easy') ? 'hard' : 'easy';
       setUserWordsInfo(prev => {
@@ -265,11 +209,14 @@ const TextBookPage: React.FC = () => {
                 />
               )
             })}
-            {!user && words && words.map((elem: IWord) => {
+            {(!user || (user && !userWords)) && words && words.map((elem: IWord) => {
               return (
                 <WordCard
                   {...elem}
                   key={elem.id}
+                  userWordsInfo={userWordsInfo}
+                  handleDeleteWord={handleDeleteWord}
+                  handleChangeWordDifficulty={handleChangeWordDifficulty}
                 />
               )
             })}

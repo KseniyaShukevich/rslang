@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/core/styles";
@@ -103,10 +103,26 @@ const WordCard: React.FC<IWordCard> = (props) => {
     setIsListens(true);
   };
 
+  const checkStatistics = (word: any) => {
+    if (
+      word.optional.miniGames.savannah.correctAnswers === 0 &&
+      word.optional.miniGames.audio.correctAnswers === 0 &&
+      word.optional.miniGames.sprint.correctAnswers === 0 &&
+      word.optional.miniGames.ownGame.correctAnswers === 0 &&
+      word.optional.miniGames.savannah.wrongAnswers === 0 &&
+      word.optional.miniGames.audio.wrongAnswers === 0 &&
+      word.optional.miniGames.sprint.wrongAnswers === 0 &&
+      word.optional.miniGames.ownGame.wrongAnswers === 0
+    ) {
+      return null;
+    }
+    return word.optional.miniGames;
+  }
+
   const handleStatisticClick = (wordId: string) => {
     const matchedWord = userWordsInfo!.find((elem) => elem.wordId === wordId);
     matchedWord
-      ? setWordStatistic((prev) => matchedWord.optional.miniGames)
+      ? setWordStatistic((prev) => checkStatistics(matchedWord))
       : setWordStatistic((prev) => null);
     setIsStatisticOpen(true);
   };
