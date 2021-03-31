@@ -76,6 +76,8 @@ components:
           type: string
         password:
           type: string
+        startDate:
+          type: string
     Auth:
       type: object
       properties:
