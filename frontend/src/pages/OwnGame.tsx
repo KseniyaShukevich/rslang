@@ -17,9 +17,10 @@ import GameLayout from '../components/GameLayout'
 import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
-import OwnGameField from "../components/OwnGameField";
-import AudioCallGameField from "../components/AudioCallGameField";
-import {IWord} from "../interfaces";
+import OwnGameField from "../components/OwnGameField"
+import AudioCallGameField from "../components/AudioCallGameField"
+import {IWord} from "../interfaces"
+import ControlSounds from '../components/ControlSounds'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,9 +32,15 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       padding: 20,
     },
+    containerBtns: {
+      display: 'flex',
+    },
     topBox: {
+      width: 'calc(100vw - 40px)',
       display: 'flex',
       position: 'absolute',
+      padding: 20,
+      justifyContent: 'space-between',
       top: 0,
       right: 0
     },
@@ -60,6 +67,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const OwnGame: React.FC = () => {
 	const classes = useStyles();
+  const nameGame: string = 'АУДИОВЫЗОВ';
+  const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
+  const [isAudio, setIsAudio] = useState<boolean>(true);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
@@ -73,6 +83,9 @@ const OwnGame: React.FC = () => {
   const dispatch = useDispatch();
 
   const generationWords = useRef<any>(null);
+
+  const corrWords = useRef<any>([]);
+  const wrongWords = useRef<any>([]);
 
   useEffect(() => {
     dispatch(fetchWords({
@@ -105,16 +118,26 @@ const OwnGame: React.FC = () => {
 	return (
 			<Box className={classes.box} id='game'>
         <Box className={classes.topBox}>
-          <FullscreenBtn
-            game={'game'}
-            isFullscreen={isFullscreen}
+          <ControlSounds
+            isAudio={isAudio}
+            setIsAudio={setIsAudio}
           />
-          <Box className={classes.lifes}>
-            <Heart lifes={lifes} />
+          <Box className={classes.containerBtns}>
+            <FullscreenBtn
+              game={'game'}
+              isFullscreen={isFullscreen}
+            />
+            <Box className={classes.lifes}>
+              <Heart lifes={lifes} />
+            </Box>
+            <CloseBtn />
           </Box>
-          <CloseBtn />
         </Box>
           <GameLayout
+            corrWords={corrWords.current}
+            wrongWords={wrongWords.current}
+            nameGame={nameGame}
+            descriptionGame={descriptionGame}
             isStartLayout={isStartLayout}
             setIsStartLayout={setIsStartLayout}
             isEndLayout={isEndLayout}

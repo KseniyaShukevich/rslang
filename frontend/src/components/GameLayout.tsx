@@ -1,10 +1,13 @@
-import React, { useState, ReactElement } from 'react'
-import {
-         Button,
-        } from '@material-ui/core'
+import React, { ReactElement } from 'react'
 import StartLayout from './StartLayout'
+import ResultOfMiniGame from './ResultOfMiniGame'
+import { IWord } from '../interfaces'
 
 interface IProps {
+  corrWords: Array<IWord>,
+  wrongWords: Array<IWord>,
+  nameGame: string,
+  descriptionGame: string,
   isStartLayout: boolean
   isEndLayout: boolean
   setIsEndLayout: (value: boolean) => void
@@ -13,6 +16,10 @@ interface IProps {
 }
 
 const GameLayout: React.FC<IProps> = ({
+  corrWords,
+  wrongWords,
+  nameGame,
+  descriptionGame,
   isStartLayout,
   isEndLayout,
   setIsEndLayout,
@@ -25,7 +32,11 @@ const GameLayout: React.FC<IProps> = ({
       <>
         {
           isStartLayout && (
-            <StartLayout setIsStartLayout={setIsStartLayout} />
+            <StartLayout
+              nameGame={nameGame}
+              descriptionGame={descriptionGame}
+              setIsStartLayout={setIsStartLayout}
+            />
           )
         }
 
@@ -39,15 +50,10 @@ const GameLayout: React.FC<IProps> = ({
 
         {
           isEndLayout && (
-            <div style={{color: 'white', textAlign: 'center'}}>
-              END LAYOUT
-              <Button color='primary'>
-                Продолжить тренировку
-              </Button>
-              <Button color='primary'>
-                К списку тренировок
-              </Button>
-            </div>
+            <ResultOfMiniGame
+              corrWords={corrWords}
+              wrongWords={wrongWords}
+            />
           )
         }
       </>
