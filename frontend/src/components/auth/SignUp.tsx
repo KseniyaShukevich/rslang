@@ -6,7 +6,7 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 
 import notificate from '../../utils/notificator';
-import { ICreds, IUser, IUserResponse, login, logup } from '../../services/authorisation.service';
+import { ICreds, IUser, IUserResponse, login, logup as signUp } from '../../services/authorisation.service';
 import { selectUser, signedUser } from '../../slices/userSlice';
 import PageLayout from '../PageLayout'
 import { CLOUD_NAME, CLOUD_URL, DEFAULT_AVATAR } from '../../utils/constants';
@@ -123,7 +123,7 @@ const SignUp: React.FC = () => {
       const formData = new FormData();
       const imageId: string = imageObj ? await uploadImage(imageObj, formData) : DEFAULT_AVATAR;
 
-      const response = await logup({ ...newUser, imageId });
+      const response = await signUp({ ...newUser, imageId });
 
       // if (response && response.error) {
       //   const errorMessage = response.error.errors[0].message;

@@ -20,7 +20,8 @@ const authenticate = async user => {
     ...tokens,
     userId: userEntity._id,
     name: userEntity.name,
-    imageId: userEntity.imageId
+    imageId: userEntity.imageId,
+    startDate: userEntity.startDate
   };
 };
 
