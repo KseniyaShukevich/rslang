@@ -89,3 +89,38 @@ a {
   border-radius: 0.7rem;
 }
 
+.menuLink {
+  color: #1565c0;
+  width: max-content;
+  height: 100%;
+  font-size: "16px";
+  text-transform: uppercase;
+  align-items: center;
+  padding: 0 3px;
+  display: inline-block;
+  line-height: 2;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  font-weight: bold;
+}
+
+.menuLink:after {
+  display: block;
+  content: "";
+  background-color: orange;
+  height: 3px;
+  width: 0%;
+  left: 50%;
+  position: absolute;
+  -webkit-transition: width 0.3s ease-in-out;
+  -moz--transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.menuLink:hover:after,
+.menuLink:focus:after {
+  width: 100%;
+}

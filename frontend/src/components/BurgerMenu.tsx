@@ -2,11 +2,7 @@
 import React, { useState } from "react";
 import { Link, Route } from "react-router-dom";
 import { Box, createStyles, fade, IconButton, makeStyles, Theme } from "@material-ui/core";
-import { useDispatch, useSelector } from 'react-redux';
 import MenuIcon from '@material-ui/icons/Menu';
-import { yellow } from "@material-ui/core/colors";
-import { isClassExpression } from "typescript";
-import { black } from "material-ui/styles/colors";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {

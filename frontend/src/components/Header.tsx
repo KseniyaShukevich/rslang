@@ -10,11 +10,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser, signedUser } from '../slices/userSlice';
 import AuthPannel from './auth/AuthPannel';
 import { makeStyles, Theme, createStyles } from "@material-ui/core";
+import Menu from "./Menu";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   header: {
     boxShadow: 'unset',
-    position: 'absolute'
+    position: 'absolute',
   }
 }))
 
@@ -28,16 +29,17 @@ const Header: React.FC = () => {
     >
       <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
         <div style={{ flex: 1 }}>
-          <BurgerMenu />
+          {/* <BurgerMenu /> */}
         </div>
-        <div style={{ flex: 1, textAlign: "center" }}>
+        {/* <div style={{ flex: 1, textAlign: "center" }}>
           <Typography variant="h4">
             <span className="classes.">RSLang</span>
           </Typography>
-        </div>
-        <div style={{ flex: 1 }}>
+        </div> */}
+          <Menu />
+        {/* <div style={{ flex: 1 }}>
           <AuthPannel />
-        </div>
+        </div> */}
       </Toolbar>
     </AppBar>
   );
