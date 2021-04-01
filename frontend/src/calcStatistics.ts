@@ -10,12 +10,7 @@ import {
         } from './interfaces'
 import { ID_LOCALE_STORAGE } from './utils/constants'
 
-const addZero = (value: number): string => {
-  if (value < 10) {
-    return `0${value}`;
-  }
-  return `${value}`;
-}
+const addZero = (value: number): string => value < 10 ? `0${value}` : `${value}`;
 
 export const getDate = (): string => {
   const today: Date = new Date();

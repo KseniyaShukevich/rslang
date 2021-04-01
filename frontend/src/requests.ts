@@ -1,3 +1,6 @@
+import { IStatistics } from './interfaces';
+import notificate from './utils/notificator';
+
 export async function request(url: string, token: string = '', method: string = 'GET', data = null) {
   let headers: any = {};
 
@@ -14,10 +17,10 @@ export async function request(url: string, token: string = '', method: string = 
   const response = await fetch(url, options);
 
   if (!response.ok) {
+    notificate('Ошибка: ' + response.statusText)
     console.warn('Error', response.statusText);
     return null;
   }
-
 
   const result = await response.json();
   return result;
@@ -81,7 +84,7 @@ export async function request(url: string, token: string = '', method: string = 
 // }
 
 export const getWord = async (wordId: string) => {
-  const response = await request(`words/${wordId}`);
+  const response = await request(`/words/${wordId}`);
   return response;
 }
 
@@ -140,7 +143,7 @@ export const updateUserWord = async (userId: string, wordId: string, body: any, 
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNThlY2UzNmZhYjliMWZmZGM5YWU3MSIsImlhdCI6MTYxNjU4ODEzOSwiZXhwIjoxNjE2NjAyNTM5fQ.3ftr9ZQelppOlL3b_QjSCIFQm-RWxwoj9vGRrdjgpEg",
 //   );
 
-export const getUserStatistics = async (userId: string, token: string) => {
+export const getUserStatistics = async (userId: string, token: string): Promise<IStatistics> => {
   const response = await request(`/users/${userId}/statistics`, token);
   return response;
 }

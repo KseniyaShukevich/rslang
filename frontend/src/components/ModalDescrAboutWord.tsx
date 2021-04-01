@@ -10,7 +10,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 import HeadsetIcon from "@material-ui/icons/Headset";
-import ListenPlayer from "./ ListenPlayer";
+import ListenPlayer from "./ListenPlayer";
 import { FILESPATH } from '../constants';
 
 

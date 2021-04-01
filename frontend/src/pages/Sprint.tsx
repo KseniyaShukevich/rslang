@@ -9,7 +9,6 @@ import {
         createStyles,
         makeStyles,
       } from '@material-ui/core/styles'
-import CLOUDURL from '../constants/CLOUDURL'
 import Heart from '../components/Heart'
 import FullscreenBtn from '../components/FullscreenBtn'
 import CloseBtn from '../components/CloseBtn'
@@ -20,6 +19,7 @@ import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
 import jungle from '../assets/images/jungle.jpg';
+import ControlSounds from '../components/ControlSounds'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -35,9 +35,12 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       padding: 20,
     },
+    containerBtns: {
+      display: 'flex',
+    },
     topBox: {
       display: 'flex',
-      justifyContent: 'flex-end'
+      justifyContent: 'space-between'
     },
     containerBtn: {
       display: 'flex',
@@ -66,6 +69,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Sprint: React.FC = () => {
 	const classes = useStyles();
+  const nameGame: string = 'СПРИНТ';
+  const descriptionGame: string = 'Тренировка Саванна развивает словарный запас.';
+  const [isAudio, setIsAudio] = useState<boolean>(true);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
@@ -73,6 +79,9 @@ const Sprint: React.FC = () => {
 
   const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
+
+  const corrWords = useRef<any>([]);
+  const wrongWords = useRef<any>([]);
 
   const generationWords = useRef<any>(null);
 
@@ -85,7 +94,7 @@ const Sprint: React.FC = () => {
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && wordsArray) {
-      generationWords.current = getWordsForGame(wordsArray, 5);
+      generationWords.current = getWordsForGame(wordsArray, 2);
     }
   }, [wordsArray, isStartLayout, isEndLayout]);
 
@@ -108,17 +117,27 @@ const Sprint: React.FC = () => {
         <Box className={classes.topBox}>
           <Box className={classes.timerWrapper}>
             <Timer />
-          </Box>
-          <FullscreenBtn
-            game={'game'}
-            isFullscreen={isFullscreen}
+          </Box>       
+          <ControlSounds
+            isAudio={isAudio}
+            setIsAudio={setIsAudio}
           />
-          <Box className={classes.lifes}>
-            <Heart lifes={lifes} />
+          <Box className={classes.containerBtns}>
+            <FullscreenBtn
+              game={'game'}
+              isFullscreen={isFullscreen}
+            />
+            <Box className={classes.lifes}>
+              <Heart lifes={lifes} />
+            </Box>
+            <CloseBtn />
           </Box>
-          <CloseBtn />
         </Box>
           <GameLayout
+            corrWords={corrWords.current}
+            wrongWords={wrongWords.current}
+            nameGame={nameGame}
+            descriptionGame={descriptionGame}
             isStartLayout={isStartLayout}
             setIsStartLayout={setIsStartLayout}
             isEndLayout={isEndLayout}

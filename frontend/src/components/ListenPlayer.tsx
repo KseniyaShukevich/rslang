@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
 type Props = {
   audio: string,
   isAudio: boolean,
-
-
-
   setIsAudio: any
   listenAudio: any
 }

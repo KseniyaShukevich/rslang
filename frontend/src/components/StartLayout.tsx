@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     letterSpacing: '13px',
     fontWeight: 300,
+    textAlign: 'center',
   },
   audioTextLabel: {
     margin: '0 auto 0',
@@ -54,10 +55,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface IProps {
-  setIsStartLayout: (value: boolean) => void
+  setIsStartLayout: (value: boolean) => void,
+  nameGame: string,
+  descriptionGame: string,
 }
 
-const StartLayout = ({ setIsStartLayout }: IProps) => {
+const StartLayout = ({ setIsStartLayout, nameGame, descriptionGame }: IProps) => {
   const classes = useStyles();
   const [level, setLevel] = useState<number>(0);
 
@@ -68,8 +71,8 @@ const StartLayout = ({ setIsStartLayout }: IProps) => {
   return (
     <div className={classes.container}>
       <div className={classes.flex}>
-        <div className={classes.audioLabel}>АУДИОВЫЗОВ</div>
-        <div className={classes.audioTextLabel}>Тренировка улучшает восприятие речи на слух.</div>
+        <div className={classes.audioLabel}>{nameGame}</div>
+        <div className={classes.audioTextLabel}>{descriptionGame}</div>
         <ChooseLevel level={level} setLevel={setLevel} />
         <div className={classes.btnStart} onClick={getStartGame}>НАЧАТЬ</div>
       </div>

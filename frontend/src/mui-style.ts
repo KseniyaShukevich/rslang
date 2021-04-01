@@ -55,6 +55,9 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
       justifyContent: 'start',
       width: '100%',
     },
+    showScroll: {
+      overflowY: 'scroll',
+    },
     mainWrapperWithBackground: {
       position: 'relative',
       marginTop: 64,
@@ -85,7 +88,9 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
     },
     mainContainer: {
       padding: theme.spacing(0, 3),
-      flex: 1
+      flex: 1,
+      display: 'flex',
+      flexDirection: 'column'
     },
     loaderContainer: {
       position: 'absolute',

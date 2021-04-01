@@ -27,14 +27,17 @@ const PageLayout: React.FC<IProps> = ({ children, pageName, showLoader }: IProps
     margin: 0 auto;
   `;
 
-  const showBackground = [ 'sign-up', 'log-in'].includes(pageName!)
+  const showBackground = [ 'sign-up', 'log-in', 'mini-games', 'statistics'].includes(pageName!)
 
   return (
     <div className={classes.page} data-page-name={pageName}>
       <div className={classes.loaderContainer + ' ' + (loading ? classes.showLoaderContainer : '')}>
         <HashLoader color={theme.palette.primary.main} loading={true} css={override} size={150} />
       </div>
-      <div className={`${!showBackground ? classes.mainWrapper: classes.mainWrapperWithBackground} main-wrapper` }>
+      <div
+        className={`${!showBackground ? classes.mainWrapper : classes.mainWrapperWithBackground}
+        ${pageName === 'tutorial' ? classes.showScroll : ''}
+        main-wrapper`}>
         <Container disableGutters={true} maxWidth="lg" className={classes.mainContainer}>
           {children}
         </Container>

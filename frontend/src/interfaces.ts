@@ -50,44 +50,30 @@ export interface IGame {
 }
 
 // statistics
+export interface IGameStatistics {
+  date: string,
+  countLearnedWords: number,
+  correctAnswers: number,
+  wrongAnswers: number,
+  longestCorrectAnswers: number
+}
+export interface IGeneralStatistics {
+  date: string;
+  totalWordsLearned: number;
+  totalCorrectAnswers: number;
+  totalWrongAnswers: number
+}
+
 export interface IStatisticsToday {
   miniGames: {
-    savannah: {
-      date: string,
-      countLearnedWords: number,
-      correctAnswers: number,
-      wrongAnswers: number,
-      longestCorrectAnswers: number
-    },
-    audio: {
-      date: string,
-      countLearnedWords: number,
-      correctAnswers: number,
-      wrongAnswers: number,
-      longestCorrectAnswers: number
-    },
-    sprint: {
-      date: string,
-      countLearnedWords: number,
-      correctAnswers: number,
-      wrongAnswers: number,
-      longestCorrectAnswers: number
-    },
-    ownGame: {
-      date: string,
-      countLearnedWords: number,
-      correctAnswers: number,
-      wrongAnswers: number,
-      longestCorrectAnswers: number
-    }
-  },
-  generalStatistics: {
-    date: string,
-    totalWordsLearned: number,
-    totalCorrectAnswers: number,
-    totalWrongAnswers: number
-  }
+    savannah: IGameStatistics;
+    audio: IGameStatistics;
+    sprint: IGameStatistics;
+    ownGame: IGameStatistics;
+  };
+  generalStatistics: IGeneralStatistics;
 }
+
 
 export interface IStatisticsOneDay {
   date: string,

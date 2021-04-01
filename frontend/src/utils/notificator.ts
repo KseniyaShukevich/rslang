@@ -12,7 +12,7 @@ export default (message: string, type = MessageType.Error) => {
   // setTimeout(() => toastr[type](message), 200);
 };
 
-enum MessageType {
+export enum MessageType {
   Error = 'error',
   Success = 'success'
 }
