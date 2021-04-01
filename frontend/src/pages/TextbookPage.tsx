@@ -18,7 +18,7 @@ import sprint from "../assets/images/background_5.jpg";
 import ownGame from "../assets/images/background_6.jpg";
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
-import { ID_LOCALE_STORAGE, INIT_USER_WORD } from '../utils/constants';
+import { INIT_USER_WORD } from '../utils/constants';
 
 const GAMES: IGame[] = [
   {
