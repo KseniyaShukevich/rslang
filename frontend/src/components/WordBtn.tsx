@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface IProps {
   keyBtn: any,
+  toggleCorrBtn: boolean,
   index: number,
   isCorrWord?: boolean,
   setIsCorrWord?: (value: boolean) => void
@@ -54,6 +55,7 @@ interface IProps {
 
 const WordBtn: React.FC<IProps> = ({
   keyBtn,
+  toggleCorrBtn,
   index,
   isCorrWord,
   setIsCorrWord,
@@ -90,7 +92,7 @@ const WordBtn: React.FC<IProps> = ({
     if (keyBtn.current === index) {
       step();
     }
-  }, [keyBtn.current]);
+  }, [toggleCorrBtn]);
 
   return (
     <Typography
