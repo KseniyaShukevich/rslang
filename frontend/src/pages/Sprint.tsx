@@ -14,16 +14,21 @@ import Heart from '../components/Heart'
 import FullscreenBtn from '../components/FullscreenBtn'
 import CloseBtn from '../components/CloseBtn'
 import GameLayout from '../components/GameLayout'
+import Timer from '../components/sprint/Timer'
+import SprintGameField from '../components/sprint/SprintGameField'
 import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
+import jungle from '../assets/images/jungle.jpg';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     box: {
-      backgroundImage: `url('${CLOUDURL}/rslang/Illustration02_yokda5')`,
+      backgroundImage: `url(${jungle})`,
+      filter: 'grayscale(0.4)',
       backgroundSize: 'cover',
-      backgroundPosition: '0 100%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
       height: 'calc(100vh - 40px)',
       display: 'flex',
       justifyContent: 'space-between',
@@ -52,6 +57,10 @@ const useStyles = makeStyles((theme: Theme) =>
          backgroundColor: 'rgba(250,250,250,0.1)'
       },
     },
+    timerWrapper: {
+
+    },
+
   })
 );
 
@@ -97,6 +106,9 @@ const Sprint: React.FC = () => {
 	return (
 			<Box className={classes.box} id='game'>
         <Box className={classes.topBox}>
+          <Box className={classes.timerWrapper}>
+            <Timer />
+          </Box>
           <FullscreenBtn
             game={'game'}
             isFullscreen={isFullscreen}
@@ -112,9 +124,8 @@ const Sprint: React.FC = () => {
             isEndLayout={isEndLayout}
             setIsEndLayout={setIsEndLayout}
           >
-
-            <Container maxWidth='md' className={classes.containerBtn} style={{background: 'white', height: '100%'}}>
-              Здесь игра
+            <SprintGameField />
+            <Container maxWidth='md' className={classes.containerBtn} style={{background: 'white'}}>
               <span>Кнопки для понимания, как это работает</span>
               <Button color='primary' onClick={step}>
                 Ход
