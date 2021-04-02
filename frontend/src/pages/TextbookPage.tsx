@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from  'react';
+import React, { useEffect, useState, useRef } from  'react';
 import { fetchWords, selectWords } from "../slices/wordsSlice";
 import { selectUser } from "../slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import WordCard from "../components/WordCard";
+import GameCard from "../components/GameCard";
+import PageLayout from "../components/PageLayout";
+import SubHeader from "../components/SubHeader";
+import { fetchUserWords, createUserWord, updateUserWord, getWords,} from '../requests';
 import { MoonLoader } from 'react-spinners';
 import { css } from "@emotion/core";
 import { Container, Box, Typography, Divider, List } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
-
 import { theme } from '../mui-style';
 import background from "../assets/images/background_1.jpg";
 import savanna from "../assets/images/background_3.jpg";
 import audioCall from "../assets/images/background_4.jpg";
 import sprint from "../assets/images/background_5.jpg";
 import ownGame from "../assets/images/background_6.jpg";
+import { INIT_USER_WORD, ID_LOCALE_STORAGE } from '../utils/constants';
 import { IWord, IGame, IUserWord } from '../interfaces';
-import { INIT_USER_WORD } from '../utils/constants';
-import { fetchUserWords, createUserWord, updateUserWord } from '../requests';
 import { groupNonEmptyPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
-import WordCard from "../components/WordCard";
-import GameCard from "../components/GameCard";
-import PageLayout from "../components/PageLayout";
-import SubHeader from "../components/SubHeader";
 
 const GAMES: IGame[] = [
   {
@@ -135,7 +134,41 @@ const TextBookPage: React.FC = () => {
   const pagesArr = useSelector(selectGroupNonEmptyPagesArr)[+book]?.map(page => page.number) || Array.from({ length: 30 }).map((_el, i) => i + 1 ); // TODO наблюдать
   const [userWordsInfo, setUserWordsInfo] = useState<IUserWord[]>([]);
   const [userWords, setUserWords] = useState<IWord[] | null>(null);
+  const [toggleDelete, setToggleDelete] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const wordsForGames = useRef<any>([]);
+
+  const getWordsForGames = async (book: number, page: number) => {
+    if (page < 0 || wordsForGames.current.length >= 20) {
+      wordsForGames.current = wordsForGames.current.slice(0, 20);
+      localStorage.setItem(`${ID_LOCALE_STORAGE}gameWords`, JSON.stringify(wordsForGames.current));
+      return;
+    }
+    const newWords = await getWords(book, page);
+    if (user) {
+      const userWords = await fetchUserWords(user?.userId, user?.token);
+      newWords.forEach((word: IWord) => {
+        const userWord = userWords.find((el: any) => el.wordId === word.id);
+        if (userWord) {
+          if (userWord.optional.mode === 'learning') {
+            wordsForGames.current.push(word);
+          }
+        } else {
+          wordsForGames.current.push(word);
+        }
+      });
+    } else {
+      wordsForGames.current = newWords;
+    }
+    getWordsForGames(book, page - 1);
+  }
+
+  useEffect(() => {
+    if (book !== undefined) {
+      wordsForGames.current = [];
+      getWordsForGames(Number(book), Number(page));
+    }
+  }, [book, page, toggleDelete]);
 
   useEffect(() => {
     setLoading(true)
@@ -202,6 +235,7 @@ const TextBookPage: React.FC = () => {
         optional: matchedWord.optional
       }, user!.token);
     }
+    setToggleDelete((prev) => !prev);
   };
 
   const handleChangeWordDifficulty = async (wordId: string) => {

@@ -1,7 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React,
+       {
+         useState,
+         useEffect,
+         useRef
+       } from 'react'
 import {
          Box,
          Container,
+         Typography
         } from '@material-ui/core'
 import {
         Theme,
@@ -15,8 +21,7 @@ import { Image } from 'cloudinary-react'
 import FullscreenBtn from '../components/FullscreenBtn'
 import CloseBtn from '../components/CloseBtn'
 import GameLayout from '../components/GameLayout'
-import { fetchWords, selectWords } from '../slices/wordsSlice'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
 import { IWord } from '../interfaces'
 import { selectUser } from "../slices/userSlice"
@@ -32,7 +37,8 @@ import {
         calcStatisticsWordsToDB,
         calcStatisticsWordsToLS
       } from '../calcStatisticsWords'
-import { AnyCnameRecord } from 'node:dns'
+import KeyboardIcon from '@material-ui/icons/Keyboard'
+import { ID_LOCALE_STORAGE } from '../utils/constants';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -72,13 +78,13 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 70,
       height: 70,
       borderRadius: '50%',
-      border: 'solid 1px grey',
+      border: 'solid 1px rgba(250,250,250,0.4)',
       display: 'flex',
       justifyContent: 'center',
       alignItem: 'center',
     },
     wordTime: {
-      color: 'grey',
+      color: 'rgba(250,250,250,0.4)',
       fontSize: 50,
     },
     startGame: {
@@ -89,9 +95,21 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100vw',
       zIndex: 20,
       display: 'flex',
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       background: 'rgba(0,0,0,0.5)',
+    },
+    containerKeyboard: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      paddingTop: theme.spacing(2),
+    },
+    text: {
+      color: 'rgba(250,250,250, 0.5)',
+      width: 250,
+      textAlign: 'center'
     },
     startTime: {
       width: 200,
@@ -161,9 +179,7 @@ const Savannah: React.FC = () => {
   const [isLoseMusic, setIsLoseMusic] = useState<boolean>(false);
   const [isStartMusic, setIsStartMusic] = useState<boolean>(false);
   const [toggleCorrBtn, setToggleCorrBtn] = useState<boolean>(false);
-
-  const words = useSelector(selectWords);
-  const dispatch = useDispatch();
+  const [restWords, setRestWords] = useState<number>(0);
 
   const generationWords = useRef<any>(null);
   const wordEl = useRef<any>(null);
@@ -178,13 +194,15 @@ const Savannah: React.FC = () => {
   const wrongWords = useRef<any>([]);
   const currLongestCorr = useRef<any>(0);
   const newLongestCorr = useRef<any>(0);
+  const words = useRef<any>(null);
 
   const user = useSelector(selectUser);
 
   const setNewWords = () => {
     wordEl.current.style.opacity = 1;
-    const [ word, newArrWords, func ] = generationWords.current;
+    const [ word, newArrWords, func, rest ] = generationWords.current;
     setCurrWord(word);
+    setRestWords(rest + 1);
     corrBtn.current = newArrWords.indexOf(word);
     setArrayWords(newArrWords);
     generationWords.current = func();
@@ -355,20 +373,20 @@ const Savannah: React.FC = () => {
     if (!isStartLayout && !isEndLayout) {
       setIsStartTime(true);
       addStartTime();
-      dispatch(fetchWords({
-        group: 0,
-        page: 0
-      }));
+      const res: string | null = localStorage.getItem(`${ID_LOCALE_STORAGE}gameWords`);
+      if (res) {
+        words.current = JSON.parse(res);
+      }
     }
   }, [isStartLayout, isEndLayout]);
 
   useEffect(() => {
-    if ((startTime <= 0) && words) {
+    if ((startTime <= 0) && words.current) {
       clearInterval(idStartTime.current);
       setIsStartTime(false);
       startWord();
     }
-  }, [startTime, words]);
+  }, [startTime, words.current]);
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && words) {
@@ -376,11 +394,11 @@ const Savannah: React.FC = () => {
         clearInterval(idInterval.current[0]);
         idInterval.current.shift();
       }
-      generationWords.current = getWordsForGame(words, 5);
+      generationWords.current = getWordsForGame(words.current, 4);
       setNewWords();
-      setStep(100 / words.length);
+      setStep(100 / words.current.length);
     }
-  }, [words, isStartLayout, isEndLayout]);
+  }, [words.current, isStartLayout, isEndLayout]);
 
   const checkKeyDown = (event: KeyboardEvent) => {
     const key = +event.key;
@@ -406,6 +424,15 @@ const Savannah: React.FC = () => {
                 <div>
                   {startTime}
                 </div>
+              </Box>
+              <Box className={classes.containerKeyboard}>
+                <KeyboardIcon
+                  fontSize='large'
+                  style={{color: 'rgba(250,250,250,0.5)'}}
+                />
+                <Typography variant='body2' className={classes.text}>
+                  Используй клавиши 1, 2, 3 и 4, чтобы дать быстрый ответ
+                </Typography>
               </Box>
             </Box>
           )
@@ -501,11 +528,16 @@ const Savannah: React.FC = () => {
           <Container className={classes.containerGif}>
             {
               !isStartTime && (
-                <Box className={classes.circle}>
-                  <Box className={classes.wordTime}>
-                    {wordTime}
+                <>
+                  <Box className={classes.circle}>
+                    <Box className={classes.wordTime}>
+                      {wordTime}
+                    </Box>
                   </Box>
-                </Box>
+                  <Typography variant='body2' style={{color: 'rgba(250,250,250,0.4)'}}>
+                    Осталось {restWords} слов
+                  </Typography>
+                </>
               )
             }
             <div ref={gif} className={classes.succesGif}>

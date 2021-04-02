@@ -89,6 +89,12 @@ export const getWord = async (wordId: string) => {
 }
 
 
+export const getWords = async (group: number, page: number) => {
+  const response = await request(`/words?group=${group}&page=${page}`);
+  return response;
+}
+
+
 
 export const fetchUserWords = async (userId: string, token: string) => {
   const response = await request(`/users/${userId}/words`, token);
