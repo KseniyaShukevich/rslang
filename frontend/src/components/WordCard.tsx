@@ -16,6 +16,9 @@ import { FILESPATH } from "../constants";
 import { useSelector } from "react-redux";
 import { selectUser } from "../slices/userSlice";
 import { ID_LOCALE_STORAGE } from '../utils/constants';
+import {
+  selectSettings,
+} from '../slices/settingsSlice';
 
 const rightIndent = "8px";
 
@@ -99,6 +102,7 @@ const WordCard: React.FC<IWordCard> = (props) => {
   const [wordStatistic, setWordStatistic] = useState<IMiniGamesStat | null>(
     null
   );
+  const userSettings = useSelector(selectSettings);
 
   const listenWord = () => {
     setIsListens(true);
@@ -158,19 +162,22 @@ const WordCard: React.FC<IWordCard> = (props) => {
         setIsAudio={() => setIsListens(false)}
         listenAudio={listenWord}
       />
-      <div onClick={() => setIsPortal(true)} className={classes.flexColumn}>
+      <div
+        onClick={() => setIsPortal(true)}
+        className={classes.flexColumn}
+        style={userSettings.optional.isTranslation ? {} : {justifyContent: 'center'}}
+      >
         <strong className={classes.word}>{word}</strong>
-        <span>{wordTranslate}</span>
+        {userSettings.optional.isTranslation && <span>{wordTranslate}</span>}
       </div>
-      {/* {user && ( */}
         <div className={classes.right} title={isDifficult ? 'Чёт сложно!' : 'Изи!'}>
-          {user && !isDifficult && (
+          {user && userSettings.optional.isButtons && !isDifficult && (
             <SentimentSatisfiedAltIcon
               onClick={() => toggleDifficulty(id)}
               className={classes.noDifficult}
             />
           )}
-          {user && !!isDifficult && (
+          {user && userSettings.optional.isButtons && !!isDifficult && (
             <SentimentSatisfiedIcon
               onClick={() => toggleDifficulty(id)}
               className={classes.Difficult}
@@ -182,7 +189,7 @@ const WordCard: React.FC<IWordCard> = (props) => {
               className={classes.trash}
             />
           </ButtonBase>
-          {user && (
+          {user && userSettings.optional.isButtons && (
             <>
               <ButtonBase title="Выучил, можно удалять!">
                 <DeleteIcon
@@ -199,7 +206,6 @@ const WordCard: React.FC<IWordCard> = (props) => {
             wordStatistic={wordStatistic}
           />
         </div>
-      {/* )} */}
       <ModalDescrAboutWord open={isPortal} setOpen={setIsPortal} {...props} />
     </div>
   );
