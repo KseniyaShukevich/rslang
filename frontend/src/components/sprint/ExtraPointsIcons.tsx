@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Theme, createStyles, makeStyles, } from '@material-ui/core/styles';
-import { Box, Button, Typography, } from '@material-ui/core';
-import { SvgIcon } from '@material-ui/core';
+import { Box, } from '@material-ui/core';
 import bird from "../../assets/images/bird.svg";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -30,28 +29,24 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: '#f1a165',
       boxShadow: 'inset 0 2px 9px  rgba(255,255,255,0.3), inset 0 -2px 6px rgba(0,0,0,0.4)',
     },
-
-
   })
 );
 
+interface IProps {
+  superWordSequence: number,
+}
 
-const ExtraPointsIcons: React.FC = () => {
+const ExtraPointsIcons: React.FC<IProps> = (props) => {
+  const { superWordSequence } = props;
   const classes = useStyles();
-  const [rating, setRating] = useState(60);
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <Box className={classes.root}>
-      {[1, 2, 3, 4].map((elem, index) => {
-        return <div className={classes.birdIcon} key={index}></div>
+      {[0, 1, 2, 3].map((elem) => {
+        return (elem < superWordSequence) ? <div className={classes.birdIcon} key={elem}></div> : null;
       })}
       <div className={classes.branch}></div>
     </Box>
-
   );
 }
 

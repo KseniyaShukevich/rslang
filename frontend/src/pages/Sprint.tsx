@@ -13,13 +13,13 @@ import Heart from '../components/Heart'
 import FullscreenBtn from '../components/FullscreenBtn'
 import CloseBtn from '../components/CloseBtn'
 import GameLayout from '../components/GameLayout'
-import Timer from '../components/sprint/Timer'
 import SprintGameField from '../components/sprint/SprintGameField'
 import { fetchWords, selectWords } from '../slices/wordsSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
 import jungle from '../assets/images/jungle.jpg';
-import ControlSounds from '../components/ControlSounds'
+import ControlSounds from '../components/ControlSounds';
+import { IWord } from '../interfaces';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,14 +31,16 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundRepeat: 'no-repeat',
       height: 'calc(100vh - 40px)',
       display: 'flex',
-      justifyContent: 'space-between',
       flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       padding: 20,
     },
     containerBtns: {
       display: 'flex',
     },
     topBox: {
+      width: '100%',
       display: 'flex',
       justifyContent: 'space-between'
     },
@@ -70,12 +72,15 @@ const useStyles = makeStyles((theme: Theme) =>
 const Sprint: React.FC = () => {
 	const classes = useStyles();
   const nameGame: string = 'СПРИНТ';
-  const descriptionGame: string = 'Тренировка Саванна развивает словарный запас.';
+  const descriptionGame: string = 'Тренировка Спринт помогает пополнить словарный запас';
   const [isAudio, setIsAudio] = useState<boolean>(true);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
   const lifes: number = 3;
+
+  const [currentWord, setCurrentWord] = useState<IWord | null>(null);
+  const [arrayWords, setArrayWords] = useState<IWord[] | null>(null);
 
   const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -102,22 +107,29 @@ const Sprint: React.FC = () => {
     if (generationWords.current) {
       const [ word, arrayWords, func ] = generationWords.current;
       console.log(word, arrayWords);
+      setCurrentWord(word);
+      setArrayWords(arrayWords);
       generationWords.current = func();
     } else {
       console.log('END!');
     }
   }
 
-  document.addEventListener('fullscreenchange', (event) => {
-    setIsFullscreen(!!document.fullscreenElement);
-  });
+  useEffect(() => {
+    const handleFullScreen = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    }
+
+    document.addEventListener('fullscreenchange', handleFullScreen);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreen);
+    };
+  }, []);
 
 	return (
 			<Box className={classes.box} id='game'>
         <Box className={classes.topBox}>
-          <Box className={classes.timerWrapper}>
-            <Timer />
-          </Box>       
           <ControlSounds
             isAudio={isAudio}
             setIsAudio={setIsAudio}
@@ -143,7 +155,9 @@ const Sprint: React.FC = () => {
             isEndLayout={isEndLayout}
             setIsEndLayout={setIsEndLayout}
           >
-            <SprintGameField />
+            <>
+            { currentWord && <SprintGameField word={currentWord} step={step} /> }
+            </>
             <Container maxWidth='md' className={classes.containerBtn} style={{background: 'white'}}>
               <span>Кнопки для понимания, как это работает</span>
               <Button color='primary' onClick={step}>

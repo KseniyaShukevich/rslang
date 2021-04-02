@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Theme, createStyles, makeStyles, } from '@material-ui/core/styles';
-import { Box, Button, Typography, } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 
 
@@ -17,22 +16,35 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: '50%',
       margin: '0 7px',
     },
+    iconBlack: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#25312b',
+      backgroundColor: '#25312b',
+      width: '23px',
+      height: '23px',
+      borderRadius: '50%',
+      margin: '0 7px',
+    },
   })
 );
 
+interface IProps {
+  wordSequence: number,
+}
 
-const CorrectAnswerIcons: React.FC = () => {
+const CorrectAnswerIcons: React.FC<IProps> = (props) => {
+  const { wordSequence } = props;
   const classes = useStyles();
-  const [rating, setRating] = useState(0);
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <>
-      {[1, 2, 3].map((elem, index) => {
-        return <div className={classes.icon} key={index}><CheckIcon fontSize="small" /></div>
+      {[0, 1, 2].map((elem) => {
+        return (
+        <div className={(elem < wordSequence) ? classes.icon : classes.iconBlack} key={elem}>
+          <CheckIcon fontSize="small" />
+        </div> )
       })}
     </>
   );

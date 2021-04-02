@@ -3,23 +3,27 @@ import { Theme, createStyles, makeStyles, } from '@material-ui/core/styles';
 import { Box, Button, Typography, IconButton } from '@material-ui/core';
 import CorrectAnswerIcons from './CorrectAnswerIcons';
 import ExtraPointsIcons from './ExtraPointsIcons';
-import MusicNoteIcon from '@material-ui/icons/MusicNote';
-import MusicOffIcon from '@material-ui/icons/MusicOff';
+import Timer from './Timer';
+import PrepareLayout from './PrepareLayout';
+import ListenAudioButton from './ListenAudioButton';
 import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
+import { IWord } from '../../interfaces';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      width: '100%',
+      maxWidth: '650px',
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'center',
-      maxWidth: '650px', 
       color: 'white',
     },
     horizontalRow: {
       flex: '0 1 100%',
       display: 'flex',
       flexWrap: 'wrap',
+      alignItems: 'center',
       marginBottom: '10px',
       padding: '0px 15px',
     },
@@ -48,62 +52,92 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+interface ISprintProps {
+  word: IWord,
+  step: any,
+}
 
-const SprintGameField: React.FC = () => {
+const SprintGameField: React.FC<ISprintProps> = (props) => {
+  const { audio, word, wordTranslate, id } = props.word;
+
   const classes = useStyles();
-  const [progress, setProgress] = useState(60);
+  const [isPrepareLayout, setIsPrepareLayout] = useState<boolean>(true);
+  const [extraPoints, setExtraPoints] = useState<number>(0);
+  const [wordSequence, setWordSequence] = useState<number>(0);
+  const [superWordSequence, setSuperWordSequence] = useState<number>(1);
+  const [score, setScore] = useState<number>(0);
 
   useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        console.log('incorrect');
+        props.step();
+      } else if (event.key === 'ArrowRight') {
+        console.log('correct');
+        props.step();
+      }
+    }
 
+    document.addEventListener('keydown', handleKeydown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeydown);
+    };
   }, []);
 
+  const handleClick = () => {
+    props.step();
+  }
+
   return (
+    <>
+    { isPrepareLayout && (<PrepareLayout setIsPrepareLayout={setIsPrepareLayout} />) }
+    { !isPrepareLayout && (
     <Box className={classes.root}>
       <Box className={classes.horizontalRow}>
-        <Typography variant="h6" style={{flex: '0 1 53%', textAlign: 'right'}}>
-          20
+        <Box style={{flex: '0 1 45%', textAlign: 'left'}}>
+          <Timer maxValue={60} />
+        </Box>
+        <Typography variant="h6" style={{flex: '0 1 55%', textAlign: 'left'}}>
+          {score}
         </Typography>
-        <div style={{flex: '0 1 47%', textAlign: 'right'}}>
-          <MusicNoteIcon />
-        </div>      
       </Box>
       <Box className={classes.secondRow}>
         <Box className={classes.horizontalRow}>
           <div style={{flex: '0 1 60%', textAlign: 'right'}}>
-            <CorrectAnswerIcons />
-          </div>        
+            <CorrectAnswerIcons wordSequence={wordSequence} />
+          </div>
           <div style={{flex: '0 1 40%', textAlign: 'right'}}>
-            <MusicNoteIcon />
+            <ListenAudioButton audio={audio} />
           </div>
           <Typography variant="subtitle1" gutterBottom style={{flex: '0 1 100%', textAlign: 'center'}}>
-            +20 очков за слово
-          </Typography>       
-        </Box>
-        <ExtraPointsIcons />
-        <Box className={classes.content}>
-          <Typography variant="h4" gutterBottom>divine</Typography>
-          <Typography variant="subtitle1" gutterBottom>
-            божественный
+            { !extraPoints ? '' : `+${extraPoints} очков за слово`}
           </Typography>
         </Box>
+        <ExtraPointsIcons superWordSequence={superWordSequence} />
+        <Box className={classes.content}>
+          <Typography variant="h4" gutterBottom>{word}</Typography>
+          <Typography variant="subtitle1" gutterBottom>{wordTranslate}</Typography>
+        </Box>
         <Box className={classes.buttonCont}>
-          <Button variant="contained" color="secondary">
+          <Button onClick={() => handleClick()} variant="contained" color="secondary">
             Неверно
           </Button>
-          <Button variant="contained" color="primary">
+          <Button onClick={() => handleClick()} variant="contained" color="primary">
             Верно
           </Button>
         </Box>
         <Box className={classes.buttonCont}>
-          <IconButton color="primary" aria-label="add to shopping cart">
+          <IconButton onClick={() => handleClick()} aria-label="add to shopping cart">
             <TrendingFlatIcon className={classes.rotated} />
           </IconButton>
-          <IconButton color="primary" aria-label="add to shopping cart">
+          <IconButton onClick={() => handleClick()} aria-label="add to shopping cart">
             <TrendingFlatIcon />
           </IconButton>
         </Box>
       </Box>
-    </Box>
+    </Box> )}
+    </>
   );
 }
 
