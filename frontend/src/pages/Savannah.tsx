@@ -78,13 +78,13 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 70,
       height: 70,
       borderRadius: '50%',
-      border: 'solid 1px grey',
+      border: 'solid 1px rgba(250,250,250,0.4)',
       display: 'flex',
       justifyContent: 'center',
       alignItem: 'center',
     },
     wordTime: {
-      color: 'grey',
+      color: 'rgba(250,250,250,0.4)',
       fontSize: 50,
     },
     startGame: {
@@ -107,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingTop: theme.spacing(2),
     },
     text: {
-      color: 'rgba(250,250,250, 0.4)',
+      color: 'rgba(250,250,250, 0.5)',
       width: 250,
       textAlign: 'center'
     },
@@ -179,6 +179,7 @@ const Savannah: React.FC = () => {
   const [isLoseMusic, setIsLoseMusic] = useState<boolean>(false);
   const [isStartMusic, setIsStartMusic] = useState<boolean>(false);
   const [toggleCorrBtn, setToggleCorrBtn] = useState<boolean>(false);
+  const [restWords, setRestWords] = useState<number>(0);
 
   const words = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -201,8 +202,9 @@ const Savannah: React.FC = () => {
 
   const setNewWords = () => {
     wordEl.current.style.opacity = 1;
-    const [ word, newArrWords, func ] = generationWords.current;
+    const [ word, newArrWords, func, rest ] = generationWords.current;
     setCurrWord(word);
+    setRestWords(rest + 1);
     corrBtn.current = newArrWords.indexOf(word);
     setArrayWords(newArrWords);
     generationWords.current = func();
@@ -428,7 +430,7 @@ const Savannah: React.FC = () => {
               <Box className={classes.containerKeyboard}>
                 <KeyboardIcon
                   fontSize='large'
-                  style={{color: 'rgba(250,250,250,0.4)'}}
+                  style={{color: 'rgba(250,250,250,0.5)'}}
                 />
                 <Typography variant='body2' className={classes.text}>
                   Используй клавиши 1, 2, 3 и 4, чтобы дать быстрый ответ
@@ -535,6 +537,9 @@ const Savannah: React.FC = () => {
                 </Box>
               )
             }
+            <Typography variant='body2' style={{color: 'rgba(250,250,250,0.4)'}}>
+              Осталось {restWords} слов
+            </Typography>
             <div ref={gif} className={classes.succesGif}>
               <Image publicId="rslang/33Ho_by5kqq" width="90" />
             </div>

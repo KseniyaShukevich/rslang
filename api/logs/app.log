@@ -11751,3 +11751,78 @@
   level: 'info',
   timestamp: '2021-04-02T10:00:34.861Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-02T10:02:22.539Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-02T10:02:22.573Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 683.361 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:06:17.147Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 189.739 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:06:50.038Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 182.059 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:07:04.962Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 217.221 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:09:39.196Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 226.008 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:12:49.210Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 199.812 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:15:18.319Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 176.215 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:16:28.227Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 811.355 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:17:07.062Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 191.824 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:17:15.820Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 246.149 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:17:50.824Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 202.405 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:18:30.933Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 177.612 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:18:40.032Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 177.811 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:18:53.226Z'
+}
