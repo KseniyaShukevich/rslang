@@ -14377,3 +14377,68 @@
   level: 'info',
   timestamp: '2021-04-02T13:46:28.910Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-02T14:03:26.347Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-02T14:03:26.380Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/tokens "6058ece36fab9b1ffdc9ae71" size req - res 437 - 1718.676 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:06:46.303Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 158.036 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:06:49.606Z'
+}
+{
+  message: 'GET 403 /users/6058ece36fab9b1ffdc9ae71/tokens "6058ece36fab9b1ffdc9ae71" size req - res 19 - 963.589 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:08:50.600Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=16 - size req - res 12827 - 625.352 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:18:34.570Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=19 - size req - res 12942 - 208.072 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:18:56.872Z'
+}
+{
+  message: 'GET 200 /words?group=4&page=5 - size req - res 14639 - 332.268 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:19:01.935Z'
+}
+{
+  message: 'GET 200 /words?group=2&page=19 - size req - res 12794 - 183.534 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:19:07.902Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 189.135 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:21:37.487Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 349.728 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:21:37.663Z'
+}
+{
+  message: 'GET 400 /words?group=NaN&page=NaN - size req - res 72 - 3.443 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:21:47.272Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=29 - size req - res 13054 - 256.231 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:21:47.541Z'
+}

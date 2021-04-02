@@ -3,6 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import ChooseLevel from "../components/ChooseLevel";
 import { useSelector } from 'react-redux';
 import { selectGamesPage } from '../slices/gamesPageSlice';
+import { ID_LOCALE_STORAGE } from '../utils/constants';
+import { getWords } from '../requests';
+import { getRandomNumber } from '../generationGameWords';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -70,6 +73,16 @@ const StartLayout = ({ setIsStartLayout, nameGame, descriptionGame }: IProps) =>
   const getStartGame = () => {
     setIsStartLayout(false);
   }
+
+  const getWordsForGames = async (group: number) => {
+    const page = getRandomNumber(0, 29);
+    const words = await getWords(group, page);
+    localStorage.setItem(`${ID_LOCALE_STORAGE}gameWords`, JSON.stringify(words));
+  }
+
+  useEffect(() => {
+    getWordsForGames(level);
+  }, [level]);
 
   return (
     <div className={classes.container}>
