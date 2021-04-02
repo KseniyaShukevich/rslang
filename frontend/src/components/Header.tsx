@@ -28,18 +28,23 @@ const Header: React.FC = () => {
       position="static"
     >
       <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 0 }}>
           <BurgerMenu />
         </div>
-        {/* <div style={{ flex: 1, textAlign: "center" }}>
+        <div style={{ flex: 1, textAlign: "center" }}>
           <Typography variant="h4">
-            <span className="classes.">RSLang</span>
+          <Link to="/" style={{ color: "white", textDecoration: "none", marginLeft: '30px' }}>
+            RSLang
+          </Link>
           </Typography>
-        </div> */}
+        </div>
+        <div style={{ flex: 2 }}>
+
           <Menu />
-        {/* <div style={{ flex: 1 }}>
+        </div>
+        <div style={{ flex: 1 }}>
           <AuthPannel />
-        </div> */}
+        </div>
       </Toolbar>
     </AppBar>
   );

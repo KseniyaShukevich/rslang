@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: 0,
       margin: "0 auto",
       '&:hover': {
-        height: '12vh',
+        height: '14vh',
         border: '4px solid #1565c0',
         borderRadius: '35%',
       },
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
     listItem: {},
     activeLink: {
       color: "orange",
+      width: 'max-content',
       fontFamily: "Roboto",
       listStyleType: "none",
       height: "100%",
@@ -61,15 +62,7 @@ const HeaderMenu: React.FC = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.menu} style={{ backgroundColor: "#1565c0" }}>
-      <div style={{ flex: 1, textAlign: "center" }}>
-        <Typography variant="h4">
-          <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-            RSLang
-          </Link>
-        </Typography>
-      </div>
-      <div style={{background: "beige", borderRadius: "35%", width: '40%'}}>
+      <div style={{background: "beige", borderRadius: "35%", width: '100%'}}>
         <List className={classes.list}>
           <ListItem>
             <Link
@@ -105,10 +98,6 @@ const HeaderMenu: React.FC = () => {
           </ListItem>
         </List>
       </div>
-      <div style={{ flex: 1 }}>
-        <AuthPannel />
-      </div>
-    </div>
   );
 };
 
