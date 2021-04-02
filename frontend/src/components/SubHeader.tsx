@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Box, Typography } from "@material-ui/core";
+import { Box, Typography, Button } from "@material-ui/core";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,6 +10,13 @@ import AppsTwoToneIcon from '@material-ui/icons/AppsTwoTone';
 import Pagination from '@material-ui/lab/Pagination';
 import { DEPARTMENTCOLORS } from '../constants';
 import { PaginationItem } from '@material-ui/lab';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import ModalSettings from './ModalSettings';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -64,10 +71,15 @@ const SubHeader: React.FC<ISubHeader> = (props) => {
   const history = useHistory();
   const classes = useStyles();
   const [page, setPage] = useState(Number(pageNumber) + 1);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleChange = (value: number) => {
     setPage(value);
   };
+
+  const getSettingsModal = () => {
+    setIsOpen(true);
+  }
 
   useEffect(() => {
     if (goNextPage) {
@@ -82,6 +94,10 @@ const SubHeader: React.FC<ISubHeader> = (props) => {
 
   return (
     <div className={classes.root} style={{ backgroundColor: getColor(Number(book)) }}>
+      <ModalSettings
+       isOpen={isOpen}
+       setIsOpen={setIsOpen}
+      />
       <AppBar position="static" color="transparent">
         <Toolbar>
           <Link to="/tutorial" className={classes.link}>
@@ -89,7 +105,7 @@ const SubHeader: React.FC<ISubHeader> = (props) => {
               <AppsTwoToneIcon />
             </IconButton>
           </Link>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton onClick={getSettingsModal} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <SettingsTwoToneIcon />
           </IconButton>
           <div className={classes.root}>
