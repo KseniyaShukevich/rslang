@@ -4,6 +4,7 @@ import wordsReducer from '../slices/wordsSlice'
 import userReducer from '../slices/userSlice'
 import gameWordsReducer from '../slices/gameWordsSlice'
 import userSettingsReducer from '../slices/settingsSlice'
+import gamesPageReducer from '../slices/gamesPageSlice'
 // ...
 
 const store = configureStore({
@@ -12,7 +13,8 @@ const store = configureStore({
     words: wordsReducer,
     user: userReducer,
     gameWords: gameWordsReducer,
-    settings: userSettingsReducer
+    settings: userSettingsReducer,
+    gamesPage: gamesPageReducer
   }
 })
 
