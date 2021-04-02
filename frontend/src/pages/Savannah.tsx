@@ -21,8 +21,7 @@ import { Image } from 'cloudinary-react'
 import FullscreenBtn from '../components/FullscreenBtn'
 import CloseBtn from '../components/CloseBtn'
 import GameLayout from '../components/GameLayout'
-import { fetchWords, selectWords } from '../slices/wordsSlice'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { getWordsForGame } from '../generationGameWords'
 import { IWord } from '../interfaces'
 import { selectUser } from "../slices/userSlice"
@@ -38,7 +37,8 @@ import {
         calcStatisticsWordsToDB,
         calcStatisticsWordsToLS
       } from '../calcStatisticsWords'
-import KeyboardIcon from '@material-ui/icons/Keyboard';
+import KeyboardIcon from '@material-ui/icons/Keyboard'
+import { ID_LOCALE_STORAGE } from '../utils/constants';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -181,9 +181,6 @@ const Savannah: React.FC = () => {
   const [toggleCorrBtn, setToggleCorrBtn] = useState<boolean>(false);
   const [restWords, setRestWords] = useState<number>(0);
 
-  const words = useSelector(selectWords);
-  const dispatch = useDispatch();
-
   const generationWords = useRef<any>(null);
   const wordEl = useRef<any>(null);
   const container = useRef<any>(null);
@@ -197,6 +194,7 @@ const Savannah: React.FC = () => {
   const wrongWords = useRef<any>([]);
   const currLongestCorr = useRef<any>(0);
   const newLongestCorr = useRef<any>(0);
+  const words = useRef<any>(null);
 
   const user = useSelector(selectUser);
 
@@ -375,20 +373,20 @@ const Savannah: React.FC = () => {
     if (!isStartLayout && !isEndLayout) {
       setIsStartTime(true);
       addStartTime();
-      dispatch(fetchWords({
-        group: 0,
-        page: 0
-      }));
+      const res: string | null = localStorage.getItem(`${ID_LOCALE_STORAGE}gameWords`);
+      if (res) {
+        words.current = JSON.parse(res);
+      }
     }
   }, [isStartLayout, isEndLayout]);
 
   useEffect(() => {
-    if ((startTime <= 0) && words) {
+    if ((startTime <= 0) && words.current) {
       clearInterval(idStartTime.current);
       setIsStartTime(false);
       startWord();
     }
-  }, [startTime, words]);
+  }, [startTime, words.current]);
 
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && words) {
@@ -396,11 +394,11 @@ const Savannah: React.FC = () => {
         clearInterval(idInterval.current[0]);
         idInterval.current.shift();
       }
-      generationWords.current = getWordsForGame(words, 4);
+      generationWords.current = getWordsForGame(words.current, 4);
       setNewWords();
-      setStep(100 / words.length);
+      setStep(100 / words.current.length);
     }
-  }, [words, isStartLayout, isEndLayout]);
+  }, [words.current, isStartLayout, isEndLayout]);
 
   const checkKeyDown = (event: KeyboardEvent) => {
     const key = +event.key;
@@ -530,16 +528,18 @@ const Savannah: React.FC = () => {
           <Container className={classes.containerGif}>
             {
               !isStartTime && (
-                <Box className={classes.circle}>
-                  <Box className={classes.wordTime}>
-                    {wordTime}
+                <>
+                  <Box className={classes.circle}>
+                    <Box className={classes.wordTime}>
+                      {wordTime}
+                    </Box>
                   </Box>
-                </Box>
+                  <Typography variant='body2' style={{color: 'rgba(250,250,250,0.4)'}}>
+                    Осталось {restWords} слов
+                  </Typography>
+                </>
               )
             }
-            <Typography variant='body2' style={{color: 'rgba(250,250,250,0.4)'}}>
-              Осталось {restWords} слов
-            </Typography>
             <div ref={gif} className={classes.succesGif}>
               <Image publicId="rslang/33Ho_by5kqq" width="90" />
             </div>

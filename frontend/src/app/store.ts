@@ -15,7 +15,7 @@ const store = configureStore({
     user: userReducer,
     gameWords: gameWordsReducer,
     settings: userSettingsReducer,
-    gamesPage: gamesPageReducer
+    gamesPage: gamesPageReducer,
     groupPagesArr: groupPagesReducer
   }
 })

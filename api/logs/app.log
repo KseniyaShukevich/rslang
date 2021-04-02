@@ -14442,3 +14442,413 @@
   level: 'info',
   timestamp: '2021-04-02T14:21:47.541Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-02T14:36:02.797Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-02T14:36:02.831Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 244.406 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:42:07.888Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 194.621 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:42:08.140Z'
+}
+{
+  message: 'GET 400 /words?group=NaN&page=NaN - size req - res 72 - 4.606 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:42:15.305Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=4 - size req - res 12594 - 335.677 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:42:18.009Z'
+}
+{
+  message: 'GET 200 /words?group=3&page=21 - size req - res 14164 - 335.591 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:42:21.712Z'
+}
+{
+  message: 'POST 200 /signin - size req 49 res 581 - 575.543 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:42:49.049Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 219.442 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:42:49.776Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?group=0&wordsPerPage=10000&filter={%22userWord.optional.mode%22:%20%22deleted%22} "6058ece36fab9b1ffdc9ae71" size req - res 894 - 4446.955 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:01.302Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=4 - size req - res 12594 - 193.705 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:06.118Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=4 - size req - res 12594 - 206.187 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:06.142Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res 83604 - 1325.788 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:07.596Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res 83604 - 1201.431 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:11.957Z'
+}
+{
+  message: 'GET 400 /words?group=NaN&page=NaN - size req - res 72 - 2.082 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:20.714Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 186.549 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:20.891Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 166.484 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:23.059Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=27 - size req - res 12987 - 214.665 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:44.562Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 239.339 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:43:46.344Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/tokens "6058ece36fab9b1ffdc9ae71" size req - res 437 - 320.663 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:44:50.720Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 147.187 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:45:01.495Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=19 - size req - res 12942 - 204.620 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:45:40.367Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 170.476 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:45:42.860Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=13 - size req - res 12958 - 191.441 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:45:58.332Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 181.861 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:46:00.305Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/tokens "6058ece36fab9b1ffdc9ae71" size req - res 437 - 367.911 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:47:20.541Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 148.011 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:47:23.796Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/tokens "6058ece36fab9b1ffdc9ae71" size req - res 437 - 348.198 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:49:27.238Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 655.665 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:49:34.744Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/tokens "6058ece36fab9b1ffdc9ae71" size req - res 437 - 308.175 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:51:41.004Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 151.191 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:51:41.634Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 144.898 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:52:06.478Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=11 - size req - res 13481 - 171.661 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:52:09.966Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 1393.794 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:56:11.649Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=5 - size req - res 13776 - 465.112 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:56:17.253Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/statistics "6058ece36fab9b1ffdc9ae71" size req - res 954 - 1042.490 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:43.399Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/statistics "6058ece36fab9b1ffdc9ae71" size req 1017 res 1049 - 169.562 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:43.600Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 1904.139 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:44.267Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af505 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 220.803 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:44.697Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af50c "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 154.382 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:44.937Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af506 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 148.927 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:44.942Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af509 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 155.978 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:44.960Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af504 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 162.159 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:44.975Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af516 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 258.750 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.082Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af50a "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 151.007 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.178Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af514 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 163.205 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.441Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af513 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 180.708 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.445Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af50f "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 156.168 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.453Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af50e "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 144.871 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.460Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af50d "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 176.711 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.593Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af510 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 159.016 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.651Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af512 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 154.994 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.965Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af507 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 178.049 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.976Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af517 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 163.013 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.984Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af50b "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 161.803 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:45.991Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af508 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 184.139 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:46.137Z'
+}
+{
+  message: 'POST 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af515 "6058ece36fab9b1ffdc9ae71" size req 256 res 324 - 156.298 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:46.215Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?group=0&wordsPerPage=10000&filter={%22userWord.optional.mode%22:%20%22deleted%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 5637.440 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:57:57.529Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=3 - size req - res 13094 - 198.967 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:01.640Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=3 - size req - res - - 172.878 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:02.223Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res 89779 - 1066.703 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:02.840Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 1038.691 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:04.369Z'
+}
+{
+  message: 'GET 400 /words?group=NaN&page=NaN - size req - res 72 - 1.939 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:10.243Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=22 - size req - res 12398 - 154.015 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:10.400Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/tokens "6058ece36fab9b1ffdc9ae71" size req - res 437 - 313.752 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:10.910Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 163.183 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:11.836Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/statistics "6058ece36fab9b1ffdc9ae71" size req - res 1049 - 165.762 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:47.561Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/statistics "6058ece36fab9b1ffdc9ae71" size req 1019 res 1051 - 150.399 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:48.127Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 960.573 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:48.665Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af667 "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 144.247 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.159Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af666 "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 154.040 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.177Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af65b "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 153.372 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.185Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af66a "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 144.414 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.190Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af66b "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 160.046 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.198Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af668 "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 172.377 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.226Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af65c "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 145.864 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.639Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af662 "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 164.581 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.665Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af669 "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 182.972 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.691Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af661 "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 177.979 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.695Z'
+}
+{
+  message: 'PUT 200 /users/6058ece36fab9b1ffdc9ae71/words/5e9f5ee35eb9e72bc21af663 "6058ece36fab9b1ffdc9ae71" size req 255 res 323 - 182.372 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T14:58:49.710Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/tokens "6058ece36fab9b1ffdc9ae71" size req - res 437 - 334.244 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T15:00:22.353Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 158.339 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T15:00:26.034Z'
+}
