@@ -15,6 +15,7 @@ import { IWordCard, IMiniGamesStat } from "../interfaces";
 import { FILESPATH } from "../constants";
 import { useSelector } from "react-redux";
 import { selectUser } from "../slices/userSlice";
+import { ID_LOCALE_STORAGE } from '../utils/constants';
 
 const rightIndent = "8px";
 
@@ -103,24 +104,34 @@ const WordCard: React.FC<IWordCard> = (props) => {
     setIsListens(true);
   };
 
-  const checkStatistics = (word: any) => {
+  const checkStatistics = (currWord: any) => {
     if (
-      word.optional.miniGames.savannah.correctAnswers === 0 &&
-      word.optional.miniGames.audio.correctAnswers === 0 &&
-      word.optional.miniGames.sprint.correctAnswers === 0 &&
-      word.optional.miniGames.ownGame.correctAnswers === 0 &&
-      word.optional.miniGames.savannah.wrongAnswers === 0 &&
-      word.optional.miniGames.audio.wrongAnswers === 0 &&
-      word.optional.miniGames.sprint.wrongAnswers === 0 &&
-      word.optional.miniGames.ownGame.wrongAnswers === 0
+      currWord.optional.miniGames.savannah.correctAnswers === 0 &&
+      currWord.optional.miniGames.audio.correctAnswers === 0 &&
+      currWord.optional.miniGames.sprint.correctAnswers === 0 &&
+      currWord.optional.miniGames.ownGame.correctAnswers === 0 &&
+      currWord.optional.miniGames.savannah.wrongAnswers === 0 &&
+      currWord.optional.miniGames.audio.wrongAnswers === 0 &&
+      currWord.optional.miniGames.sprint.wrongAnswers === 0 &&
+      currWord.optional.miniGames.ownGame.wrongAnswers === 0
     ) {
       return null;
     }
-    return word.optional.miniGames;
+    return currWord.optional.miniGames;
   }
 
   const handleStatisticClick = (wordId: string) => {
-    const matchedWord = userWordsInfo!.find((elem) => elem.wordId === wordId);
+    let matchedWord: any;
+    if (user) {
+      matchedWord = userWordsInfo!.find((elem) => elem.wordId === wordId);
+    } else {
+      const statisticsWords: string | null = localStorage.getItem(`${ID_LOCALE_STORAGE}statisticsWords`);
+      if (statisticsWords) {
+        const statistics = JSON.parse(statisticsWords);
+        matchedWord = statistics.find((elem: any) => elem.id === wordId);
+      }
+    }
+
     matchedWord
       ? setWordStatistic((prev) => checkStatistics(matchedWord))
       : setWordStatistic((prev) => null);
@@ -151,15 +162,15 @@ const WordCard: React.FC<IWordCard> = (props) => {
         <strong className={classes.word}>{word}</strong>
         <span>{wordTranslate}</span>
       </div>
-      {user && (
+      {/* {user && ( */}
         <div className={classes.right} title={isDifficult ? 'Чёт сложно!' : 'Изи!'}>
-          {!isDifficult && (
+          {user && !isDifficult && (
             <SentimentSatisfiedAltIcon
               onClick={() => toggleDifficulty(id)}
               className={classes.noDifficult}
             />
           )}
-          {!!isDifficult && (
+          {user && !!isDifficult && (
             <SentimentSatisfiedIcon
               onClick={() => toggleDifficulty(id)}
               className={classes.Difficult}
@@ -171,20 +182,24 @@ const WordCard: React.FC<IWordCard> = (props) => {
               className={classes.trash}
             />
           </ButtonBase>
-          <ButtonBase title="Выучил, можно удалять!">
-            <DeleteIcon
-              onClick={() => setOpen(true)}
-              className={classes.trash}
-            />
-          </ButtonBase>
-          <ModalDeleteWord open={open} setOpen={setOpen} handleDeleteWord={handleDeleteWord} wordId={id} />
+          {user && (
+            <>
+              <ButtonBase title="Выучил, можно удалять!">
+                <DeleteIcon
+                  onClick={() => setOpen(true)}
+                  className={classes.trash}
+                />
+              </ButtonBase>
+              <ModalDeleteWord open={open} setOpen={setOpen} handleDeleteWord={handleDeleteWord} wordId={id} />
+            </>
+          )}
           <ModalStatistic
             isOpen={isStatisticOpen}
             setIsOpen={setIsStatisticOpen}
             wordStatistic={wordStatistic}
           />
         </div>
-      )}
+      {/* )} */}
       <ModalDescrAboutWord open={isPortal} setOpen={setIsPortal} {...props} />
     </div>
   );

@@ -10,7 +10,6 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
 
-
 import { theme } from '../mui-style';
 import background from "../assets/images/background_1.jpg";
 import savanna from "../assets/images/background_3.jpg";

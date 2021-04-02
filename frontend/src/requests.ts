@@ -90,7 +90,7 @@ export const getWord = async (wordId: string) => {
 
 
 
-export const fetchUserWords = async (userId: string, token: string): Promise<any> => {
+export const fetchUserWords = async (userId: string, token: string) => {
   const response = await request(`/users/${userId}/words`, token);
   return response;
 }
@@ -99,6 +99,11 @@ export const fetchUserWords = async (userId: string, token: string): Promise<any
 //   '6058ece36fab9b1ffdc9ae71',
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNThlY2UzNmZhYjliMWZmZGM5YWU3MSIsImlhdCI6MTYxNjU4ODEzOSwiZXhwIjoxNjE2NjAyNTM5fQ.3ftr9ZQelppOlL3b_QjSCIFQm-RWxwoj9vGRrdjgpEg",
 //  );
+
+export const fetchUserWord = async (userId: string, wordId: string, token: string) => {
+  const response = await request(`/users/${userId}/words/${wordId}`, token);
+  return response;
+}
 
 
 // Если у пользователя нет слова, которое он выбрал, чтобы поменить как "Сложное" или "Удаленное"

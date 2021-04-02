@@ -28,6 +28,11 @@ import ControlSounds from '../components/ControlSounds'
 import WinMusic from '../components/WinMusic'
 import LoseMusic from '../components/LoseMusic'
 import StartMusic from '../components/StartMusic'
+import {
+        calcStatisticsWordsToDB,
+        calcStatisticsWordsToLS
+      } from '../calcStatisticsWords'
+import { AnyCnameRecord } from 'node:dns'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -155,6 +160,7 @@ const Savannah: React.FC = () => {
   const [isWinMusic, setIsWinMusic] = useState<boolean>(false);
   const [isLoseMusic, setIsLoseMusic] = useState<boolean>(false);
   const [isStartMusic, setIsStartMusic] = useState<boolean>(false);
+  const [toggleCorrBtn, setToggleCorrBtn] = useState<boolean>(false);
 
   const words = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -178,8 +184,8 @@ const Savannah: React.FC = () => {
   const setNewWords = () => {
     wordEl.current.style.opacity = 1;
     const [ word, newArrWords, func ] = generationWords.current;
-    corrBtn.current = newArrWords.indexOf(word);
     setCurrWord(word);
+    corrBtn.current = newArrWords.indexOf(word);
     setArrayWords(newArrWords);
     generationWords.current = func();
   }
@@ -194,9 +200,11 @@ const Savannah: React.FC = () => {
       }, 300);
       setNewWords();
     } else {
-      clearInterval(idInterval.current[0]);
-      setIsEndGame(true);
-      setIsEndLayout(true);
+      setTimeout(() => {
+        clearInterval(idInterval.current[0]);
+        setIsEndGame(true);
+        setIsEndLayout(true);
+      }, 300);
     }
   }
 
@@ -258,6 +266,23 @@ const Savannah: React.FC = () => {
     }, 500);
   }
 
+  const getObjectForStatisticsWords = () => {
+    const resultWords: Array<any> = [];
+    corrWords.current.forEach((word: any) => {
+      resultWords.push({
+        ...word,
+        correct: 1
+      });
+    });
+    wrongWords.current.forEach((word: any) => {
+      resultWords.push({
+        ...word,
+        wrong: 1
+      });
+    });
+    return resultWords;
+  }
+
   useEffect(() => {
     if (lifes === 0) {
       setTimeout(() => {
@@ -274,7 +299,14 @@ const Savannah: React.FC = () => {
         currLongestCorr.current = newLongestCorr.current;
         newLongestCorr.current = 0;
       }
+      const resultWords = getObjectForStatisticsWords();
       if (user) {
+        calcStatisticsWordsToDB(
+          'savannah',
+          resultWords,
+          user.userId,
+          user.token
+        );
         addStatisticsToDB(
           user.userId,
           user.token,
@@ -285,6 +317,10 @@ const Savannah: React.FC = () => {
           currLongestCorr.current
         );
       } else {
+        calcStatisticsWordsToLS(
+          'savannah',
+          resultWords,
+        );
         addStatisticsToLStorage(
           'savannah',
           corrWords.current.length,
@@ -349,6 +385,7 @@ const Savannah: React.FC = () => {
   const checkKeyDown = (event: KeyboardEvent) => {
     const key = +event.key;
     if (key) {
+      setToggleCorrBtn((prev) => !prev);
       keyBtn.current = key - 1;
     }
   }
@@ -431,6 +468,7 @@ const Savannah: React.FC = () => {
                   (corrBtn.current === index) ? (
                     <WordBtn
                       keyBtn={keyBtn}
+                      toggleCorrBtn={toggleCorrBtn}
                       index={index}
                       isCorrWord={isCorrWord}
                       successAnimation={successAnimation}
@@ -444,6 +482,7 @@ const Savannah: React.FC = () => {
                   ) : (
                     <WordBtn
                       keyBtn={keyBtn}
+                      toggleCorrBtn={toggleCorrBtn}
                       index={index}
                       setIsCorrWord={setIsCorrWord}
                       successAnimation={successAnimation}
