@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from  'react';
+import React, { useEffect, useState, useRef } from  'react';
 import { fetchWords, selectWords } from "../slices/wordsSlice";
 import { selectUser } from "../slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +8,7 @@ import WordCard from "../components/WordCard";
 import GameCard from "../components/GameCard";
 import PageLayout from "../components/PageLayout";
 import SubHeader from "../components/SubHeader";
-import { fetchUserWords, createUserWord, updateUserWord } from '../requests';
+import { fetchUserWords, createUserWord, updateUserWord, getWords,} from '../requests';
 import { Container, Box, Typography, Divider, List } from "@material-ui/core";
 import { IWord, IGame, IUserWord } from '../interfaces';
 import background from "../assets/images/background_1.jpg";
@@ -18,7 +18,7 @@ import sprint from "../assets/images/background_5.jpg";
 import ownGame from "../assets/images/background_6.jpg";
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
-import { INIT_USER_WORD } from '../utils/constants';
+import { INIT_USER_WORD, ID_LOCALE_STORAGE } from '../utils/constants';
 
 const GAMES: IGame[] = [
   {
@@ -95,8 +95,42 @@ const TextBookPage: React.FC = () => {
   const user = useSelector(selectUser);
   const [userWordsInfo, setUserWordsInfo] = useState<IUserWord[]>([]);
   const [userWords, setUserWords] = useState<IWord[] | null>(null);
+  const [toggleDelete, setToggleDelete] = useState<boolean>(false);
   const dispatch = useDispatch();
   const classes = useStyles();
+  const wordsForGames = useRef<any>([]);
+
+  const getWordsForGames = async (book: number, page: number) => {
+    if (page < 0 || wordsForGames.current.length >= 20) {
+      wordsForGames.current = wordsForGames.current.slice(0, 20);
+      localStorage.setItem(`${ID_LOCALE_STORAGE}gameWords`, JSON.stringify(wordsForGames.current));
+      return;
+    }
+    const newWords = await getWords(book, page);
+    if (user) {
+      const userWords = await fetchUserWords(user?.userId, user?.token);
+      newWords.forEach((word: IWord) => {
+        const userWord = userWords.find((el: any) => el.wordId === word.id);
+        if (userWord) {
+          if (userWord.optional.mode === 'learning') {
+            wordsForGames.current.push(word);
+          }
+        } else {
+          wordsForGames.current.push(word);
+        }
+      });
+    } else {
+      wordsForGames.current = newWords;
+    }
+    getWordsForGames(book, page - 1);
+  }
+
+  useEffect(() => {
+    if (book !== undefined) {
+      wordsForGames.current = [];
+      getWordsForGames(Number(book), Number(page));
+    }
+  }, [book, page, toggleDelete]);
 
   useEffect(() => {
     dispatch(
@@ -121,7 +155,6 @@ const TextBookPage: React.FC = () => {
       const res = words.map((elem: IWord) => {
         const matchedItem = userWordsInfo!.find((item: IUserWord)  => item.wordId === elem.id);
         if (matchedItem) {
-          console.log(matchedItem);
           const isDifficult = (matchedItem.difficulty === 'hard') ? true : false;
           const isDeleted = (matchedItem.optional.mode === 'deleted') ? true : false;
           return {...elem, isDifficult, isDeleted };
@@ -155,6 +188,7 @@ const TextBookPage: React.FC = () => {
         optional: matchedWord.optional
       }, user!.token);
     }
+    setToggleDelete((prev) => !prev);
   };
 
   const handleChangeWordDifficulty = async (wordId: string) => {
