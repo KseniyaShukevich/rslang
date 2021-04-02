@@ -3,7 +3,6 @@ import {
   makeStyles,
   Theme,
   createStyles,
-  // Link,
   List,
   ListItem,
   Typography,
@@ -20,18 +19,24 @@ const useStyles = makeStyles((theme: Theme) =>
       boxShadow: "0px 2px 24px 0px rgba(0, 0, 0, 0.15)",
       borderRadius: "8px",
       height: "80px",
-      padding: "0 40px",
       position: "relative",
       alignItems: "center",
+        [theme.breakpoints.down("sm")]: {
+          overflow: 'scroll',
+        },
     },
     list: {
       alignItems: "center",
-      width: "60%",
       height: "100%",
       display: "flex",
       justifyContent: "center",
       padding: 0,
       margin: "0 auto",
+      '&:hover': {
+        height: '12vh',
+        border: '4px solid #1565c0',
+        borderRadius: '35%',
+      }
     },
     listItem: {},
     activeLink: {
@@ -41,10 +46,12 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "100%",
       fontSize: "16px",
       textTransform: "uppercase",
-      alignItems: "center",
       padding: "0 3px",
       fontWeight: "bold",
-      width: "max-content",
+      margin: '0 auto',
+      [theme.breakpoints.down("md")]: {
+        fontSize: "12px",
+      },
     },
   })
 );
@@ -62,7 +69,7 @@ const HeaderMenu: React.FC = () => {
           </Link>
         </Typography>
       </div>
-      <div style={{ width: "40%", background: "beige", borderRadius: "40%" }}>
+      <div style={{background: "beige", borderRadius: "35%", width: '40%'}}>
         <List className={classes.list}>
           <ListItem>
             <Link
