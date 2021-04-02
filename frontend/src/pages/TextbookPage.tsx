@@ -3,22 +3,24 @@ import { fetchWords, selectWords } from "../slices/wordsSlice";
 import { selectUser } from "../slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import WordCard from "../components/WordCard";
-import GameCard from "../components/GameCard";
-import PageLayout from "../components/PageLayout";
-import SubHeader from "../components/SubHeader";
-import { fetchUserWords, createUserWord, updateUserWord } from '../requests';
 import { Container, Box, Typography, Divider, List } from "@material-ui/core";
-import { IWord, IGame, IUserWord } from '../interfaces';
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
+import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
+
 import background from "../assets/images/background_1.jpg";
 import savanna from "../assets/images/background_3.jpg";
 import audioCall from "../assets/images/background_4.jpg";
 import sprint from "../assets/images/background_5.jpg";
 import ownGame from "../assets/images/background_6.jpg";
-import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
-import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
-import { ID_LOCALE_STORAGE, INIT_USER_WORD } from '../utils/constants';
+import { IWord, IGame, IUserWord } from '../interfaces';
+import { INIT_USER_WORD } from '../utils/constants';
+import { fetchUserWords, createUserWord, updateUserWord } from '../requests';
+import { selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
+import WordCard from "../components/WordCard";
+import GameCard from "../components/GameCard";
+import PageLayout from "../components/PageLayout";
+import SubHeader from "../components/SubHeader";
 
 const GAMES: IGame[] = [
   {
@@ -90,13 +92,16 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const TextBookPage: React.FC = () => {
+  const classes = useStyles();
+  let [loading, setLoading] = useState(false);
+
   const { book, page } = useParams<Record<string, string>>();
   const words = useSelector(selectWords);
   const user = useSelector(selectUser);
+  const pagesArr = useSelector(selectGroupNonEmptyPagesArr)[+book]?.map(page => page.number) || Array.from({ length: 30 }).map((_el, i) => i + 1 ); // TODO наблюдать
   const [userWordsInfo, setUserWordsInfo] = useState<IUserWord[]>([]);
   const [userWords, setUserWords] = useState<IWord[] | null>(null);
   const dispatch = useDispatch();
-  const classes = useStyles();
 
   useEffect(() => {
     dispatch(
@@ -129,7 +134,6 @@ const TextBookPage: React.FC = () => {
         return elem;
       })
       setUserWords(res);
-      console.log(res)
     }
   }, [words, userWordsInfo]);
 
@@ -187,10 +191,10 @@ const TextBookPage: React.FC = () => {
   };
 
   return (
-    <PageLayout>
+    <PageLayout showLoader={loading}>
       <Container maxWidth="lg" className={classes.root} disableGutters={true}>
         <Box className={classes.subheaderWrapper}>
-          <SubHeader book={book} page={page} pagesArr={['a','a']} nextPage={!!(user && userWords && userWords.filter(w => !w.isDeleted).length === 0)}/>
+          <SubHeader book={book} page={page} pagesArr={pagesArr} nextPage={!!(user && userWords && userWords.filter(w => !w.isDeleted).length === 0)}/>
         </Box>
         <Box className={classes.wrapper}>
           <Box className={classes.titleWrapper} color="text.primary">

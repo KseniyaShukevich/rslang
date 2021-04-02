@@ -74,6 +74,28 @@ const getAll = async (userId, group, page, perPage, filter) => {
       ]
     }
   };
+  if (perPage === 10000) {
+    const tricky = [lookup, ...pipeline, ...matches];
+
+    const deletedWordIds = (await Word.aggregate(tricky)).map(word => word._id);
+
+    const allGroupWords = await Word.find({ group });
+
+    return await allGroupWords
+      .filter(word => !deletedWordIds.join('').includes(word._id))
+      .filter(
+        (word, index, self) =>
+          self.findIndex(
+            w => w.page === word.page && w.group === word.group
+          ) === index
+      )
+      .map(word => ({
+        name: `Страница ${word.page + 1}`,
+        number: word.page + 1
+      }))
+      .sort((a, b) => a.number - b.number);
+  }
+
   return await Word.aggregate([lookup, ...pipeline, ...matches, facet]);
 };
 
