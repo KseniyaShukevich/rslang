@@ -12,7 +12,10 @@ import Button from '@material-ui/core/Button';
 import HeadsetIcon from "@material-ui/icons/Headset";
 import ListenPlayer from "./ListenPlayer";
 import { FILESPATH } from '../constants';
-
+import {
+  selectSettings,
+} from '../slices/settingsSlice';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -69,8 +72,8 @@ const useStyles = makeStyles((theme) => ({
     color: 'blue',
   },
   exampleText: {
-    cursor: 'pointer',
     display: 'flex',
+    alignItems: 'center',
     wordBreak: 'break-word',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -129,10 +132,12 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
   const [isAudioExample, setIsAudioExample] = useState<boolean>(false);
   const [translateMeaning, setTranslateMeaning] = useState<boolean>(false)
   const [translateExample, setTranslateExample] = useState<boolean>(false)
-
+  const userSettings = useSelector(selectSettings);
 
   const handleClose = () => {
     setOpen(false);
+    setTranslateExample(false);
+    setTranslateMeaning(false);
   };
 
   const listenWord = () => {
@@ -179,27 +184,40 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
                   <HeadsetIcon color={isListens ? 'secondary' : 'primary'}/>
                   <div className={classes.trinfo}>{transcription}</div>
                 </div>
-                <div className={classes.translatedWord}><strong>{wordTranslate}</strong></div>
+                {userSettings.optional.isTranslation &&
+                <div className={classes.translatedWord}><strong>{wordTranslate}</strong></div>}
               </div>
               <div>
                 {!translateExample ?
-                  <span  className={classes.exampleText}>
+                  <span  className={classes.exampleText} style={userSettings.optional.isTranslation ? {cursor: 'pointer'} : {}}>
                   <ListenPlayer audio={`${FILESPATH}${audioExample}`}
                                 isAudio={isAudioExample}
                                 setIsAudio={() => setIsAudioExample(false)}
                                 listenAudio={listenAudioExample}
                   />
-                    <span className={classes.textHover} onClick={() => setTranslateExample(prev => !prev)} dangerouslySetInnerHTML={{__html:
+                    <span className={userSettings.optional.isTranslation ? classes.textHover: ''} onClick={() => {
+                      if (userSettings.optional.isTranslation) {
+                        setTranslateExample(prev => !prev);
+                      }
+                    }} dangerouslySetInnerHTML={{__html:
                     textExample}}>
                     </span>
                   </span>
-                  :<span className={classes.textHover} onClick={() => setTranslateExample(prev => !prev)}>
+                  :
+                  <span className={classes.textHover}
+                    style={{height: 44, display: 'flex', alignItems: 'center'}}
+                    onClick={() => setTranslateExample(prev => !prev)}
+                  >
                     {textExampleTranslate}
-                  </span>}
-
+                  </span>
+                }
                 {translateMeaning
                   ? <span className={classes.exampleText}>
-                    <span className={classes.textHover} onClick={() => setTranslateMeaning(prev => !prev)}>
+                    <span
+                      className={classes.textHover}
+                      style={{height: 44, display: 'flex', alignItems: 'center'}}
+                      onClick={() => setTranslateMeaning(prev => !prev)}
+                    >
                       {textMeaningTranslate}</span>
                     </span>
                   : <span className={classes.exampleText}>
@@ -208,7 +226,11 @@ const ModalDescrAboutWord: React.FC<Props> = (props) => {
                                 setIsAudio={() => setIsAudioMeaning(false)}
                                 listenAudio={listenAudioMeaning}
                   />
-                    <span className={classes.textHover} onClick={() => setTranslateMeaning(prev => !prev)} dangerouslySetInnerHTML={{__html:
+                    <span className={userSettings.optional.isTranslation ? classes.textHover : ''} onClick={() => {
+                      if (userSettings.optional.isTranslation) {
+                        setTranslateMeaning(prev => !prev);
+                      }
+                    }} dangerouslySetInnerHTML={{__html:
                       textMeaning}}>
                     </span>
                   </span>}

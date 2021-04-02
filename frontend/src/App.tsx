@@ -27,6 +27,7 @@ import { setLStorageSettings, fetchUserSettings } from './slices/settingsSlice';
 import { ID_LOCALE_STORAGE } from './utils/constants';
 import { IUserResponse } from "./services/authorisation.service";
 import notificate from './utils/notificator';
+import { selectGamesPage, setGamesPage } from './slices/gamesPageSlice';
 
 interface IRoutes {
   path: string;
@@ -54,6 +55,7 @@ function App() {
   const location = useLocation();
   const [ showHeader, setShowHeader ] = useState(false);
   const user = useSelector(selectUser);
+  const isGamesPage = useSelector(selectGamesPage);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -118,7 +120,14 @@ function App() {
     const hideHeader = location
       ? ["/savannah", "/audio", "/sprint", "/owngame"].includes( location.pathname )
       : false;
-    setShowHeader(!hideHeader)
+    setShowHeader(!hideHeader);
+    const isGamesPageNew = location
+      ? ((location.pathname === "/mini-games")
+        ? true
+        : (["/savannah", "/audio", "/sprint", "/owngame"].includes( location.pathname )
+          ? isGamesPage : false))
+          : false;
+    dispatch(setGamesPage(isGamesPageNew));
   }, [ location ]);
 
 

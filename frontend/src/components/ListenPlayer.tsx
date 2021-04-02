@@ -29,9 +29,9 @@ const ListenPlayer:React.FC<Props> = ({audio, isAudio, setIsAudio, listenAudio})
 
   return (
 
-    <span onClick={listenAudio} className={classes.transcription}>
-        <HeadsetIcon color={isAudio ? 'secondary' : 'primary'}/>
-        <span className={classes.hidden}>
+    <span onClick={listenAudio} className={classes.transcription}  title="Говори со мной!">
+      <HeadsetIcon color={isAudio ? 'secondary' : 'primary'}/>
+      <span className={classes.hidden}>
       <ReactPlayer
         url={audio}
         playing={isAudio}

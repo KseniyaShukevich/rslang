@@ -52,3 +52,14 @@
   level: 'error',
   timestamp: '2021-03-23T13:21:36.957Z'
 }
+{
+  message: 'MongoNetworkError: connection 2 to 18.205.30.78:27017 closed\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongodb\\lib\\cmap\\connection.js:68:15\n' +
+    '    at Map.forEach (<anonymous>)\n' +
+    '    at TLSSocket.<anonymous> (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongodb\\lib\\cmap\\connection.js:67:20)\n' +
+    '    at TLSSocket.emit (events.js:315:20)\n' +
+    '    at net.js:673:12\n' +
+    '    at TCP.done (_tls_wrap.js:563:7)',
+  level: 'error',
+  timestamp: '2021-04-02T13:09:31.864Z'
+}

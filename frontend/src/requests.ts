@@ -89,8 +89,14 @@ export const getWord = async (wordId: string) => {
 }
 
 
+export const getWords = async (group: number, page: number) => {
+  const response = await request(`/words?group=${group}&page=${page}`);
+  return response;
+}
 
-export const fetchUserWords = async (userId: string, token: string): Promise<any> => {
+
+
+export const fetchUserWords = async (userId: string, token: string) => {
   const response = await request(`/users/${userId}/words`, token);
   return response;
 }
@@ -99,6 +105,11 @@ export const fetchUserWords = async (userId: string, token: string): Promise<any
 //   '6058ece36fab9b1ffdc9ae71',
 //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNThlY2UzNmZhYjliMWZmZGM5YWU3MSIsImlhdCI6MTYxNjU4ODEzOSwiZXhwIjoxNjE2NjAyNTM5fQ.3ftr9ZQelppOlL3b_QjSCIFQm-RWxwoj9vGRrdjgpEg",
 //  );
+
+export const fetchUserWord = async (userId: string, wordId: string, token: string) => {
+  const response = await request(`/users/${userId}/words/${wordId}`, token);
+  return response;
+}
 
 
 // Если у пользователя нет слова, которое он выбрал, чтобы поменить как "Сложное" или "Удаленное"
@@ -231,3 +242,12 @@ export const getAggregatedUserWords = async (mode: string, userId: string, group
 //   0,
 //   token
 // );
+
+export const getNotEmptyPages = async (userId: string, group: number, token: string) => {
+  const filter = '{"userWord.optional.mode": "deleted"}';
+  const response = await request(`/users/${userId}/aggregatedWords?group=${group}&wordsPerPage=10000&filter={"userWord.optional.mode": "deleted"}`, token);
+  return response;
+}
+// Функция возвращает массив непустых страниц в группе пользователя - { name: 'Страница {n}', number: n }[]
+// e=10000&filter={%22userWord.optional.mode%22:%20%22deleted%22}
+// e=10000&filter={%22userWord.optional.mode%22:%20%22deleted%22}
