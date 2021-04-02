@@ -5,6 +5,7 @@ import userReducer from '../slices/userSlice'
 import gameWordsReducer from '../slices/gameWordsSlice'
 import userSettingsReducer from '../slices/settingsSlice'
 import gamesPageReducer from '../slices/gamesPageSlice'
+import groupPagesReducer from '../slices/groupPagesSlice'
 // ...
 
 const store = configureStore({
@@ -15,6 +16,7 @@ const store = configureStore({
     gameWords: gameWordsReducer,
     settings: userSettingsReducer,
     gamesPage: gamesPageReducer
+    groupPagesArr: groupPagesReducer
   }
 })
 

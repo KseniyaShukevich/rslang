@@ -242,3 +242,12 @@ export const getAggregatedUserWords = async (mode: string, userId: string, group
 //   0,
 //   token
 // );
+
+export const getNotEmptyPages = async (userId: string, group: number, token: string) => {
+  const filter = '{"userWord.optional.mode": "deleted"}';
+  const response = await request(`/users/${userId}/aggregatedWords?group=${group}&wordsPerPage=10000&filter={"userWord.optional.mode": "deleted"}`, token);
+  return response;
+}
+// Функция возвращает массив непустых страниц в группе пользователя - { name: 'Страница {n}', number: n }[]
+// e=10000&filter={%22userWord.optional.mode%22:%20%22deleted%22}
+// e=10000&filter={%22userWord.optional.mode%22:%20%22deleted%22}

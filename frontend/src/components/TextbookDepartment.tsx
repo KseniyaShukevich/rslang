@@ -1,6 +1,7 @@
-import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom"
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -10,8 +11,12 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarsRoundedIcon from '@material-ui/icons/StarsRounded';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
+
 import { ITextbookDepartment } from '../interfaces';
 import { PAGES } from '../constants';
+import { getNotEmptyPages } from '../requests';
+import { selectUser } from '../slices/userSlice';
+import { groupNonEmptyPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,14 +36,36 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const TextbookDepartment: React.FC<ITextbookDepartment> = (props) => {
-  const { book, name, color } = props;
+const TextbookDepartment: React.FC<ITextbookDepartment &  {handleOnLoading: (e: boolean) => void}> = (props) => {
+  const { book, name, color, handleOnLoading } = props;
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  const [fetched, setFetched] = useState(false);
+  const [open, setOpen] = useState(false);
+  const groupPagesArr = useSelector(selectGroupNonEmptyPagesArr);
+
+  const [pages, setPages] = useState(user ? [] : PAGES);
 
   const handleClick = () => {
-    setOpen(!open);
+    if (user && !open && !fetched && !groupPagesArr[book]) {
+      handleOnLoading(true);
+      (async () => {
+        let res = await getNotEmptyPages(user.userId, book, user.token)
+        dispatch(groupNonEmptyPages([res, book]));
+        setFetched(true);
+        setOpen(true);
+        handleOnLoading(false);
+      })();
+    } else {
+      setOpen(!open);
+    }
   };
+
+  useEffect(() => {
+    setPages(groupPagesArr[book] || PAGES);
+  }, [ groupPagesArr ])
 
   return (
     <>
@@ -51,13 +78,13 @@ const TextbookDepartment: React.FC<ITextbookDepartment> = (props) => {
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {PAGES.map((elem, index) => (
-          <Link key={elem} to={`/tutorial/page/${book}/${index}`} className={classes.link}>
+          {pages.map((page) => (
+          <Link key={page.name} to={`/tutorial/page/${book}/${page.number - 1}`} className={classes.link}>
             <ListItem button className={classes.nested}>
               <ListItemIcon>
                 <MenuBookIcon  style={{ color: `${color}` }} />
               </ListItemIcon>
-              <ListItemText primary={elem} />
+              <ListItemText primary={page.name} />
             </ListItem>
           </Link>
           ))}

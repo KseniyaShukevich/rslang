@@ -9,6 +9,7 @@ import SettingsTwoToneIcon from '@material-ui/icons/SettingsTwoTone';
 import AppsTwoToneIcon from '@material-ui/icons/AppsTwoTone';
 import Pagination from '@material-ui/lab/Pagination';
 import { DEPARTMENTCOLORS } from '../constants';
+import { PaginationItem } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -50,23 +51,30 @@ const useStyles = makeStyles((theme: Theme) =>
 interface ISubHeader {
   page: string,
   book: string,
+  pagesArr: number[],
+  goNextPage: boolean,
 }
 
 const getColor = (bookDepartment: number): string => {
   return DEPARTMENTCOLORS[bookDepartment];
 }
 
-
-
 const SubHeader: React.FC<ISubHeader> = (props) => {
-  const { book, page: pageNumber } = props;
+  const { book, page: pageNumber, pagesArr, goNextPage } = props;
   const history = useHistory();
   const classes = useStyles();
   const [page, setPage] = useState(Number(pageNumber) + 1);
 
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(prev => value);
+  const handleChange = (value: number) => {
+    setPage(value);
   };
+
+  useEffect(() => {
+    if (goNextPage) {
+      const nextPage = pagesArr[pagesArr.indexOf(page) + 1];
+      handleChange(nextPage);
+    }
+  }, [ goNextPage ])
 
   useEffect(() => {
     history.push(`/tutorial/page/${book}/${page - 1}`);
@@ -85,7 +93,20 @@ const SubHeader: React.FC<ISubHeader> = (props) => {
             <SettingsTwoToneIcon />
           </IconButton>
           <div className={classes.root}>
-            <Pagination count={30} page={page} siblingCount={0} onChange={handleChange} color="primary" size="small" />
+            <Pagination
+              count={pagesArr.length}
+              page={pagesArr.indexOf(page)+1}
+              siblingCount={2}
+              color="primary"
+              size="small"
+              renderItem = {(item)=> {
+                item.page = pagesArr[item.page - 1]
+                item.onClick = () => {
+                  handleChange(item.page)
+                }
+                return <PaginationItem {...item}/>
+              }}
+            />
           </div>
           <Box style={{ backgroundColor: getColor(Number(book)) }} className={classes.bookWrapper}>
             <Typography variant="h6" className={classes.title}>
