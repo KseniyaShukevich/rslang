@@ -52,7 +52,7 @@ interface ISubHeader {
   page: string,
   book: string,
   pagesArr: number[],
-  nextPage: boolean,
+  goNextPage: boolean,
 }
 
 const getColor = (bookDepartment: number): string => {
@@ -60,29 +60,25 @@ const getColor = (bookDepartment: number): string => {
 }
 
 const SubHeader: React.FC<ISubHeader> = (props) => {
-  const { book, page: pageNumber, pagesArr, nextPage } = props;
+  const { book, page: pageNumber, pagesArr, goNextPage } = props;
   const history = useHistory();
   const classes = useStyles();
   const [page, setPage] = useState(Number(pageNumber) + 1);
-  // const [pageList, setPageList] = useState(pagesArr.map(pageNumber => Number(pageNumber) + 1));
 
   const handleChange = (value: number) => {
     setPage(value);
   };
 
-  // useEffect(() => {
-  //   if (nextPage) {
-  //     handleChange(page + 1) // TODO переделать если номер не итерируется
-  //   }
-  // }, [nextPage])
+  useEffect(() => {
+    if (goNextPage) {
+      const nextPage = pagesArr[pagesArr.indexOf(page) + 1];
+      handleChange(nextPage);
+    }
+  }, [ goNextPage ])
 
   useEffect(() => {
     history.push(`/tutorial/page/${book}/${page - 1}`);
   }, [page])
-
-  // useEffect(() => {
-  //   setPageList(pagesArr.map(pageNumber => Number(pageNumber) + 1));
-  // }, [pagesArr])
 
   return (
     <div className={classes.root} style={{ backgroundColor: getColor(Number(book)) }}>

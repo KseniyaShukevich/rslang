@@ -46,10 +46,10 @@ const TextbookDepartment: React.FC<ITextbookDepartment &  {handleOnLoading: (e: 
   const [open, setOpen] = useState(false);
   const groupPagesArr = useSelector(selectGroupNonEmptyPagesArr);
 
-  const [pages, setPages] = useState(PAGES);
+  const [pages, setPages] = useState(user ? [] : PAGES);
 
   const handleClick = () => {
-    if (user && !open && !fetched) {
+    if (user && !open && !fetched && !groupPagesArr[book]) {
       handleOnLoading(true);
       (async () => {
         let res = await getNotEmptyPages(user.userId, book, user.token)

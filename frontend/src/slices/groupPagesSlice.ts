@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
 
 interface IGroupPagesArrState {
-  value: { name: string, number: number }[][] | [];
+  value: ({ name: string, number: number }[] | null)[] | [];
 }
 
 const initialState: IGroupPagesArrState = {
@@ -13,8 +13,12 @@ export const groupPagesSlice = createSlice({
   name: 'groupPagesArr',
   initialState,
   reducers: {
-    groupNonEmptyPages: (state, action: PayloadAction<[{ name: string, number: number }[], number]>) => {
-      state.value[action.payload[1]] = action.payload[0];
+    groupNonEmptyPages: (state, action: PayloadAction<[{ name: string, number: number }[] | null, number | null]>) => {
+      if (action.payload[1] !== null) {
+        state.value[action.payload[1]] = action.payload[0];
+      } else {
+        state.value = []
+      }
     }
   }
 })

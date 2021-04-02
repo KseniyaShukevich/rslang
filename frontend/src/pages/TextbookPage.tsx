@@ -3,11 +3,15 @@ import { fetchWords, selectWords } from "../slices/wordsSlice";
 import { selectUser } from "../slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { MoonLoader } from 'react-spinners';
+import { css } from "@emotion/core";
 import { Container, Box, Typography, Divider, List } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
 
+
+import { theme } from '../mui-style';
 import background from "../assets/images/background_1.jpg";
 import savanna from "../assets/images/background_3.jpg";
 import audioCall from "../assets/images/background_4.jpg";
@@ -16,7 +20,7 @@ import ownGame from "../assets/images/background_6.jpg";
 import { IWord, IGame, IUserWord } from '../interfaces';
 import { INIT_USER_WORD } from '../utils/constants';
 import { fetchUserWords, createUserWord, updateUserWord } from '../requests';
-import { selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
+import { groupNonEmptyPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
 import WordCard from "../components/WordCard";
 import GameCard from "../components/GameCard";
 import PageLayout from "../components/PageLayout";
@@ -74,6 +78,9 @@ const useStyles = makeStyles((theme: Theme) =>
       columnGap: "20px",
       padding: theme.spacing(3, 2, 0),
     },
+    wordListWrapper: {
+      position: 'relative'
+    },
     wordList: {
       backgroundColor: 'rgba(255,255,255,.6)',
       padding: theme.spacing(1),
@@ -88,8 +95,34 @@ const useStyles = makeStyles((theme: Theme) =>
       columnGap: theme.spacing(2),
       justifyContent: 'center',
     },
+    loaderContainer: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      zIndex: -10,
+      opacity: 0,
+      background: '#ffffffde',
+      display: 'flex',
+      justifyContent: 'center',
+      paddingTop: '20vh',
+      transition: 'all 300ms',
+    },
+    showLoaderContainer: {
+      zIndex: 1000,
+      opacity: 1,
+    }
   })
 );
+
+const override = css`
+  position: absolute;
+  flex: 1
+  display: block;
+  margin: 0 auto;
+`;
+
 
 const TextBookPage: React.FC = () => {
   const classes = useStyles();
@@ -98,12 +131,15 @@ const TextBookPage: React.FC = () => {
   const { book, page } = useParams<Record<string, string>>();
   const words = useSelector(selectWords);
   const user = useSelector(selectUser);
+
+  const nonEmptyPages = useSelector(selectGroupNonEmptyPagesArr)[+book];
   const pagesArr = useSelector(selectGroupNonEmptyPagesArr)[+book]?.map(page => page.number) || Array.from({ length: 30 }).map((_el, i) => i + 1 ); // TODO наблюдать
   const [userWordsInfo, setUserWordsInfo] = useState<IUserWord[]>([]);
   const [userWords, setUserWords] = useState<IWord[] | null>(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setLoading(true)
     dispatch(
       fetchWords({
         group: Number(book),
@@ -112,6 +148,13 @@ const TextBookPage: React.FC = () => {
     );
   }, [book, page]);
 
+  // убираем лоудер, таймаут нужен чтоб и картинки успели подгрузиться // TODO - разобраться с лоудером при первой загрузке страницы
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 300)
+  }, [words]);
+
   useEffect(() => {
     (async () => {
       if (user && user.userId && user.token) {
@@ -119,9 +162,8 @@ const TextBookPage: React.FC = () => {
         setUserWordsInfo(prev => response);
       }
     })();
-  }, [user]);
+  }, [ user ]);
 
-  // TODO проверка на пустой список и переход к след странице - возможно с сообщением
   useEffect(() => {
     if (words && userWordsInfo.length !== 0) {
       const res = words.map((elem: IWord) => {
@@ -190,11 +232,18 @@ const TextBookPage: React.FC = () => {
     }
   };
 
+  // убираем страницу когда с нее удалены все слова
+  useEffect(() => {
+    if (!!(user && userWords && userWords.filter(w => !w.isDeleted).length === 0)) {
+      dispatch(groupNonEmptyPages([(nonEmptyPages! || []).filter(elem => elem.number !== +page + 1), +book]));
+    }
+  }, [ userWords ])
+
   return (
-    <PageLayout showLoader={loading}>
+    <PageLayout>
       <Container maxWidth="lg" className={classes.root} disableGutters={true}>
         <Box className={classes.subheaderWrapper}>
-          <SubHeader book={book} page={page} pagesArr={pagesArr} nextPage={!!(user && userWords && userWords.filter(w => !w.isDeleted).length === 0)}/>
+          <SubHeader book={book} page={page} pagesArr={pagesArr} goNextPage={!!(user && userWords && userWords.filter(w => !w.isDeleted).length === 0)}/>
         </Box>
         <Box className={classes.wrapper}>
           <Box className={classes.titleWrapper} color="text.primary">
@@ -203,30 +252,35 @@ const TextBookPage: React.FC = () => {
               Слова
             </Typography>
           </Box>
-          <List className={classes.wordList}>
-            {user && userWords && userWords.map((elem: IWord) => {
-              return (
-                <WordCard
-                  {...elem}
-                  key={elem.id}
-                  userWordsInfo={userWordsInfo}
-                  handleDeleteWord={handleDeleteWord}
-                  handleChangeWordDifficulty={handleChangeWordDifficulty}
-                />
-              )
-            })}
-            {(!user || (user && !userWords)) && words && words.map((elem: IWord) => {
-              return (
-                <WordCard
-                  {...elem}
-                  key={elem.id}
-                  userWordsInfo={userWordsInfo}
-                  handleDeleteWord={handleDeleteWord}
-                  handleChangeWordDifficulty={handleChangeWordDifficulty}
-                />
-              )
-            })}
-          </List>
+          <div className={classes.wordListWrapper}>
+            <div className={classes.loaderContainer + ' ' + (loading ? classes.showLoaderContainer : '')}>
+              <MoonLoader color={theme.palette.primary.main} loading={true} css={override} size={70} />
+            </div>
+            <List className={classes.wordList}>
+              {user && userWords && userWords.map((elem: IWord) => {
+                return (
+                  <WordCard
+                    {...elem}
+                    key={elem.id}
+                    userWordsInfo={userWordsInfo}
+                    handleDeleteWord={handleDeleteWord}
+                    handleChangeWordDifficulty={handleChangeWordDifficulty}
+                  />
+                )
+              })}
+              {(!user || (user && !userWords)) && words && words.map((elem: IWord) => {
+                return (
+                  <WordCard
+                    {...elem}
+                    key={elem.id}
+                    userWordsInfo={userWordsInfo}
+                    handleDeleteWord={handleDeleteWord}
+                    handleChangeWordDifficulty={handleChangeWordDifficulty}
+                  />
+                )
+              })}
+            </List>
+          </div>
           <Divider variant="middle" />
           <Box className={classes.titleWrapper} color="text.primary">
             <SportsEsportsTwoToneIcon style={{ fontSize: 50 }} />
