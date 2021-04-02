@@ -41,10 +41,11 @@ const useStyles = makeStyles((theme: Theme) =>
 const Tutorial: React.FC = () => {
   const classes = useStyles();
   const user = useSelector(selectUser);
+  let [loading, setLoading] = useState(false);
   const [isDictionary, setIsDictionary] = useState<Boolean>(false);
 
   return (
-    <PageLayout pageName={'tutorial'}>
+    <PageLayout pageName={'tutorial'} showLoader={loading}>
       {
         isDictionary ? (
           <Dictionary setIsDictionary={setIsDictionary} />
@@ -57,7 +58,7 @@ const Tutorial: React.FC = () => {
                   Электронный учебник
                 </Typography>
               </Box>
-              <TextbookDepartmentsList />
+              <TextbookDepartmentsList handleOnLoading={(e) => setLoading(e)}/>
               { user &&
                 <Box>
                   <Divider variant="middle" />

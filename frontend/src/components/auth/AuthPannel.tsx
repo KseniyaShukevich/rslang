@@ -7,6 +7,7 @@ import { Box, createStyles, makeStyles, Theme, Typography } from '@material-ui/c
 import { CLOUD_NAME, CLOUD_URL } from '../../utils/constants';
 import notificate, { MessageType } from '../../utils/notificator';
 import { success } from 'toastr';
+import { groupNonEmptyPages } from '../../slices/groupPagesSlice';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -65,6 +66,7 @@ const LogOutView: React.FC = () => {
 
   const onLogOut = () => {
     dispatch(signedUser(null));
+    dispatch(groupNonEmptyPages([null, null]));
     notificate('Вы вышли из системы', MessageType.Success)
     history.push('/')
   }

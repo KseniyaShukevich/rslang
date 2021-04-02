@@ -163,7 +163,7 @@ const WordCard: React.FC<IWordCard> = (props) => {
         <span>{wordTranslate}</span>
       </div>
       {/* {user && ( */}
-        <div className={classes.right}>
+        <div className={classes.right} title={isDifficult ? 'Чёт сложно!' : 'Изи!'}>
           {user && !isDifficult && (
             <SentimentSatisfiedAltIcon
               onClick={() => toggleDifficulty(id)}
@@ -176,7 +176,7 @@ const WordCard: React.FC<IWordCard> = (props) => {
               className={classes.Difficult}
             />
           )}
-          <ButtonBase>
+          <ButtonBase title="Хм... что-то знакомое, или нет...">
             <TrendingUpIcon
               onClick={() => handleStatisticClick(id)}
               className={classes.trash}
@@ -184,7 +184,7 @@ const WordCard: React.FC<IWordCard> = (props) => {
           </ButtonBase>
           {user && (
             <>
-              <ButtonBase>
+              <ButtonBase title="Выучил, можно удалять!">
                 <DeleteIcon
                   onClick={() => setOpen(true)}
                   className={classes.trash}
