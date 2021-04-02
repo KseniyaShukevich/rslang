@@ -21,9 +21,6 @@ const useStyles = makeStyles((theme: Theme) =>
       height: "80px",
       position: "relative",
       alignItems: "center",
-        [theme.breakpoints.down("sm")]: {
-          overflow: 'scroll',
-        },
     },
     list: {
       alignItems: "center",
@@ -36,7 +33,10 @@ const useStyles = makeStyles((theme: Theme) =>
         height: '12vh',
         border: '4px solid #1565c0',
         borderRadius: '35%',
-      }
+      },
+      [theme.breakpoints.down("sm")]: {
+        display: 'none',
+      },
     },
     listItem: {},
     activeLink: {

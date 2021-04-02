@@ -29,7 +29,7 @@ const Header: React.FC = () => {
     >
       <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
         <div style={{ flex: 1 }}>
-          {/* <BurgerMenu /> */}
+          <BurgerMenu />
         </div>
         {/* <div style={{ flex: 1, textAlign: "center" }}>
           <Typography variant="h4">
