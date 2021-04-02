@@ -11616,3 +11616,138 @@
   level: 'info',
   timestamp: '2021-04-01T21:45:11.156Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-01T21:49:37.159Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-01T21:49:37.194Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 3551.685 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T07:58:15.810Z'
+}
+{
+  message: 'GET 400 /words?group=NaN&page=NaN - size req - res 72 - 7.866 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T08:00:02.392Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 192.573 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:39:40.858Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 1377.844 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:45:29.864Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 188.415 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:46:11.255Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 1312.771 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:46:49.514Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 217.384 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:47:29.465Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 198.092 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:48:48.202Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 195.943 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:48:51.816Z'
+}
+{
+  message: 'GET - /words?group=0&page=0 - size req - res - - - ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:48:52.643Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 167.538 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:49:01.972Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 174.061 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:49:50.447Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 199.608 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:49:55.062Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 252.875 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:50:04.029Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 1121.723 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:51:12.103Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 167.769 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:51:55.958Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 161.377 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:52:07.077Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 185.086 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:52:19.437Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 180.060 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:55:09.428Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 199.317 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:56:14.388Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 183.275 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:57:08.311Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 161.670 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:59:35.973Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 167.755 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T09:59:52.728Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 187.336 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:00:23.832Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 182.167 ms\n',
+  level: 'info',
+  timestamp: '2021-04-02T10:00:34.861Z'
+}

@@ -1,7 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React,
+       {
+         useState,
+         useEffect,
+         useRef
+       } from 'react'
 import {
          Box,
          Container,
+         Typography
         } from '@material-ui/core'
 import {
         Theme,
@@ -32,7 +38,7 @@ import {
         calcStatisticsWordsToDB,
         calcStatisticsWordsToLS
       } from '../calcStatisticsWords'
-import { AnyCnameRecord } from 'node:dns'
+import KeyboardIcon from '@material-ui/icons/Keyboard';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -89,9 +95,21 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100vw',
       zIndex: 20,
       display: 'flex',
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
       background: 'rgba(0,0,0,0.5)',
+    },
+    containerKeyboard: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      paddingTop: theme.spacing(2),
+    },
+    text: {
+      color: 'rgba(250,250,250, 0.4)',
+      width: 250,
+      textAlign: 'center'
     },
     startTime: {
       width: 200,
@@ -376,7 +394,7 @@ const Savannah: React.FC = () => {
         clearInterval(idInterval.current[0]);
         idInterval.current.shift();
       }
-      generationWords.current = getWordsForGame(words, 5);
+      generationWords.current = getWordsForGame(words, 4);
       setNewWords();
       setStep(100 / words.length);
     }
@@ -406,6 +424,15 @@ const Savannah: React.FC = () => {
                 <div>
                   {startTime}
                 </div>
+              </Box>
+              <Box className={classes.containerKeyboard}>
+                <KeyboardIcon
+                  fontSize='large'
+                  style={{color: 'rgba(250,250,250,0.4)'}}
+                />
+                <Typography variant='body2' className={classes.text}>
+                  Используй клавиши 1, 2, 3 и 4, чтобы дать быстрый ответ
+                </Typography>
               </Box>
             </Box>
           )
