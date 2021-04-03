@@ -246,6 +246,9 @@ const OwnGame: React.FC = () => {
   const [isAudioWord, setIsAudioWord] = useState<boolean>(false);
   const [isTranslateText, setIsTranslateText] = useState<boolean>(false);
 
+  const [toggleCorrBtn, setToggleCorrBtn] = useState<boolean>(false);
+
+
 
   const words = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -530,6 +533,7 @@ const OwnGame: React.FC = () => {
                 (corrBtn.current === index) ? (
                   <WordBtn
                     keyBtn={keyBtn}
+                    toggleCorrBtn={toggleCorrBtn}
                     index={index}
                     isCorrWord={isCorrWord}
                     successAnimation={successAnimation}
@@ -543,6 +547,7 @@ const OwnGame: React.FC = () => {
                 ) : (
                   <WordBtn
                     keyBtn={keyBtn}
+                    toggleCorrBtn={toggleCorrBtn}
                     index={index}
                     setIsCorrWord={setIsCorrWord}
                     successAnimation={successAnimation}
