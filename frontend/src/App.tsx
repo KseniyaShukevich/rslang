@@ -50,7 +50,9 @@ const routes: IRoutes[] = [
   { path: "/",                           Component: HomePage },
 ]
 
-function App() {
+function App({ hideOuterLoader }: { hideOuterLoader: () => void}) {
+  useEffect(hideOuterLoader, []);
+
   const classes = mainStyles();
   const location = useLocation();
   const [ showHeader, setShowHeader ] = useState(false);
@@ -94,7 +96,7 @@ function App() {
       if (user) {
         updateToken(user)
       }
-    }, 120000);
+    }, 12000000);
 
     return () => clearInterval(interval);
   }, [ user ]);
@@ -151,7 +153,6 @@ function App() {
         </div>
       </ThemeProvider>
     </CloudinaryContext>
-
   );
 }
 

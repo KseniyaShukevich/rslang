@@ -1,9 +1,11 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import Footer from './Footer';
-import { mainStyles, theme } from '../mui-style';
+// import HashLoader from "react-spinners/HashLoader";
+import PuffLoader from "react-spinners/PuffLoader";
 import { Container} from "@material-ui/core";
 import { css } from "@emotion/core";
-import HashLoader from "react-spinners/HashLoader";
+
+import { mainStyles, theme } from '../mui-style';
+import Footer from './Footer';
 
 interface IProps {
   children: ReactElement | Array<ReactElement>;
@@ -19,7 +21,6 @@ const PageLayout: React.FC<IProps> = ({ children, pageName, showLoader }: IProps
     setLoading(!!showLoader)
   }, [ showLoader ])
 
-
   const override = css`
     position: absolute;
     flex: 1
@@ -32,7 +33,8 @@ const PageLayout: React.FC<IProps> = ({ children, pageName, showLoader }: IProps
   return (
     <div className={classes.page} data-page-name={pageName}>
       <div className={classes.loaderContainer + ' ' + (loading ? classes.showLoaderContainer : '')}>
-        <HashLoader color={theme.palette.primary.main} loading={true} css={override} size={150} />
+        {/* <HashLoader color={theme.palette.primary.main} loading={true} css={override} size={150} /> */}
+        <PuffLoader color={theme.palette.primary.main} loading={true} css={override} size={150}/>
       </div>
       <div
         className={`${!showBackground ? classes.mainWrapper : classes.mainWrapperWithBackground}

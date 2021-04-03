@@ -1,59 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from 'react-router-dom';
+import ReactPlayer from "react-player";
 import {
   Box,
   Button,
   Container,
-  Grid,
+  Divider,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import HeadsetIcon from "@material-ui/icons/Headset";
+
 import { theme } from "../mui-style";
-import speaker from "../assets/images/speaker.svg";
-import { IWordStat } from "../interfaces";
-import { Link } from 'react-router-dom';
 import { IWord } from '../interfaces';
+import { FILESPATH } from "../constants";
 
-const wordsWrong: IWordStat[] = [
-  {
-    word: "word1",
-    translation: "translation1",
-  },
-  {
-    word: "word2",
-    translation: "translation2",
-  },
-  {
-    word: "word3",
-    translation: "translation3",
-  },
-  {
-    word: "word4",
-    translation: "translation4",
-  },
-];
-
-const wordsKnown = [
-  {
-    word: "word",
-    translation: "translation",
-  },
-  {
-    word: "word",
-    translation: "translation",
-  },
-  {
-    word: "word",
-    translation: "translation",
-  },
-  {
-    word: "word",
-    translation: "translation",
-  },
-];
 
 const useStyles = makeStyles({
   resultLayout: {
@@ -66,163 +30,149 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
   },
   resultWindow: {
-    minHeight: 300,
-    height: "60vh",
-    backgroundColor: "beige",
-    alignItems: "center",
-    overflowY: 'scroll',
+    height: "70vh",
+    backgroundColor: 'white',
     width: "60vw",
+    overflowY: 'auto',
     [theme.breakpoints.down(900)]: {
       width: "80vw",
     },
     [theme.breakpoints.down(620)]: {
-      width: "100vw",
+      width: "95vw",
     },
   },
-  resultPart: {
-    width: "80%",
-    height: "40vh",
-    paddingTop: theme.spacing(1.5),
-    paddingBottom: theme.spacing(3),
+  resultWrapper: {
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(1.5),
     margin: "0 auto",
   },
-  wordStatus: {
-    paddingRight: 10,
-    fontSize: "1.5rem",
-    color: "grey",
+  record: {
+    width: "100%",
+    paddingTop: "4px",
+    paddingBottom: "4px",
+    display: "flex",
+    justifyContent: "flex-start",
   },
-  mistakesCount: {
-    width: 15,
-    backgroundColor: "red",
-    borderRadius: "45%",
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
+  recordWord: {
+    fontSize: '1.5rem'
   },
-  buttons: {
+  recordWordTranses: {
+    color: '#7f7f7f'
+  },
+  divider: {
+    borderTop: 'solid 1px grey',
+    margin: theme.spacing(2, 0),
+  },
+  buttonsWrapper: {
+    borderTop: 'solid 1px grey',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    columnGap: theme.spacing(1.5),
+    flexWrap: 'wrap',
+    maxHeight: 77,
     padding: 20,
-    background: 'beige',
+    backgroundColor: 'white',
     width: "60vw",
-    borderTop: 'solid 1px grey',
     [theme.breakpoints.down(900)]: {
       width: "80vw",
     },
     [theme.breakpoints.down(620)]: {
-      width: "100vw",
+      height: "95vh",
+      width: "95vw",
     },
   },
-  containerButtons: {
+  button: {
+    width: 270,
+  },
+  hidden: {
+    display: 'none',
+  },
+  audioIconWrapper: {
+    cursor: 'pointer',
     display: 'flex',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    width: "100vw",
-    maxWidth: 450,
-    alignItems: 'center',
-    [theme.breakpoints.down(480)]: {
-      justifyContent: 'center',
-    },
-  }
+    justifyContent: 'center',
+    padding: '10px',
+  },
 });
 
 interface IProps {
-  corrWords: Array<IWord>
-  wrongWords: Array<IWord>
+  corrWords: Array<IWord>;
+  wrongWords: Array<IWord>;
 }
 
-const ResultOfMiniGame: React.FC<IProps> = ({
-  corrWords,
-  wrongWords,
-}: IProps) => {
+const ResultOfMiniGame: React.FC<IProps> = ({ corrWords, wrongWords }: IProps) => {
   const classes = useStyles();
+  const [isListened, setIsListened] = useState({state: false, word: ''});
 
-  function renderWrongWords(): React.ReactNode {
-    return wordsWrong.map((item: IWordStat) => {
+  const onListenWord = (_e: any, state: boolean, word: string) => {
+    setIsListened({state, word});
+  };
+
+  const path = useLocation().pathname
+
+  const renderWords = (words: IWord[]): React.ReactNode => {
+    return words.map(word => {
       return (
-        <ListItem>
-          <ListItemIcon style={{ width: 20, height: 20 }}>
-            <img src={speaker}></img>
-          </ListItemIcon>
-          <ListItemText style={{ fontSize: '35px' }}>
-            {item.word} - {item.translation}
+        <ListItem className={classes.record} key={word.audio}>
+          <span onClick={(e) => onListenWord(e, true, word.audio)}
+            className={classes.audioIconWrapper}
+            title="Говори со мной!"
+          >
+            <HeadsetIcon color={isListened.word === word.audio && isListened.state ? "secondary" : "primary"} />
+            <span className={classes.hidden}>
+              <ReactPlayer
+                url={`${FILESPATH}${word.audio}`}
+                playing={isListened.word === word.audio && isListened.state}
+                onEnded={() => setIsListened({state: false, word: ''})}
+              />
+            </span>
+          </span>
+          <ListItemText>
+            <span className={classes.recordWord}>
+              {word.word} &nbsp;
+            </span>
+            <span className={classes.recordWordTranses}>
+              <em>{word.transcription}</em> - {word.wordTranslate}
+            </span>
           </ListItemText>
         </ListItem>
       );
     });
   }
-
-  function renderKnownWords(): React.ReactNode {
-    return wordsKnown.map((item: IWordStat) => {
-      return (
-        <ListItem>
-          <ListItemIcon style={{ width: 20, height: 20 }}>
-            <img src={speaker}></img>
-          </ListItemIcon>
-          <ListItemText style={{ fontSize: "1.2rem" }}>
-            {item.word} - {item.translation}
-          </ListItemText>
-        </ListItem>
-      );
-    });
-  }
-
-  useEffect(() => {
-    console.log(corrWords, wrongWords);
-  }, []);
 
   return (
-    <>
-      <Box className={classes.resultLayout}>
-        <Container className={classes.resultWindow}>
-          <Box className={classes.resultPart}>
-            <Typography style={{ padding: "18px 0 15px 68px" }}>
-              <span className={classes.wordStatus}>Ошибок</span>
-              <span className={classes.mistakesCount} style={{ fontSize: "1.5rem" }}>
-                3
-              </span>
-            </Typography>
-            <Grid>
-              <List>{renderWrongWords()}</List>
-            </Grid>
-            <Typography style={{ padding: "18px 0 15px 68px", borderTop: "2px solid grey"}}>
-              <span className={classes.wordStatus}>Знаю</span>{" "}
-              <span
-                className={classes.mistakesCount}
-                style={{ fontSize: "1.5rem", backgroundColor: "green" }}
-              >
-                5
-              </span>
-            </Typography>
-            <Grid>
-              <List>{renderKnownWords()}</List>
-            </Grid>
-          </Box>
-        </Container>
-        <Container className={classes.buttons}>
-          <Box className={classes.containerButtons}>
-            <Button
-              variant="contained"
-              color="primary"
-              href="savannah"
-            >
-              Продолжить тренировку
-            </Button>
-            <Link to={'mini-games'}>
-              <Button
-                variant="contained"
-                color="primary"
-              >
-                 К списку тренировок
-              </Button>
-            </Link>
-          </Box>
-        </Container>
-      </Box>
-    </>
+    <Box className={classes.resultLayout}>
+      <Container className={classes.resultWindow}>
+        <Box className={classes.resultWrapper}>
+          <Typography variant="h4" color="secondary">
+            <span>Ошибок: </span>
+            <span><strong>{wrongWords.length}</strong></span>
+          </Typography>
+          <List>{renderWords(wrongWords)}</List>
+
+          <Divider variant="fullWidth"  className={classes.divider} />
+
+          <Typography variant="h4" color="primary">
+            <span>Знаю / угадано: </span>
+            <span><strong>{corrWords.length}</strong></span>
+          </Typography>
+          <List>{renderWords(corrWords)}</List>
+        </Box>
+      </Container>
+
+      <Container className={classes.buttonsWrapper}>
+        <Button  className={classes.button} variant="contained" color="primary" href={path}>
+          Продолжить тренировку
+        </Button>
+      <Link to={'mini-games'}>
+        <Button className={classes.button} variant="contained" color="primary">
+          К списку тренировок
+        </Button>
+      </Link>
+      </Container>
+    </Box>
   );
 };
 
