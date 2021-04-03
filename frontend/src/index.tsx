@@ -7,13 +7,15 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+const outerLoader = document.querySelector('.loader-container');
+
+const hideOuterLoader = () => outerLoader?.classList.add('hide-loader');
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <Router>
-
-      <App />
-
+      <App hideOuterLoader={hideOuterLoader} />
     </Router>
     </Provider>
   </React.StrictMode>,
