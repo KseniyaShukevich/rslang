@@ -109,6 +109,5 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
     showLoaderContainer: {
       zIndex: 1000,
       opacity: 1,
-      // transition: 'all 500ms',
     }
 }));

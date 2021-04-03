@@ -23,23 +23,24 @@ type Props = {
   listenAudio: any
 }
 
-
 const ListenPlayer:React.FC<Props> = ({audio, isAudio, setIsAudio, listenAudio}) => {
   const classes = useStyles();
 
   return (
-
-    <span onClick={listenAudio} className={classes.transcription}>
-        <HeadsetIcon color={isAudio ? 'secondary' : 'primary'}/>
-        <span className={classes.hidden}>
-      <ReactPlayer
-        url={audio}
-        playing={isAudio}
-        onEnded={() => setIsAudio()}
-      />
+    <span
+      onClick={listenAudio}
+      className={classes.transcription}
+      title="Говори со мной!"
+    >
+      <HeadsetIcon color={isAudio ? "secondary" : "primary"} />
+      <span className={classes.hidden}>
+        <ReactPlayer
+          url={audio}
+          playing={isAudio}
+          onEnded={() => setIsAudio()}
+        />
+      </span>
     </span>
-                              </span>
-
   );
 };
 
