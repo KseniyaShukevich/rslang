@@ -50,6 +50,7 @@ export interface IGame {
   image: string,
   description: string,
   href: string,
+  isDictionary?: boolean,
 }
 
 // statistics

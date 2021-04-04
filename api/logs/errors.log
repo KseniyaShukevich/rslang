@@ -123,3 +123,25 @@
   level: 'error',
   timestamp: '2021-04-03T12:34:01.193Z'
 }
+{
+  message: 'MongooseServerSelectionError: connection timed out\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:93:5)',
+  level: 'error',
+  timestamp: '2021-04-04T19:52:43.274Z'
+}
+{
+  message: 'MongoServerSelectionError: connection timed out\n' +
+    '    at Timeout._onTimeout (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongodb\\lib\\core\\sdam\\topology.js:439:30)\n' +
+    '    at listOnTimeout (internal/timers.js:554:17)\n' +
+    '    at processTimers (internal/timers.js:497:7)',
+  level: 'error',
+  timestamp: '2021-04-04T19:52:48.859Z'
+}

@@ -23,17 +23,27 @@ interface IProps {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     titleWrapper: {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
       backgroundImage: `url(${background})`,
       backgroundSize: "cover",
       backgroundPosition: '50%',
-      padding: "20px 60px 20px 60px",
-      [theme.breakpoints.down("sm")]: {
-        padding: "20px 30px 20px 30px",
-      },
     },
     dictionary: {
+      margin: theme.spacing(2, 0),
+      padding: theme.spacing(3),
+      width: '80%',
       background: "rgba(236,240,241,.85)",
       borderRadius: "10px",
+      [theme.breakpoints.down(700)]: {
+        width: '90%',
+        padding: theme.spacing(1),
+      },
+      [theme.breakpoints.down(600)]: {
+        width: '100%',
+        padding: theme.spacing(0),
+      },
     },
     dictTitle: {
       display: "flex",

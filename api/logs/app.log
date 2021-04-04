@@ -18125,3 +18125,353 @@
   level: 'info',
   timestamp: '2021-04-03T20:27:24.446Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-04T12:09:50.178Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-04T12:09:50.212Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 270.879 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T12:13:42.834Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-04T13:19:03.477Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-04T13:19:03.511Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 209.668 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T13:26:56.933Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 1883.514 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T14:38:51.261Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 1338.856 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T14:52:00.590Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 930.594 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T14:52:15.287Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 163.872 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T14:53:23.301Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 147.965 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T14:53:25.265Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 1936.288 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:03:03.366Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 146.818 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:04:48.305Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 142.405 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:04:48.540Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 2258.296 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:04:57.066Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 876.658 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:06:16.995Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 979.206 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:08:09.226Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 138.922 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:08:56.817Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 906.443 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:09:25.265Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 143.325 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:11:39.076Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 140.503 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:11:39.518Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 1066.049 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:11:46.884Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 156.845 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:12:31.759Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 145.607 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:12:32.687Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 913.422 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:12:39.705Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 727.618 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:13:50.013Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 1286.041 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:13:50.020Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 875.683 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:13:56.628Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 141.826 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:16:22.306Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 939.423 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:16:38.886Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 148.220 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:17:19.488Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 135.657 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:17:20.445Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 933.061 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:17:46.858Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 159.882 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:18:43.096Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 178.096 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:18:43.595Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 868.183 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:18:48.917Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 920.206 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:19:34.502Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 959.472 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:19:37.064Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 910.091 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:19:48.295Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 177.312 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:20:02.170Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 2264.931 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:20:09.056Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 883.696 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:24:48.741Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 143.525 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:24:59.323Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 840.573 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:25:12.152Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 1813.435 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:29:18.675Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 154.783 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:29:25.528Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 896.848 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:29:30.100Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 136.606 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:35:06.707Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 943.280 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:35:15.607Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 2005.099 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:35:37.237Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 912.305 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:35:40.325Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 993.510 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:36:05.296Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 943.295 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:36:07.706Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 948.423 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:46:07.799Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 148.248 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:49:56.979Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 1878.265 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:50:03.089Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 901.013 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:50:40.579Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 149.015 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:51:07.439Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 864.521 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:51:12.946Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 893.706 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:54:40.711Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 161.278 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:55:51.377Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 898.405 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:55:58.653Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 1199.021 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:57:32.190Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 999.933 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T15:57:38.526Z'
+}
+{
+  message: 'POST 200 /signin - size req 49 res 581 - 491.526 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T16:00:52.012Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 145.505 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T16:00:52.527Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 906.290 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T16:01:07.122Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22$and%22:[{%22userWord.difficulty%22:%20%22hard%22,%20%22userWord.optional.mode%22:%20%22learning%22}]} "6058ece36fab9b1ffdc9ae71" size req - res 37042 - 636.340 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T16:02:57.177Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22deleted%22} "6058ece36fab9b1ffdc9ae71" size req - res 143315 - 1057.354 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T16:03:00.451Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?wordsPerPage=3600&filter={%22userWord.optional.mode%22:%20%22learning%22} "6058ece36fab9b1ffdc9ae71" size req - res 123414 - 1255.064 ms\n',
+  level: 'info',
+  timestamp: '2021-04-04T16:03:04.159Z'
+}
