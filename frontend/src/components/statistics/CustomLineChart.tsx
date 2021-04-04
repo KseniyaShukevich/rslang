@@ -16,7 +16,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       alignItems: 'center',
       padding: theme.spacing(1),
-      backgroundColor: '#ffffffbb'
+      backgroundColor: '#ffffffbb',
+      border: '1px solid',
+      borderColor: theme.palette.primary.main,
     },
     card: {
       margin: theme.spacing(1),
@@ -72,12 +74,12 @@ const CustomLineChart: React.FC<IProps> = ({ wordsByDayArr, user }) => {
   })
 
   return (
-    <Paper elevation={3} className={classes.paper}>
+    <Paper elevation={0} className={classes.paper}>
      <Typography gutterBottom variant="h5" component="h2" color="primary">
        {'Общее количество изученных слов'}
     </Typography>
       <LineChart
-        width={500}
+        width={417.75}
         height={220}
         data={data}
         margin={{ top: 5, right: 60, left: 20, bottom: 50 }}
