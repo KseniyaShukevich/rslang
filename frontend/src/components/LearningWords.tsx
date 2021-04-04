@@ -16,6 +16,8 @@ import Pagination from '@material-ui/lab/Pagination';
 import { updateUserWord } from '../requests';
 import BarChart from '@material-ui/icons/BarChart';
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import ModalStatistic from './ModalStatistic';
+import { STATISTICS } from '../utils/constants';
 
 const rightIndent = "8px";
 
@@ -79,6 +81,12 @@ const LearningWords: React.FC<IProps> = ({ group, mode, text }: IProps) => {
   const [isDeleted, setIsDeleted] = useState<boolean>(false);
   const [idWord, setIdWord] = useState<string | null>(null);
   const [isInit, setIsInit] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpenPageStatistics, setIsOpenPageStatistics] = useState<boolean>(false);
+  const [statisticsGroup, setStatisticsGroup] = useState<any>(null);
+  const [countWordsGroup, setCountWordsGroup] = useState<number>(0);
+  const [statisticsPage, setStatisticsPage] = useState<any>(null);
+  const [countWordsPage, setCountWordsPage] = useState<number>(0);
 
   const handleChange = (value: number) => {
     setPage(value);
@@ -213,6 +221,49 @@ const LearningWords: React.FC<IProps> = ({ group, mode, text }: IProps) => {
     getUserWords();
   }, [group]);
 
+  const calcStatisticsForGame = (statistics: any, word: any, game: string) => {
+    statistics[game].correctAnswers += word.userWord.optional.miniGames[game].correctAnswers;
+    statistics[game].wrongAnswers += word.userWord.optional.miniGames[game].wrongAnswers;
+  }
+
+  useEffect(() => {
+    if (allUserWords) {
+      const wordsGroup = allUserWords.filter((word: any) => word.group === group);
+      const statistics = JSON.parse(JSON.stringify(STATISTICS));
+      if (wordsGroup.length) {
+        wordsGroup.forEach((word: any) => {
+          calcStatisticsForGame(statistics, word, 'savannah');
+          calcStatisticsForGame(statistics, word, 'audio');
+          calcStatisticsForGame(statistics, word, 'sprint');
+          calcStatisticsForGame(statistics, word, 'ownGame');
+        });
+        setStatisticsGroup(statistics);
+      } else {
+        setStatisticsGroup(null);
+      }
+      setCountWordsGroup(wordsGroup.length);
+    }
+  }, [group, allUserWords]);
+
+  useEffect(() => {
+    if (allUserWords) {
+      const wordsPage = allUserWords.filter((word: any) => (word.group === group) && (word.page === page - 1));
+      const statistics = JSON.parse(JSON.stringify(STATISTICS));
+      if (wordsPage.length) {
+        wordsPage.forEach((word: any) => {
+          calcStatisticsForGame(statistics, word, 'savannah');
+          calcStatisticsForGame(statistics, word, 'audio');
+          calcStatisticsForGame(statistics, word, 'sprint');
+          calcStatisticsForGame(statistics, word, 'ownGame');
+        });
+        setStatisticsPage(statistics);
+      } else {
+        setStatisticsPage(null);
+      }
+      setCountWordsPage(wordsPage.length);
+    }
+  }, [group, page, allUserWords]);
+
   return (
     <>
       {
@@ -236,10 +287,27 @@ const LearningWords: React.FC<IProps> = ({ group, mode, text }: IProps) => {
                 <Box className={classes.containerStatistics}>
                   <BarChart
                     className={classes.trash}
+                    onClick={() => setIsOpen(true)}
                   />
                   <TrendingUpIcon
-                    // onClick={() => handleStatisticClick(id)}
+                    onClick={() => setIsOpenPageStatistics(true)}
                     className={classes.trash}
+                  />
+                  <ModalStatistic
+                    title={`Статистика для ${group + 1} книги`}
+                    tittleNoStatistics={`Нет статистики для ${group + 1} книги`}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    countWords={countWordsGroup}
+                    wordStatistic={statisticsGroup}
+                  />
+                  <ModalStatistic
+                    title={`Статистика для ${page} страницы`}
+                    tittleNoStatistics={`Нет статистики для ${page} страницы`}
+                    isOpen={isOpenPageStatistics}
+                    setIsOpen={setIsOpenPageStatistics}
+                    countWords={countWordsPage}
+                    wordStatistic={statisticsPage}
                   />
                 </Box>
               )}
