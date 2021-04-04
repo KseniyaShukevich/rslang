@@ -8,8 +8,8 @@ export default (message: string, type = MessageType.Error) => {
     timeOut: 2000
   };
   toastr.clear();
-  toastr[type](message)
-  // setTimeout(() => toastr[type](message), 200);
+  // toastr[type](message)
+  setTimeout(() => toastr[type](message), 200);
 };
 
 export enum MessageType {

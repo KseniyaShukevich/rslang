@@ -12,7 +12,7 @@ interface IRequest {
 }
 
 interface IUserSettings {
-  value: Object | null
+  value: any
 }
 
 

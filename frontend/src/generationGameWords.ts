@@ -37,7 +37,7 @@ export const getWordsForGame = (allWords: Array<IWord>, count: number) => {
 
     noAnsweredWords.splice(indexWord, 1);
 
-    return [word, resArray, fun];
+    return [word, resArray, fun, noAnsweredWords.length];
   }
   return fun();
 }

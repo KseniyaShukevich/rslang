@@ -1,6 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import ChooseLevel from "../components/ChooseLevel";
+import { useSelector } from 'react-redux';
+import { selectGamesPage } from '../slices/gamesPageSlice';
+import { ID_LOCALE_STORAGE } from '../utils/constants';
+import { getWords } from '../requests';
+import { getRandomNumber } from '../generationGameWords';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -63,17 +68,30 @@ interface IProps {
 const StartLayout = ({ setIsStartLayout, nameGame, descriptionGame }: IProps) => {
   const classes = useStyles();
   const [level, setLevel] = useState<number>(0);
+  const isGamesPage = useSelector(selectGamesPage);
 
   const getStartGame = () => {
     setIsStartLayout(false);
   }
 
+  const getWordsForGames = async (group: number) => {
+    if (isGamesPage) {
+      const page = getRandomNumber(0, 29);
+      const words = await getWords(group, page);
+      localStorage.setItem(`${ID_LOCALE_STORAGE}gameWords`, JSON.stringify(words));
+    }
+  }
+
+  useEffect(() => {
+    getWordsForGames(level);
+  }, [level]);
+
   return (
     <div className={classes.container}>
       <div className={classes.flex}>
         <div className={classes.audioLabel}>{nameGame}</div>
-        <div className={classes.audioTextLabel}>{descriptionGame}</div>
-        <ChooseLevel level={level} setLevel={setLevel} />
+        <div className={classes.audioTextLabel} style={isGamesPage ? {} : {paddingBottom: 50}}>{descriptionGame}</div>
+        {isGamesPage && <ChooseLevel level={level} setLevel={setLevel} />}
         <div className={classes.btnStart} onClick={getStartGame}>НАЧАТЬ</div>
       </div>
     </div>

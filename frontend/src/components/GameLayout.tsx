@@ -1,7 +1,9 @@
 import React, { ReactElement } from 'react'
+import { CSSTransition } from 'react-transition-group'
+
+import { IWord } from '../interfaces'
 import StartLayout from './StartLayout'
 import ResultOfMiniGame from './ResultOfMiniGame'
-import { IWord } from '../interfaces'
 
 interface IProps {
   corrWords: Array<IWord>,
@@ -27,36 +29,33 @@ const GameLayout: React.FC<IProps> = ({
   children
 }: IProps) => {
 
-
 	return (
-      <>
-        {
-          isStartLayout && (
-            <StartLayout
-              nameGame={nameGame}
-              descriptionGame={descriptionGame}
-              setIsStartLayout={setIsStartLayout}
-            />
-          )
-        }
-
-        {
-          (!isStartLayout && !isEndLayout) && (
-            <>
-            {children}
-            </>
-          )
-        }
-
-        {
-          isEndLayout && (
-            <ResultOfMiniGame
-              corrWords={corrWords}
-              wrongWords={wrongWords}
-            />
-          )
-        }
-      </>
+    <>
+      {
+        isStartLayout && (
+          <StartLayout
+            nameGame={nameGame}
+            descriptionGame={descriptionGame}
+            setIsStartLayout={setIsStartLayout}
+          />
+        )
+      }
+      {
+        (!isStartLayout && !isEndLayout) && (
+          <>
+          {children}
+          </>
+        )
+      }
+      {
+        <CSSTransition in={isEndLayout} timeout={500} classNames="smooth-route" unmountOnExit>
+          <ResultOfMiniGame
+            corrWords={corrWords}
+            wrongWords={wrongWords}
+          />
+        </CSSTransition>
+      }
+    </>
 	);
 }
 
