@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Typography,
@@ -18,6 +18,40 @@ import BarChart from '@material-ui/icons/BarChart';
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import ModalStatistic from './ModalStatistic';
 import { STATISTICS } from '../utils/constants';
+import { IGame } from "../interfaces";
+import GameCard from "./GameCard";
+import savanna from "../assets/images/background_3.jpg";
+import audioCall from "../assets/images/background_4.jpg";
+import sprint from "../assets/images/background_5.jpg";
+import ownGame from "../assets/images/background_6.jpg";
+import { ID_LOCALE_STORAGE } from '../utils/constants';
+
+const GAMES: IGame[] = [
+  {
+    name: "Саванна",
+    image: savanna,
+    description: "",
+    href: "/savannah",
+  },
+  {
+    name: "Аудиовызов",
+    image: audioCall,
+    description: "",
+    href: "/audio",
+  },
+  {
+    name: "Спринт",
+    image: sprint,
+    description: "",
+    href: "/sprint",
+  },
+  {
+    name: "Своя игра",
+    image: ownGame,
+    description: "",
+    href: "/owngame",
+  },
+];
 
 const rightIndent = "8px";
 
@@ -60,7 +94,14 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down(630)]: {
         position: 'static',
       },
-    }
+    },
+    games: {
+      borderTop: '1px solid rgba(0,0,0,0.5)',
+      display: 'flex',
+      justifyContent: 'center',
+      paddingTop: theme.spacing(1),
+      flexWrap: 'wrap',
+    },
   })
 );
 
@@ -87,6 +128,9 @@ const LearningWords: React.FC<IProps> = ({ group, mode, text }: IProps) => {
   const [countWordsGroup, setCountWordsGroup] = useState<number>(0);
   const [statisticsPage, setStatisticsPage] = useState<any>(null);
   const [countWordsPage, setCountWordsPage] = useState<number>(0);
+
+  const wordsForGames = useRef<any>([]);
+  const oldWordsForGames = useRef<any>([]);
 
   const handleChange = (value: number) => {
     setPage(value);
@@ -208,7 +252,7 @@ const LearningWords: React.FC<IProps> = ({ group, mode, text }: IProps) => {
           setUserWords(null);
         }
     }
-  }, [pagesArr, isInit, allUserWords, group, page]);
+  }, [pagesArr, isInit, allUserWords, page]);
 
   useEffect(() => {
     if (allUserWords) {
@@ -263,6 +307,49 @@ const LearningWords: React.FC<IProps> = ({ group, mode, text }: IProps) => {
       setCountWordsPage(wordsPage.length);
     }
   }, [group, page, allUserWords]);
+
+  const getWordsForGames = (words: Array<any>, book: number, page: number) => {
+    if (page < 0 || wordsForGames.current.length >= 20) {
+      wordsForGames.current = wordsForGames.current.slice(0, 20);
+      if (wordsForGames.current.length) {
+        oldWordsForGames.current = wordsForGames.current;
+      } else {
+        wordsForGames.current = oldWordsForGames.current;
+      }
+      localStorage.setItem(`${ID_LOCALE_STORAGE}gameWords`, JSON.stringify(wordsForGames.current));
+      return;
+    }
+    const newWords = words.filter((word: any) => (word.group === book) && (word.page === page));
+      if (newWords.length) {
+        const gameWords = newWords.map((word: any) => {
+          return {
+            id: word._id,
+            group: word.group,
+            page: word.page,
+            word: word.word,
+            image: word.image,
+            audio: word.audio,
+            audioMeaning: word.audioMeaning,
+            audioExample: word.audioExample,
+            textMeaning: word.textMeaning,
+            textExample: word.textExample,
+            transcription: word.transcription,
+            wordTranslate: word.wordTranslate,
+            textMeaningTranslate: word.textMeaningTranslate,
+            textExampleTranslate: word.textExampleTranslate,
+          }
+        });
+        wordsForGames.current = [ ...wordsForGames.current, ...gameWords ];
+      }
+    getWordsForGames(words, book, page - 1);
+  }
+
+  useEffect(() => {
+    if (userWords && userWords.length) {
+      wordsForGames.current = [];
+      getWordsForGames(allUserWords, group, page - 1);
+    }
+  }, [group, page, allUserWords, userWords]);
 
   return (
     <>
@@ -345,6 +432,15 @@ const LearningWords: React.FC<IProps> = ({ group, mode, text }: IProps) => {
           )
         }
       </Box>
+      {pagesArr.length ? (userWords && (
+        <Box className={classes.games}>
+          {GAMES.map((elem: IGame, index: number) => {
+            return <GameCard {...elem} isDictionary={true} key={index} />;
+          })}
+        </Box>
+      )) : (
+        <Box/>
+      )}
     </>
   );
 }
