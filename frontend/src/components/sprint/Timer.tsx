@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Theme, createStyles, makeStyles, } from '@material-ui/core/styles';
 import { Typography, Box }from '@material-ui/core';
+import PlayMusic from './PlayMusic';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -71,20 +72,26 @@ const SvgProgress: React.FC<IProgressProps> = (props) => {
   )
 };
 
+const TIKURL = `${process.env.PUBLIC_URL}/start_end_game.mp3`;
+
 interface ITimerProps {
   maxValue: number,
   action?: any,
+  isAudio: boolean,
 }
 
-const Timer: React.FC<ITimerProps> = ({maxValue, action}) => {
+const Timer: React.FC<ITimerProps> = ({maxValue, action, isAudio}) => {
   const [progress, setProgress] = useState(maxValue);
+  const [isTikMusic, setIsTikMusic] = useState<boolean>(false);
 
   useEffect(() => {
     if (progress === 0) {
       if (action) {
-        action(false);
+        action();
       }
       return;
+    } else if (progress === 4) {
+      setIsTikMusic(prev => true);
     }
     const intervalId = setInterval(() => {
       setProgress(prev => prev - 1);
@@ -94,7 +101,17 @@ const Timer: React.FC<ITimerProps> = ({maxValue, action}) => {
     };
   }, [progress]);
 
-  return <SvgProgress progress={progress} radius={36.2} maxValue={maxValue} />;
+  return (
+    <>
+    <SvgProgress progress={progress} radius={36.2} maxValue={maxValue} />
+    <PlayMusic
+      url={TIKURL}
+      isMusic={isTikMusic}
+      setIsMusic={setIsTikMusic}
+      isMusicValue={isAudio}
+    />
+    </>
+  );
 }
 
 export default Timer;

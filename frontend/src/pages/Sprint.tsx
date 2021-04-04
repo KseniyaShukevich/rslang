@@ -52,10 +52,6 @@ const useStyles = makeStyles((theme: Theme) =>
     containerGif: {
       width: 'fit-content',
     },
-    lifes: {
-      display: 'flex',
-      alignItems: 'center',
-    },
     button: {
       transition: '0.5s',
       "&:hover": {
@@ -77,10 +73,9 @@ const Sprint: React.FC = () => {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
-  const lifes: number = 3;
 
   const [currentWord, setCurrentWord] = useState<IWord | null>(null);
-  const [arrayWords, setArrayWords] = useState<IWord[] | null>(null);
+  const [auxiliaryWord, setAuxiliaryWord] = useState<IWord | null>(null);
 
   const wordsArray = useSelector(selectWords);
   const dispatch = useDispatch();
@@ -100,6 +95,7 @@ const Sprint: React.FC = () => {
   useEffect(() => {
     if (!isStartLayout && !isEndLayout && wordsArray) {
       generationWords.current = getWordsForGame(wordsArray, 2);
+      step();
     }
   }, [wordsArray, isStartLayout, isEndLayout]);
 
@@ -107,11 +103,11 @@ const Sprint: React.FC = () => {
     if (generationWords.current) {
       const [ word, arrayWords, func ] = generationWords.current;
       console.log(word, arrayWords);
-      setCurrentWord(word);
-      setArrayWords(arrayWords);
+      setCurrentWord(prev => word);
+      setAuxiliaryWord(prev => arrayWords[Math.round(Math.random())]);
       generationWords.current = func();
     } else {
-      console.log('END!');
+      setIsEndLayout(prev => true);
     }
   }
 
@@ -139,9 +135,6 @@ const Sprint: React.FC = () => {
               game={'game'}
               isFullscreen={isFullscreen}
             />
-            <Box className={classes.lifes}>
-              <Heart lifes={lifes} />
-            </Box>
             <CloseBtn />
           </Box>
         </Box>
@@ -156,17 +149,8 @@ const Sprint: React.FC = () => {
             setIsEndLayout={setIsEndLayout}
           >
             <>
-            { currentWord && <SprintGameField word={currentWord} step={step} /> }
+            { currentWord && auxiliaryWord && <SprintGameField word={currentWord} auxWord={auxiliaryWord} step={step} isAudio={isAudio} setIsEndLayout={setIsEndLayout} /> }
             </>
-            <Container maxWidth='md' className={classes.containerBtn} style={{background: 'white'}}>
-              <span>Кнопки для понимания, как это работает</span>
-              <Button color='primary' onClick={step}>
-                Ход
-              </Button>
-              <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
-                Закончилась игра
-              </Button>
-            </Container>
 
           </GameLayout>
       </Box>

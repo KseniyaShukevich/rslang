@@ -27,20 +27,35 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: '50%',
       margin: '0 7px',
     },
+    iconHidden: {
+      display: 'inline-flex',
+      opacity: '0',
+      width: '23px',
+      height: '23px',
+      borderRadius: '50%',
+      margin: '0 7px',
+    },
   })
 );
 
 interface IProps {
   wordSequence: number,
+  isSingleSequence: boolean,
 }
 
 const CorrectAnswerIcons: React.FC<IProps> = (props) => {
-  const { wordSequence } = props;
+  const { wordSequence, isSingleSequence } = props;
   const classes = useStyles();
 
   return (
     <>
-      {[0, 1, 2].map((elem) => {
+      {isSingleSequence && [0, 1, 2].map((elem) => {
+        return (
+        <div className={(elem === 1) ? classes.icon : classes.iconHidden} key={elem}>
+          <CheckIcon fontSize="small" />
+        </div> )
+      })}
+      {!isSingleSequence && [0, 1, 2].map((elem) => {
         return (
         <div className={(elem < wordSequence) ? classes.icon : classes.iconBlack} key={elem}>
           <CheckIcon fontSize="small" />
