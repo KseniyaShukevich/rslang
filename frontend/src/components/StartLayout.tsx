@@ -75,9 +75,11 @@ const StartLayout = ({ setIsStartLayout, nameGame, descriptionGame }: IProps) =>
   }
 
   const getWordsForGames = async (group: number) => {
-    const page = getRandomNumber(0, 29);
-    const words = await getWords(group, page);
-    localStorage.setItem(`${ID_LOCALE_STORAGE}gameWords`, JSON.stringify(words));
+    if (isGamesPage) {
+      const page = getRandomNumber(0, 29);
+      const words = await getWords(group, page);
+      localStorage.setItem(`${ID_LOCALE_STORAGE}gameWords`, JSON.stringify(words));
+    }
   }
 
   useEffect(() => {
