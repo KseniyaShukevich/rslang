@@ -20,6 +20,33 @@ export const theme = createMuiTheme({
     }
   },
   spacing: 10,
+  overrides: {
+    MuiButton: {
+      containedSecondary: {
+        '&:hover': {
+          backgroundColor: '#d44c4c'
+        },
+      }
+    },
+    MuiListItem: {
+      button: {
+        '&:hover': {
+          backgroundColor: '#1565c01a'
+        },
+      },
+    },
+    MuiTouchRipple: {
+      child: {
+        backgroundColor: blue[300]
+      },
+    },
+    MuiBackdrop: {
+      root: {
+        backgroundColor: '#1565c133'
+        // backgroundColor: '#b0454826'
+      },
+    },
+  },
 })
 
 export const mainStyles = makeStyles((theme: Theme,) => createStyles({
@@ -90,6 +117,7 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
       padding: theme.spacing(0, 3),
       flex: 1,
       display: 'flex',
+      alignItems: 'center',
       flexDirection: 'column'
     },
     loaderContainer: {
@@ -109,5 +137,12 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
     showLoaderContainer: {
       zIndex: 1000,
       opacity: 1,
-    }
+    },
+    // button in Header for Sidebar
+    button: {
+      transition: 'all 400ms ease',
+    },
+    closed: {
+      transform: 'rotate(-90deg) '
+    },
 }));
