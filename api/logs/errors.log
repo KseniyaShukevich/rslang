@@ -63,3 +63,34 @@
   level: 'error',
   timestamp: '2021-04-02T13:09:31.864Z'
 }
+{
+  message: "MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/\n" +
+    '    at Function.Model.$wrapCallback (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (internal/process/task_queues.js:93:5)',
+  level: 'error',
+  timestamp: '2021-04-03T11:58:56.118Z'
+}
+{
+  message: 'MongoError: the limit must be positive\n' +
+    '    at MessageStream.messageHandler (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongodb\\lib\\cmap\\connection.js:268:20)\n' +
+    '    at MessageStream.emit (events.js:315:20)\n' +
+    '    at processIncomingData (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongodb\\lib\\cmap\\message_stream.js:144:12)\n' +
+    '    at MessageStream._write (C:\\Users\\Kseniya\\Desktop\\RSS\\react-courses\\rslang\\api\\node_modules\\mongodb\\lib\\cmap\\message_stream.js:42:5)\n' +
+    '    at writeOrBuffer (_stream_writable.js:352:12)\n' +
+    '    at MessageStream.Writable.write (_stream_writable.js:303:10)\n' +
+    '    at TLSSocket.ondata (_stream_readable.js:719:22)\n' +
+    '    at TLSSocket.emit (events.js:315:20)\n' +
+    '    at addChunk (_stream_readable.js:309:12)\n' +
+    '    at readableAddChunk (_stream_readable.js:284:9)\n' +
+    '    at TLSSocket.Readable.push (_stream_readable.js:223:10)\n' +
+    '    at TLSWrap.onStreamRead (internal/stream_base_commons.js:188:23)',
+  level: 'error',
+  timestamp: '2021-04-03T12:34:01.193Z'
+}
