@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       transition: 'transform 250ms ease-in',
       '&:hover': {
         '& > div:nth-of-type(1)': {
-          backgroundColor: 'rgba(25,29,38,.5)',
+          backgroundColor: '#1e88e533',
           opacity: 1,
         },
         transform: 'scale(1.03)',

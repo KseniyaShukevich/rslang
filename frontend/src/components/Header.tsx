@@ -1,25 +1,19 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { mainStyles } from "../mui-style";
-import BurgerMenu from "./BurgerMenu";
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser, signedUser } from '../slices/userSlice';
-import AuthPannel from './auth/AuthPannel';
-import { makeStyles, Theme, createStyles } from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu';
 
-const useStyles = makeStyles((theme: Theme) => createStyles({
-  header: {
-    boxShadow: 'unset',
-    position: 'absolute'
-  }
-}))
+import { mainStyles, theme } from "../mui-style";
+import AuthPannel from './auth/AuthPannel';
+import { IconButton } from "@material-ui/core";
+import Sidebar from "./Sidebar";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const classes = mainStyles();
+  const [ openSideBar, setOpenSideBar ] = useState(false)
 
   return (
     <AppBar
@@ -28,17 +22,29 @@ const Header: React.FC = () => {
     >
       <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
         <div style={{ flex: 1 }}>
-          <BurgerMenu />
+        <IconButton edge="start"
+          className={classes.root}
+          color="inherit"
+          aria-label="menu"
+          onClick={() => setOpenSideBar(!openSideBar)}
+        >
+          <MenuIcon
+            className={`${classes.button} ${openSideBar ? classes.closed : ''}`}
+          />
+      </IconButton>
         </div>
         <div style={{ flex: 1, textAlign: "center" }}>
           <Typography variant="h4">
-            <span className="classes.">RSLang</span>
+            <Link to={'/'}>
+              <span title="О проекте"><strong style={{ color: theme.palette.secondary.light}}>RS</strong>Lang</span>
+            </Link>
           </Typography>
         </div>
         <div style={{ flex: 1 }}>
           <AuthPannel />
         </div>
       </Toolbar>
+      <Sidebar toggleOpen={openSideBar} setToggleOpen={(e) => { console.log(e); setOpenSideBar(e)}}/>
     </AppBar>
   );
 }

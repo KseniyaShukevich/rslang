@@ -3,8 +3,10 @@ import {
   makeStyles,
   Theme,
   createStyles,
+  Box,
+  Typography,
  } from '@material-ui/core'
-
+ import InsertChartTwoTone from "@material-ui/icons/InsertChartTwoTone";
 
 import PageLayout from '../components/PageLayout'
 import { clearTodayStatistics } from '../calcStatistics'
@@ -19,7 +21,7 @@ import { IUserResponse } from '../services/authorisation.service'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     wrapper: {
-      padding: theme.spacing(3, 0),
+      padding: theme.spacing(1.5, 0),
       display: 'flex',
       columnGap: theme.spacing(3),
       justifyContent: 'space-around'
@@ -40,6 +42,16 @@ const useStyles = makeStyles((theme: Theme) =>
     button: {
       margin: theme.spacing(0, 'auto'),
     },
+    titleWrapper: {
+      display: "flex",
+      columnGap: "20px",
+      padding: theme.spacing(3, 1, 0),
+    },
+    customTwoTones: {
+      // filter: 'invert(30%) sepia(98%) saturate(1068%) hue-rotate(188deg) brightness(89%) contrast(94%)'
+      filter: 'invert(64%) sepia(19%) saturate(5959%) hue-rotate(320deg) brightness(114%) contrast(80%)'
+    },
+
   })
 );
 
@@ -75,18 +87,24 @@ const Statistics: React.FC = () => {
 
   return (
     <PageLayout showLoader={loading} pageName={'statistics'}>
+        <Box className={classes.titleWrapper} color="text.primary">
+          <InsertChartTwoTone style={{ fontSize: 50 }} className={classes.customTwoTones}/>
+          <Typography gutterBottom variant="h3" style={{ fontWeight: 300 }} color="primary">
+            Статистика
+          </Typography>
+        </Box>
       <div className={classes.wrapper}>
         <GameStatisticCard gameName={'Саванна'}     gameStatistics={statistics.optional.today.miniGames.savannah} />
         <GameStatisticCard gameName={'Аудиовызов'}  gameStatistics={statistics.optional.today.miniGames.audio} />
         <GameStatisticCard gameName={'Спринт'}      gameStatistics={statistics.optional.today.miniGames.sprint} />
         <GameStatisticCard gameName={'Своя игра'}   gameStatistics={statistics.optional.today.miniGames.ownGame} />
-        <DailyTotalStatisticsCard    generalStatistics={statistics.optional.today.generalStatistics} />
       </div>
       <div className={classes.wrapper}>
         {user && (
           <>
-            <CustomLineChart user={user} wordsByDayArr={statistics.optional.forAllTime.forEachDay} />
+            <DailyTotalStatisticsCard    generalStatistics={statistics.optional.today.generalStatistics} />
             <CustomBarChart user={user} wordsByDayArr={statistics.optional.forAllTime.byDay} />
+            <CustomLineChart user={user} wordsByDayArr={statistics.optional.forAllTime.forEachDay} />
           </>
         )}
       </div>

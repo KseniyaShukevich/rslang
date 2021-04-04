@@ -1,28 +1,29 @@
 import React, { useEffect, useState, useRef } from  'react';
-import { fetchWords, selectWords } from "../slices/wordsSlice";
-import { selectUser } from "../slices/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import WordCard from "../components/WordCard";
-import GameCard from "../components/GameCard";
-import PageLayout from "../components/PageLayout";
-import SubHeader from "../components/SubHeader";
-import { fetchUserWords, createUserWord, updateUserWord, getWords,} from '../requests';
-import { MoonLoader } from 'react-spinners';
-import { css } from "@emotion/core";
+import PuffLoader from "react-spinners/PuffLoader";
 import { Container, Box, Typography, Divider, List } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import ListAltTwoToneIcon from '@material-ui/icons/ListAltTwoTone';
 import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
+import { css } from "@emotion/core";
+
+import { fetchWords, selectWords } from "../slices/wordsSlice";
+import { groupNonEmptyPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
+import { selectUser } from "../slices/userSlice";
 import { theme } from '../mui-style';
 import background from "../assets/images/background_1.jpg";
 import savanna from "../assets/images/background_3.jpg";
 import audioCall from "../assets/images/background_4.jpg";
 import sprint from "../assets/images/background_5.jpg";
 import ownGame from "../assets/images/background_6.jpg";
-import { INIT_USER_WORD, ID_LOCALE_STORAGE } from '../utils/constants';
 import { IWord, IGame, IUserWord } from '../interfaces';
-import { groupNonEmptyPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
+import { INIT_USER_WORD, ID_LOCALE_STORAGE } from '../utils/constants';
+import { fetchUserWords, createUserWord, updateUserWord, getWords,} from '../requests';
+import WordCard from "../components/WordCard";
+import GameCard from "../components/GameCard";
+import PageLayout from "../components/PageLayout";
+import SubHeader from "../components/SubHeader";
 
 const GAMES: IGame[] = [
   {
@@ -77,7 +78,9 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(3, 2, 0),
     },
     wordListWrapper: {
-      position: 'relative'
+      backgroundColor: 'rgba(255,255,255,.6)',
+      position: 'relative',
+      minHeight: 126,
     },
     wordList: {
       backgroundColor: 'rgba(255,255,255,.6)',
@@ -104,7 +107,7 @@ const useStyles = makeStyles((theme: Theme) =>
       background: '#ffffffde',
       display: 'flex',
       justifyContent: 'center',
-      paddingTop: '20vh',
+      paddingTop: theme.spacing(2),
       transition: 'all 300ms',
     },
     showLoaderContainer: {
@@ -287,7 +290,7 @@ const TextBookPage: React.FC = () => {
           </Box>
           <div className={classes.wordListWrapper}>
             <div className={classes.loaderContainer + ' ' + (loading ? classes.showLoaderContainer : '')}>
-              <MoonLoader color={theme.palette.primary.main} loading={true} css={override} size={70} />
+              <PuffLoader color={theme.palette.primary.main} loading={true} css={override} size={70} />
             </div>
             <List className={classes.wordList}>
               {user && userWords && userWords.map((elem: IWord) => {
