@@ -37,9 +37,12 @@ export interface IWordCard {
   textExampleTranslate: string,
   isDifficult: boolean,
   isDeleted: boolean,
+  isDeletedWords?: boolean,
   userWordsInfo?: IUserWord[] | null,
   handleDeleteWord?: (wordId: string) => Promise<any>,
   handleChangeWordDifficulty?: (wordId: string) => Promise<any>,
+  restoreWord?: (wordId: string) => Promise<any>,
+  [rest: string]: any
 }
 
 export interface IGame {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Box,
   Button,
@@ -12,6 +12,9 @@ import { useState } from "react";
 import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
 import background from "../assets/images/background_7.jpeg";
 import { createStyles } from "@material-ui/core/styles";
+import LearningWords from '../components/LearningWords';
+import BookElement from '../components/BookElement';
+import { DEPARTMENTS, DEPARTMENTCOLORS } from '../constants';
 
 interface IProps {
   setIsDictionary: (value: boolean) => void;
@@ -22,6 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
     titleWrapper: {
       backgroundImage: `url(${background})`,
       backgroundSize: "cover",
+      backgroundPosition: '50%',
       padding: "20px 60px 20px 60px",
       [theme.breakpoints.down("sm")]: {
         padding: "20px 30px 20px 30px",
@@ -33,6 +37,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     dictTitle: {
       display: "flex",
+      alignItems: 'center',
+      height: 70,
+      paddingLeft: theme.spacing(1)
     },
     list: {
       display: "grid",
@@ -42,16 +49,15 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: 0,
       padding: 0,
     },
-    tabs: {
-      paddingTop: "4rem",
-      height: "60vh",
-      overflowY: "auto",
+    booksContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
     },
     active: {
+      color: 'white',
       fontSize: "22px",
       fontWeight: 500,
       padding: "6px 10px",
-      backgroundColor: "#8dc1e6",
       "& p": {
         margin: "0 auto",
       },
@@ -59,25 +65,17 @@ const useStyles = makeStyles((theme: Theme) =>
         fontSize: "17px",
       },
     },
-    activeTab: {
-      fontSize: "3.5rem",
-      width: "100%",
-      textAlign: "center",
-      height: "60vh",
-      margin: "0 auto",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "2.5rem",
-      },
-    },
     listItem: {
       fontSize: "22px",
       fontWeight: 500,
       padding: "6px 10px",
+      transition: '0.3s',
       "& p": {
         margin: "0 auto",
       },
       "&:hover": {
         cursor: "pointer",
+        color: '#302673'
       },
       [theme.breakpoints.down("xs")]: {
         fontSize: "17px",
@@ -88,7 +86,9 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Dictionary: React.FC<IProps> = ({ setIsDictionary }: IProps) => {
   const classes = useStyles();
-  const [isChosenTab, setIsChosenTab] = useState([false, false, false]);
+  const [isChosenTab, setIsChosenTab] = useState([true, false, false]);
+  const [group, setGroup] = useState<number>(0);
+  const activeElement = useRef<any>(0);
 
   const handleClick = () => {
     setIsDictionary(false);
@@ -103,7 +103,7 @@ const Dictionary: React.FC<IProps> = ({ setIsDictionary }: IProps) => {
             <Typography
               gutterBottom
               variant="h3"
-              style={{ fontWeight: 300, paddingLeft: 20 }}
+              style={{ fontWeight: 300, margin: '0 0 0 5px' }}
             >
               Словарь
             </Typography>
@@ -111,34 +111,61 @@ const Dictionary: React.FC<IProps> = ({ setIsDictionary }: IProps) => {
           <List className={classes.list}>
             <ListItem
               className={isChosenTab[0] ? classes.active : classes.listItem}
+              style={isChosenTab[0] ? {background: '#5bc79a'} : {}}
               onClick={() => setIsChosenTab([true, false, false])}
             >
-              <p>Изучаемые слова</p>
+              <p style={{ textAlign: 'center' }}>Изучаемые слова</p>
             </ListItem>
             <ListItem
               className={isChosenTab[1] ? classes.active : classes.listItem}
+              style={isChosenTab[1] ? {background: '#f75757'} : {}}
               onClick={() => setIsChosenTab([false, true, false])}
             >
-              <p>Сложные слова</p>
+              <p style={{ textAlign: 'center' }}>Сложные слова</p>
             </ListItem>
             <ListItem
               className={isChosenTab[2] ? classes.active : classes.listItem}
+              style={isChosenTab[2] ? {background: '#99a8a2'} : {}}
               onClick={() => setIsChosenTab([false, false, true])}
             >
-              <p>Удалённые слова</p>
+              <p style={{ textAlign: 'center' }}>Удалённые слова</p>
             </ListItem>
           </List>
-          <Box className={classes.tabs}>
-            {isChosenTab[0] && (
-              <Box className={classes.activeTab}>Здесь нет слов1</Box>
-            )}
-            {isChosenTab[1] && (
-              <Box className={classes.activeTab}>Здесь нет слов2</Box>
-            )}
-            {isChosenTab[2] && (
-              <Box className={classes.activeTab}>Здесь нет слов3</Box>
-            )}
+          <Box className={classes.booksContainer}>
+            {
+              DEPARTMENTS.map((book, index) =>
+                <BookElement
+                  book={book}
+                  setGroup={setGroup}
+                  activeElement={activeElement}
+                  color={DEPARTMENTCOLORS[index]}
+                  index={index}
+                  key={book}
+                />
+              )
+            }
           </Box>
+          {isChosenTab[0] && (
+            <LearningWords
+              group={group}
+              mode={'learning'}
+              text={'Для этого раздела нет изучаемых слов'}
+            />
+          )}
+          {isChosenTab[1] && (
+            <LearningWords
+              group={group}
+              mode={'hard'}
+              text={'Для этого раздела нет сложных слов'}
+            />
+          )}
+          {isChosenTab[2] && (
+            <LearningWords
+              group={group}
+              mode={'deleted'}
+              text={'Для этого раздела нет удаленных слов'}
+            />
+          )}
         </Box>
       </Box>
       <Button onClick={handleClick}>Назад</Button>

@@ -217,11 +217,11 @@ export const updateUserSettings = async (userId: string, body: any, token: strin
 //   }
 // );
 
-export const getAggregatedUserWords = async (mode: string, userId: string, group: number, page: number, token: string) => {
+export const getAggregatedUserWords = async (mode: string, userId: string, token: string) => {
   let filter: string;
 
   if (mode === 'hard') {
-    filter = '{"userWord.difficulty": "hard"}';
+    filter = '{"$and":[{"userWord.difficulty": "hard", "userWord.optional.mode": "learning"}]}'
   } else if (mode === 'learning') {
     filter = '{"userWord.optional.mode": "learning"}';
   } else if (mode === 'deleted') {
@@ -230,7 +230,7 @@ export const getAggregatedUserWords = async (mode: string, userId: string, group
     return null;
   }
 
-  const response = await request(`/users/${userId}/aggregatedWords?group=${group}&page=${page}&filter=${filter}`, token);
+  const response = await request(`/users/${userId}/aggregatedWords?wordsPerPage=3600&filter=${filter}`, token);
   return response;
 }
 // Функция находит слова из указанного раздела на указанной странице

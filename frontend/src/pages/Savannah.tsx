@@ -329,7 +329,7 @@ const Savannah: React.FC = () => {
           user.userId,
           user.token,
           'savannah',
-          corrWords.current.length,
+          corrWords.current.length + wrongWords.current.length,
           corrWords.current.length,
           wrongWords.current.length,
           currLongestCorr.current
@@ -341,7 +341,7 @@ const Savannah: React.FC = () => {
         );
         addStatisticsToLStorage(
           'savannah',
-          corrWords.current.length,
+          corrWords.current.length + wrongWords.current.length,
           corrWords.current.length,
           wrongWords.current.length,
           currLongestCorr.current
@@ -408,11 +408,17 @@ const Savannah: React.FC = () => {
     }
   }
 
+  const getFullScreen = () => {
+    setIsFullscreen(!!document.fullscreenElement);
+  }
+
   useEffect(() => {
-    document.addEventListener('fullscreenchange', (event) => {
-      setIsFullscreen(!!document.fullscreenElement);
-    });
+    document.addEventListener('fullscreenchange', getFullScreen);
     document.addEventListener('keydown', checkKeyDown);
+    return function cleanEvents() {
+      document.removeEventListener('keydown', checkKeyDown);
+      document.removeEventListener('fullscreenchange', getFullScreen);
+    }
   }, []);
 
 	return (
