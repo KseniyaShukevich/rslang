@@ -445,6 +445,7 @@ const OwnGame: React.FC = () => {
     const key = +event.key;
      //console.log('key', event.key)
     if (key) {
+      setToggleCorrBtn((prev) => !prev);
       keyBtn.current = key - 1;
     }
   }
