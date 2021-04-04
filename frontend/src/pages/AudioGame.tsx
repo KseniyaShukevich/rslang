@@ -246,6 +246,29 @@ const useStyles = makeStyles((theme: Theme) =>
         backgroundColor: 'rgba(250,250,250,0.1)'
       },
     },
+    '@media (max-width: 500px)': {
+      succesGif: {
+        display: 'none',
+      },
+      circle: {
+        width: 50,
+        height: 50,
+        borderRadius: '50%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItem: 'center',
+      },
+      wordTime: {
+        fontSize: 30,
+      },
+      trueWordContainer: {
+        fontSize: '16px',
+      },
+      image: {
+        borderRadius: '10px',
+      }
+    },
+
   })
 );
 
@@ -585,11 +608,17 @@ const AudioGame: React.FC = () => {
     }
   }
 
+  const getFullScreen = () => {
+    setIsFullscreen(!!document.fullscreenElement);
+  }
+
   useEffect(() => {
-    document.addEventListener('fullscreenchange', (event) => {
-      setIsFullscreen(!!document.fullscreenElement);
-    });
+    document.addEventListener('fullscreenchange', getFullScreen);
     document.addEventListener('keydown', checkKeyDown);
+    return function cleanEvents() {
+      document.removeEventListener('keydown', checkKeyDown);
+      document.removeEventListener('fullscreenchange', getFullScreen);
+    }
   }, []);
 
 	return (

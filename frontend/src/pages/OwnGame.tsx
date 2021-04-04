@@ -450,11 +450,17 @@ const OwnGame: React.FC = () => {
     }
   }
 
+  const getFullScreen = () => {
+    setIsFullscreen(!!document.fullscreenElement);
+  }
+
   useEffect(() => {
-    document.addEventListener('fullscreenchange', (event) => {
-      setIsFullscreen(!!document.fullscreenElement);
-    });
+    document.addEventListener('fullscreenchange', getFullScreen);
     document.addEventListener('keydown', checkKeyDown);
+    return function cleanEvents() {
+      document.removeEventListener('keydown', checkKeyDown);
+      document.removeEventListener('fullscreenchange', getFullScreen);
+    }
 
   }, []);
 
@@ -462,7 +468,7 @@ const OwnGame: React.FC = () => {
   const nameGame: string = 'АУДИОВЫЗОВ';
   const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
   return (
-    <div ref={container} className={classes.box} id='savannah'>
+    <div ref={container} className={classes.box} id='owngame'>
       {
         isStartTime && (
           <Box className={classes.startGame}>
@@ -496,7 +502,7 @@ const OwnGame: React.FC = () => {
         />
         <Box className={classes.containerBtns}>
           <FullscreenBtn
-            game={'own game'}
+            game={'owngame'}
             isFullscreen={isFullscreen}
           />
           <Box className={classes.lifes}>
