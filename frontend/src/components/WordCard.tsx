@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import DeleteIcon from "@material-ui/icons/Delete";
+import AddCircle from "@material-ui/icons/AddCircle";
 import SentimentSatisfiedAltIcon from "@material-ui/icons/SentimentSatisfiedAlt";
 import SentimentSatisfiedIcon from "@material-ui/icons/SentimentSatisfied";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
@@ -16,9 +16,7 @@ import { FILESPATH } from "../constants";
 import { useSelector } from "react-redux";
 import { selectUser } from "../slices/userSlice";
 import { ID_LOCALE_STORAGE } from '../utils/constants';
-import {
-  selectSettings,
-} from '../slices/settingsSlice';
+import { selectSettings } from '../slices/settingsSlice';
 
 const rightIndent = "8px";
 
@@ -76,6 +74,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
   },
+  addCircle: {
+    color: 'green',
+    '&:hover': {
+      cursor: 'pointer',
+    }
+  }
 }));
 
 const WordCard: React.FC<IWordCard> = (props) => {
@@ -89,7 +93,9 @@ const WordCard: React.FC<IWordCard> = (props) => {
     id,
     userWordsInfo,
     handleDeleteWord,
-    handleChangeWordDifficulty
+    handleChangeWordDifficulty,
+    restoreWord,
+    isDeletedWords,
   } = props;
   const classes = useStyles();
   const user = useSelector(selectUser);
@@ -171,25 +177,33 @@ const WordCard: React.FC<IWordCard> = (props) => {
         {userSettings.optional.isTranslation && <span>{wordTranslate}</span>}
       </div>
         <div className={classes.right} title={isDifficult ? 'Чёт сложно!' : 'Изи!'}>
-          {user && userSettings.optional.isButtons && !isDifficult && (
+          {isDeletedWords && restoreWord && (
+            <AddCircle
+              className={classes.addCircle}
+              onClick={() => restoreWord(id)}
+            />
+          )}
+          {!isDeletedWords && user && userSettings.optional.isButtons && !isDifficult && (
             <SentimentSatisfiedAltIcon
               onClick={() => toggleDifficulty(id)}
               className={classes.noDifficult}
             />
           )}
-          {user && userSettings.optional.isButtons && !!isDifficult && (
+          {!isDeletedWords && user && userSettings.optional.isButtons && !!isDifficult && (
             <SentimentSatisfiedIcon
               onClick={() => toggleDifficulty(id)}
               className={classes.Difficult}
             />
           )}
-          <ButtonBase title="Хм... что-то знакомое, или нет...">
-            <TrendingUpIcon
-              onClick={() => handleStatisticClick(id)}
-              className={classes.trash}
-            />
-          </ButtonBase>
-          {user && userSettings.optional.isButtons && (
+          {!isDeletedWords && (
+            <ButtonBase title="Хм... что-то знакомое, или нет...">
+              <TrendingUpIcon
+                onClick={() => handleStatisticClick(id)}
+                className={classes.trash}
+              />
+            </ButtonBase>
+          )}
+          {!isDeletedWords && user && userSettings.optional.isButtons && (
             <>
               <ButtonBase title="Выучил, можно удалять!">
                 <DeleteIcon
