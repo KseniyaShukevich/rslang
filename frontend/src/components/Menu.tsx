@@ -1,49 +1,104 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuIcon from '@material-ui/icons/Menu';
-import { makeStyles, Theme, createStyles } from '@material-ui/core';
+import React, { useState } from "react";
+import {
+  makeStyles,
+  Theme,
+  createStyles,
+  List,
+  ListItem,
+  Typography,
+} from "@material-ui/core";
+import AuthPannel from "./auth/AuthPannel";
+import "../index.scss";
+import { Link, Route } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        // menu: {
-        //     flexGrow: 1,
-        // }
-    }),
+  createStyles({
+    menu: {
+      width: "100%",
+      display: "flex",
+      boxShadow: "0px 2px 24px 0px rgba(0, 0, 0, 0.15)",
+      borderRadius: "8px",
+      height: "80px",
+      position: "relative",
+      alignItems: "center",
+    },
+    list: {
+      alignItems: "center",
+      height: "100%",
+      display: "flex",
+      justifyContent: "center",
+      padding: 0,
+      margin: "0 auto",
+      '&:hover': {
+        height: '14vh',
+        border: '4px solid #1565c0',
+        borderRadius: '35%',
+      },
+      [theme.breakpoints.down("sm")]: {
+        display: 'none',
+      },
+    },
+    listItem: {},
+    activeLink: {
+      color: "orange",
+      width: 'max-content',
+      fontFamily: "Roboto",
+      listStyleType: "none",
+      height: "100%",
+      fontSize: "16px",
+      textTransform: "uppercase",
+      padding: "0 3px",
+      fontWeight: "bold",
+      margin: '0 auto',
+      [theme.breakpoints.down("md")]: {
+        fontSize: "12px",
+      },
+    },
+  })
 );
 
+const HeaderMenu: React.FC = () => {
+  const [isChosenLink, setIsChosenLink] = useState([false, false, false]);
+  const classes = useStyles();
 
-export default function SimpleMenu() {
-    const classes = useStyles();
-
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-        console.log('event.currentTarget', event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    return (
-        <div>
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                <MenuIcon />
-            </Button>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
+  return (
+      <div style={{background: "beige", borderRadius: "35%", width: '100%'}}>
+        <List className={classes.list}>
+          <ListItem>
+            <Link
+              className={isChosenLink[0] ? classes.activeLink : "menuLink"}
+              onClick={() => setIsChosenLink([true, false, false])}
+              to="/tutorial"
+              style={{ textDecoration: "none" }}
             >
-                <MenuItem onClick={handleClose}>Электронный учебник</MenuItem>
-                <MenuItem onClick={handleClose}>Мини-игры</MenuItem>
-                <MenuItem onClick={handleClose}>Статистика</MenuItem>
-            </Menu>
-        </div>
-    );
-}
+              Электронный учебник
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link
+              className={isChosenLink[1] ? classes.activeLink : "menuLink"}
+              onClick={() => setIsChosenLink([false, true, false])}
+              // className="menuLink"
+              to="/mini-games"
+              style={{ textDecoration: "none" }}
+            >
+              Мини-игры
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link
+              className={isChosenLink[2] ? classes.activeLink : "menuLink"}
+              onClick={() => setIsChosenLink([false, false, true])}
+              // className="menuLink"
+              to="/statistics"
+              style={{ textDecoration: "none" }}
+            >
+              Статистика
+            </Link>
+          </ListItem>
+        </List>
+      </div>
+  );
+};
+
+export default HeaderMenu;

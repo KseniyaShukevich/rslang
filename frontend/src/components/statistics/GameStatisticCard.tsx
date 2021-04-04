@@ -18,10 +18,21 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: theme.spacing(1)
+      padding: theme.spacing(1),
+      height: 'fit-content',
+      border: '1px solid',
+      borderColor: theme.palette.primary.main,
+
+
     },
     card: {
-      margin: theme.spacing(1),
+      border: '1px solid',
+      borderColor: theme.palette.primary.main,
+      flex: 1,
+      margin: theme.spacing(0.4),
+      '&:last-child': {
+        width: 'calc(100% - 10px)'
+      },
     },
     cardContent: {
       display: 'flex',
@@ -45,6 +56,10 @@ const useStyles = makeStyles((theme: Theme) =>
     button: {
       margin: theme.spacing(0, 'auto'),
     },
+    count: {
+      fontWeight: 'bold',
+      fontSize: '2rem'
+    }
   })
 );
 
@@ -66,33 +81,35 @@ const GameStatisticCard: React.FC<IProps> = ({
   const classes = useStyles();
 
   return (
-    <Paper elevation={3} className={classes.paper}>
-     <Typography gutterBottom variant="h5" component="h2" color="primary">
-      {gameName}
-    </Typography>
-      <Card className={classes.card}>
+    <Paper elevation={0} className={classes.paper}>
+      <Typography gutterBottom variant="h5" component="h2" color="secondary" className={classes.count}>
+        {gameName}
+      </Typography>
+      <div style={{ display: 'flex'}}>
+        <Card elevation={0} className={classes.card}>
+          <CardContent className={classes.cardContent}>
+            <Typography gutterBottom variant="h5" component="h2" color="primary" className={classes.count}>
+              {countLearnedWords}
+            </Typography>
+            <Typography variant="body2" color="textPrimary" component="p">
+              {'Изучено слов сегодня'}
+            </Typography>
+          </CardContent>
+        </Card>
+        <Card elevation={0} className={classes.card}>
+          <CardContent className={classes.cardContent}>
+            <Typography gutterBottom variant="h5" component="h2" color="primary" className={classes.count}>
+              {countLearnedWords ? `${(correctAnswers / countLearnedWords * 100).toFixed(0)}%` : '-'}
+            </Typography>
+            <Typography variant="body2" color="textPrimary" component="p">
+              {'% правильных ответов'}
+            </Typography>
+          </CardContent>
+        </Card>
+      </div>
+      <Card elevation={0} className={classes.card}>
         <CardContent className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="h2" color="primary">
-            {countLearnedWords}
-          </Typography>
-          <Typography variant="body2" color="textPrimary" component="p">
-            {'Всего изучено слов'}
-          </Typography>
-        </CardContent>
-      </Card>
-      <Card className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="h2" color="primary">
-            {countLearnedWords ? `${(correctAnswers / countLearnedWords * 100).toFixed(0)}%` : '-'}
-          </Typography>
-          <Typography variant="body2" color="textPrimary" component="p">
-            {'% правильных ответов'}
-          </Typography>
-        </CardContent>
-      </Card>
-      <Card className={classes.card}>
-        <CardContent className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="h2" color="primary">
+          <Typography gutterBottom variant="h5" component="h2" color="primary" className={classes.count}>
             {longestCorrectAnswers}
           </Typography>
           <Typography variant="body2" color="textPrimary" component="p">
@@ -102,28 +119,6 @@ const GameStatisticCard: React.FC<IProps> = ({
       </Card>
     </Paper>
 
-    // <Card className={classes.root}>
-    //   <CardActions className={classes.overlay}>
-    //   <Link to={href} className={classes.button}>
-    //     <Button size="medium" variant="contained" color="secondary" endIcon={<SportsEsportsIcon />}>
-    //       Играть
-    //     </Button>
-    //   </Link>
-    //   </CardActions>
-    //   <CardMedia
-    //     className={classes.media}
-    //     image={image}
-    //     title={name}
-    //   />
-    //   <CardContent>
-    //     <Typography gutterBottom variant="h5" component="h2" color="primary">
-    //       {name}
-    //     </Typography>
-    //     <Typography variant="body2" color="textPrimary" component="p">
-    //       {description}
-    //     </Typography>
-    //   </CardContent>
-    // </Card>
   );
 };
 
