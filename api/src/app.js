@@ -71,12 +71,12 @@ userRouter.use('/:id/statistics', userIdValidator, statisticRouter);
 
 userRouter.use('/:id/settings', userIdValidator, settingRouter);
 
-app.use((req, res, next) => next(createError(NOT_FOUND)));
-
-app.use(errorHandler);
-
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
 });
+
+app.use((req, res, next) => next(createError(NOT_FOUND)));
+
+app.use(errorHandler);
 
 module.exports = app;

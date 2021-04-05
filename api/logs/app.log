@@ -19253,3 +19253,108 @@
   level: 'info',
   timestamp: '2021-04-05T14:01:57.250Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-05T14:26:07.859Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-05T14:26:07.905Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 222.405 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:32:42.638Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 183.009 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:32:43.226Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=1 - size req - res - - 312.282 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:36:49.402Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=1 - size req - res - - 322.900 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:36:49.974Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-05T14:37:53.265Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-05T14:37:53.361Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-05T14:41:24.169Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-05T14:41:24.213Z'
+}
+{
+  message: 'POST 200 /signin - size req 49 res 581 - 614.500 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:42:58.017Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 161.937 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:42:58.398Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?group=0&wordsPerPage=10000&filter={%22userWord.optional.mode%22:%20%22deleted%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 3966.954 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:10.710Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=2 - size req - res - - 195.333 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:14.655Z'
+}
+{
+  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res 96648 - 1320.868 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:15.486Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=2 - size req - res - - 747.957 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:15.613Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 1758.445 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:17.813Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=1 - size req - res - - 160.000 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:18.526Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 902.228 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:19.581Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 178.220 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:19.788Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 1003.568 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:43:21.351Z'
+}
