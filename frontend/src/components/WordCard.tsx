@@ -215,6 +215,8 @@ const WordCard: React.FC<IWordCard> = (props) => {
             </>
           )}
           <ModalStatistic
+            title={'В каждой мини-игре это слово было угадано:'}
+            tittleNoStatistics={'Это слово не встречалось в играх.'}
             isOpen={isStatisticOpen}
             setIsOpen={setIsStatisticOpen}
             wordStatistic={wordStatistic}

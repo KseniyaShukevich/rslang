@@ -84,10 +84,28 @@ const INIT_USER_STATISTICS: IStatistics = {
     }
 }
 const INIT_USER_SETTINGS = {
-  optional: {
-  isTranslation: true,
-  isButtons: true
+    optional: {
+    isTranslation: true,
+    isButtons: true
+  }
 }
+const STATISTICS = {
+  savannah: {
+    correctAnswers: 0,
+    wrongAnswers: 0
+  },
+  audio: {
+    correctAnswers: 0,
+    wrongAnswers: 0
+  },
+  sprint: {
+    correctAnswers: 0,
+    wrongAnswers: 0
+  },
+  ownGame: {
+    correctAnswers: 0,
+    wrongAnswers: 0
+  }
 }
 const DEFAULT_AVATAR: string = 'rslang/avatar_ltzdkha_kkfty4';
 const ID_LOCALE_STORAGE: string = '4tr8ffd';
@@ -99,5 +117,6 @@ export {
   DEFAULT_AVATAR,
   INIT_USER_STATISTICS,
   INIT_USER_SETTINGS,
-  ID_LOCALE_STORAGE
+  ID_LOCALE_STORAGE,
+  STATISTICS
 }
