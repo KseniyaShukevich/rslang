@@ -19238,3 +19238,18 @@
   level: 'info',
   timestamp: '2021-04-05T12:43:49.928Z'
 }
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-05T13:56:09.971Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-05T13:56:10.028Z'
+}
+{
+  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 267.645 ms\n',
+  level: 'info',
+  timestamp: '2021-04-05T14:01:57.250Z'
+}
