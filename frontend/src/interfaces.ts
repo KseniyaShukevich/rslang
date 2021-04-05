@@ -2,6 +2,7 @@ export interface ITextbookDepartment {
   name: string,
   color: string,
   book: number,
+  isDictionary: boolean,
 }
 
 export interface IWord {
@@ -50,6 +51,7 @@ export interface IGame {
   image: string,
   description: string,
   href: string,
+  isDictionary?: boolean,
 }
 
 // statistics

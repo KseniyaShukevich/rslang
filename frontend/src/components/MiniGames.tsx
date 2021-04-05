@@ -69,7 +69,6 @@ const useStyles = makeStyles({
     padding: theme.spacing(3, 1, 0),
   },
   customTwoTones: {
-    // filter: 'invert(30%) sepia(98%) saturate(1068%) hue-rotate(188deg) brightness(89%) contrast(94%)'
     filter: 'invert(64%) sepia(19%) saturate(5959%) hue-rotate(320deg) brightness(114%) contrast(80%)'
   },
 });

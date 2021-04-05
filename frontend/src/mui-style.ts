@@ -42,8 +42,8 @@ export const theme = createMuiTheme({
     },
     MuiBackdrop: {
       root: {
-        backgroundColor: '#1565c133'
-        // backgroundColor: '#b0454826'
+        // backgroundColor: '#1565c133'
+        backgroundColor: '#ffffff40'
       },
     },
   },
