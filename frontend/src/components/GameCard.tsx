@@ -30,6 +30,32 @@ const useStyles = makeStyles((theme: Theme) =>
     media: {
       height: 150,
     },
+    rootDictionary: {
+      maxWidth: 320,
+      height: 170,
+      width: 200,
+      margin: theme.spacing(0.5),
+      position: 'relative',
+      backgroundColor: 'rgba(255,255,255,.7)',
+      transition: 'transform 250ms ease-in',
+      [theme.breakpoints.down(1145)]: {
+        height: 250,
+        width: 300,
+      },
+      '&:hover': {
+        '& > div:nth-of-type(1)': {
+          backgroundColor: '#1e88e533',
+          opacity: 1,
+        },
+        transform: 'scale(1.03)',
+      }
+    },
+    mediaDictionary: {
+      height: 110,
+      [theme.breakpoints.down(1145)]: {
+        height: 190,
+      },
+    },
     overlay: {
       position: 'absolute',
       top: 0,
@@ -48,11 +74,11 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 const GameCard: React.FC<IGame> = (props) => {
-  const { name, description, image, href } = props;
+  const { name, description, image, href, isDictionary } = props;
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={isDictionary ? classes.rootDictionary : classes.root}>
       <CardActions className={classes.overlay}>
       <Link to={href} className={classes.button}>
         <Button size="medium" variant="contained" color="secondary" endIcon={<SportsEsportsIcon />}>
@@ -61,7 +87,7 @@ const GameCard: React.FC<IGame> = (props) => {
       </Link>
       </CardActions>
       <CardMedia
-        className={classes.media}
+        className={isDictionary ? classes.mediaDictionary : classes.media}
         image={image}
         title={name}
       />

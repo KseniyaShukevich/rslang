@@ -45,12 +45,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
+  title: string;
+  tittleNoStatistics: string;
   isOpen: boolean;
   setIsOpen: any;
+  countWords?: number,
   wordStatistic: IMiniGamesStat | null
 };
 
-const ModalStatistic: React.FC<Props> = ({ isOpen, setIsOpen, wordStatistic }) => {
+const ModalStatistic: React.FC<Props> = ({
+  title,
+  tittleNoStatistics,
+  isOpen,
+  setIsOpen,
+  countWords,
+  wordStatistic
+}) => {
   const classes = useStyles();
 
   const handleClose = () => {
@@ -74,8 +84,13 @@ const ModalStatistic: React.FC<Props> = ({ isOpen, setIsOpen, wordStatistic }) =
             { wordStatistic &&
               <>
                 <div className={classes.h1}>
-                  В каждой мини-игре это слово было угадано:
+                  {title}
                 </div>
+                {countWords && (
+                  <div className={classes.h1}>
+                    {countWords} изучаемых слов
+                  </div>
+                )}
                 <div><strong>Саванна: </strong>
                   <ul>
                     <li className={classes.green}><span>правильных ответов - </span><strong>{`${wordStatistic.savannah.correctAnswers}`}</strong></li>
@@ -103,7 +118,7 @@ const ModalStatistic: React.FC<Props> = ({ isOpen, setIsOpen, wordStatistic }) =
               </>
             }
             { !wordStatistic &&
-              <div>Это слово не встречалось в играх.</div>
+              <div>{tittleNoStatistics}</div>
             }
             <div>
               <Button

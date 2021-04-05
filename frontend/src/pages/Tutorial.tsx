@@ -63,7 +63,7 @@ const Tutorial: React.FC = () => {
                   Электронный учебник
                 </Typography>
               </Box>
-              <TextbookDepartmentsList handleOnLoading={(e) => setLoading(e)}/>
+              <TextbookDepartmentsList isDictionary={isDictionary} handleOnLoading={(e) => setLoading(e)}/>
               { user &&
                 <Box>
                   <Divider variant="middle" />

@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const TextbookDepartment: React.FC<ITextbookDepartment &  {handleOnLoading: (e: boolean) => void}> = (props) => {
-  const { book, name, color, handleOnLoading } = props;
+  const { book, name, color, handleOnLoading, isDictionary } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -62,6 +62,12 @@ const TextbookDepartment: React.FC<ITextbookDepartment &  {handleOnLoading: (e: 
       setOpen(!open);
     }
   };
+
+  useEffect(() => {
+    setOpen(false);
+    setFetched(false);
+    dispatch(groupNonEmptyPages([null, book]));
+  }, [isDictionary]);
 
   useEffect(() => {
     setPages(groupPagesArr[book] || PAGES);

@@ -59,12 +59,10 @@ const useStyles = makeStyles((theme) => ({
   },
   noDifficult: {
     color: "green",
-    cursor: "pointer",
     marginRight: "10px",
   },
   Difficult: {
     color: "red",
-    cursor: "pointer",
     marginRight: "10px",
   },
   ava: {
@@ -183,16 +181,26 @@ const WordCard: React.FC<IWordCard> = (props) => {
               onClick={() => restoreWord(id)}
             />
           )}
-          {!isDeletedWords && user && userSettings.optional.isButtons && !isDifficult && (
+          {!isDeletedWords && user && !isDifficult && (
             <SentimentSatisfiedAltIcon
-              onClick={() => toggleDifficulty(id)}
+              onClick={() => {
+                if (userSettings.optional.isButtons) {
+                  toggleDifficulty(id);
+                }
+              }}
               className={classes.noDifficult}
+              style={userSettings.optional.isButtons ? {cursor: 'pointer'} : {}}
             />
           )}
-          {!isDeletedWords && user && userSettings.optional.isButtons && !!isDifficult && (
+          {!isDeletedWords && user && !!isDifficult && (
             <SentimentSatisfiedIcon
-              onClick={() => toggleDifficulty(id)}
+              onClick={() => {
+                if (userSettings.optional.isButtons) {
+                  toggleDifficulty(id);
+                }
+              }}
               className={classes.Difficult}
+              style={userSettings.optional.isButtons ? {cursor: 'pointer'} : {}}
             />
           )}
           {!isDeletedWords && (
@@ -215,6 +223,8 @@ const WordCard: React.FC<IWordCard> = (props) => {
             </>
           )}
           <ModalStatistic
+            title={'В каждой мини-игре это слово было угадано:'}
+            tittleNoStatistics={'Это слово не встречалось в играх.'}
             isOpen={isStatisticOpen}
             setIsOpen={setIsStatisticOpen}
             wordStatistic={wordStatistic}

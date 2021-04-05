@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     top: '-42px',
     left: '6px',
   },
+  hid: {
+    visibility:'hidden',
+  },
   wave: {
     position: 'relative',
     textAlign: 'center',
@@ -37,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50%',
     backgroundColor: '#2d3436',
     opacity: 0,
-    zIndex: -1,
+    zIndex: 99,
     pointerEvents: 'none',
     animation: `$Waveeffects 2s linear infinite`,
   },
@@ -69,10 +72,11 @@ const SoundButton: React.FC<Props> = ({isActive, urlAudio, setIsActive}) => {
               playing={isActive}
               onEnded={() => setIsActive(false)}
             /></span>
-      {isActive && <div className={classes.circle}>
+       <div className={cn(classes.circle,
+        {[classes.hid]:!isActive })}>
         <div className={classes.wave}>
         </div>
-      </div>}
+      </div>
       <div onClick={() => setIsActive(true)} className={classes.icon}><FingerprintIcon fontSize="large"/></div>
 
     </div>

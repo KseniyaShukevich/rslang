@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const TextbookDepartmentsList: React.FC<{ handleOnLoading: (e: boolean) => void}> = ({ handleOnLoading }) => {
+const TextbookDepartmentsList: React.FC<{
+   handleOnLoading: (e: boolean) => void, isDictionary: boolean
+  }> = ({ handleOnLoading, isDictionary }) => {
   const classes = useStyles();
 
   return (
@@ -29,6 +31,7 @@ const TextbookDepartmentsList: React.FC<{ handleOnLoading: (e: boolean) => void}
           name={elem}
           color={DEPARTMENTCOLORS[index]}
           handleOnLoading={handleOnLoading}
+          isDictionary={isDictionary}
         />
       ))}
     </List>
