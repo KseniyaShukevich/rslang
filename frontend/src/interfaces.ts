@@ -2,6 +2,7 @@ export interface ITextbookDepartment {
   name: string,
   color: string,
   book: number,
+  isDictionary: boolean,
 }
 
 export interface IWord {
