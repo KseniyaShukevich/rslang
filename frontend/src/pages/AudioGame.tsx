@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import {
   Box,
   Container,
-  Button, Typography,
+  Button, Typography, IconButton,
 } from '@material-ui/core'
 import {
         Theme,
@@ -32,6 +32,7 @@ import WordBtn from "../components/WordBtn";
 import {Image} from "cloudinary-react";
 import SoundButton from '../components/SoundButton'
 import ListenPlayer from "../components/ListenPlayer";
+import ChildCareIcon from "@material-ui/icons/ChildCare";
 
 /*const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -94,6 +95,11 @@ const useStyles = makeStyles((theme: Theme) =>
     trueWordContainer: {
       fontSize: '16px',
     },
+    prompt: {
+      color:'#fafafa',
+      position:'relative',
+      left:'20px',
+    },
     btnStart: {
       appearance: 'none',
       fontSize: '24px',
@@ -121,6 +127,11 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItem: 'center',
       width: 'calc(100vw - 90px)',
       padding: 0,
+    },
+    buttonHint: {
+      position:'absolute',
+      top:'21px',
+      left:'80px',
     },
     transcription: {
       opacity: .5,
@@ -204,6 +215,9 @@ const useStyles = makeStyles((theme: Theme) =>
     wordInf: {
       marginTop:'150px',
     },
+    wordPrompt: {
+      fontSize:'13px',
+    },
     startTime: {
       width: 200,
       height: 200,
@@ -266,7 +280,15 @@ const useStyles = makeStyles((theme: Theme) =>
       },
       image: {
         borderRadius: '10px',
-      }
+      },
+      prompt: {
+        left:'-33px',
+        top:'30px',
+      },
+      buttonHint: {
+        top:'80px',
+        left:'20px',
+      },
     },
 
   })
@@ -327,6 +349,9 @@ const AudioGame: React.FC = () => {
   const classes = useStyles();
   const nameGame: string = 'АУДИОВЫЗОВ';
   const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
+
+  const [prompt, setPrompt] = useState<number>(3);
+  const [isPrompt, setIsPrompt] = useState<boolean>(false);
 
   const [isChoose, setIsChoose] = useState<boolean>(false);
   const [trueWord, setTrueWord] = useState<any>(null);
@@ -415,6 +440,7 @@ const AudioGame: React.FC = () => {
 
   const successAnimation = () => {
     setIsWinMusic(true);
+    setIsPrompt(false);
     newLongestCorr.current += 1;
     corrWords.current.push(currWord);
     gif.current.style.backgroundImage = `url('${CLOUDURL}/rslang/XZ5V_sywvww')`;
@@ -443,6 +469,8 @@ const AudioGame: React.FC = () => {
 
   const failAnimation = () => {
     setIsLoseMusic(true);
+    setIsPrompt(false)
+
     keyBtn.current = -1;
     setTrueWord(currWord);
 
@@ -744,17 +772,45 @@ const AudioGame: React.FC = () => {
             className={classes.word}
           >
             <div className={classes.wordInf} >
-              {(!isChoose && !isStartTime) && currWord ? <SoundButton setIsActive={setIsActive} isActive={isActive} urlAudio={currWord.audio}  /> : ''}
+              {(!isChoose && !isStartTime) && currWord ? <div >
+                <SoundButton setIsActive={setIsActive} isActive={isActive} urlAudio={currWord.audio}  />
+                {isPrompt && <span className={classes.wordPrompt}>{currWord.word}</span>}
+              </div>: ''}
 
-{/*
-              {currWord ? currWord.word : ''}
-*/}
+
             </div>
           </div>
           <div
             ref={rectangle}
             className={classes.rectangle}
           />
+          {!isChoose && !isStartTime && (prompt !== 0) && <span
+            onClick={() =>{
+              if (!isPrompt) {
+                setPrompt((prev) => prev - 1)
+              }
+              setIsPrompt(true)
+            } }><IconButton
+            className={classes.buttonHint}
+            aria-label="music"
+            component="span"
+          >
+            {!isPrompt && <ChildCareIcon
+              style={{color: 'white'}}
+              fontSize="large"
+            />}
+
+            {isPrompt &&  <ChildCareIcon
+              style={{color: 'orange'}}
+              fontSize="large"
+            />}
+
+            <span className={classes.prompt}>{prompt}/3</span>
+
+          </IconButton>
+
+
+          </span> }
           {
             isStartTime ? '' : (
               !isChoose && arrayWords ? arrayWords.map((el, index) =>
