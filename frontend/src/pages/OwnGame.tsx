@@ -350,9 +350,6 @@ const OwnGame: React.FC = () => {
     }, 500);
   }
 
-  const corrWords = useRef<any>([]);
-  const wrongWords = useRef<any>([]);
-
   useEffect(() => {
     if (lifes === 0) {
       setTimeout(() => {
