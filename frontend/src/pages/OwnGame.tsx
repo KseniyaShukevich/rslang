@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import {
   Box,
   Container,
-  Button,
+  Button, IconButton,
 } from '@material-ui/core'
 import {
   Theme,
@@ -27,6 +27,9 @@ import {Image} from "cloudinary-react";
 import {selectUser} from "../slices/userSlice";
 import {addStatisticsToDB, addStatisticsToLStorage} from "../calcStatistics";
 import ListenPlayer from "../components/ListenPlayer";
+import {MusicNote, MusicOff} from "@material-ui/icons";
+import ChildCareIcon from '@material-ui/icons/ChildCare';
+import {calcStatisticsWordsToDB, calcStatisticsWordsToLS} from "../calcStatisticsWords";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -49,6 +52,14 @@ const useStyles = makeStyles((theme: Theme) =>
         transition: '0.4s',
         border: '1px #fafafa solid',
       },
+    },
+    buttonHint: {
+      position:'absolute',
+      top:'21px',
+      left:'80px',
+    },
+    textAlign: {
+      textAlign: 'center',
     },
     box: {
       background: 'linear-gradient(81deg, #ddb35f, #7409c7);',
@@ -104,6 +115,11 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       background: 'rgba(0,0,0,0.5)',
     },
+    prompt: {
+      color:'#fafafa',
+      position:'relative',
+      left:'20px',
+    },
     startTime: {
       width: 200,
       height: 200,
@@ -124,6 +140,9 @@ const useStyles = makeStyles((theme: Theme) =>
       transition: 'opacity 7s, top 0.1s',
       top: '-15%',
       // text down?
+    },
+    promptText: {
+      fontSize:'13px',
     },
     rectangle: {
       width: 4,
@@ -196,21 +215,30 @@ const useStyles = makeStyles((theme: Theme) =>
         width: 50,
         height: 50,
         borderRadius: '50%',
-        border: 'solid 1px orange',
+        border: 'solid 1px rgba(250,250,250,0.4)',
         display: 'flex',
         justifyContent: 'center',
         alignItem: 'center',
       },
       wordTime: {
-        color: 'orange',
+        color: 'rgba(250,250,250,0.4)',
         fontSize: 30,
+      },
+      prompt: {
+        left:'-33px',
+        top:'30px',
       },
       trueWordContainer: {
         fontSize: '16px',
       },
       image: {
         borderRadius: '10px',
-      }
+      },
+      buttonHint: {
+        top:'80px',
+        left:'20px',
+      },
+
     },
   })
 );
@@ -220,6 +248,8 @@ const OwnGame: React.FC = () => {
 
   const classes = useStyles();
 
+  const [prompt, setPrompt] = useState<number>(3);
+  const [isPrompt, setIsPrompt] = useState<boolean>(false);
 
   const [isChoose, setIsChoose] = useState<boolean>(false);
 
@@ -229,8 +259,8 @@ const OwnGame: React.FC = () => {
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
   const [currWord, setCurrWord] = useState<IWord | null>(null);
   const [bgPosition, setBgPosition] = useState<number>(100);
-  const [step, setStep] = useState<number>(0);
-  const [top, setTop] = useState<number>(-15);
+/*  const [step, setStep] = useState<number>(0);
+  const [top, setTop] = useState<number>(-15);*/
   const [isCorrWord, setIsCorrWord] = useState<boolean>(false);
   const [arrayWords, setArrayWords] = useState<Array<IWord> | null>(null)
   const [lifes, setLifes] = useState<number>(5);
@@ -297,8 +327,10 @@ const OwnGame: React.FC = () => {
   }
 
   const startWord = () => {
-    const id = setInterval(() => setTop((prev) => prev + 1), 100);
+/*    const id = setInterval(() => setTop((prev) => prev + 1), 100);*/
+/*
     idInterval.current.push(id);
+*/
   }
 
   const addStartTime = () => {
@@ -308,6 +340,7 @@ const OwnGame: React.FC = () => {
 
   const successAnimation = () => {
     setIsWinMusic(true);
+    setIsPrompt(false)
     newLongestCorr.current += 1;
     corrWords.current.push(currWord);
     gif.current.style.backgroundImage = `url('${CLOUDURL}/rslang/XZ5V_sywvww')`;
@@ -326,6 +359,7 @@ const OwnGame: React.FC = () => {
 
   const failAnimation = () => {
     setIsLoseMusic(true);
+    setIsPrompt(false)
     keyBtn.current = -1;
     setTrueWord(currWord)
     if (currLongestCorr.current < newLongestCorr.current) {
@@ -359,6 +393,22 @@ const OwnGame: React.FC = () => {
       }, 300);
     }
   }, [lifes]);
+  const getObjectForStatisticsWords = () => {
+    const resultWords: Array<any> = [];
+    corrWords.current.forEach((word: any) => {
+      resultWords.push({
+        ...word,
+        correct: 1
+      });
+    });
+    wrongWords.current.forEach((word: any) => {
+      resultWords.push({
+        ...word,
+        wrong: 1
+      });
+    });
+    return resultWords;
+  }
 
   useEffect(() => {
     if (isEndGame) {
@@ -366,19 +416,31 @@ const OwnGame: React.FC = () => {
         currLongestCorr.current = newLongestCorr.current;
         newLongestCorr.current = 0;
       }
+      const resultWords = getObjectForStatisticsWords();
+
       if (user) {
+        calcStatisticsWordsToDB(
+          'ownGame',
+          resultWords,
+          user.userId,
+          user.token
+        );
         addStatisticsToDB(
           user.userId,
           user.token,
-          'savannah',
+          'ownGame',
           corrWords.current.length,
           corrWords.current.length,
           wrongWords.current.length,
           currLongestCorr.current
         );
       } else {
+        calcStatisticsWordsToLS(
+          'ownGame',
+          resultWords,
+        );
         addStatisticsToLStorage(
-          'savannah',
+          'ownGame',
           corrWords.current.length,
           corrWords.current.length,
           wrongWords.current.length,
@@ -387,6 +449,7 @@ const OwnGame: React.FC = () => {
       }
     }
   }, [isEndGame]);
+
 
   useEffect(() => {
 
@@ -435,7 +498,6 @@ const OwnGame: React.FC = () => {
       }
       generationWords.current = getWordsForGame(words, 5);
       setNewWords();
-      setStep(100 / words.length);
     }
   }, [words, isStartLayout, isEndLayout]);
 
@@ -445,15 +507,22 @@ const OwnGame: React.FC = () => {
     const key = +event.key;
      //console.log('key', event.key)
     if (key) {
+      setToggleCorrBtn((prev) => !prev);
       keyBtn.current = key - 1;
     }
   }
 
+  const getFullScreen = () => {
+    setIsFullscreen(!!document.fullscreenElement);
+  }
+
   useEffect(() => {
-    document.addEventListener('fullscreenchange', (event) => {
-      setIsFullscreen(!!document.fullscreenElement);
-    });
+    document.addEventListener('fullscreenchange', getFullScreen);
     document.addEventListener('keydown', checkKeyDown);
+    return function cleanEvents() {
+      document.removeEventListener('keydown', checkKeyDown);
+      document.removeEventListener('fullscreenchange', getFullScreen);
+    }
 
   }, []);
 
@@ -461,7 +530,7 @@ const OwnGame: React.FC = () => {
   const nameGame: string = 'АУДИОВЫЗОВ';
   const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
   return (
-    <div ref={container} className={classes.box} id='savannah'>
+    <div ref={container} className={classes.box} id='owngame'>
       {
         isStartTime && (
           <Box className={classes.startGame}>
@@ -495,7 +564,7 @@ const OwnGame: React.FC = () => {
         />
         <Box className={classes.containerBtns}>
           <FullscreenBtn
-            game={'own game'}
+            game={'owngame'}
             isFullscreen={isFullscreen}
           />
           <Box className={classes.lifes}>
@@ -519,14 +588,43 @@ const OwnGame: React.FC = () => {
             ref={wordEl}
             className={classes.word}
           >
-            {!isChoose && !isStartTime && <div className={classes.mainWord}>
+            {!isChoose && !isStartTime && <div className={classes.textAlign}><div className={classes.mainWord}>
               {!currWord ? <span></span>
-                : <div>{currWord.word}</div>}</div>}
+                : <div>{currWord.word}</div>}
+              {isPrompt && currWord && <div className={classes.promptText}>{currWord.textMeaning.replace(/<\/?[^>]+(>|$)/g, "")}</div>}
+            </div> </div>}
           </div>
           <div
             ref={rectangle}
             className={classes.rectangle}
           />
+          {!isChoose && !isStartTime && (prompt !== 0) && <span
+            onClick={() =>{
+              if (!isPrompt) {
+                setPrompt((prev) => prev - 1)
+              }
+              setIsPrompt(true)
+            } }><IconButton
+            className={classes.buttonHint}
+            aria-label="music"
+            component="span"
+          >
+            {!isPrompt && <ChildCareIcon
+              style={{color: 'white'}}
+              fontSize="large"
+            />}
+
+            {isPrompt &&  <ChildCareIcon
+              style={{color: 'orange'}}
+              fontSize="large"
+            />}
+
+                <span className={classes.prompt}>{prompt}/3</span>
+
+          </IconButton>
+
+
+          </span> }
           {
             isStartTime ? '' : (
               !isChoose && arrayWords ? arrayWords.map((el, index) =>
@@ -576,7 +674,7 @@ const OwnGame: React.FC = () => {
             <div className={classes.textMeaning}
                  onClick={() => setIsTranslateText(prev => !prev)}>
               <h3>  {!isTranslateText
-                ? trueWord.textExample.replace(/<\/?[^>]+(>|$)/g, "")
+                ? trueWord.textMeaning.replace(/<\/?[^>]+(>|$)/g, "")
                 : trueWord.textMeaningTranslate.replace(/<\/?[^>]+(>|$)/g, "")}</h3>
 
             </div>
