@@ -32,6 +32,8 @@ app.use(express.json());
 
 app.use('/files', express.static(path.join(__dirname, '../files')));
 
+app.use(express.static(path.join(__dirname, '../../frontend/build')));
+
 app.use(checkAuthentication);
 
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
