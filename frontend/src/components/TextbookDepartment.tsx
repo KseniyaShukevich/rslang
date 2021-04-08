@@ -66,7 +66,7 @@ const TextbookDepartment: React.FC<ITextbookDepartment &  {handleOnLoading: (e: 
   useEffect(() => {
     setOpen(false);
     setFetched(false);
-    dispatch(groupNonEmptyPages([null, book]));
+    dispatch(setUserGroupPages([null, book]));
   }, [isDictionary]);
 
   useEffect(() => {
