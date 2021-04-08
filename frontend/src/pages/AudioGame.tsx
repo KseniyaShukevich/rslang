@@ -33,49 +33,8 @@ import {Image} from "cloudinary-react";
 import SoundButton from '../components/SoundButton'
 import ListenPlayer from "../components/ListenPlayer";
 import ChildCareIcon from "@material-ui/icons/ChildCare";
-
-/*const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    box: {
-      background: 'linear-gradient(180deg,#7d5db0 0,#b06d9a 72%,#c584a4)',
-      height: 'calc(100vh - 40px)',
-      display: 'flex',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      padding: 20,
-    },
-    topBox: {
-      width: 'calc(100vw - 40px)',
-      display: 'flex',
-      justifyContent: 'space-between',
-      position: 'absolute',
-      padding: 20,
-      top: 0,
-      right: 0
-    },
-    containerBtns: {
-      display: 'flex',
-    },
-    containerBtn: {
-      display: 'flex',
-      justifyContent: 'center',
-      flexWrap: 'wrap',
-    },
-    containerGif: {
-      width: 'fit-content',
-    },
-    lifes: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    button: {
-      transition: '0.5s',
-      "&:hover": {
-         backgroundColor: 'rgba(250,250,250,0.1)'
-      },
-    },
-  })
-);*/
+import AlarmAddIcon from "@material-ui/icons/AlarmAdd";
+import AlarmOffIcon from "@material-ui/icons/AlarmOff";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -91,6 +50,11 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'space-between',
       flexDirection: 'column',
       padding: 20,
+    },
+    buttonAddTime: {
+      position:'absolute',
+      top:'21px',
+      left:'180px',
     },
     trueWordContainer: {
       fontSize: '16px',
@@ -289,6 +253,10 @@ const useStyles = makeStyles((theme: Theme) =>
         top:'80px',
         left:'20px',
       },
+      buttonAddTime: {
+        top:'140px',
+        left:'20px',
+      },
     },
 
   })
@@ -349,6 +317,9 @@ const AudioGame: React.FC = () => {
   const classes = useStyles();
   const nameGame: string = 'АУДИОВЫЗОВ';
   const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
+
+  const [promptTime, setPromptTime] = useState<number>(3);
+  const [isPromptTime, setIsPromptTime] = useState<boolean>(false);
 
   const [prompt, setPrompt] = useState<number>(3);
   const [isPrompt, setIsPrompt] = useState<boolean>(false);
@@ -441,6 +412,7 @@ const AudioGame: React.FC = () => {
   const successAnimation = () => {
     setIsWinMusic(true);
     setIsPrompt(false);
+    setIsPromptTime(false);
     newLongestCorr.current += 1;
     corrWords.current.push(currWord);
     gif.current.style.backgroundImage = `url('${CLOUDURL}/rslang/XZ5V_sywvww')`;
@@ -469,7 +441,9 @@ const AudioGame: React.FC = () => {
 
   const failAnimation = () => {
     setIsLoseMusic(true);
-    setIsPrompt(false)
+    setIsPrompt(false);
+    setIsPromptTime(false);
+
 
     keyBtn.current = -1;
     setTrueWord(currWord);
@@ -578,18 +552,18 @@ const AudioGame: React.FC = () => {
   }, [top]);*/
 
   useEffect(() => {
-
-    if (!startTime && !isChoose) {
-      if (wordTime !== 0) {
-        timer.current = setTimeout(() => {
-          setWordTime(prev => prev - 1);
-        }, 1000)
-      } else {
-        setLifes((prev) => prev - 1);
-        failAnimation();
+    if (!isPromptTime) {
+      if (!startTime && !isChoose) {
+        if (wordTime !== 0) {
+          timer.current = setTimeout(() => {
+            setWordTime(prev => prev - 1);
+          }, 1000)
+        } else {
+          setLifes((prev) => prev - 1);
+          failAnimation();
+        }
       }
     }
-
   }, [wordTime, startTime, isChoose]);
 
   useEffect(() => {
@@ -650,60 +624,6 @@ const AudioGame: React.FC = () => {
   }, []);
 
 	return (
-/*
-			<Box className={classes.box} id='game'>
-        <Box className={classes.topBox}>
-          <ControlSounds
-            isAudio={isAudio}
-            setIsAudio={setIsAudio}
-          />
-          <Box className={classes.containerBtns}>
-            <FullscreenBtn
-              game={'game'}
-              isFullscreen={isFullscreen}
-            />
-            <Box className={classes.lifes}>
-              <Heart lifes={lifes} />
-            </Box>
-            <CloseBtn />
-          </Box>
-        </Box>
-          <GameLayout
-            corrWords={corrWords.current}
-            wrongWords={wrongWords.current}
-            nameGame={nameGame}
-            descriptionGame={descriptionGame}
-            isStartLayout={isStartLayout}
-            setIsStartLayout={setIsStartLayout}
-            isEndLayout={isEndLayout}
-            setIsEndLayout={setIsEndLayout}
-          >
-            {/!* В котейнере внизу должна быть сама игра *!/}
-            <Container maxWidth='md' className={classes.containerBtn}>
-              <div >
-                 <AudioCallGameField trueWord={trueWord}
-                                     wordArray={wordArray}
-                                     setLifes={setLifes}
-                                     lifes={lifes}
-                                     step={step}
-                                     level={level}
-                                     setIsEndLayout={setIsEndLayout}
-                                                          />
-                <div style={{position: 'absolute', bottom: 0}}>
-                  <span>Кнопки для понимания, как это работает</span>
-                  <Button color='primary' onClick={step}>
-                    Ход
-                  </Button>
-                  <Button color='primary' onClick={() => {setIsEndLayout(true)}}>
-                    Закончилась игра
-                  </Button>
-                </div>
-              </div>
-            </Container>
-
-          </GameLayout>
-      </Box>
-*/
     <div ref={container} className={classes.box} id='audio'>
       {
         isStartTime && (
@@ -806,6 +726,35 @@ const AudioGame: React.FC = () => {
             />}
 
             <span className={classes.prompt}>{prompt}/3</span>
+
+          </IconButton>
+
+
+          </span> }
+          {!isChoose && !isStartTime && (promptTime !== 0) && <span
+            onClick={() =>{
+              if (!isPromptTime) {
+                setPromptTime((prev) => prev - 1)
+              }
+              setIsPromptTime(true)
+
+              //setIsPrompt(true)
+            } }><IconButton
+            className={classes.buttonAddTime}
+            aria-label="music"
+            component="span"
+          >
+            {!isPromptTime && <AlarmAddIcon
+              style={{color: 'white'}}
+              fontSize="large"
+            />}
+
+            {isPromptTime &&  <AlarmOffIcon
+              style={{color: 'orange'}}
+              fontSize="large"
+            />}
+
+            <span className={classes.prompt}>{promptTime}/3</span>
 
           </IconButton>
 

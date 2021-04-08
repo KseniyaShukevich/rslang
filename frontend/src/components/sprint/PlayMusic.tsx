@@ -10,25 +10,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  isWinMusic:boolean,
-  isMusicValue:boolean,
-  setIsWinMusic: any
+  url: string,
+  isMusic: boolean,
+  isMusicValue: boolean,
+  setIsMusic: any,
 }
 
-const WinMusic:React.FC<Props> = ({isWinMusic, setIsWinMusic,isMusicValue }) => {
+const PlaySound:React.FC<Props> = ({url, isMusic, setIsMusic, isMusicValue }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.hidden}>
 
       <ReactPlayer
-        url={`${process.env.PUBLIC_URL}/correct.mp3`}
-        playing={isWinMusic}
-        onEnded={() => setIsWinMusic(false)}
+        url={url}
+        playing={isMusic}
+        onEnded={() => setIsMusic(false)}
         volume={Number(isMusicValue)}
       />
     </div>
   );
 };
 
-export default WinMusic;
+export default PlaySound;

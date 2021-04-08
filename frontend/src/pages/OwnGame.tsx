@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import {
   Box,
   Container,
-  Button, IconButton,
+  IconButton, Typography,
 } from '@material-ui/core'
 import {
   Theme,
@@ -27,9 +27,11 @@ import {Image} from "cloudinary-react";
 import {selectUser} from "../slices/userSlice";
 import {addStatisticsToDB, addStatisticsToLStorage} from "../calcStatistics";
 import ListenPlayer from "../components/ListenPlayer";
-import {MusicNote, MusicOff} from "@material-ui/icons";
+import AlarmAddIcon from '@material-ui/icons/AlarmAdd';
 import ChildCareIcon from '@material-ui/icons/ChildCare';
+import AlarmOffIcon from '@material-ui/icons/AlarmOff';
 import {calcStatisticsWordsToDB, calcStatisticsWordsToLS} from "../calcStatisticsWords";
+import KeyboardIcon from "@material-ui/icons/Keyboard";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -52,6 +54,16 @@ const useStyles = makeStyles((theme: Theme) =>
         transition: '0.4s',
         border: '1px #fafafa solid',
       },
+    },
+    buttonAddTime: {
+      position:'absolute',
+      top:'21px',
+      left:'180px',
+    },
+    text: {
+      color: 'rgba(250,250,250, 0.5)',
+      width: 250,
+      textAlign: 'center'
     },
     buttonHint: {
       position:'absolute',
@@ -81,15 +93,27 @@ const useStyles = makeStyles((theme: Theme) =>
       top: 0,
       right: 0
     },
+    containerKeyboard: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      paddingTop: theme.spacing(2),
+    },
     containerBtn: {
       display: 'flex',
       justifyContent: 'center',
       flexWrap: 'wrap',
     },
     containerGif: {
-      position: 'absolute',
-      bottom: '0',
       width: 'fit-content',
+      display: 'flex',
+      height: 200,
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      position:'absolute',
+      bottom:0,
+      marginTop: '-15vh',
     },
     lifes: {
       display: 'flex',
@@ -107,6 +131,7 @@ const useStyles = makeStyles((theme: Theme) =>
       top: 0,
       left: 0,
       position: 'absolute',
+      flexDirection: 'column',
       height: '100vh',
       width: '100vw',
       zIndex: 20,
@@ -124,6 +149,8 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 200,
       height: 200,
       display: 'flex',
+      flexDirection: 'column',
+
       justifyContent: 'center',
       alignItems: 'center',
       backgroundImage: `url('${CLOUDURL}/rslang/XZ5V_sywvww')`,
@@ -156,7 +183,8 @@ const useStyles = makeStyles((theme: Theme) =>
     timer: {
       display: 'flex',
       justifyContent: 'center',
-      alignItem: 'center',
+      flexWrap: 'wrap',
+      alignItems: 'center',
       width: 'calc(100vw - 90px)',
       padding: 0,
     },
@@ -164,13 +192,13 @@ const useStyles = makeStyles((theme: Theme) =>
       width: 70,
       height: 70,
       borderRadius: '50%',
-      border: 'solid 1px orange',
+      border: 'solid 1px rgba(250,250,250,0.4)',
       display: 'flex',
       justifyContent: 'center',
       alignItem: 'center',
     },
     wordTime: {
-      color: 'orange',
+      color: 'rgba(250,250,250,0.4)',
       fontSize: 50,
     },
     succesGif: {
@@ -238,6 +266,10 @@ const useStyles = makeStyles((theme: Theme) =>
         top:'80px',
         left:'20px',
       },
+      buttonAddTime: {
+        top:'140px',
+        left:'20px',
+      },
 
     },
   })
@@ -249,7 +281,11 @@ const OwnGame: React.FC = () => {
   const classes = useStyles();
 
   const [prompt, setPrompt] = useState<number>(3);
+  const [promptTime, setPromptTime] = useState<number>(3);
+  const [isPromptTime, setIsPromptTime] = useState<boolean>(false);
+
   const [isPrompt, setIsPrompt] = useState<boolean>(false);
+
 
   const [isChoose, setIsChoose] = useState<boolean>(false);
 
@@ -259,8 +295,9 @@ const OwnGame: React.FC = () => {
   const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
   const [currWord, setCurrWord] = useState<IWord | null>(null);
   const [bgPosition, setBgPosition] = useState<number>(100);
-/*  const [step, setStep] = useState<number>(0);
-  const [top, setTop] = useState<number>(-15);*/
+  const [restWords, setRestWords] = useState<number>(0);
+
+
   const [isCorrWord, setIsCorrWord] = useState<boolean>(false);
   const [arrayWords, setArrayWords] = useState<Array<IWord> | null>(null)
   const [lifes, setLifes] = useState<number>(5);
@@ -304,9 +341,11 @@ const OwnGame: React.FC = () => {
 
   const setNewWords = () => {
     wordEl.current.style.opacity = 1;
-    const [word, newArrWords, func] = generationWords.current;
+    const [word, newArrWords, func, rest] = generationWords.current;
     corrBtn.current = newArrWords.indexOf(word);
     setCurrWord(word);
+    setRestWords(rest + 1);
+
     setArrayWords(newArrWords);
     generationWords.current = func();
   }
@@ -341,6 +380,7 @@ const OwnGame: React.FC = () => {
   const successAnimation = () => {
     setIsWinMusic(true);
     setIsPrompt(false)
+    setIsPromptTime(false)
     newLongestCorr.current += 1;
     corrWords.current.push(currWord);
     gif.current.style.backgroundImage = `url('${CLOUDURL}/rslang/XZ5V_sywvww')`;
@@ -359,7 +399,8 @@ const OwnGame: React.FC = () => {
 
   const failAnimation = () => {
     setIsLoseMusic(true);
-    setIsPrompt(false)
+    setIsPrompt(false);
+    setIsPromptTime(false);
     keyBtn.current = -1;
     setTrueWord(currWord)
     if (currLongestCorr.current < newLongestCorr.current) {
@@ -452,15 +493,16 @@ const OwnGame: React.FC = () => {
 
 
   useEffect(() => {
-
-    if (!startTime && !isChoose) {
-      if (wordTime !== 0) {
-        timer.current = setTimeout(() => {
-          setWordTime(prev => prev - 1);
-        }, 1000)
-      } else {
-        setLifes((prev) => prev - 1);
-        failAnimation();
+    if (!isPromptTime) {
+      if (!startTime && !isChoose) {
+        if (wordTime !== 0) {
+          timer.current = setTimeout(() => {
+            setWordTime(prev => prev - 1);
+          }, 1000)
+        } else {
+          setLifes((prev) => prev - 1);
+          failAnimation();
+        }
       }
     }
 
@@ -527,8 +569,8 @@ const OwnGame: React.FC = () => {
   }, []);
 
 
-  const nameGame: string = 'АУДИОВЫЗОВ';
-  const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
+  const nameGame: string = 'ПОЛИГЛОТ';
+  const descriptionGame: string = 'Тренировка помогает изучить новые слова, а так же повторить уже изученные';
   return (
     <div ref={container} className={classes.box} id='owngame'>
       {
@@ -538,8 +580,22 @@ const OwnGame: React.FC = () => {
               <div>
                 {startTime}
               </div>
+              <div>
+                <Box className={classes.containerKeyboard}>
+                  <KeyboardIcon
+                    fontSize='large'
+                    style={{color: 'rgba(250,250,250,0.5)'}}
+                  />
+                  <Typography variant='body2' className={classes.text}>
+                    Используй клавиши 1, 2, 3 и 4, чтобы дать быстрый ответ
+                  </Typography>
+                </Box>
+
+              </div>
             </Box>
           </Box>
+
+
         )
       }
       <Box className={classes.topBox}>
@@ -609,6 +665,7 @@ const OwnGame: React.FC = () => {
             aria-label="music"
             component="span"
           >
+
             {!isPrompt && <ChildCareIcon
               style={{color: 'white'}}
               fontSize="large"
@@ -620,6 +677,35 @@ const OwnGame: React.FC = () => {
             />}
 
                 <span className={classes.prompt}>{prompt}/3</span>
+
+          </IconButton>
+
+
+          </span> }
+          {!isChoose && !isStartTime && (promptTime !== 0) && <span
+            onClick={() =>{
+              if (!isPromptTime) {
+                setPromptTime((prev) => prev - 1)
+              }
+              setIsPromptTime(true)
+
+              //setIsPrompt(true)
+            } }><IconButton
+            className={classes.buttonAddTime}
+            aria-label="music"
+            component="span"
+          >
+            {!isPromptTime && <AlarmAddIcon
+              style={{color: 'white'}}
+              fontSize="large"
+            />}
+
+            {isPromptTime &&  <AlarmOffIcon
+              style={{color: 'orange'}}
+              fontSize="large"
+            />}
+
+            <span className={classes.prompt}>{promptTime}/3</span>
 
           </IconButton>
 
@@ -689,8 +775,9 @@ const OwnGame: React.FC = () => {
           </div>}
         </Container>
         <Container className={classes.containerGif}>
-          {
+          {/*{
             !isStartTime && !isChoose && (
+              <>
               <div className={classes.timer}>
                 <Box className={classes.circle}>
                   <Box className={classes.wordTime}>
@@ -698,8 +785,26 @@ const OwnGame: React.FC = () => {
                   </Box>
                 </Box>
               </div>
+
+
+              </>
+            )
+          }*/}
+          {
+            !isStartTime && (
+              <>
+                {!isChoose && !isStartTime && <Box className={classes.circle}>
+                  <Box className={classes.wordTime}>
+                    {wordTime}
+                  </Box>
+                </Box>}
+                {!isChoose && <Typography variant='body2' style={{color: 'rgba(250,250,250,0.4)'}}>
+                  Осталось {restWords} слов
+                </Typography>}
+              </>
             )
           }
+
           {!isChoose && !isStartTime && <div ref={gif} className={classes.succesGif}>
             <div className={classes.timer}>
               <Image publicId="rslang/33Ho_by5kqq" width="90"/>
