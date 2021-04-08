@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
           <MenuIcon
             className={`${classes.button} ${openSideBar ? classes.closed : ''}`}
           />
-      </IconButton>
+        </IconButton>
         </div>
         <div style={{ flex: 1, textAlign: "center" }}>
           <Typography variant="h4">

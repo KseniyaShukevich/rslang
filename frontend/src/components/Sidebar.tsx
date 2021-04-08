@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import { Drawer, List, ListItem, makeStyles } from "@material-ui/core";
 import MenuBookTwoToneIcon from "@material-ui/icons/MenuBookTwoTone";
 import SportsEsportsTwoTone from "@material-ui/icons/SportsEsportsTwoTone";
 import InsertChartTwoTone from "@material-ui/icons/InsertChartTwoTone";
 
+import londonEye from "../assets/images/london-eye.png";
 import { theme } from "../mui-style";
 
 
@@ -14,6 +16,8 @@ const useStyles = makeStyles({
     width: 300,
     height: '100%',
     padding: theme.spacing(1, 0, 0),
+    backgroundImage: `url(${londonEye})`,
+
     // backgroundColor: '#1565c11a'
   },
   menuItemWrapper: {
