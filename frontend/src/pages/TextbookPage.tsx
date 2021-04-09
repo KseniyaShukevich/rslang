@@ -9,7 +9,7 @@ import SportsEsportsTwoToneIcon from '@material-ui/icons/SportsEsportsTwoTone';
 import { css } from "@emotion/core";
 
 import { fetchWords, selectWords } from "../slices/wordsSlice";
-import { groupNonEmptyPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
+import { setUserGroupPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
 import { selectUser } from "../slices/userSlice";
 import { theme } from '../mui-style';
 import background from "../assets/images/background_1.jpg";
@@ -41,7 +41,7 @@ const GAMES: IGame[] = [
   {
     name: 'Спринт',
     image: sprint,
-    description: 'Чем больше слов ты знаешь, тем легче тебе будет общаться. Игра Саванна лучший помощник для развития словарного запаса',
+    description: 'Чем больше слов ты знаешь, тем легче тебе будет общаться. Игра Спринт помогает пополнить словарный запас',
     href: '/sprint',
   },
   {
@@ -271,7 +271,7 @@ const TextBookPage: React.FC = () => {
   // убираем страницу когда с нее удалены все слова
   useEffect(() => {
     if (!!(user && userWords && userWords.filter(w => !w.isDeleted).length === 0)) {
-      dispatch(groupNonEmptyPages([(nonEmptyPages! || []).filter(elem => elem.number !== +page + 1), +book]));
+      dispatch(setUserGroupPages([(nonEmptyPages! || []).filter(elem => elem.number !== +page + 1), +book]));
     }
   }, [ userWords ])
 

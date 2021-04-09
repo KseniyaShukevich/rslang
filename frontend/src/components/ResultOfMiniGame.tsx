@@ -142,6 +142,10 @@ const ResultOfMiniGame: React.FC<IProps> = ({ corrWords, wrongWords }: IProps) =
     });
   }
 
+  useEffect(() => {
+    console.log(corrWords, wrongWords);
+  }, []);
+
   return (
     <Box className={classes.resultLayout}>
       <Container className={classes.resultWindow}>

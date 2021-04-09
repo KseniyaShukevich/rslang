@@ -11,7 +11,7 @@ export const theme = createMuiTheme({
     secondary: {
       main: '#e57373',
       light: '#ffa4a2',
-      dark: '#af4448'
+      dark: '#d44c4c'
     },
     text: {
       primary: '#212121',
@@ -67,6 +67,10 @@ export const mainStyles = makeStyles((theme: Theme,) => createStyles({
       position: 'absolute',
       borderBottomRightRadius: 4,
       borderBottomLeftRadius: 4,
+      // backgroundImage: `url(${bridge})`,
+      // backgroundSize: 'contain',
+      // backgroundRepeat: 'no-repeat',
+      // backgroundPosition: '85px'
     },
     mainWrapper: {
       position: 'relative',

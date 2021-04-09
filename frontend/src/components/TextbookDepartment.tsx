@@ -16,7 +16,7 @@ import { ITextbookDepartment } from '../interfaces';
 import { PAGES } from '../constants';
 import { getNotEmptyPages } from '../requests';
 import { selectUser } from '../slices/userSlice';
-import { groupNonEmptyPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
+import { setUserGroupPages, selectGroupNonEmptyPagesArr } from '../slices/groupPagesSlice';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,7 +53,7 @@ const TextbookDepartment: React.FC<ITextbookDepartment &  {handleOnLoading: (e: 
       handleOnLoading(true);
       (async () => {
         let res = await getNotEmptyPages(user.userId, book, user.token)
-        dispatch(groupNonEmptyPages([res, book]));
+        dispatch(setUserGroupPages([res, book]));
         setFetched(true);
         setOpen(true);
         handleOnLoading(false);
@@ -66,7 +66,7 @@ const TextbookDepartment: React.FC<ITextbookDepartment &  {handleOnLoading: (e: 
   useEffect(() => {
     setOpen(false);
     setFetched(false);
-    dispatch(groupNonEmptyPages([null, book]));
+    dispatch(setUserGroupPages([null, book]));
   }, [isDictionary]);
 
   useEffect(() => {
