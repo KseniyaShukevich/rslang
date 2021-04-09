@@ -60,6 +60,14 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+const getWords = (): Array<IWord> | undefined => {
+  console.log('YES');
+  const res: string | null = localStorage.getItem(`${ID_LOCALE_STORAGE}gameWords`);
+  if (res) {
+    return JSON.parse(res);
+  }
+}
+
 const Sprint: React.FC = () => {
 	const classes = useStyles();
   const nameGame: string = 'СПРИНТ';
@@ -73,8 +81,8 @@ const Sprint: React.FC = () => {
   const [auxiliaryWord, setAuxiliaryWord] = useState<IWord | null>(null);
   const [restWords, setRestWords] = useState<number>(0);
   const [isEndGame, setIsEndGame] = useState<boolean>(false);
+  const [wordsArray, setWordsArray] = useState<Array<IWord> | undefined>(() => getWords());
 
-  const wordsArray = useSelector(selectWords);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
