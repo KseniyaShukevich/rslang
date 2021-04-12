@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 
 import cn from 'classnames'
 import ReactPlayer from "react-player";
+import { FILESPATH } from '../constants';
 
 
 const useStyles = makeStyles(theme => ({
@@ -68,7 +69,7 @@ const SoundButton: React.FC<Props> = ({isActive, urlAudio, setIsActive}) => {
   return (
     <div>
             <span className={classes.hidden}><ReactPlayer
-              url={urlAudio}
+              url={`${FILESPATH}${urlAudio}`}
               playing={isActive}
               onEnded={() => setIsActive(false)}
             /></span>
