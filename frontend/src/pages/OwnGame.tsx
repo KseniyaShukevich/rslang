@@ -32,6 +32,7 @@ import ChildCareIcon from '@material-ui/icons/ChildCare';
 import AlarmOffIcon from '@material-ui/icons/AlarmOff';
 import {calcStatisticsWordsToDB, calcStatisticsWordsToLS} from "../calcStatisticsWords";
 import KeyboardIcon from "@material-ui/icons/Keyboard";
+import {FILESPATH} from "../constants";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -568,8 +569,7 @@ const OwnGame: React.FC = () => {
 
   }, []);
 
-
-  const nameGame: string = 'ПОЛИГЛОТ';
+  const nameGame: string = 'СЛОВО - ПЕРЕВОД';
   const descriptionGame: string = 'Тренировка помогает изучить новые слова, а так же повторить уже изученные';
   return (
     <div ref={container} className={classes.box} id='owngame'>
@@ -753,10 +753,10 @@ const OwnGame: React.FC = () => {
               - <span className={classes.transcription}>{trueWord.transcription}</span>
               <ListenPlayer listenAudio={() => setIsAudioWord(true)}
                             setIsAudio={setIsAudioWord} isAudio={isAudioWord}
-                            audio={trueWord.audio}/>
+                            audio={`${FILESPATH}${trueWord.audio}`}/>
             </h3>
 
-            <div><img className={classes.image} src={trueWord.image} alt="word image"/></div>
+            <div><img className={classes.image} src={`${FILESPATH}${trueWord.image}`} alt="word image"/></div>
             <div className={classes.textMeaning}
                  onClick={() => setIsTranslateText(prev => !prev)}>
               <h3>  {!isTranslateText
