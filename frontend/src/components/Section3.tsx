@@ -7,6 +7,11 @@ import { Container, Box, Typography } from "@material-ui/core";
 import { findByLabelText } from "@testing-library/react";
 import { red, yellow } from "@material-ui/core/colors";
 import developer from "../assets/images_HomePage/developer.jpeg";
+import ksu from "../assets/images_HomePage/ksu.jpg";
+import yegor from "../assets/images_HomePage/yegor.jpeg";
+import polina from "../assets/images_HomePage/polina.jpeg";
+import marina from "../assets/images_HomePage/marina.jpg";
+import slava from "../assets/images_HomePage/slava.jpg";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -18,15 +23,15 @@ const useStyles = makeStyles((theme) => {
       fontSize: "1.5rem",
     },
     photo: {
-      width: "100%",
+      width: 200,
       height: 200,
-      backgroundImage: `url(${developer})`,
+      backgroundSize: 'auto 100%'
     },
     contribution: {
       background: "red",
     },
     person: {
-      width: "15%",
+      width: 200,
       background: "yellow",
       alignItems: "center",
       border: "2px solid blue",
@@ -71,37 +76,37 @@ const Section3: React.FC<any> = () => {
       <p className={classes.title}>О команде</p>
       <div className={classes.cards}>
         <div className={classes.person}>
-          <div className={classes.photo}></div>
+          <div className={classes.photo} style={{ backgroundImage: `url(${ksu})`}}></div>
           <Typography className={classes.author}>
             <a
               className={classes.a}
-              href="https://github.com/pacetin"
+              href="https://github.com/KseniyaShukevich"
               target="_blank"
               rel="noreferrer"
             >
-              Ivan Ivanov
+              Ксения Шукевич
             </a>
           </Typography>
-          <p className={classes.contribution}>jhgfiadsjvousI</p>
+          <p className={classes.contribution}>Идейный вдохновитель, основная структура, запросы на бэк, игра "Саванна", словарь</p>
         </div>
 
         <div className={classes.person}>
-          <div className={classes.photo}></div>
+          <div className={classes.photo} style={{ backgroundImage: `url(${yegor})`}}></div>
           <Typography className={classes.author}>
             <a
               className={classes.a}
-              href="https://github.com/pacetin"
+              href="https://github.com/GYegor"
               target="_blank"
               rel="noreferrer"
             >
-              Ivan Ivanov
+              Егор Глушанко
             </a>
           </Typography>
-          <p className={classes.contribution}>jhgfiadsjvousI</p>
+          <p className={classes.contribution}>Бэк, регистрация, логин, статистика, анимация</p>
         </div>
 
         <div className={classes.person}>
-          <div className={classes.photo}></div>
+          <div className={classes.photo} style={{ backgroundImage: `url(${polina})`}}></div>
           <Typography className={classes.author}>
             <a
               className={classes.a}
@@ -109,29 +114,29 @@ const Section3: React.FC<any> = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Ivan Ivanov
+              Палина Четин
             </a>
           </Typography>
-          <p className={classes.contribution}>jhgfiadsjvousI</p>
+          <p className={classes.contribution}>Электронный учебник, игра "Игра"</p>
         </div>
 
         <div className={classes.person}>
-          <div className={classes.photo}></div>
+          <div className={classes.photo} style={{ backgroundImage: `url(${marina})`}}></div>
           <Typography className={classes.author}>
             <a
               className={classes.a}
-              href="https://github.com/pacetin"
+              href="https://github.com/MarinaYur"
               target="_blank"
               rel="noreferrer"
             >
-              Ivan Ivanov
+              Марина Юркевич
             </a>
           </Typography>
-          <p className={classes.contribution}>jhgfiadsjvousI</p>
+          <p className={classes.contribution}>Игра "Игра"</p>
         </div>
 
         <div className={classes.person}>
-          <div className={classes.photo}></div>
+          <div className={classes.photo}  style={{ backgroundImage: `url(${slava})`}}></div>
           <Typography className={classes.author}>
             <a
               className={classes.a}
@@ -139,10 +144,10 @@ const Section3: React.FC<any> = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Ivan Ivanov
+              Святослав Лобиков
             </a>
           </Typography>
-          <p className={classes.contribution}>jhgfiadsjvousI</p>
+          <p className={classes.contribution}>Много чего запилил</p>
         </div>
       </div>
     </div>
