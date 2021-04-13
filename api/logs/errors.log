@@ -52,3 +52,147 @@
   level: 'error',
   timestamp: '2021-03-23T13:21:36.957Z'
 }
+{
+  message: 'Error: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:69:26)',
+  level: 'error',
+  timestamp: '2021-04-08T18:29:40.014Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:10.351Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:10.384Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:24.632Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:24.642Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:41.597Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:11.081Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:25.407Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:25.710Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:45.432Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:49.671Z'
+}

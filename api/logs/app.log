@@ -3693,7 +3693,7 @@
 {
   message: 'Successfully connect to DB',
   level: 'info',
-  timestamp: '2021-04-05T12:39:20.861Z'
+  timestamp: '2021-04-08T17:49:07.555Z'
 }
 {
   message: 'App is running on http://localhost:4000',
@@ -3701,127 +3701,504 @@
   timestamp: '2021-04-05T12:39:20.923Z'
 }
 {
-  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res 84 - 228.477 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T12:43:49.928Z'
+  timestamp: '2021-04-08T18:22:12.400Z'
+}
+{
+  message: 'GET 200 /words?group=2&page=2 - size req - res 14087 - 304.573 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:22:20.780Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=29 - size req - res 13054 - 314.159 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:22:39.768Z'
+}
+{
+  message: 'POST 200 /users - size req 115 res 150 - 399.565 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:25:54.903Z'
+}
+{
+  message: 'POST 200 /signin - size req 57 res 582 - 480.658 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:25:55.411Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/statistics "606f4ab2f151281364a4f9ac" size req 734 res 766 - 210.029 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:25:56.030Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/settings "606f4ab2f151281364a4f9ac" size req 52 res 84 - 175.596 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:25:56.043Z'
+}
+{
+  message: 'GET 200 /users/606f4ab2f151281364a4f9ac/settings "606f4ab2f151281364a4f9ac" size req - res 84 - 177.765 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:25:56.052Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=10 - size req - res 13040 - 293.444 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:26:15.630Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=28 - size req - res 14404 - 360.718 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:27:56.513Z'
+}
+{
+  message: 'GET 200 /words?group=5&page=18 - size req - res 14686 - 293.139 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:28:01.582Z'
+}
+{
+  message: 'GET 200 /users/606f4ab2f151281364a4f9ac/statistics "606f4ab2f151281364a4f9ac" size req - res 766 - 226.938 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:17.852Z'
+}
+{
+  message: 'GET 200 /users/606f4ab2f151281364a4f9ac/words "606f4ab2f151281364a4f9ac" size req - res 2 - 226.018 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:17.859Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/statistics "606f4ab2f151281364a4f9ac" size req 828 res 860 - 146.626 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:18.032Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c2 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 295.759 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:18.513Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01cd "606f4ab2f151281364a4f9ac" size req 256 res 324 - 273.183 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:18.518Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01cf "606f4ab2f151281364a4f9ac" size req 256 res 324 - 246.029 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:18.522Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01d2 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 363.734 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:18.647Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c1 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 289.469 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:18.654Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c0 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 524.582 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:18.759Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c3 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 136.102 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:18.983Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c8 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 152.491 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:19.005Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01ce "606f4ab2f151281364a4f9ac" size req 256 res 324 - 151.983 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:19.013Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01d3 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 142.570 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:19.108Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c7 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 134.144 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:19.127Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01cb "606f4ab2f151281364a4f9ac" size req 256 res 324 - 137.923 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:19.232Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c6 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 136.834 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:19.457Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c5 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 137.957 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:19.470Z'
+}
+{
+  message: 'POST 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01ca "606f4ab2f151281364a4f9ac" size req 256 res 324 - 137.690 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:19.477Z'
+}
+{
+  message: 'GET 304 /users/606f4ab2f151281364a4f9ac/settings "606f4ab2f151281364a4f9ac" size req - res - - 136.622 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:25.376Z'
+}
+{
+  message: 'GET 200 /users/606f4ab2f151281364a4f9ac/words "606f4ab2f151281364a4f9ac" size req - res 4876 - 160.328 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:39.425Z'
+}
+{
+  message: 'GET 200 /users/606f4ab2f151281364a4f9ac/statistics "606f4ab2f151281364a4f9ac" size req - res 860 - 165.766 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:39.436Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01d2 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 145.684 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:39.682Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c5 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 136.498 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:40.000Z'
+}
+{
+  message: 'Error: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:69:26)',
+  level: 'error',
+  timestamp: '2021-04-08T18:29:40.014Z'
+}
+{
+  message: 'PUT 500 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01ce "606f4ab2f151281364a4f9ac" size req 256 res 12 - 23.351 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:40.017Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c3 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 153.988 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:40.024Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c1 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 146.063 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:40.028Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c8 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 162.319 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:40.049Z'
+}
+{
+  message: 'PUT 200 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c8 "606f4ab2f151281364a4f9ac" size req 256 res 324 - 273.379 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:29:40.167Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:10.352Z'
+}
+{
+  message: 'PUT 500 /users/606f4ab2f151281364a4f9ac/words/5e9f5ee35eb9e72bc21b01c2 "606f4ab2f151281364a4f9ac" size req 256 res 12 - 30037.486 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:30:10.358Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:10.384Z'
+}
+{
+  message: 'PUT 500 /users/606f4ab2f151281364a4f9ac/statistics "606f4ab2f151281364a4f9ac" size req 830 res 12 - 30049.333 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:30:10.391Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:24.633Z'
+}
+{
+  message: 'GET 500 /words?group=0&page=7 - size req - res 12 - 30029.243 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:30:24.637Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:24.643Z'
+}
+{
+  message: 'GET 500 /words?group=0&page=0 - size req - res 12 - 30033.152 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:30:24.648Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:30:41.597Z'
+}
+{
+  message: 'GET 500 /words?group=0&page=23 - size req - res 12 - 30013.026 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:30:41.601Z'
+}
+{
+  message: 'GET - /users/606f4ab2f151281364a4f9ac/statistics "606f4ab2f151281364a4f9ac" size req - res - - - ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:30:51.901Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:11.082Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:25.410Z'
+}
+{
+  message: 'GET 500 /users/606f4ab2f151281364a4f9ac/statistics "606f4ab2f151281364a4f9ac" size req - res 12 - 30013.794 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:31:25.415Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:25.710Z'
+}
+{
+  message: 'GET 500 /users/606f4ab2f151281364a4f9ac/settings "606f4ab2f151281364a4f9ac" size req - res 12 - 30008.844 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:31:25.714Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:45.433Z'
+}
+{
+  message: 'GET 500 /users/606f4ab2f151281364a4f9ac/statistics "606f4ab2f151281364a4f9ac" size req - res 12 - 30016.173 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:31:45.438Z'
+}
+{
+  message: 'MongooseServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-02.8pwo5.mongodb.net\n' +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-08T18:31:49.671Z'
+}
+{
+  message: 'POST 500 /signin - size req 34 res 12 - 30036.389 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:31:49.677Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=2 - size req - res 12581 - 4512.372 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:32:08.481Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 358.926 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:32:08.624Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=2 - size req - res - - 268.127 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:32:08.768Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 263.732 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:32:08.912Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 157.880 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:33:02.037Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 159.447 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:33:02.215Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 171.325 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:35:12.604Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 153.389 ms\n',
+  level: 'info',
+  timestamp: '2021-04-08T18:35:12.789Z'
 }
 {
   message: 'Successfully connect to DB',
-  level: 'info',
-  timestamp: '2021-04-05T13:56:09.971Z'
+  timestamp: '2021-04-12T11:35:25.145Z'
 }
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-  timestamp: '2021-04-05T13:56:10.028Z'
+  timestamp: '2021-04-12T11:35:25.178Z'
 }
 {
-  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 267.645 ms\n',
+  message: 'GET 200 /words?group=0&page=1 - size req - res 12909 - 523.652 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:01:57.250Z'
+  timestamp: '2021-04-12T11:40:51.046Z'
 }
 {
-  message: 'Successfully connect to DB',
+  message: 'GET 200 /words?group=1&page=1 - size req - res 12542 - 204.734 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:26:07.859Z'
+  timestamp: '2021-04-12T11:45:22.519Z'
 }
 {
-  message: 'App is running on http://localhost:4000',
+  message: 'GET 304 /words?group=1&page=1 - size req - res - - 200.040 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:26:07.905Z'
+  timestamp: '2021-04-12T11:45:22.783Z'
 }
 {
-  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 222.405 ms\n',
+  message: 'GET 304 /words?group=1&page=1 - size req - res - - 203.553 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:32:42.638Z'
+  timestamp: '2021-04-12T11:45:56.929Z'
 }
 {
-  message: 'GET 304 /words?group=0&page=0 - size req - res - - 183.009 ms\n',
+  message: 'GET 304 /words?group=1&page=1 - size req - res - - 172.241 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:32:43.226Z'
+  timestamp: '2021-04-12T11:45:57.306Z'
 }
 {
-  message: 'GET 304 /words?group=0&page=1 - size req - res - - 312.282 ms\n',
+  message: 'GET 400 /words?group=NaN&page=NaN - size req - res 72 - 12.578 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:36:49.402Z'
+  timestamp: '2021-04-12T11:50:14.884Z'
 }
 {
-  message: 'GET 304 /words?group=0&page=1 - size req - res - - 322.900 ms\n',
+  message: 'GET 200 /words?group=0&page=14 - size req - res 13021 - 195.917 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:36:49.974Z'
+  timestamp: '2021-04-12T11:50:18.959Z'
 }
 {
-  message: 'Successfully connect to DB',
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 309.811 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:37:53.265Z'
+  timestamp: '2021-04-12T12:16:36.864Z'
 }
 {
-  message: 'App is running on http://localhost:4000',
+  message: 'GET 200 /words?group=0&page=27 - size req - res 12987 - 264.625 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:37:53.361Z'
+  timestamp: '2021-04-12T12:16:36.910Z'
 }
 {
-  message: 'Successfully connect to DB',
+  message: 'GET 200 /words?group=0&page=3 - size req - res 13094 - 319.065 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:41:24.169Z'
+  timestamp: '2021-04-12T12:20:12.241Z'
 }
 {
-  message: 'App is running on http://localhost:4000',
+  message: 'GET 200 /words?group=0&page=11 - size req - res 13481 - 497.248 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:41:24.213Z'
+  timestamp: '2021-04-12T12:26:30.450Z'
 }
 {
-  message: 'POST 200 /signin - size req 49 res 581 - 614.500 ms\n',
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 195.144 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:42:58.017Z'
+  timestamp: '2021-04-12T12:26:31.763Z'
 }
 {
-  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/settings "6058ece36fab9b1ffdc9ae71" size req - res - - 161.937 ms\n',
+  message: 'GET 304 /words?group=0&page=11 - size req - res - - 245.430 ms\n',
   level: 'info',
-  timestamp: '2021-04-05T14:42:58.398Z'
-}
-{
-  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/aggregatedWords?group=0&wordsPerPage=10000&filter={%22userWord.optional.mode%22:%20%22deleted%22} "6058ece36fab9b1ffdc9ae71" size req - res - - 3966.954 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:10.710Z'
-}
-{
-  message: 'GET 304 /words?group=0&page=2 - size req - res - - 195.333 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:14.655Z'
-}
-{
-  message: 'GET 200 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res 96648 - 1320.868 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:15.486Z'
-}
-{
-  message: 'GET 304 /words?group=0&page=2 - size req - res - - 747.957 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:15.613Z'
-}
-{
-  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 1758.445 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:17.813Z'
-}
-{
-  message: 'GET 304 /words?group=0&page=1 - size req - res - - 160.000 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:18.526Z'
-}
-{
-  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 902.228 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:19.581Z'
-}
-{
-  message: 'GET 304 /words?group=0&page=0 - size req - res - - 178.220 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:19.788Z'
-}
-{
-  message: 'GET 304 /users/6058ece36fab9b1ffdc9ae71/words "6058ece36fab9b1ffdc9ae71" size req - res - - 1003.568 ms\n',
-  level: 'info',
-  timestamp: '2021-04-05T14:43:21.351Z'
+  timestamp: '2021-04-12T12:26:56.898Z'
 }

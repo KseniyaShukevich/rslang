@@ -35,6 +35,7 @@ import ListenPlayer from "../components/ListenPlayer";
 import ChildCareIcon from "@material-ui/icons/ChildCare";
 import AlarmAddIcon from "@material-ui/icons/AlarmAdd";
 import AlarmOffIcon from "@material-ui/icons/AlarmOff";
+import {FILESPATH} from "../constants";
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -263,57 +264,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const AudioGame: React.FC = () => {
-	/*const classes = useStyles();
-  const nameGame: string = 'АУДИОВЫЗОВ';
-  const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
-  const [isAudio, setIsAudio] = useState<boolean>(true);
-
-  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
-  const [isEndLayout, setIsEndLayout] = useState<boolean>(false);
-  const [isStartLayout, setIsStartLayout] = useState<boolean>(true);
-  const [lifes, setLifes]= useState<number>(5);
-  const [level, setLevel] = useState<number>(0);
-  //const [progress, setProgress] = useState<number>(0);
-
-  const [trueWord, setTrueWord] = useState<IWord | null>(null);
-  const [wordArray, setWordArray] = useState<Array<IWord> | null>(null);
-  //const [isEnd, setIsEnd] = useState<boolean>(false);
-
-  const wordsArray = useSelector(selectWords);
-  const dispatch = useDispatch();
-
-  const generationWords = useRef<any>(null);
-
-  const corrWords = useRef<any>([]);
-  const wrongWords = useRef<any>([]);
-
-  useEffect(() => {
-    dispatch(fetchWords({
-      group: 0,
-      page: 0
-    }));
-  }, []);
-
-  useEffect(() => {
-    if (!isStartLayout && !isEndLayout && wordsArray) {
-      generationWords.current = getWordsForGame(wordsArray, 5);
-    }
-  }, [wordsArray, isStartLayout, isEndLayout]);
-
-  const step = () => {
-    if (generationWords.current) {
-      const [ word, arrayWords, func ] = generationWords.current;
-      setTrueWord(word)
-      setWordArray(arrayWords)
-      generationWords.current = func();
-    } else {
-      setIsEndLayout(true)
-    }
-  }
-
-  document.addEventListener('fullscreenchange', (event) => {
-    setIsFullscreen(!!document.fullscreenElement);
-  });*/
   const classes = useStyles();
   const nameGame: string = 'АУДИОВЫЗОВ';
   const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
@@ -802,15 +752,15 @@ const AudioGame: React.FC = () => {
               - <span className={classes.transcription}>{trueWord.transcription}</span>
               <ListenPlayer listenAudio={() => setIsAudioWord(true)}
                             setIsAudio={setIsAudioWord} isAudio={isAudioWord}
-                            audio={trueWord.audio}/>
+                            audio={`${FILESPATH}${trueWord.audio}`}/>
             </h3>
 
-            <div><img className={classes.image} src={trueWord.image} alt="word image"/></div>
+            <div><img className={classes.image} src={`${FILESPATH}${trueWord.image}`} alt="word image"/></div>
             <div className={classes.textMeaning}
                  onClick={() => setIsTranslateText(prev => !prev)}>
               <h3>  {!isTranslateText
                 ? trueWord.textExample.replace(/<\/?[^>]+(>|$)/g, "")
-                : trueWord.textMeaningTranslate.replace(/<\/?[^>]+(>|$)/g, "")}</h3>
+                : trueWord.textExampleTranslate.replace(/<\/?[^>]+(>|$)/g, "")}</h3>
 
             </div>
             <div className={classes.timer}>
