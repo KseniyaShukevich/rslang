@@ -180,6 +180,7 @@ const Savannah: React.FC = () => {
   const [isStartMusic, setIsStartMusic] = useState<boolean>(false);
   const [toggleCorrBtn, setToggleCorrBtn] = useState<boolean>(false);
   const [restWords, setRestWords] = useState<number>(0);
+  const [isCanKeypress, setIsCanKeypress] = useState<boolean>(true);
 
   const generationWords = useRef<any>(null);
   const wordEl = useRef<any>(null);
@@ -195,6 +196,7 @@ const Savannah: React.FC = () => {
   const currLongestCorr = useRef<any>(0);
   const newLongestCorr = useRef<any>(0);
   const words = useRef<any>(null);
+  const key = useRef<any>(null);
 
   const user = useSelector(selectUser);
 
@@ -215,6 +217,7 @@ const Savannah: React.FC = () => {
           wordEl.current.style.display = '';
           rectangle.current.style.display = '';
         }
+        setIsCanKeypress(true);
       }, 300);
       setNewWords();
     } else {
@@ -302,7 +305,7 @@ const Savannah: React.FC = () => {
   }
 
   useEffect(() => {
-    if (lifes === 0) {
+    if (lifes <= 0) {
       setTimeout(() => {
         clearInterval(idInterval.current[0]);
         setIsEndGame(true);
@@ -400,11 +403,20 @@ const Savannah: React.FC = () => {
     }
   }, [words.current, isStartLayout, isEndLayout]);
 
-  const checkKeyDown = (event: KeyboardEvent) => {
-    const key = +event.key;
-    if (key) {
+  useEffect(() => {
+    if (!isCanKeypress && key.current) {
       setToggleCorrBtn((prev) => !prev);
-      keyBtn.current = key - 1;
+      keyBtn.current = key.current - 1;
+    }
+  }, [isCanKeypress]);
+
+  const checkKeyDown = (event: KeyboardEvent) => {
+    if (isCanKeypress) {
+      const number = +event.key;
+      if (number && number < 5) {
+        key.current = number;
+        setIsCanKeypress(false);
+      }
     }
   }
 
