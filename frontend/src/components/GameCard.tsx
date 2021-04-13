@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: 320,
+      width: 330,
       height: 300,
       margin: theme.spacing(0, 'auto'),
       position: 'relative',
@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 150,
     },
     rootDictionary: {
-      maxWidth: 320,
       height: 170,
       width: 200,
       margin: theme.spacing(0.5),
