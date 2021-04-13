@@ -3698,10 +3698,9 @@
 {
   message: 'App is running on http://localhost:4000',
   level: 'info',
-  timestamp: '2021-04-08T17:49:07.586Z'
+  timestamp: '2021-04-05T12:39:20.923Z'
 }
 {
-  message: 'GET 200 /words?group=0&page=5 - size req - res 13776 - 825.469 ms\n',
   level: 'info',
   timestamp: '2021-04-08T18:22:12.400Z'
 }
@@ -4131,7 +4130,6 @@
 }
 {
   message: 'Successfully connect to DB',
-  level: 'info',
   timestamp: '2021-04-12T11:35:25.145Z'
 }
 {
