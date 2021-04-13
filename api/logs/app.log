@@ -4202,3 +4202,348 @@
   level: 'info',
   timestamp: '2021-04-12T12:26:56.898Z'
 }
+{
+  message: 'GET 200 /words?group=0&page=15 - size req - res 12387 - 2132.260 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:25:11.451Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=2 - size req - res 12581 - 2706.166 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:31:27.464Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=20 - size req - res 12727 - 188.575 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:32:18.790Z'
+}
+{
+  message: 'GET - /words?group=0&page=0 - size req - res - - - ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:35:22.228Z'
+}
+{
+  message: "MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/\n" +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at runMicrotasks (<anonymous>)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-13T13:35:47.599Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 918.572 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:36:58.377Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=10 - size req - res 13040 - 188.254 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:37:04.584Z'
+}
+{
+  message: 'GET - /words?group=0&page=0 - size req - res - - - ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:37:39.400Z'
+}
+{
+  message: 'GET - /words?group=0&page=23 - size req - res - - - ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:37:39.403Z'
+}
+{
+  message: "MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/\n" +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-13T13:38:02.704Z'
+}
+{
+  message: "MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/\n" +
+    '    at Function.Model.$wrapCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\model.js:4882:32)\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4373:21\n' +
+    '    at C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n' +
+    '    at new Promise (<anonymous>)\n' +
+    '    at promiseOrCallback (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n' +
+    '    at model.Query.exec (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4372:10)\n' +
+    '    at model.Query.Query.then (C:\\Users\\slava\\WebstormProjects\\rslang\\api\\node_modules\\mongoose\\lib\\query.js:4455:15)\n' +
+    '    at processTicksAndRejections (node:internal/process/task_queues:94:5)',
+  level: 'error',
+  timestamp: '2021-04-13T13:38:03.754Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 12770.366 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:39:19.884Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 194.413 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:39:43.341Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 362.607 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:44:23.716Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 504.970 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:51:51.245Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 249.333 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:52:11.880Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 238.930 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:54:06.359Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 181.912 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T13:54:20.843Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 314.603 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:06:09.707Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 178.820 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:06:40.610Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 265.552 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:07:33.240Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 173.526 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:08:08.108Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 280.584 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:11:42.442Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 651.687 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:13:20.207Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 180.601 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:13:31.789Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 236.849 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:14:26.270Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 195.893 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:14:38.035Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 324.059 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:15:48.343Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 195.651 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:16:06.734Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 195.270 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:16:53.612Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 438.430 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:19:28.912Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 207.434 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:19:41.181Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 214.811 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:21:57.689Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 284.732 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:24:11.427Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 257.326 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:24:43.257Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=2 - size req - res - - 263.780 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:25:11.150Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 196.677 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:25:12.704Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 186.862 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:30:21.834Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=23 - size req - res 13237 - 341.700 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:31:37.850Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=11 - size req - res - - 344.531 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:32:42.976Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=16 - size req - res 12827 - 180.465 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:33:33.683Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=1 - size req - res - - 271.873 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T14:37:34.370Z'
+}
+{
+  message: 'Successfully connect to DB',
+  level: 'info',
+  timestamp: '2021-04-13T14:59:33.718Z'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2021-04-13T14:59:33.752Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 410.779 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:04:53.803Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 470.278 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:07:51.326Z'
+}
+{
+  message: 'GET - /words?group=0&page=0 - size req - res - - - ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:10:31.823Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=0 - size req - res 12413 - 213.514 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:10:44.006Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 215.129 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:11:52.776Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 255.028 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:12:48.068Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 297.597 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:13:00.127Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 421.485 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:14:37.156Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 176.637 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:15:14.377Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 201.746 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:17:32.507Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 402.452 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:19:01.195Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 179.578 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:19:24.581Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 209.712 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:19:54.032Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 196.067 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:20:10.712Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 247.007 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:20:48.272Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=20 - size req - res - - 535.470 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:22:08.724Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=2 - size req - res - - 193.294 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:23:06.507Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=0 - size req - res - - 257.670 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:23:17.824Z'
+}
+{
+  message: 'GET 304 /words?group=0&page=15 - size req - res - - 264.438 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:32:34.702Z'
+}
+{
+  message: 'GET 200 /words?group=0&page=18 - size req - res 13109 - 428.638 ms\n',
+  level: 'info',
+  timestamp: '2021-04-13T15:36:22.411Z'
+}

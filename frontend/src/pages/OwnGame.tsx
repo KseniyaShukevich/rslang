@@ -281,6 +281,8 @@ const OwnGame: React.FC = () => {
 
   const classes = useStyles();
 
+  const [isBlockKey, setIsBlockKey] = useState<boolean>(false)
+
   const [prompt, setPrompt] = useState<number>(3);
   const [promptTime, setPromptTime] = useState<number>(3);
   const [isPromptTime, setIsPromptTime] = useState<boolean>(false);
@@ -297,6 +299,7 @@ const OwnGame: React.FC = () => {
   const [currWord, setCurrWord] = useState<IWord | null>(null);
   const [bgPosition, setBgPosition] = useState<number>(100);
   const [restWords, setRestWords] = useState<number>(0);
+
 
 
   const [isCorrWord, setIsCorrWord] = useState<boolean>(false);
@@ -379,7 +382,8 @@ const OwnGame: React.FC = () => {
   }
 
   const successAnimation = () => {
-    setIsWinMusic(true);
+    setIsBlockKey(true)
+    setIsWinMusic(true)
     setIsPrompt(false)
     setIsPromptTime(false)
     newLongestCorr.current += 1;
@@ -391,7 +395,7 @@ const OwnGame: React.FC = () => {
     setTimeout(() => {
       if (gif.current) {
         gif.current.style.backgroundImage = '';
-
+        setIsBlockKey(false)
       }
     }, 1000);
 
@@ -399,7 +403,8 @@ const OwnGame: React.FC = () => {
   }
 
   const failAnimation = () => {
-    setIsLoseMusic(true);
+    setIsBlockKey(true)
+    setIsLoseMusic(true)
     setIsPrompt(false);
     setIsPromptTime(false);
     keyBtn.current = -1;
@@ -422,6 +427,8 @@ const OwnGame: React.FC = () => {
         wordEl.current.style.transition = '';
         doStep();
         setIsChoose(true)  //add fail isChoose
+        setIsBlockKey(false)
+
       }
     }, 500);
   }
@@ -546,13 +553,14 @@ const OwnGame: React.FC = () => {
 
   const checkKeyDown = (event: KeyboardEvent) => {
 
-
-    const key = +event.key;
-     //console.log('key', event.key)
-    if (key) {
-      setToggleCorrBtn((prev) => !prev);
-      keyBtn.current = key - 1;
+    if (!isBlockKey && !isChoose) {
+      const key = +event.key;
+      if (key) {
+        setToggleCorrBtn((prev) => !prev);
+        keyBtn.current = key - 1;
+      }
     }
+
   }
 
   const getFullScreen = () => {
@@ -561,9 +569,13 @@ const OwnGame: React.FC = () => {
 
   useEffect(() => {
     document.addEventListener('fullscreenchange', getFullScreen);
+/*
     document.addEventListener('keydown', checkKeyDown);
+*/
     return function cleanEvents() {
+/*
       document.removeEventListener('keydown', checkKeyDown);
+*/
       document.removeEventListener('fullscreenchange', getFullScreen);
     }
 
@@ -572,7 +584,10 @@ const OwnGame: React.FC = () => {
   const nameGame: string = 'СЛОВО - ПЕРЕВОД';
   const descriptionGame: string = 'Тренировка помогает изучить новые слова, а так же повторить уже изученные';
   return (
-    <div ref={container} className={classes.box} id='owngame'>
+    <div ref={container} className={classes.box} id='owngame'
+         onKeyPress={(event: any) => checkKeyDown(event)}
+         tabIndex={0}
+         >
       {
         isStartTime && (
           <Box className={classes.startGame}>

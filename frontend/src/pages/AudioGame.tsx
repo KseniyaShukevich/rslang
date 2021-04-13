@@ -268,6 +268,9 @@ const AudioGame: React.FC = () => {
   const nameGame: string = 'АУДИОВЫЗОВ';
   const descriptionGame: string = 'Тренировка улучшает восприятие речи на слух.';
 
+  const [isBlockKey, setIsBlockKey] = useState<boolean>(false)
+
+
   const [promptTime, setPromptTime] = useState<number>(3);
   const [isPromptTime, setIsPromptTime] = useState<boolean>(false);
 
@@ -360,7 +363,8 @@ const AudioGame: React.FC = () => {
   }
 
   const successAnimation = () => {
-    setIsWinMusic(true);
+    setIsBlockKey(true)
+    setIsWinMusic(true)
     setIsPrompt(false);
     setIsPromptTime(false);
     newLongestCorr.current += 1;
@@ -381,16 +385,19 @@ const AudioGame: React.FC = () => {
       setTimeout(() => {
         if (rectangle.current) {
           rectangle.current.style.top = '90%'
+          setIsBlockKey(false)
         }
       }, 0);
     }
     setTop(-15);
     setBgPosition((prev: number) => prev - step);
     doStep();
+    setIsBlockKey(false)
   }
 
   const failAnimation = () => {
-    setIsLoseMusic(true);
+    setIsBlockKey(true)
+    setIsLoseMusic(true)
     setIsPrompt(false);
     setIsPromptTime(false);
 
@@ -416,6 +423,8 @@ const AudioGame: React.FC = () => {
         wordEl.current.style.transition = '';
         doStep();
         setIsChoose(true)
+        setIsBlockKey(false)
+
       }
     }, 500);
   }
@@ -553,10 +562,12 @@ const AudioGame: React.FC = () => {
 
   const checkKeyDown = (event: KeyboardEvent) => {
 
-    const key = +event.key;
-    if (key) {
-      setToggleCorrBtn((prev) => !prev);
-      keyBtn.current = key - 1;
+    if (!isBlockKey && !isChoose) {
+      const key = +event.key;
+      if (key) {
+        setToggleCorrBtn((prev) => !prev);
+        keyBtn.current = key - 1;
+      }
     }
   }
 
@@ -566,15 +577,18 @@ const AudioGame: React.FC = () => {
 
   useEffect(() => {
     document.addEventListener('fullscreenchange', getFullScreen);
-    document.addEventListener('keydown', checkKeyDown);
+    //document.addEventListener('keydown', checkKeyDown);
     return function cleanEvents() {
-      document.removeEventListener('keydown', checkKeyDown);
+      //document.removeEventListener('keydown', checkKeyDown);
       document.removeEventListener('fullscreenchange', getFullScreen);
     }
   }, []);
 
 	return (
-    <div ref={container} className={classes.box} id='audio'>
+    <div ref={container} className={classes.box} id='audio'
+         onKeyPress={(event: any) => checkKeyDown(event)}
+         tabIndex={0}
+    >
       {
         isStartTime && (
           <Box className={classes.startGame}>
