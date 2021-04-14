@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     height: '100%',
     padding: theme.spacing(1, 0, 0),
     backgroundImage: `url(${londonEye})`,
+    backgroundPositionY: '4%'
 
     // backgroundColor: '#1565c11a'
   },

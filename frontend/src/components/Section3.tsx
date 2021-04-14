@@ -3,68 +3,37 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 // import { CardActionArea, Box, CardContent } from "@material-ui/core";
 // import { Card } from "material-ui";
-import { Container, Box, Typography } from "@material-ui/core";
-import { findByLabelText } from "@testing-library/react";
-import { red, yellow } from "@material-ui/core/colors";
-import developer from "../assets/images_HomePage/developer.jpeg";
-import ksu from "../assets/images_HomePage/ksu.jpg";
-import yegor from "../assets/images_HomePage/yegor.jpeg";
-import polina from "../assets/images_HomePage/polina.jpeg";
-import marina from "../assets/images_HomePage/marina.jpg";
-import slava from "../assets/images_HomePage/slava.jpg";
+import { Box, Typography } from "@material-ui/core";
+import PersonCard from "./homepage/PersonCard";
+import { team } from "./homepage/teamData";
+import GroupTwoToneIcon from "@material-ui/icons/GroupTwoTone";
+
 
 const useStyles = makeStyles((theme) => {
   return {
     contentWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
       padding: theme.spacing(4.5, 0, 6.5),
       margin: "0 auto",
-    },
-    author: {
-      fontSize: "1.5rem",
-    },
-    photo: {
-      width: 200,
-      height: 200,
-      backgroundSize: 'auto 100%'
-    },
-    contribution: {
-      background: "red",
-    },
-    person: {
-      width: 200,
-      background: "yellow",
-      alignItems: "center",
-      border: "2px solid blue",
-      margingBottom: 20,
-      [theme.breakpoints.down("sm")]: {
-        width: "30%",
-        marginBottom: 20,
-      },
-      [theme.breakpoints.down("xs")]: {
-        width: "40%",
-        marginBottom: 20,
-      },
     },
     cards: {
       display: "flex",
       flexWrap: "wrap",
       justifyContent: "space-around",
     },
-    a: {
-      textDecoration: "none",
-      color: "black",
+    titleWrapper: {
+      display: "flex",
+      justifyContent: 'center',
+      columnGap: "20px",
+      padding: theme.spacing(3, 1, 0),
     },
-    title: {
-      "font-size": "2rem",
-      background: "linear-gradient(135deg, #1254bc 30%, #fa0e0e 70%)",
-      "-webkit-background-clip": "text",
-      "-webkit-text-fill-color": "transparent",
-      padding: "0.3em 0.6em",
-      border: "3px solid transparent",
-      "border-image": "linear-gradient(135deg, #1254bc 20%, #fa0e0e 70%)",
-      "border-image-slice": 1,
-      textAlign: "center",
+    customTwoTones: {
+      // filter: 'invert(30%) sepia(98%) saturate(1068%) hue-rotate(188deg) brightness(89%) contrast(94%)'
+      filter: 'invert(64%) sepia(19%) saturate(5959%) hue-rotate(320deg) brightness(114%) contrast(80%)'
     },
+
   };
 });
 
@@ -73,82 +42,22 @@ const Section3: React.FC<any> = () => {
 
   return (
     <div className={classes.contentWrapper}>
-      <p className={classes.title}>О команде</p>
+      <Box className={classes.titleWrapper} color="text.primary">
+        <GroupTwoToneIcon
+          style={{ fontSize: 50 }}
+          className={classes.customTwoTones}
+        />
+        <Typography
+          gutterBottom
+          variant="h3"
+          style={{ fontWeight: 300 }}
+          color="primary"
+        >
+          Команда разработчиков
+        </Typography>
+      </Box>
       <div className={classes.cards}>
-        <div className={classes.person}>
-          <div className={classes.photo} style={{ backgroundImage: `url(${ksu})`}}></div>
-          <Typography className={classes.author}>
-            <a
-              className={classes.a}
-              href="https://github.com/KseniyaShukevich"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Ксения Шукевич
-            </a>
-          </Typography>
-          <p className={classes.contribution}>Идейный вдохновитель, основная структура, запросы на бэк, игра "Саванна", словарь</p>
-        </div>
-
-        <div className={classes.person}>
-          <div className={classes.photo} style={{ backgroundImage: `url(${yegor})`}}></div>
-          <Typography className={classes.author}>
-            <a
-              className={classes.a}
-              href="https://github.com/GYegor"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Егор Глушанко
-            </a>
-          </Typography>
-          <p className={classes.contribution}>Бэк, регистрация, логин, статистика, анимация</p>
-        </div>
-
-        <div className={classes.person}>
-          <div className={classes.photo} style={{ backgroundImage: `url(${polina})`}}></div>
-          <Typography className={classes.author}>
-            <a
-              className={classes.a}
-              href="https://github.com/pacetin"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Палина Четин
-            </a>
-          </Typography>
-          <p className={classes.contribution}>Электронный учебник, игра "Игра"</p>
-        </div>
-
-        <div className={classes.person}>
-          <div className={classes.photo} style={{ backgroundImage: `url(${marina})`}}></div>
-          <Typography className={classes.author}>
-            <a
-              className={classes.a}
-              href="https://github.com/MarinaYur"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Марина Юркевич
-            </a>
-          </Typography>
-          <p className={classes.contribution}>Игра "Игра"</p>
-        </div>
-
-        <div className={classes.person}>
-          <div className={classes.photo}  style={{ backgroundImage: `url(${slava})`}}></div>
-          <Typography className={classes.author}>
-            <a
-              className={classes.a}
-              href="https://github.com/pacetin"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Святослав Лобиков
-            </a>
-          </Typography>
-          <p className={classes.contribution}>Много чего запилил</p>
-        </div>
+        {team.map(person => <PersonCard key={person.name} {...person} />)}
       </div>
     </div>
   );

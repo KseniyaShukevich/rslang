@@ -24,8 +24,6 @@ const useStyles = makeStyles((theme: Theme) =>
       borderColor: theme.palette.primary.main,
       width: 268,
       marginBottom: theme.spacing(2)
-
-
     },
     card: {
       border: '1px solid',
@@ -45,19 +43,6 @@ const useStyles = makeStyles((theme: Theme) =>
         padding: theme.spacing(1, 2, 1)
       }
     },
-    overlay: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      padding: theme.spacing(0),
-      transition: 'opacity 250ms ease-in',
-      opacity: 0,
-    },
-    button: {
-      margin: theme.spacing(0, 'auto'),
-    },
     count: {
       fontWeight: 'bold',
       fontSize: '2rem'
@@ -74,7 +59,6 @@ interface IProps {
 const GameStatisticCard: React.FC<IProps> = ({
   gameName,
   gameStatistics: {
-    date,
     countLearnedWords,
     correctAnswers,
     longestCorrectAnswers,
