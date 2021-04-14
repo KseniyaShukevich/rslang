@@ -71,7 +71,7 @@ const PersonCard: React.FC<IPersonData> = ({ name, pictureUrl, githubUrl, descri
 
   return (
     <Paper elevation={0} className={classes.paper}>
-      <a className={classes.a} href={githubUrl}>
+      <a className={classes.a} href={githubUrl} target="_blank">
         <Typography gutterBottom  color="secondary" className={classes.count} style={{whiteSpace: 'pre',}}>
           {name}
         </Typography>
