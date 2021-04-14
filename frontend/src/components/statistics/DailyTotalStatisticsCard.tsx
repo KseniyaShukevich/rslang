@@ -15,9 +15,11 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       padding: theme.spacing(1),
       // height: 'fit-content',
+      minHeight: 260.39,
       border: '1px solid',
       borderColor: theme.palette.primary.main,
-      flex: 1
+      width: 268,
+      marginBottom: theme.spacing(2)
     },
     card: {
       border: '1px solid',

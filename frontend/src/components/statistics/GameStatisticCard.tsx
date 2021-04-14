@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme: Theme) =>
       height: 'fit-content',
       border: '1px solid',
       borderColor: theme.palette.primary.main,
+      width: 268,
+      marginBottom: theme.spacing(2)
 
 
     },
