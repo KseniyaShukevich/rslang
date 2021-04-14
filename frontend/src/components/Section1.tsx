@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { Box, Divider, List, ListItem, makeStyles, Typography } from "@material-ui/core";
 import { theme } from "../mui-style";
 import React from "react";
 import vocabulary from "../assets/images_HomePage/vocabulary.jpeg";
@@ -6,7 +6,14 @@ import UserInterface from "../assets/images_HomePage/interface.png";
 import playing from "../assets/images_HomePage/playing.jpeg";
 import statistics from "../assets/images_HomePage/statistics.png";
 import customization from "../assets/images_HomePage/customization.png";
-import img from "../assets/images_HomePage/1.jpeg";
+import mainPick from "../assets/images/main_pick.png";
+
+import MenuBookTwoToneIcon from "@material-ui/icons/MenuBookTwoTone";
+import SportsEsportsTwoTone from "@material-ui/icons/SportsEsportsTwoTone";
+import InsertChartTwoTone from "@material-ui/icons/InsertChartTwoTone";
+import SettingsTwoTone from "@material-ui/icons/SettingsTwoTone";
+import ViewListTwoTone from "@material-ui/icons/ViewListTwoTone";
+
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -37,36 +44,14 @@ const useStyles = makeStyles((theme) => {
         display: "none",
       },
     },
-    listItem: {
-      fontSize: "1.4rem",
-      display: "grid",
-      "grid-template-columns": "1fr 7fr",
-      alignItems: "center",
-      [theme.breakpoints.down("xs")]: {
-        display: "block",
-        width: "100%",
-      },
-    },
-    title: {
-      "font-size": "2rem",
-      background: "linear-gradient(135deg, #1254bc 20%, #fa0e0e 70%)",
-      "-webkit-background-clip": "text",
-      "-webkit-text-fill-color": "transparent",
-      display: "inline-block",
-      textAlign: "center",
-      padding: "0.3em 0.6em",
-      border: "3px solid transparent",
-      "border-image": "linear-gradient(135deg, #1254bc 20%, #fa0e0e 70%)",
-      "border-image-slice": 1,
-      margin: "49px auto",
-      [theme.breakpoints.down("xs")]: {
-        margin: "30px 0 15px",
-      },
-    },
     subTitle: {
-      "font-size": "1.5rem",
-      fontWeight: 800,
+      "font-size": "3rem",
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontWeight: 300,
       textAlign: "center",
+      width: '100%',
+      color: theme.palette.primary.main,
+      whiteSpace: 'pre-wrap'
     },
     listItemP: {
       color: "blue",
@@ -80,6 +65,10 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down("sm")]: {
         display: "none",
       },
+      backgroundImage: `url(${mainPick})`,
+      backgroundSize: 'auto 100%',
+      backgroundRepeat: 'no-repeat',
+      height: 400,
     },
     capabilities: {
       width: "60%",
@@ -87,8 +76,50 @@ const useStyles = makeStyles((theme) => {
         width: "100%",
       },
     },
+    titleWrapper: {
+      width: '100%',
+      display: "flex",
+      justifyContent: 'space-around',
+      columnGap: "20px",
+      padding: theme.spacing(3, 1, 0),
+      alignItems: 'center'
+    },
+    customTwoTones: {
+      filter: 'invert(64%) sepia(19%) saturate(5959%) hue-rotate(320deg) brightness(114%) contrast(80%)'
+    },
+    text: {
+      marginLeft: '1rem',
+      fontSize: '1.5rem',
+      color: theme.palette.primary.main,
+    },
+    listItem: {
+      cursor: 'unset'
+    }
   };
 });
+
+const descriptionItems = [
+  {
+    title: '3600 часто употребляемых английских слов с примерами их использования',
+    IconComponent: ViewListTwoTone
+  },
+  {
+    title: ' Удобный и приятный интерфейс электронного учебника',
+    IconComponent: MenuBookTwoToneIcon
+  },
+  {
+    title: ' Изучение английского языка играя: 4 интересные мини-игры',
+    IconComponent: SportsEsportsTwoTone
+  },
+  {
+    title: ' Контроль результатов на странице статистики',
+    IconComponent: InsertChartTwoTone
+  },
+  {
+    title: ' Возможность установить индивидуальные настройки',
+    IconComponent: SettingsTwoTone
+  },
+]
 
 const Section1: React.FC<any> = () => {
   const classes = useStyles();
@@ -96,76 +127,51 @@ const Section1: React.FC<any> = () => {
   return (
     <>
       <div className={classes.contentWrapper}>
-        <p className={classes.title}>
-          RSLang - простое и интересное приложение для изучения английского
-          языка
+        <Box className={classes.titleWrapper} color="text.primary">
+          <Typography
+            gutterBottom
+            variant="h1"
+            style={{ fontWeight: 300, margin: 0 }}
+            color="primary"
+          >
+            <span>
+              <strong style={{ color: theme.palette.secondary.main }}>
+                RS
+              </strong>
+              Lang
+            </span>
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="h3"
+            style={{ fontWeight: 300, margin: 0 }}
+            color="primary"
+          >
+            Английский - это легко!
+          </Typography>
+        </Box>
+
+        <p className={classes.subTitle}>
+          {'Приложение для быстрого пополнения\n словарного запаса'}
         </p>
+        <br/>
+        <Divider />
         <div className={classes.capabilities}>
-          <p className={classes.subTitle}>
-            Какие же преимущества и возможности вас ждут от RSLang?
-          </p>
           <div>
-            <ul>
-              <li className={classes.listItem}>
-                <div
-                  className={classes.avatar}
-                  style={{ backgroundImage: `url(${vocabulary})` }}
-                ></div>
-                <p className={classes.listItemP}>
-                  Изучение 3600 часто употребляемых английских слов с примерами
-                  их использования быстро и интересно
-                </p>
-              </li>
-              <li className={classes.listItem}>
-                <div
-                  className={classes.avatar}
-                  style={{ backgroundImage: `url(${UserInterface})` }}
-                ></div>
-                <p className={classes.listItemP}>
-                  Удобный и приятный интерфейс электронного учебника
-                </p>
-              </li>
-              <li className={classes.listItem}>
-                <div
-                  className={classes.avatar}
-                  style={{ backgroundImage: `url(${playing})` }}
-                ></div>
-                <p className={classes.listItemP}>
-                  Изучение английского языка играя: в приложении 4 интересные
-                  мини-игры
-                </p>
-              </li>
-              <li className={classes.listItem}>
-                <div
-                  className={classes.avatar}
-                  style={{ backgroundImage: `url(${statistics})` }}
-                ></div>
-                <p className={classes.listItemP}>
-                  Удобно контролировать свои результаты, сохраняющиеся на
-                  странице статистики
-                </p>
-              </li>
-              <li className={classes.listItem}>
-                <div
-                  className={classes.avatar}
-                  style={{ backgroundImage: `url(${customization})` }}
-                ></div>
-                <p className={classes.listItemP}>
-                  Возможность установить индивидуальные настройки
-                </p>
-              </li>
-            </ul>
+            <List>
+              {descriptionItems.map(({ title, IconComponent }, i) => (
+                <ListItem button key={title} className={classes.listItem}>
+                  <IconComponent
+                    style={{ fontSize: 50 }}
+                    className={classes.customTwoTones}
+                  />
+                  <div className={classes.text}>{title}</div>
+                </ListItem>
+              ))}
+            </List>
           </div>
         </div>
         <div className={classes.section1Img}>
-          <img
-            style={{
-              width: "100%",
-              border: "4px solid blue",
-              borderRadius: "62%",
-            }}
-            src={img}
-          ></img>
         </div>
       </div>
     </>
