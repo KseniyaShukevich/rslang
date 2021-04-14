@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: '#ffffffbb',
       border: '1px solid',
       borderColor: theme.palette.primary.main,
+      width: 423,
+      marginBottom: theme.spacing(2)
     },
     card: {
       margin: theme.spacing(1),

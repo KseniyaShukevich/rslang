@@ -21,10 +21,11 @@ import { IUserResponse } from '../services/authorisation.service'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     wrapper: {
-      padding: theme.spacing(1.5, 0),
+      padding: theme.spacing(1.5, 0, 0),
       display: 'flex',
-      columnGap: theme.spacing(3),
-      justifyContent: 'space-around'
+      columnGap: theme.spacing(2),
+      flexWrap: 'wrap',
+      justifyContent: 'center'
     },
     media: {
       height: 150,

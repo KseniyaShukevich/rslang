@@ -1,12 +1,11 @@
 import { Button, createStyles, IconButton, InputAdornment, makeStyles, TextField, Theme } from '@material-ui/core';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { ICreds, IUserResponse, login } from '../../services/authorisation.service';
 import { selectUser, signedUser } from '../../slices/userSlice';
 import PageLayout from '../PageLayout'
-import Footer from '../Footer';
 import notificate from '../../utils/notificator';
 
 const useStyles = makeStyles((theme: Theme) =>
