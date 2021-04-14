@@ -386,6 +386,9 @@ const AudioGame: React.FC = () => {
         if (rectangle.current) {
           rectangle.current.style.top = '90%'
           setIsBlockKey(false)
+          //
+          //setIsActive(true)
+
         }
       }, 0);
     }
@@ -393,6 +396,9 @@ const AudioGame: React.FC = () => {
     setBgPosition((prev: number) => prev - step);
     doStep();
     setIsBlockKey(false)
+    //
+    setIsActive(true)
+
   }
 
   const failAnimation = () => {
@@ -781,6 +787,8 @@ const AudioGame: React.FC = () => {
               <div onClick={() => {
                 setIsChoose(false)
                 setWordTime(60)
+                //
+                setIsActive(true)
               }} className={classes.btnStart}>Далее
               </div>
             </div>
