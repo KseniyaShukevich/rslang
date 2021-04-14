@@ -51,7 +51,10 @@ const useStyles = makeStyles((theme) => {
       textAlign: "center",
       width: '100%',
       color: theme.palette.primary.main,
-      whiteSpace: 'pre-wrap'
+      whiteSpace: 'pre-wrap',
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "2.5rem",
+      },
     },
     listItemP: {
       color: "blue",
@@ -62,6 +65,7 @@ const useStyles = makeStyles((theme) => {
     },
     section1Img: {
       width: "40%",
+      minWidth: 390,
       [theme.breakpoints.down("sm")]: {
         display: "none",
       },
@@ -79,7 +83,7 @@ const useStyles = makeStyles((theme) => {
     titleWrapper: {
       width: '100%',
       display: "flex",
-      justifyContent: 'space-around',
+      justifyContent: 'start',
       columnGap: "20px",
       padding: theme.spacing(3, 1, 0),
       alignItems: 'center'
@@ -94,6 +98,11 @@ const useStyles = makeStyles((theme) => {
     },
     listItem: {
       cursor: 'unset'
+    },
+    typography: {
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "3.5rem",
+      },
     }
   };
 });
@@ -131,31 +140,36 @@ const Section1: React.FC<any> = () => {
           <Typography
             gutterBottom
             variant="h1"
-            style={{ fontWeight: 300, margin: 0 }}
+            className={classes.typography}
+            style={{
+              fontWeight: 300,
+              margin: 0,
+           }}
             color="primary"
           >
             <span>
-              <strong style={{ color: theme.palette.secondary.main }}>
+              <strong style={{
+                color: theme.palette.secondary.main,
+              }}>
                 RS
               </strong>
               Lang
             </span>
           </Typography>
-          <Typography
+          {/* <Typography
             gutterBottom
             variant="h3"
             style={{ fontWeight: 300, margin: 0 }}
             color="primary"
           >
             Английский - это легко!
-          </Typography>
+          </Typography> */}
         </Box>
 
         <p className={classes.subTitle}>
           {'Приложение для быстрого пополнения\n словарного запаса'}
         </p>
         <br/>
-        <Divider />
         <div className={classes.capabilities}>
           <div>
             <List>

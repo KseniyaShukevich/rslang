@@ -8,7 +8,7 @@ import PageLayout from '../components/PageLayout';
 const useStyles = makeStyles({
   contentWrapper: {
     margin: '0 auto',
-    background: 'beige',
+    // background: 'beige',
     padding: '0 2rem'
   },
 });
